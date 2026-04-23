@@ -1,0 +1,233 @@
+---
+title: "Getting started with rk8s"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with rk8s}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+```
+
+rk8s is an R client for the Kubernetes API. It mirrors the architecture of
+the official Python client and Go client-go: a small hand-written runtime
+(configuration, HTTP client, watch, dynamic client, informer, leader
+election, utilities) plus typed API and model classes code-generated
+from the Kubernetes OpenAPI specification.
+
+This vignette walks through the essentials. Every code chunk assumes a
+reachable Kubernetes API server and a valid kubeconfig (or in-cluster
+service account).
+
+## Installing
+
+```r
+# From a local tarball:
+install.packages("rk8s_0.1.0.tar.gz", repos = NULL)
+
+# Or from GitHub:
+# remotes::install_github("ian-flores/rk8s")
+```
+
+## Authenticating
+
+Most users rely on their existing kubeconfig:
+
+```{r}
+library(rk8s)
+
+client <- new_client_from_config()            # ~/.kube/config
+# client <- new_client_from_config(context = "my-dev")
+# client <- new_client_from_config("~/configs/prod.yaml")
+```
+
+Inside a pod running as a ServiceAccount, use `load_incluster_config()`:
+
+```{r}
+client <- ApiClient$new(load_incluster_config())
+```
+
+`load_kube_config()` supports everything `kubectl` does: bearer tokens,
+token files, basic auth, inline base64 client certs, on-disk PEM files,
+and `exec` credential plugins (EKS's `aws-iam-authenticator`, GKE's
+`gke-gcloud-auth-plugin`, any OIDC helper).
+
+## Typed API classes
+
+The generated API classes give you CRUD + subresource methods for every
+resource:
+
+```{r}
+core <- CoreV1Api$new(client)
+
+# List pods across all namespaces
+pods <- V1PodList$from_list(core$list_pod_for_all_namespaces())
+for (p in pods$items) {
+  cat(p$metadata$namespace, "/", p$metadata$name, "\n", sep = "")
+}
+
+# Read a specific pod
+pod <- core$read_namespaced_pod(namespace = "default", name = "nginx")
+
+# Delete
+core$delete_namespaced_pod(namespace = "default", name = "nginx")
+```
+
+### Creating resources
+
+Build resources with the typed model classes. They round-trip to and
+from JSON cleanly:
+
+```{r}
+apps <- AppsV1Api$new(client)
+dep <- V1Deployment$new(
+  api_version = "apps/v1", kind = "Deployment",
+  metadata = V1ObjectMeta$new(name = "nginx"),
+  spec = V1DeploymentSpec$new(
+    replicas = 3L,
+    selector = V1LabelSelector$new(match_labels = list(app = "nginx")),
+    strategy = V1DeploymentStrategy$new(
+      type = "RollingUpdate",
+      rolling_update = V1RollingUpdateDeployment$new(
+        max_surge = IntOrString$new(value = "25%"),
+        max_unavailable = IntOrString$new(value = 0L))),
+    template = V1PodTemplateSpec$new(
+      metadata = V1ObjectMeta$new(labels = list(app = "nginx")),
+      spec = V1PodSpec$new(containers = list(
+        V1Container$new(name = "nginx", image = "nginx:1.25",
+                         ports = list(V1ContainerPort$new(container_port = 80L))))))))
+
+apps$create_namespaced_deployment(namespace = "default", body = dep)
+```
+
+You can also pass a plain nested `list` as `body` — model classes are
+convenience, not requirement.
+
+## Watching
+
+`Watch` streams events from any list endpoint. The callback receives
+`type` (`ADDED`/`MODIFIED`/`DELETED`/`BOOKMARK`) and the object. Return
+`FALSE` to stop; the stream automatically reconnects with the last
+observed `resourceVersion`, re-listing on 410 Gone.
+
+```{r}
+w <- Watch$new()
+w$stream(
+  client,
+  resource_path = "/api/v1/namespaces/default/pods",
+  callback = function(type, object) {
+    cat(type, object$metadata$name, "\n")
+    TRUE
+  },
+  timeout_seconds = 60
+)
+```
+
+## Informer + Lister
+
+When you want to react to changes *without* re-listing the API server
+every tick, use `Informer`: a local cache kept in sync by one watch,
+plus event handlers. This is how controllers are built.
+
+```{r}
+inf <- Informer$new(
+  client,
+  resource_path = "/api/v1/namespaces/default/pods",
+  object_from_list = V1Pod$from_list
+)
+inf$add_event_handler(
+  on_add    = function(obj) message("add: ", obj$metadata$name),
+  on_update = function(old, new) {
+    if (!identical(old$status$phase, new$status$phase))
+      message(new$metadata$name, ": ", old$status$phase, " -> ", new$status$phase)
+  },
+  on_delete = function(obj) message("gone: ", obj$metadata$name)
+)
+inf$run(stop_seconds = 120)
+
+pods <- inf$lister()
+pods$get("nginx")       # O(1) cache lookup, no API call
+pods$list()             # current cache snapshot
+```
+
+## Dynamic client (CustomResources and anything untyped)
+
+For CRDs (or when you'd rather not import a typed class), use
+`DynamicClient`. It discovers the REST path for any `apiVersion+kind`:
+
+```{r}
+dc <- DynamicClient$new(client)
+
+# Built-in:
+pods <- dc$resource("v1", "Pod")
+pods$list(namespace = "kube-system")
+pods$get("kube-dns-abc", namespace = "kube-system")
+
+# CustomResource:
+foos <- dc$resource("example.com/v1", "Foo")
+foos$list(namespace = "default")
+foos$create(list(
+  apiVersion = "example.com/v1", kind = "Foo",
+  metadata = list(name = "my-foo"),
+  spec = list(bar = 1)
+), namespace = "default")
+```
+
+## Apply a YAML manifest
+
+`create_from_yaml()` routes each document to the right endpoint via the
+dynamic client, like `kubectl apply -f`:
+
+```{r}
+create_from_yaml(client, yaml_file = "manifest.yaml")
+```
+
+## Leader election
+
+For controllers that need exactly-one-active semantics across replicas:
+
+```{r}
+run_as_leader(
+  client,
+  lease_name = "my-controller",
+  lease_namespace = "kube-system",
+  identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
+  on_started_leading = function() { message("leading"); controller_loop() },
+  on_stopped_leading = function() message("stopped leading")
+)
+```
+
+A background renewer (via the optional `callr` package) keeps the lease
+fresh while your controller loop runs; on failure or `Ctrl-C`, the
+`on_stopped_leading` callback fires.
+
+## Handling errors
+
+API failures surface as `rk8s_api_error` conditions whose `$exception`
+is an `ApiException` with the HTTP status, reason phrase, headers, and
+parsed `metav1.Status`.
+
+```{r}
+pod <- tryCatch(
+  core$read_namespaced_pod(namespace = "default", name = "nope"),
+  rk8s_api_error = function(e) {
+    if (e$exception$status == 404L) NULL else stop(e)
+  }
+)
+```
+
+## Regenerating from a newer OpenAPI spec
+
+The generator in `tools/gen/` produces the typed classes (`gen_model_*.R`
+and `gen_api_*.R`). To update to a newer Kubernetes version:
+
+```bash
+curl -L -o tools/gen/spec/swagger.json \
+  https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.31/api/openapi-spec/swagger.json
+Rscript tools/gen/generate.R tools/gen/spec/swagger.json R
+R CMD build .
+```
+
+See `tools/gen/README.md` for generator internals.

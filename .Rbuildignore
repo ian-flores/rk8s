@@ -1,0 +1,15 @@
+^rk8s_.*\.tar\.gz$
+^rk8s\.Rcheck$
+^.*\.Rproj$
+^\.Rproj\.user$
+^tools$
+^\.github$
+^\.git$
+^\.gitignore$
+^\.gitattributes$
+^README\.Rmd$
+^CHANGELOG\.md$
+^CONTRIBUTING\.md$
+^CODE_OF_CONDUCT\.md$
+^LICENSE\.md$
+^docs$

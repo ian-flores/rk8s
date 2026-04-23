@@ -1,0 +1,118 @@
+{
+  "swagger": "2.0",
+  "info": {"title": "rk8s sample", "version": "v1"},
+  "paths": {
+    "/api/v1/namespaces/{namespace}/pods": {
+      "parameters": [
+        {"name": "namespace", "in": "path", "required": true, "type": "string"}
+      ],
+      "get": {
+        "tags": ["core_v1"],
+        "operationId": "listCoreV1NamespacedPod",
+        "summary": "list or watch objects of kind Pod",
+        "parameters": [
+          {"name": "labelSelector", "in": "query", "type": "string"},
+          {"name": "watch", "in": "query", "type": "boolean"}
+        ],
+        "responses": {
+          "200": {"description": "OK", "schema": {"$ref": "#/definitions/io.k8s.api.core.v1.PodList"}}
+        }
+      },
+      "post": {
+        "tags": ["core_v1"],
+        "operationId": "createCoreV1NamespacedPod",
+        "summary": "create a Pod",
+        "parameters": [
+          {"name": "body", "in": "body", "required": true,
+           "schema": {"$ref": "#/definitions/io.k8s.api.core.v1.Pod"}}
+        ],
+        "responses": {
+          "201": {"description": "Created", "schema": {"$ref": "#/definitions/io.k8s.api.core.v1.Pod"}}
+        }
+      }
+    },
+    "/api/v1/namespaces/{namespace}/pods/{name}": {
+      "parameters": [
+        {"name": "namespace", "in": "path", "required": true, "type": "string"},
+        {"name": "name", "in": "path", "required": true, "type": "string"}
+      ],
+      "get": {
+        "tags": ["core_v1"],
+        "operationId": "readCoreV1NamespacedPod",
+        "summary": "read the specified Pod",
+        "responses": {
+          "200": {"description": "OK", "schema": {"$ref": "#/definitions/io.k8s.api.core.v1.Pod"}}
+        }
+      },
+      "delete": {
+        "tags": ["core_v1"],
+        "operationId": "deleteCoreV1NamespacedPod",
+        "summary": "delete a Pod",
+        "responses": {"200": {"description": "OK"}}
+      }
+    }
+  },
+  "definitions": {
+    "io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta": {
+      "description": "ObjectMeta is metadata that all persisted resources must have.",
+      "type": "object",
+      "properties": {
+        "name":        {"type": "string"},
+        "namespace":   {"type": "string"},
+        "labels":      {"type": "object", "additionalProperties": {"type": "string"}},
+        "annotations": {"type": "object", "additionalProperties": {"type": "string"}},
+        "resourceVersion": {"type": "string"}
+      }
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta": {
+      "type": "object",
+      "properties": {
+        "resourceVersion": {"type": "string"},
+        "continue":        {"type": "string"}
+      }
+    },
+    "io.k8s.api.core.v1.Container": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name":  {"type": "string"},
+        "image": {"type": "string"},
+        "command": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "io.k8s.api.core.v1.PodSpec": {
+      "type": "object",
+      "required": ["containers"],
+      "properties": {
+        "containers": {"type": "array", "items": {"$ref": "#/definitions/io.k8s.api.core.v1.Container"}},
+        "restartPolicy": {"type": "string"}
+      }
+    },
+    "io.k8s.api.core.v1.PodStatus": {
+      "type": "object",
+      "properties": {
+        "phase": {"type": "string"}
+      }
+    },
+    "io.k8s.api.core.v1.Pod": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {"type": "string"},
+        "kind":       {"type": "string"},
+        "metadata":   {"$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"},
+        "spec":       {"$ref": "#/definitions/io.k8s.api.core.v1.PodSpec"},
+        "status":     {"$ref": "#/definitions/io.k8s.api.core.v1.PodStatus"}
+      }
+    },
+    "io.k8s.api.core.v1.PodList": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "apiVersion": {"type": "string"},
+        "kind":       {"type": "string"},
+        "metadata":   {"$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"},
+        "items":      {"type": "array", "items": {"$ref": "#/definitions/io.k8s.api.core.v1.Pod"}}
+      }
+    }
+  }
+}

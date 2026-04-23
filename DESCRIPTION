@@ -1,0 +1,37 @@
+Package: rk8s
+Type: Package
+Title: Kubernetes Client for R
+Version: 0.1.0
+Authors@R: person("Ian", "Flores Siaca", email = "iflores.siaca@gmail.com", role = c("aut", "cre"))
+Description: An R client for the Kubernetes API, providing access to typed
+    resource APIs (Core, Apps, Batch, Networking, RBAC, ...) and a dynamic
+    client for custom resources. Mirrors the design of the official
+    Kubernetes Python client and Go client-go: a hand-written runtime
+    (configuration, authentication, watch, streaming, dynamic client) plus
+    typed API and model classes code-generated from the Kubernetes OpenAPI
+    specification.
+License: Apache License (>= 2)
+URL: https://github.com/ian-flores/rk8s
+BugReports: https://github.com/ian-flores/rk8s/issues
+Encoding: UTF-8
+Depends:
+    R (>= 4.1)
+Imports:
+    R6,
+    httr2 (>= 1.0.0),
+    jsonlite,
+    yaml,
+    openssl,
+    base64enc,
+    stats,
+    utils
+Suggests:
+    testthat (>= 3.0.0),
+    withr,
+    callr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)

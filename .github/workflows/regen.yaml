@@ -1,0 +1,28 @@
+name: Verify-generator-is-clean
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/gen/**'
+      - 'R/gen_*.R'
+      - 'NAMESPACE'
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::jsonlite
+      - name: Regenerate
+        run: Rscript tools/gen/generate.R tools/gen/spec/swagger.json R
+      - name: Confirm tree is clean
+        run: |
+          git diff --exit-code -- R/ NAMESPACE \
+            || (echo 'Generator output drifted from committed files.'; exit 1)

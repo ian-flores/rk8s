@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+/docs/
+/rk8s.Rcheck/
+rk8s*.tar.gz
+rk8s*.tgz
+# Pinned OpenAPI specs are committed; intermediate generator artefacts are not.
+tools/gen/.cache/
