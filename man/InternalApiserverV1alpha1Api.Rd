@@ -53,9 +53,7 @@ Typed Kubernetes API client for the `InternalApiserverV1alpha1` surface. See gen
 getInternalApiserverV1alpha1APIResources
 get available resources
 listInternalApiserverV1alpha1StorageVersion
-list or watch objects of kind StorageVersion
-createInternalApiserverV1alpha1StorageVersion
-create a StorageVersion}
+list or watch objects of kind StorageVersion}
 }
 \if{html}{\out{</div>}}
 }
@@ -74,9 +72,50 @@ create a StorageVersion}
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-list_storage_version}{}}}
 \subsection{Method \code{list_storage_version()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$list_storage_version()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$list_storage_version(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createInternalApiserverV1alpha1StorageVersion
+create a StorageVersion}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-InternalApiserverV1alpha1Api-create_storage_version"></a>}}
@@ -85,7 +124,9 @@ create a StorageVersion}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$create_storage_version(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -93,7 +134,11 @@ create a StorageVersion}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteInternalApiserverV1alpha1CollectionStorageVersion
@@ -107,13 +152,54 @@ delete collection of StorageVersion}
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-delete_collection_storage_version}{}}}
 \subsection{Method \code{delete_collection_storage_version()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$delete_collection_storage_version(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$delete_collection_storage_version(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readInternalApiserverV1alpha1StorageVersion
 read the specified StorageVersion}
 }
@@ -125,13 +211,14 @@ read the specified StorageVersion}
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-read_storage_version}{}}}
 \subsection{Method \code{read_storage_version()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$read_storage_version(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$read_storage_version(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceInternalApiserverV1alpha1StorageVersion
+\item{\code{pretty}}{= NULL
+replaceInternalApiserverV1alpha1StorageVersion
 replace the specified StorageVersion}
 }
 \if{html}{\out{</div>}}
@@ -145,7 +232,9 @@ replace the specified StorageVersion}
 \if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$replace_storage_version(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -153,7 +242,11 @@ replace the specified StorageVersion}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchInternalApiserverV1alpha1StorageVersion
@@ -169,17 +262,30 @@ partially update the specified StorageVersion}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$patch_storage_version(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteInternalApiserverV1alpha1StorageVersion
 delete a StorageVersion}
 }
@@ -191,13 +297,31 @@ delete a StorageVersion}
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-delete_storage_version}{}}}
 \subsection{Method \code{delete_storage_version()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$delete_storage_version(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$delete_storage_version(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readInternalApiserverV1alpha1StorageVersionStatus
 read status of the specified StorageVersion}
 }
@@ -209,13 +333,14 @@ read status of the specified StorageVersion}
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-read_storage_version_status}{}}}
 \subsection{Method \code{read_storage_version_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$read_storage_version_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$read_storage_version_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceInternalApiserverV1alpha1StorageVersionStatus
+\item{\code{pretty}}{= NULL
+replaceInternalApiserverV1alpha1StorageVersionStatus
 replace status of the specified StorageVersion}
 }
 \if{html}{\out{</div>}}
@@ -229,7 +354,9 @@ replace status of the specified StorageVersion}
 \if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$replace_storage_version_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -237,7 +364,11 @@ replace status of the specified StorageVersion}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchInternalApiserverV1alpha1StorageVersionStatus
@@ -253,21 +384,32 @@ partially update status of the specified StorageVersion}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$patch_storage_version_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchInternalApiserverV1alpha1StorageVersionList
-watch individual changes to a list of StorageVersion. deprecated: use the 'watch' parameter with a list operation instead.
-watchInternalApiserverV1alpha1StorageVersion
-watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of StorageVersion. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -277,18 +419,99 @@ watch changes to an object of kind StorageVersion. deprecated: use the 'watch' p
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-watch_storage_version_list}{}}}
 \subsection{Method \code{watch_storage_version_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$watch_storage_version_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$watch_storage_version_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchInternalApiserverV1alpha1StorageVersion
+watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-InternalApiserverV1alpha1Api-watch_storage_version"></a>}}
 \if{latex}{\out{\hypertarget{method-InternalApiserverV1alpha1Api-watch_storage_version}{}}}
 \subsection{Method \code{watch_storage_version()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$watch_storage_version(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{InternalApiserverV1alpha1Api$watch_storage_version(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-InternalApiserverV1alpha1Api-clone"></a>}}

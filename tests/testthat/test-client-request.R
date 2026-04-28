@@ -13,8 +13,13 @@ test_that("call_api builds URL, path params, query params, and Authorization", {
     stream = TRUE
   )
   expect_equal(req$method, "GET")
+  # URL-decode before matching: httr2 may percent-encode `=` or pass it
+  # through depending on platform/version. The post-decoded query is what
+  # actually reaches the server, so test that.
   expect_match(req$url,
-               "^https://example\\.test:6443/api/v1/namespaces/kube-system/pods/kube-proxy-abc\\?labelSelector=app%3Dproxy$")
+               "^https://example\\.test:6443/api/v1/namespaces/kube-system/pods/kube-proxy-abc\\?")
+  parts <- strsplit(req$url, "?", fixed = TRUE)[[1]]
+  expect_equal(URLdecode(parts[2]), "labelSelector=app=proxy")
   expect_equal(req$headers[["Authorization"]], "Bearer xyz")
 })
 

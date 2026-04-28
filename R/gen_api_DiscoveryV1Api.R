@@ -35,12 +35,23 @@ DiscoveryV1Api <- R6::R6Class(
     ,
     #' listDiscoveryV1EndpointSliceForAllNamespaces
     #' list or watch objects of kind EndpointSlice
-    list_endpoint_slice_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_endpoint_slice_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/endpointslices",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1EndpointSliceList",
@@ -51,12 +62,24 @@ DiscoveryV1Api <- R6::R6Class(
     ,
     #' listDiscoveryV1NamespacedEndpointSlice
     #' list or watch objects of kind EndpointSlice
-    list_namespaced_endpoint_slice = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_endpoint_slice = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1EndpointSliceList",
@@ -67,15 +90,18 @@ DiscoveryV1Api <- R6::R6Class(
     ,
     #' createDiscoveryV1NamespacedEndpointSlice
     #' create an EndpointSlice
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_endpoint_slice = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_endpoint_slice = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1EndpointSlice",
@@ -86,15 +112,29 @@ DiscoveryV1Api <- R6::R6Class(
     ,
     #' deleteDiscoveryV1CollectionNamespacedEndpointSlice
     #' delete collection of EndpointSlice
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_endpoint_slice = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_endpoint_slice = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -104,12 +144,14 @@ DiscoveryV1Api <- R6::R6Class(
     #' readDiscoveryV1NamespacedEndpointSlice
     #' read the specified EndpointSlice
     #' @param name
-    read_namespaced_endpoint_slice = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_endpoint_slice = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1EndpointSlice",
@@ -121,15 +163,18 @@ DiscoveryV1Api <- R6::R6Class(
     #' replaceDiscoveryV1NamespacedEndpointSlice
     #' replace the specified EndpointSlice
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_endpoint_slice = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_endpoint_slice = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1EndpointSlice",
@@ -141,18 +186,24 @@ DiscoveryV1Api <- R6::R6Class(
     #' patchDiscoveryV1NamespacedEndpointSlice
     #' partially update the specified EndpointSlice
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_endpoint_slice = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_endpoint_slice = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1EndpointSlice",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -160,15 +211,21 @@ DiscoveryV1Api <- R6::R6Class(
     #' deleteDiscoveryV1NamespacedEndpointSlice
     #' delete an EndpointSlice
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_endpoint_slice = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_endpoint_slice = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -177,12 +234,23 @@ DiscoveryV1Api <- R6::R6Class(
     ,
     #' watchDiscoveryV1EndpointSliceListForAllNamespaces
     #' watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_endpoint_slice_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_endpoint_slice_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/watch/endpointslices",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -193,12 +261,24 @@ DiscoveryV1Api <- R6::R6Class(
     ,
     #' watchDiscoveryV1NamespacedEndpointSliceList
     #' watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_endpoint_slice_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_endpoint_slice_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -210,12 +290,24 @@ DiscoveryV1Api <- R6::R6Class(
     #' watchDiscoveryV1NamespacedEndpointSlice
     #' watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_endpoint_slice = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_endpoint_slice = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

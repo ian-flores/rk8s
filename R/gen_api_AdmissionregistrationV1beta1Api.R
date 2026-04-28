@@ -35,12 +35,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     ,
     #' listAdmissionregistrationV1beta1ValidatingAdmissionPolicy
     #' list or watch objects of kind ValidatingAdmissionPolicy
-    list_validating_admission_policy = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_validating_admission_policy = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1beta1ValidatingAdmissionPolicyList",
@@ -52,14 +63,16 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' createAdmissionregistrationV1beta1ValidatingAdmissionPolicy
     #' create a ValidatingAdmissionPolicy
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_validating_admission_policy = function(body, dry_run = NULL, field_validation = NULL) {
+    create_validating_admission_policy = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicy",
@@ -70,15 +83,28 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     ,
     #' deleteAdmissionregistrationV1beta1CollectionValidatingAdmissionPolicy
     #' delete collection of ValidatingAdmissionPolicy
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_validating_admission_policy = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_validating_admission_policy = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -88,12 +114,13 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' readAdmissionregistrationV1beta1ValidatingAdmissionPolicy
     #' read the specified ValidatingAdmissionPolicy
     #' @param name
-    read_validating_admission_policy = function(name) {
+    #' @param pretty = NULL
+    read_validating_admission_policy = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1beta1ValidatingAdmissionPolicy",
@@ -106,14 +133,16 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' replace the specified ValidatingAdmissionPolicy
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_validating_admission_policy = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_validating_admission_policy = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicy",
@@ -125,18 +154,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' patchAdmissionregistrationV1beta1ValidatingAdmissionPolicy
     #' partially update the specified ValidatingAdmissionPolicy
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_validating_admission_policy = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_validating_admission_policy = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicy",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -144,15 +178,20 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' deleteAdmissionregistrationV1beta1ValidatingAdmissionPolicy
     #' delete a ValidatingAdmissionPolicy
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_validating_admission_policy = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_validating_admission_policy = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -162,12 +201,13 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' readAdmissionregistrationV1beta1ValidatingAdmissionPolicyStatus
     #' read status of the specified ValidatingAdmissionPolicy
     #' @param name
-    read_validating_admission_policy_status = function(name) {
+    #' @param pretty = NULL
+    read_validating_admission_policy_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}/status",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1beta1ValidatingAdmissionPolicy",
@@ -180,14 +220,16 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' replace status of the specified ValidatingAdmissionPolicy
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_validating_admission_policy_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_validating_admission_policy_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}/status",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicy",
@@ -199,30 +241,46 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' patchAdmissionregistrationV1beta1ValidatingAdmissionPolicyStatus
     #' partially update status of the specified ValidatingAdmissionPolicy
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_validating_admission_policy_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_validating_admission_policy_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicies/{name}/status",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicy",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
     #' list or watch objects of kind ValidatingAdmissionPolicyBinding
-    list_validating_admission_policy_binding = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_validating_admission_policy_binding = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1beta1ValidatingAdmissionPolicyBindingList",
@@ -234,14 +292,16 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' createAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
     #' create a ValidatingAdmissionPolicyBinding
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_validating_admission_policy_binding = function(body, dry_run = NULL, field_validation = NULL) {
+    create_validating_admission_policy_binding = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicyBinding",
@@ -252,15 +312,28 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     ,
     #' deleteAdmissionregistrationV1beta1CollectionValidatingAdmissionPolicyBinding
     #' delete collection of ValidatingAdmissionPolicyBinding
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_validating_admission_policy_binding = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_validating_admission_policy_binding = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -270,12 +343,13 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' readAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
     #' read the specified ValidatingAdmissionPolicyBinding
     #' @param name
-    read_validating_admission_policy_binding = function(name) {
+    #' @param pretty = NULL
+    read_validating_admission_policy_binding = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1beta1ValidatingAdmissionPolicyBinding",
@@ -288,14 +362,16 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' replace the specified ValidatingAdmissionPolicyBinding
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_validating_admission_policy_binding = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_validating_admission_policy_binding = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicyBinding",
@@ -307,18 +383,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' patchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
     #' partially update the specified ValidatingAdmissionPolicyBinding
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_validating_admission_policy_binding = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_validating_admission_policy_binding = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1ValidatingAdmissionPolicyBinding",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -326,15 +407,20 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' deleteAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
     #' delete a ValidatingAdmissionPolicyBinding
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_validating_admission_policy_binding = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_validating_admission_policy_binding = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/validatingadmissionpolicybindings/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -343,12 +429,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     ,
     #' watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyList
     #' watch individual changes to a list of ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_validating_admission_policy_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_validating_admission_policy_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingadmissionpolicies",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -360,12 +457,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' watchAdmissionregistrationV1beta1ValidatingAdmissionPolicy
     #' watch changes to an object of kind ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_validating_admission_policy = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_validating_admission_policy = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingadmissionpolicies/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -376,12 +484,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     ,
     #' watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBindingList
     #' watch individual changes to a list of ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_validating_admission_policy_binding_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_validating_admission_policy_binding_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingadmissionpolicybindings",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -393,12 +512,23 @@ AdmissionregistrationV1beta1Api <- R6::R6Class(
     #' watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
     #' watch changes to an object of kind ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_validating_admission_policy_binding = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_validating_admission_policy_binding = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingadmissionpolicybindings/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

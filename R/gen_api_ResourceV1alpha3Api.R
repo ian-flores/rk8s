@@ -35,12 +35,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' listResourceV1alpha3DeviceClass
     #' list or watch objects of kind DeviceClass
-    list_device_class = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_device_class = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3DeviceClassList",
@@ -52,14 +63,16 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' createResourceV1alpha3DeviceClass
     #' create a DeviceClass
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_device_class = function(body, dry_run = NULL, field_validation = NULL) {
+    create_device_class = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3DeviceClass",
@@ -70,15 +83,28 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' deleteResourceV1alpha3CollectionDeviceClass
     #' delete collection of DeviceClass
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_device_class = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_device_class = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -88,12 +114,13 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3DeviceClass
     #' read the specified DeviceClass
     #' @param name
-    read_device_class = function(name) {
+    #' @param pretty = NULL
+    read_device_class = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3DeviceClass",
@@ -106,14 +133,16 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replace the specified DeviceClass
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_device_class = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_device_class = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3DeviceClass",
@@ -125,18 +154,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3DeviceClass
     #' partially update the specified DeviceClass
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_device_class = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_device_class = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3DeviceClass",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -144,15 +178,20 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' deleteResourceV1alpha3DeviceClass
     #' delete a DeviceClass
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_device_class = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_device_class = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/deviceclasses/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3DeviceClass",
         content_type = "*/*",
         accept = "application/json"
@@ -161,12 +200,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' listResourceV1alpha3NamespacedPodSchedulingContext
     #' list or watch objects of kind PodSchedulingContext
-    list_namespaced_pod_scheduling_context = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_pod_scheduling_context = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3PodSchedulingContextList",
@@ -177,15 +228,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' createResourceV1alpha3NamespacedPodSchedulingContext
     #' create a PodSchedulingContext
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_pod_scheduling_context = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_pod_scheduling_context = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3PodSchedulingContext",
@@ -196,15 +250,29 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' deleteResourceV1alpha3CollectionNamespacedPodSchedulingContext
     #' delete collection of PodSchedulingContext
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_pod_scheduling_context = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_pod_scheduling_context = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -214,12 +282,14 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3NamespacedPodSchedulingContext
     #' read the specified PodSchedulingContext
     #' @param name
-    read_namespaced_pod_scheduling_context = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_pod_scheduling_context = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3PodSchedulingContext",
@@ -231,15 +301,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replaceResourceV1alpha3NamespacedPodSchedulingContext
     #' replace the specified PodSchedulingContext
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_pod_scheduling_context = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_pod_scheduling_context = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3PodSchedulingContext",
@@ -251,18 +324,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3NamespacedPodSchedulingContext
     #' partially update the specified PodSchedulingContext
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_pod_scheduling_context = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_pod_scheduling_context = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3PodSchedulingContext",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -270,15 +349,21 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' deleteResourceV1alpha3NamespacedPodSchedulingContext
     #' delete a PodSchedulingContext
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_pod_scheduling_context = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_pod_scheduling_context = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3PodSchedulingContext",
         content_type = "*/*",
         accept = "application/json"
@@ -288,12 +373,14 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3NamespacedPodSchedulingContextStatus
     #' read status of the specified PodSchedulingContext
     #' @param name
-    read_namespaced_pod_scheduling_context_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_pod_scheduling_context_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3PodSchedulingContext",
@@ -305,15 +392,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replaceResourceV1alpha3NamespacedPodSchedulingContextStatus
     #' replace status of the specified PodSchedulingContext
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_pod_scheduling_context_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_pod_scheduling_context_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3PodSchedulingContext",
@@ -325,30 +415,48 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3NamespacedPodSchedulingContextStatus
     #' partially update status of the specified PodSchedulingContext
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_pod_scheduling_context_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_pod_scheduling_context_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/podschedulingcontexts/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3PodSchedulingContext",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listResourceV1alpha3NamespacedResourceClaim
     #' list or watch objects of kind ResourceClaim
-    list_namespaced_resource_claim = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_resource_claim = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaimList",
@@ -359,15 +467,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' createResourceV1alpha3NamespacedResourceClaim
     #' create a ResourceClaim
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_resource_claim = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_resource_claim = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaim",
@@ -378,15 +489,29 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' deleteResourceV1alpha3CollectionNamespacedResourceClaim
     #' delete collection of ResourceClaim
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_resource_claim = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_resource_claim = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -396,12 +521,14 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3NamespacedResourceClaim
     #' read the specified ResourceClaim
     #' @param name
-    read_namespaced_resource_claim = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_resource_claim = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaim",
@@ -413,15 +540,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replaceResourceV1alpha3NamespacedResourceClaim
     #' replace the specified ResourceClaim
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_resource_claim = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_resource_claim = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaim",
@@ -433,18 +563,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3NamespacedResourceClaim
     #' partially update the specified ResourceClaim
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_resource_claim = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_resource_claim = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaim",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -452,15 +588,21 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' deleteResourceV1alpha3NamespacedResourceClaim
     #' delete a ResourceClaim
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_resource_claim = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_resource_claim = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaim",
         content_type = "*/*",
         accept = "application/json"
@@ -470,12 +612,14 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3NamespacedResourceClaimStatus
     #' read status of the specified ResourceClaim
     #' @param name
-    read_namespaced_resource_claim_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_resource_claim_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaim",
@@ -487,15 +631,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replaceResourceV1alpha3NamespacedResourceClaimStatus
     #' replace status of the specified ResourceClaim
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_resource_claim_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_resource_claim_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaim",
@@ -507,30 +654,48 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3NamespacedResourceClaimStatus
     #' partially update status of the specified ResourceClaim
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_resource_claim_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_resource_claim_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaims/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaim",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listResourceV1alpha3NamespacedResourceClaimTemplate
     #' list or watch objects of kind ResourceClaimTemplate
-    list_namespaced_resource_claim_template = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_resource_claim_template = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaimTemplateList",
@@ -541,15 +706,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' createResourceV1alpha3NamespacedResourceClaimTemplate
     #' create a ResourceClaimTemplate
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_resource_claim_template = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_resource_claim_template = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaimTemplate",
@@ -560,15 +728,29 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' deleteResourceV1alpha3CollectionNamespacedResourceClaimTemplate
     #' delete collection of ResourceClaimTemplate
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_resource_claim_template = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_resource_claim_template = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -578,12 +760,14 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3NamespacedResourceClaimTemplate
     #' read the specified ResourceClaimTemplate
     #' @param name
-    read_namespaced_resource_claim_template = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_resource_claim_template = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaimTemplate",
@@ -595,15 +779,18 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replaceResourceV1alpha3NamespacedResourceClaimTemplate
     #' replace the specified ResourceClaimTemplate
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_resource_claim_template = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_resource_claim_template = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaimTemplate",
@@ -615,18 +802,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3NamespacedResourceClaimTemplate
     #' partially update the specified ResourceClaimTemplate
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_resource_claim_template = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_resource_claim_template = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaimTemplate",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -634,15 +827,21 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' deleteResourceV1alpha3NamespacedResourceClaimTemplate
     #' delete a ResourceClaimTemplate
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_resource_claim_template = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_resource_claim_template = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/namespaces/{namespace}/resourceclaimtemplates/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceClaimTemplate",
         content_type = "*/*",
         accept = "application/json"
@@ -651,12 +850,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' listResourceV1alpha3PodSchedulingContextForAllNamespaces
     #' list or watch objects of kind PodSchedulingContext
-    list_pod_scheduling_context_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_pod_scheduling_context_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/podschedulingcontexts",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3PodSchedulingContextList",
@@ -667,12 +877,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' listResourceV1alpha3ResourceClaimForAllNamespaces
     #' list or watch objects of kind ResourceClaim
-    list_resource_claim_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_resource_claim_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceclaims",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaimList",
@@ -683,12 +904,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' listResourceV1alpha3ResourceClaimTemplateForAllNamespaces
     #' list or watch objects of kind ResourceClaimTemplate
-    list_resource_claim_template_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_resource_claim_template_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceclaimtemplates",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceClaimTemplateList",
@@ -699,12 +931,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' listResourceV1alpha3ResourceSlice
     #' list or watch objects of kind ResourceSlice
-    list_resource_slice = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_resource_slice = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceSliceList",
@@ -716,14 +959,16 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' createResourceV1alpha3ResourceSlice
     #' create a ResourceSlice
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_resource_slice = function(body, dry_run = NULL, field_validation = NULL) {
+    create_resource_slice = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceSlice",
@@ -734,15 +979,28 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' deleteResourceV1alpha3CollectionResourceSlice
     #' delete collection of ResourceSlice
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_resource_slice = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_resource_slice = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -752,12 +1010,13 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' readResourceV1alpha3ResourceSlice
     #' read the specified ResourceSlice
     #' @param name
-    read_resource_slice = function(name) {
+    #' @param pretty = NULL
+    read_resource_slice = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha3ResourceSlice",
@@ -770,14 +1029,16 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' replace the specified ResourceSlice
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_resource_slice = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_resource_slice = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceSlice",
@@ -789,18 +1050,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' patchResourceV1alpha3ResourceSlice
     #' partially update the specified ResourceSlice
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_resource_slice = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_resource_slice = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceSlice",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -808,15 +1074,20 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' deleteResourceV1alpha3ResourceSlice
     #' delete a ResourceSlice
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_resource_slice = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_resource_slice = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/resourceslices/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha3ResourceSlice",
         content_type = "*/*",
         accept = "application/json"
@@ -825,12 +1096,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3DeviceClassList
     #' watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_device_class_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_device_class_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/deviceclasses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -842,12 +1124,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' watchResourceV1alpha3DeviceClass
     #' watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_device_class = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_device_class = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/deviceclasses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -858,12 +1151,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3NamespacedPodSchedulingContextList
     #' watch individual changes to a list of PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_pod_scheduling_context_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_pod_scheduling_context_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/namespaces/{namespace}/podschedulingcontexts",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -875,12 +1180,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' watchResourceV1alpha3NamespacedPodSchedulingContext
     #' watch changes to an object of kind PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_pod_scheduling_context = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_pod_scheduling_context = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/namespaces/{namespace}/podschedulingcontexts/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -891,12 +1208,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3NamespacedResourceClaimList
     #' watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_resource_claim_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_resource_claim_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/namespaces/{namespace}/resourceclaims",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -908,12 +1237,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' watchResourceV1alpha3NamespacedResourceClaim
     #' watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_resource_claim = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_resource_claim = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/namespaces/{namespace}/resourceclaims/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -924,12 +1265,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3NamespacedResourceClaimTemplateList
     #' watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_resource_claim_template_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_resource_claim_template_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/namespaces/{namespace}/resourceclaimtemplates",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -941,12 +1294,24 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' watchResourceV1alpha3NamespacedResourceClaimTemplate
     #' watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_resource_claim_template = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_resource_claim_template = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/namespaces/{namespace}/resourceclaimtemplates/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -957,12 +1322,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3PodSchedulingContextListForAllNamespaces
     #' watch individual changes to a list of PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_pod_scheduling_context_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_pod_scheduling_context_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/podschedulingcontexts",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -973,12 +1349,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3ResourceClaimListForAllNamespaces
     #' watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_resource_claim_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_resource_claim_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/resourceclaims",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -989,12 +1376,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3ResourceClaimTemplateListForAllNamespaces
     #' watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_resource_claim_template_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_resource_claim_template_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/resourceclaimtemplates",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -1005,12 +1403,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     ,
     #' watchResourceV1alpha3ResourceSliceList
     #' watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_resource_slice_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_resource_slice_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/resourceslices",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -1022,12 +1431,23 @@ ResourceV1alpha3Api <- R6::R6Class(
     #' watchResourceV1alpha3ResourceSlice
     #' watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_resource_slice = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_resource_slice = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/resource.k8s.io/v1alpha3/watch/resourceslices/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

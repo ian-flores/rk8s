@@ -44,6 +44,12 @@ main <- function(spec_path, out_dir) {
   cat(sprintf("[gen] reading %s\n", spec_path))
   spec <- jsonlite::fromJSON(spec_path, simplifyVector = FALSE)
 
+  # Eagerly resolve every "$ref": "#/parameters/..." reference in spec$paths.
+  # Kubernetes' swagger uses refs heavily for shared params (namespace, body,
+  # fieldManager, force, dryRun, …); leaving them unresolved silently drops
+  # those args from generated method signatures.
+  spec$paths <- resolve_param_refs(spec$paths, spec$parameters %||% list())
+
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
   # Wipe previously-generated files so renames and removals are reflected.
   old <- list.files(out_dir, pattern = "^gen_", full.names = TRUE)

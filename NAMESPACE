@@ -26,6 +26,29 @@ export(Lister)
 # Leader election
 export(run_as_leader)
 
+# Pod exec
+export(pod_exec)
+export(pod_exec_open)
+export(PodExecSession)
+
+# Pod port-forward
+export(pod_port_forward_open)
+export(PodPortForwardSession)
+
+# High-level verb API
+export(kube)
+export(Kube)
+export(kube_get)
+export(kube_list)
+export(kube_apply)
+export(kube_delete)
+export(kube_scale)
+export(kube_logs)
+export(kube_watch)
+S3method(print, rk8s_list)
+S3method(print, rk8s_object)
+S3method(as.data.frame, rk8s_list)
+
 # Utils
 export(create_from_yaml)
 export(parse_quantity)

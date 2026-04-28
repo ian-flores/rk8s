@@ -98,9 +98,7 @@ Typed Kubernetes API client for the `ResourceV1alpha3` surface. See generated me
 getResourceV1alpha3APIResources
 get available resources
 listResourceV1alpha3DeviceClass
-list or watch objects of kind DeviceClass
-createResourceV1alpha3DeviceClass
-create a DeviceClass}
+list or watch objects of kind DeviceClass}
 }
 \if{html}{\out{</div>}}
 }
@@ -119,9 +117,50 @@ create a DeviceClass}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_device_class}{}}}
 \subsection{Method \code{list_device_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_device_class()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_device_class(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createResourceV1alpha3DeviceClass
+create a DeviceClass}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-create_device_class"></a>}}
@@ -130,7 +169,9 @@ create a DeviceClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$create_device_class(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -138,7 +179,11 @@ create a DeviceClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteResourceV1alpha3CollectionDeviceClass
@@ -152,13 +197,54 @@ delete collection of DeviceClass}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-delete_collection_device_class}{}}}
 \subsection{Method \code{delete_collection_device_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_device_class(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_device_class(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3DeviceClass
 read the specified DeviceClass}
 }
@@ -170,13 +256,14 @@ read the specified DeviceClass}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_device_class}{}}}
 \subsection{Method \code{read_device_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_device_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_device_class(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3DeviceClass
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3DeviceClass
 replace the specified DeviceClass}
 }
 \if{html}{\out{</div>}}
@@ -190,7 +277,9 @@ replace the specified DeviceClass}
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_device_class(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -198,7 +287,11 @@ replace the specified DeviceClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3DeviceClass
@@ -214,17 +307,30 @@ partially update the specified DeviceClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_device_class(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteResourceV1alpha3DeviceClass
 delete a DeviceClass}
 }
@@ -236,17 +342,33 @@ delete a DeviceClass}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-delete_device_class}{}}}
 \subsection{Method \code{delete_device_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_device_class(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_device_class(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listResourceV1alpha3NamespacedPodSchedulingContext
-list or watch objects of kind PodSchedulingContext
-createResourceV1alpha3NamespacedPodSchedulingContext
-create a PodSchedulingContext}
+list or watch objects of kind PodSchedulingContext}
 }
 \if{html}{\out{</div>}}
 }
@@ -256,9 +378,51 @@ create a PodSchedulingContext}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_namespaced_pod_scheduling_context}{}}}
 \subsection{Method \code{list_namespaced_pod_scheduling_context()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_namespaced_pod_scheduling_context()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_namespaced_pod_scheduling_context(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createResourceV1alpha3NamespacedPodSchedulingContext
+create a PodSchedulingContext}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-create_namespaced_pod_scheduling_context"></a>}}
@@ -266,8 +430,11 @@ create a PodSchedulingContext}
 \subsection{Method \code{create_namespaced_pod_scheduling_context()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$create_namespaced_pod_scheduling_context(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -275,7 +442,11 @@ create a PodSchedulingContext}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteResourceV1alpha3CollectionNamespacedPodSchedulingContext
@@ -290,14 +461,54 @@ delete collection of PodSchedulingContext}
 \subsection{Method \code{delete_collection_namespaced_pod_scheduling_context()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_namespaced_pod_scheduling_context(
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3NamespacedPodSchedulingContext
 read the specified PodSchedulingContext}
 }
@@ -309,13 +520,18 @@ read the specified PodSchedulingContext}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_namespaced_pod_scheduling_context}{}}}
 \subsection{Method \code{read_namespaced_pod_scheduling_context()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_pod_scheduling_context(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_pod_scheduling_context(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3NamespacedPodSchedulingContext
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3NamespacedPodSchedulingContext
 replace the specified PodSchedulingContext}
 }
 \if{html}{\out{</div>}}
@@ -328,8 +544,11 @@ replace the specified PodSchedulingContext}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_namespaced_pod_scheduling_context(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -337,7 +556,11 @@ replace the specified PodSchedulingContext}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3NamespacedPodSchedulingContext
@@ -353,17 +576,31 @@ partially update the specified PodSchedulingContext}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_namespaced_pod_scheduling_context(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteResourceV1alpha3NamespacedPodSchedulingContext
 delete a PodSchedulingContext}
 }
@@ -377,14 +614,30 @@ delete a PodSchedulingContext}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_namespaced_pod_scheduling_context(
   name,
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3NamespacedPodSchedulingContextStatus
 read status of the specified PodSchedulingContext}
 }
@@ -396,13 +649,18 @@ read status of the specified PodSchedulingContext}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_namespaced_pod_scheduling_context_status}{}}}
 \subsection{Method \code{read_namespaced_pod_scheduling_context_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_pod_scheduling_context_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_pod_scheduling_context_status(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3NamespacedPodSchedulingContextStatus
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3NamespacedPodSchedulingContextStatus
 replace status of the specified PodSchedulingContext}
 }
 \if{html}{\out{</div>}}
@@ -415,8 +673,11 @@ replace status of the specified PodSchedulingContext}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_namespaced_pod_scheduling_context_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -424,7 +685,11 @@ replace status of the specified PodSchedulingContext}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3NamespacedPodSchedulingContextStatus
@@ -440,21 +705,33 @@ partially update status of the specified PodSchedulingContext}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_namespaced_pod_scheduling_context_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listResourceV1alpha3NamespacedResourceClaim
-list or watch objects of kind ResourceClaim
-createResourceV1alpha3NamespacedResourceClaim
-create a ResourceClaim}
+list or watch objects of kind ResourceClaim}
 }
 \if{html}{\out{</div>}}
 }
@@ -464,9 +741,51 @@ create a ResourceClaim}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_namespaced_resource_claim}{}}}
 \subsection{Method \code{list_namespaced_resource_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_namespaced_resource_claim()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_namespaced_resource_claim(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createResourceV1alpha3NamespacedResourceClaim
+create a ResourceClaim}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-create_namespaced_resource_claim"></a>}}
@@ -474,8 +793,11 @@ create a ResourceClaim}
 \subsection{Method \code{create_namespaced_resource_claim()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$create_namespaced_resource_claim(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -483,7 +805,11 @@ create a ResourceClaim}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteResourceV1alpha3CollectionNamespacedResourceClaim
@@ -497,13 +823,55 @@ delete collection of ResourceClaim}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-delete_collection_namespaced_resource_claim}{}}}
 \subsection{Method \code{delete_collection_namespaced_resource_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_namespaced_resource_claim(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_namespaced_resource_claim(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3NamespacedResourceClaim
 read the specified ResourceClaim}
 }
@@ -515,13 +883,18 @@ read the specified ResourceClaim}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_namespaced_resource_claim}{}}}
 \subsection{Method \code{read_namespaced_resource_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_resource_claim(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_resource_claim(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3NamespacedResourceClaim
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3NamespacedResourceClaim
 replace the specified ResourceClaim}
 }
 \if{html}{\out{</div>}}
@@ -534,8 +907,11 @@ replace the specified ResourceClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_namespaced_resource_claim(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -543,7 +919,11 @@ replace the specified ResourceClaim}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3NamespacedResourceClaim
@@ -559,17 +939,31 @@ partially update the specified ResourceClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_namespaced_resource_claim(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteResourceV1alpha3NamespacedResourceClaim
 delete a ResourceClaim}
 }
@@ -581,13 +975,32 @@ delete a ResourceClaim}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-delete_namespaced_resource_claim}{}}}
 \subsection{Method \code{delete_namespaced_resource_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_namespaced_resource_claim(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_namespaced_resource_claim(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3NamespacedResourceClaimStatus
 read status of the specified ResourceClaim}
 }
@@ -599,13 +1012,18 @@ read status of the specified ResourceClaim}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_namespaced_resource_claim_status}{}}}
 \subsection{Method \code{read_namespaced_resource_claim_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_resource_claim_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_resource_claim_status(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3NamespacedResourceClaimStatus
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3NamespacedResourceClaimStatus
 replace status of the specified ResourceClaim}
 }
 \if{html}{\out{</div>}}
@@ -618,8 +1036,11 @@ replace status of the specified ResourceClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_namespaced_resource_claim_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -627,7 +1048,11 @@ replace status of the specified ResourceClaim}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3NamespacedResourceClaimStatus
@@ -643,21 +1068,33 @@ partially update status of the specified ResourceClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_namespaced_resource_claim_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listResourceV1alpha3NamespacedResourceClaimTemplate
-list or watch objects of kind ResourceClaimTemplate
-createResourceV1alpha3NamespacedResourceClaimTemplate
-create a ResourceClaimTemplate}
+list or watch objects of kind ResourceClaimTemplate}
 }
 \if{html}{\out{</div>}}
 }
@@ -667,9 +1104,51 @@ create a ResourceClaimTemplate}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_namespaced_resource_claim_template}{}}}
 \subsection{Method \code{list_namespaced_resource_claim_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_namespaced_resource_claim_template()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_namespaced_resource_claim_template(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createResourceV1alpha3NamespacedResourceClaimTemplate
+create a ResourceClaimTemplate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-create_namespaced_resource_claim_template"></a>}}
@@ -677,8 +1156,11 @@ create a ResourceClaimTemplate}
 \subsection{Method \code{create_namespaced_resource_claim_template()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$create_namespaced_resource_claim_template(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -686,7 +1168,11 @@ create a ResourceClaimTemplate}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteResourceV1alpha3CollectionNamespacedResourceClaimTemplate
@@ -701,14 +1187,54 @@ delete collection of ResourceClaimTemplate}
 \subsection{Method \code{delete_collection_namespaced_resource_claim_template()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_namespaced_resource_claim_template(
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3NamespacedResourceClaimTemplate
 read the specified ResourceClaimTemplate}
 }
@@ -720,13 +1246,18 @@ read the specified ResourceClaimTemplate}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_namespaced_resource_claim_template}{}}}
 \subsection{Method \code{read_namespaced_resource_claim_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_resource_claim_template(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_namespaced_resource_claim_template(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3NamespacedResourceClaimTemplate
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3NamespacedResourceClaimTemplate
 replace the specified ResourceClaimTemplate}
 }
 \if{html}{\out{</div>}}
@@ -739,8 +1270,11 @@ replace the specified ResourceClaimTemplate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_namespaced_resource_claim_template(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -748,7 +1282,11 @@ replace the specified ResourceClaimTemplate}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3NamespacedResourceClaimTemplate
@@ -764,17 +1302,31 @@ partially update the specified ResourceClaimTemplate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_namespaced_resource_claim_template(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteResourceV1alpha3NamespacedResourceClaimTemplate
 delete a ResourceClaimTemplate}
 }
@@ -788,24 +1340,32 @@ delete a ResourceClaimTemplate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_namespaced_resource_claim_template(
   name,
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listResourceV1alpha3PodSchedulingContextForAllNamespaces
-list or watch objects of kind PodSchedulingContext
-listResourceV1alpha3ResourceClaimForAllNamespaces
-list or watch objects of kind ResourceClaim
-listResourceV1alpha3ResourceClaimTemplateForAllNamespaces
-list or watch objects of kind ResourceClaimTemplate
-listResourceV1alpha3ResourceSlice
-list or watch objects of kind ResourceSlice
-createResourceV1alpha3ResourceSlice
-create a ResourceSlice}
+list or watch objects of kind PodSchedulingContext}
 }
 \if{html}{\out{</div>}}
 }
@@ -815,36 +1375,200 @@ create a ResourceSlice}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_pod_scheduling_context_for_all_namespaces}{}}}
 \subsection{Method \code{list_pod_scheduling_context_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_pod_scheduling_context_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_pod_scheduling_context_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listResourceV1alpha3ResourceClaimForAllNamespaces
+list or watch objects of kind ResourceClaim}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-list_resource_claim_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_resource_claim_for_all_namespaces}{}}}
 \subsection{Method \code{list_resource_claim_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_resource_claim_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_resource_claim_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listResourceV1alpha3ResourceClaimTemplateForAllNamespaces
+list or watch objects of kind ResourceClaimTemplate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-list_resource_claim_template_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_resource_claim_template_for_all_namespaces}{}}}
 \subsection{Method \code{list_resource_claim_template_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_resource_claim_template_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_resource_claim_template_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listResourceV1alpha3ResourceSlice
+list or watch objects of kind ResourceSlice}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-list_resource_slice"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-list_resource_slice}{}}}
 \subsection{Method \code{list_resource_slice()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_resource_slice()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$list_resource_slice(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createResourceV1alpha3ResourceSlice
+create a ResourceSlice}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-create_resource_slice"></a>}}
@@ -853,7 +1577,9 @@ create a ResourceSlice}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$create_resource_slice(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -861,7 +1587,11 @@ create a ResourceSlice}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteResourceV1alpha3CollectionResourceSlice
@@ -875,13 +1605,54 @@ delete collection of ResourceSlice}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-delete_collection_resource_slice}{}}}
 \subsection{Method \code{delete_collection_resource_slice()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_resource_slice(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_collection_resource_slice(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readResourceV1alpha3ResourceSlice
 read the specified ResourceSlice}
 }
@@ -893,13 +1664,14 @@ read the specified ResourceSlice}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-read_resource_slice}{}}}
 \subsection{Method \code{read_resource_slice()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_resource_slice(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$read_resource_slice(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceResourceV1alpha3ResourceSlice
+\item{\code{pretty}}{= NULL
+replaceResourceV1alpha3ResourceSlice
 replace the specified ResourceSlice}
 }
 \if{html}{\out{</div>}}
@@ -913,7 +1685,9 @@ replace the specified ResourceSlice}
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$replace_resource_slice(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -921,7 +1695,11 @@ replace the specified ResourceSlice}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchResourceV1alpha3ResourceSlice
@@ -937,17 +1715,30 @@ partially update the specified ResourceSlice}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$patch_resource_slice(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteResourceV1alpha3ResourceSlice
 delete a ResourceSlice}
 }
@@ -959,17 +1750,33 @@ delete a ResourceSlice}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-delete_resource_slice}{}}}
 \subsection{Method \code{delete_resource_slice()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_resource_slice(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$delete_resource_slice(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchResourceV1alpha3DeviceClassList
-watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3DeviceClass
-watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of DeviceClass. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -979,25 +1786,98 @@ watch changes to an object of kind DeviceClass. deprecated: use the 'watch' para
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_device_class_list}{}}}
 \subsection{Method \code{watch_device_class_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_device_class_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_device_class_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3DeviceClass
+watch changes to an object of kind DeviceClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_device_class"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_device_class}{}}}
 \subsection{Method \code{watch_device_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_device_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_device_class(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchResourceV1alpha3NamespacedPodSchedulingContextList
-watch individual changes to a list of PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3NamespacedPodSchedulingContext
-watch changes to an object of kind PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3NamespacedPodSchedulingContextList
+watch individual changes to a list of PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1007,25 +1887,100 @@ watch changes to an object of kind PodSchedulingContext. deprecated: use the 'wa
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_namespaced_pod_scheduling_context_list}{}}}
 \subsection{Method \code{watch_namespaced_pod_scheduling_context_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_pod_scheduling_context_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_pod_scheduling_context_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3NamespacedPodSchedulingContext
+watch changes to an object of kind PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_namespaced_pod_scheduling_context"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_namespaced_pod_scheduling_context}{}}}
 \subsection{Method \code{watch_namespaced_pod_scheduling_context()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_pod_scheduling_context(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_pod_scheduling_context(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchResourceV1alpha3NamespacedResourceClaimList
-watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3NamespacedResourceClaim
-watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3NamespacedResourceClaimList
+watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1035,25 +1990,100 @@ watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' pa
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_namespaced_resource_claim_list}{}}}
 \subsection{Method \code{watch_namespaced_resource_claim_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3NamespacedResourceClaim
+watch changes to an object of kind ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_namespaced_resource_claim"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_namespaced_resource_claim}{}}}
 \subsection{Method \code{watch_namespaced_resource_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchResourceV1alpha3NamespacedResourceClaimTemplateList
-watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3NamespacedResourceClaimTemplate
-watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3NamespacedResourceClaimTemplateList
+watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1063,31 +2093,100 @@ watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'w
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_namespaced_resource_claim_template_list}{}}}
 \subsection{Method \code{watch_namespaced_resource_claim_template_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim_template_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim_template_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3NamespacedResourceClaimTemplate
+watch changes to an object of kind ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_namespaced_resource_claim_template"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_namespaced_resource_claim_template}{}}}
 \subsection{Method \code{watch_namespaced_resource_claim_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim_template(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_namespaced_resource_claim_template(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchResourceV1alpha3PodSchedulingContextListForAllNamespaces
-watch individual changes to a list of PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3ResourceClaimListForAllNamespaces
-watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3ResourceClaimTemplateListForAllNamespaces
-watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3ResourceSliceList
-watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.
-watchResourceV1alpha3ResourceSlice
-watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3PodSchedulingContextListForAllNamespaces
+watch individual changes to a list of PodSchedulingContext. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1097,45 +2196,249 @@ watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' pa
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_pod_scheduling_context_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_pod_scheduling_context_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_pod_scheduling_context_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_pod_scheduling_context_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3ResourceClaimListForAllNamespaces
+watch individual changes to a list of ResourceClaim. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_resource_claim_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_resource_claim_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_resource_claim_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_claim_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_claim_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3ResourceClaimTemplateListForAllNamespaces
+watch individual changes to a list of ResourceClaimTemplate. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_resource_claim_template_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_resource_claim_template_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_resource_claim_template_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_claim_template_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_claim_template_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3ResourceSliceList
+watch individual changes to a list of ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_resource_slice_list"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_resource_slice_list}{}}}
 \subsection{Method \code{watch_resource_slice_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_slice_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_slice_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchResourceV1alpha3ResourceSlice
+watch changes to an object of kind ResourceSlice. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-watch_resource_slice"></a>}}
 \if{latex}{\out{\hypertarget{method-ResourceV1alpha3Api-watch_resource_slice}{}}}
 \subsection{Method \code{watch_resource_slice()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_slice(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ResourceV1alpha3Api$watch_resource_slice(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ResourceV1alpha3Api-clone"></a>}}

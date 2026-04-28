@@ -37,13 +37,15 @@ AuthenticationV1beta1Api <- R6::R6Class(
     #' create a SelfSubjectReview
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_self_subject_review = function(body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_self_subject_review = function(body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/authentication.k8s.io/v1beta1/selfsubjectreviews",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1beta1SelfSubjectReview",

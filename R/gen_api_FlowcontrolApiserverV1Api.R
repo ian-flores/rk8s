@@ -35,12 +35,23 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     ,
     #' listFlowcontrolApiserverV1FlowSchema
     #' list or watch objects of kind FlowSchema
-    list_flow_schema = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_flow_schema = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1FlowSchemaList",
@@ -52,14 +63,16 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' createFlowcontrolApiserverV1FlowSchema
     #' create a FlowSchema
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_flow_schema = function(body, dry_run = NULL, field_validation = NULL) {
+    create_flow_schema = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1FlowSchema",
@@ -70,15 +83,28 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     ,
     #' deleteFlowcontrolApiserverV1CollectionFlowSchema
     #' delete collection of FlowSchema
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_flow_schema = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_flow_schema = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -88,12 +114,13 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' readFlowcontrolApiserverV1FlowSchema
     #' read the specified FlowSchema
     #' @param name
-    read_flow_schema = function(name) {
+    #' @param pretty = NULL
+    read_flow_schema = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1FlowSchema",
@@ -106,14 +133,16 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' replace the specified FlowSchema
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_flow_schema = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_flow_schema = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1FlowSchema",
@@ -125,18 +154,23 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' patchFlowcontrolApiserverV1FlowSchema
     #' partially update the specified FlowSchema
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_flow_schema = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_flow_schema = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1FlowSchema",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -144,15 +178,20 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' deleteFlowcontrolApiserverV1FlowSchema
     #' delete a FlowSchema
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_flow_schema = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_flow_schema = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -162,12 +201,13 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' readFlowcontrolApiserverV1FlowSchemaStatus
     #' read status of the specified FlowSchema
     #' @param name
-    read_flow_schema_status = function(name) {
+    #' @param pretty = NULL
+    read_flow_schema_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}/status",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1FlowSchema",
@@ -180,14 +220,16 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' replace status of the specified FlowSchema
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_flow_schema_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_flow_schema_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}/status",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1FlowSchema",
@@ -199,30 +241,46 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' patchFlowcontrolApiserverV1FlowSchemaStatus
     #' partially update status of the specified FlowSchema
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_flow_schema_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_flow_schema_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/flowschemas/{name}/status",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1FlowSchema",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listFlowcontrolApiserverV1PriorityLevelConfiguration
     #' list or watch objects of kind PriorityLevelConfiguration
-    list_priority_level_configuration = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_priority_level_configuration = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PriorityLevelConfigurationList",
@@ -234,14 +292,16 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' createFlowcontrolApiserverV1PriorityLevelConfiguration
     #' create a PriorityLevelConfiguration
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_priority_level_configuration = function(body, dry_run = NULL, field_validation = NULL) {
+    create_priority_level_configuration = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PriorityLevelConfiguration",
@@ -252,15 +312,28 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     ,
     #' deleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguration
     #' delete collection of PriorityLevelConfiguration
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_priority_level_configuration = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_priority_level_configuration = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -270,12 +343,13 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' readFlowcontrolApiserverV1PriorityLevelConfiguration
     #' read the specified PriorityLevelConfiguration
     #' @param name
-    read_priority_level_configuration = function(name) {
+    #' @param pretty = NULL
+    read_priority_level_configuration = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PriorityLevelConfiguration",
@@ -288,14 +362,16 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' replace the specified PriorityLevelConfiguration
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_priority_level_configuration = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_priority_level_configuration = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PriorityLevelConfiguration",
@@ -307,18 +383,23 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' patchFlowcontrolApiserverV1PriorityLevelConfiguration
     #' partially update the specified PriorityLevelConfiguration
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_priority_level_configuration = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_priority_level_configuration = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PriorityLevelConfiguration",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -326,15 +407,20 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' deleteFlowcontrolApiserverV1PriorityLevelConfiguration
     #' delete a PriorityLevelConfiguration
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_priority_level_configuration = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_priority_level_configuration = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -344,12 +430,13 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' readFlowcontrolApiserverV1PriorityLevelConfigurationStatus
     #' read status of the specified PriorityLevelConfiguration
     #' @param name
-    read_priority_level_configuration_status = function(name) {
+    #' @param pretty = NULL
+    read_priority_level_configuration_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}/status",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PriorityLevelConfiguration",
@@ -362,14 +449,16 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' replace status of the specified PriorityLevelConfiguration
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_priority_level_configuration_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_priority_level_configuration_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}/status",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PriorityLevelConfiguration",
@@ -381,30 +470,46 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' patchFlowcontrolApiserverV1PriorityLevelConfigurationStatus
     #' partially update status of the specified PriorityLevelConfiguration
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_priority_level_configuration_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_priority_level_configuration_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/prioritylevelconfigurations/{name}/status",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PriorityLevelConfiguration",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' watchFlowcontrolApiserverV1FlowSchemaList
     #' watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_flow_schema_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_flow_schema_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/watch/flowschemas",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -416,12 +521,23 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' watchFlowcontrolApiserverV1FlowSchema
     #' watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_flow_schema = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_flow_schema = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/watch/flowschemas/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -432,12 +548,23 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     ,
     #' watchFlowcontrolApiserverV1PriorityLevelConfigurationList
     #' watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_priority_level_configuration_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_priority_level_configuration_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/watch/prioritylevelconfigurations",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -449,12 +576,23 @@ FlowcontrolApiserverV1Api <- R6::R6Class(
     #' watchFlowcontrolApiserverV1PriorityLevelConfiguration
     #' watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_priority_level_configuration = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_priority_level_configuration = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/flowcontrol.apiserver.k8s.io/v1/watch/prioritylevelconfigurations/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

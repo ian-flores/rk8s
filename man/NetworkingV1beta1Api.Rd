@@ -62,9 +62,7 @@ Typed Kubernetes API client for the `NetworkingV1beta1` surface. See generated m
 getNetworkingV1beta1APIResources
 get available resources
 listNetworkingV1beta1IPAddress
-list or watch objects of kind IPAddress
-createNetworkingV1beta1IPAddress
-create an IPAddress}
+list or watch objects of kind IPAddress}
 }
 \if{html}{\out{</div>}}
 }
@@ -83,9 +81,50 @@ create an IPAddress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-list_ip_address}{}}}
 \subsection{Method \code{list_ip_address()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$list_ip_address()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$list_ip_address(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createNetworkingV1beta1IPAddress
+create an IPAddress}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1beta1Api-create_ip_address"></a>}}
@@ -94,7 +133,9 @@ create an IPAddress}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$create_ip_address(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -102,7 +143,11 @@ create an IPAddress}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteNetworkingV1beta1CollectionIPAddress
@@ -116,13 +161,54 @@ delete collection of IPAddress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-delete_collection_ip_address}{}}}
 \subsection{Method \code{delete_collection_ip_address()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_collection_ip_address(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_collection_ip_address(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1beta1IPAddress
 read the specified IPAddress}
 }
@@ -134,13 +220,14 @@ read the specified IPAddress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-read_ip_address}{}}}
 \subsection{Method \code{read_ip_address()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$read_ip_address(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$read_ip_address(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1beta1IPAddress
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1beta1IPAddress
 replace the specified IPAddress}
 }
 \if{html}{\out{</div>}}
@@ -154,7 +241,9 @@ replace the specified IPAddress}
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$replace_ip_address(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -162,7 +251,11 @@ replace the specified IPAddress}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1beta1IPAddress
@@ -178,17 +271,30 @@ partially update the specified IPAddress}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$patch_ip_address(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteNetworkingV1beta1IPAddress
 delete an IPAddress}
 }
@@ -200,17 +306,33 @@ delete an IPAddress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-delete_ip_address}{}}}
 \subsection{Method \code{delete_ip_address()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_ip_address(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_ip_address(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listNetworkingV1beta1ServiceCIDR
-list or watch objects of kind ServiceCIDR
-createNetworkingV1beta1ServiceCIDR
-create a ServiceCIDR}
+list or watch objects of kind ServiceCIDR}
 }
 \if{html}{\out{</div>}}
 }
@@ -220,9 +342,50 @@ create a ServiceCIDR}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-list_service_cidr}{}}}
 \subsection{Method \code{list_service_cidr()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$list_service_cidr()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$list_service_cidr(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createNetworkingV1beta1ServiceCIDR
+create a ServiceCIDR}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1beta1Api-create_service_cidr"></a>}}
@@ -231,7 +394,9 @@ create a ServiceCIDR}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$create_service_cidr(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -239,7 +404,11 @@ create a ServiceCIDR}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteNetworkingV1beta1CollectionServiceCIDR
@@ -253,13 +422,54 @@ delete collection of ServiceCIDR}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-delete_collection_service_cidr}{}}}
 \subsection{Method \code{delete_collection_service_cidr()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_collection_service_cidr(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_collection_service_cidr(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1beta1ServiceCIDR
 read the specified ServiceCIDR}
 }
@@ -271,13 +481,14 @@ read the specified ServiceCIDR}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-read_service_cidr}{}}}
 \subsection{Method \code{read_service_cidr()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$read_service_cidr(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$read_service_cidr(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1beta1ServiceCIDR
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1beta1ServiceCIDR
 replace the specified ServiceCIDR}
 }
 \if{html}{\out{</div>}}
@@ -291,7 +502,9 @@ replace the specified ServiceCIDR}
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$replace_service_cidr(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -299,7 +512,11 @@ replace the specified ServiceCIDR}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1beta1ServiceCIDR
@@ -315,17 +532,30 @@ partially update the specified ServiceCIDR}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$patch_service_cidr(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteNetworkingV1beta1ServiceCIDR
 delete a ServiceCIDR}
 }
@@ -337,13 +567,31 @@ delete a ServiceCIDR}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-delete_service_cidr}{}}}
 \subsection{Method \code{delete_service_cidr()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_service_cidr(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$delete_service_cidr(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1beta1ServiceCIDRStatus
 read status of the specified ServiceCIDR}
 }
@@ -355,13 +603,14 @@ read status of the specified ServiceCIDR}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-read_service_cidr_status}{}}}
 \subsection{Method \code{read_service_cidr_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$read_service_cidr_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$read_service_cidr_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1beta1ServiceCIDRStatus
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1beta1ServiceCIDRStatus
 replace status of the specified ServiceCIDR}
 }
 \if{html}{\out{</div>}}
@@ -375,7 +624,9 @@ replace status of the specified ServiceCIDR}
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$replace_service_cidr_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -383,7 +634,11 @@ replace status of the specified ServiceCIDR}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1beta1ServiceCIDRStatus
@@ -399,21 +654,32 @@ partially update status of the specified ServiceCIDR}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$patch_service_cidr_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchNetworkingV1beta1IPAddressList
-watch individual changes to a list of IPAddress. deprecated: use the 'watch' parameter with a list operation instead.
-watchNetworkingV1beta1IPAddress
-watch changes to an object of kind IPAddress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of IPAddress. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -423,25 +689,98 @@ watch changes to an object of kind IPAddress. deprecated: use the 'watch' parame
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-watch_ip_address_list}{}}}
 \subsection{Method \code{watch_ip_address_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_ip_address_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_ip_address_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1beta1IPAddress
+watch changes to an object of kind IPAddress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1beta1Api-watch_ip_address"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-watch_ip_address}{}}}
 \subsection{Method \code{watch_ip_address()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_ip_address(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_ip_address(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchNetworkingV1beta1ServiceCIDRList
-watch individual changes to a list of ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead.
-watchNetworkingV1beta1ServiceCIDR
-watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1beta1ServiceCIDRList
+watch individual changes to a list of ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -451,18 +790,99 @@ watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' para
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-watch_service_cidr_list}{}}}
 \subsection{Method \code{watch_service_cidr_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_service_cidr_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_service_cidr_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1beta1ServiceCIDR
+watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1beta1Api-watch_service_cidr"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1beta1Api-watch_service_cidr}{}}}
 \subsection{Method \code{watch_service_cidr()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_service_cidr(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1beta1Api$watch_service_cidr(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1beta1Api-clone"></a>}}

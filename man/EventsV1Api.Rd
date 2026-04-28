@@ -52,11 +52,7 @@ Typed Kubernetes API client for the `EventsV1` surface. See generated methods fo
 getEventsV1APIResources
 get available resources
 listEventsV1EventForAllNamespaces
-list or watch objects of kind Event
-listEventsV1NamespacedEvent
-list or watch objects of kind Event
-createEventsV1NamespacedEvent
-create an Event}
+list or watch objects of kind Event}
 }
 \if{html}{\out{</div>}}
 }
@@ -75,18 +71,101 @@ create an Event}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-list_event_for_all_namespaces}{}}}
 \subsection{Method \code{list_event_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$list_event_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$list_event_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listEventsV1NamespacedEvent
+list or watch objects of kind Event}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EventsV1Api-list_namespaced_event"></a>}}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-list_namespaced_event}{}}}
 \subsection{Method \code{list_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$list_namespaced_event()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$list_namespaced_event(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createEventsV1NamespacedEvent
+create an Event}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EventsV1Api-create_namespaced_event"></a>}}
@@ -94,8 +173,11 @@ create an Event}
 \subsection{Method \code{create_namespaced_event()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$create_namespaced_event(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -103,7 +185,11 @@ create an Event}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteEventsV1CollectionNamespacedEvent
@@ -117,13 +203,55 @@ delete collection of Event}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-delete_collection_namespaced_event}{}}}
 \subsection{Method \code{delete_collection_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$delete_collection_namespaced_event(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$delete_collection_namespaced_event(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readEventsV1NamespacedEvent
 read the specified Event}
 }
@@ -135,13 +263,14 @@ read the specified Event}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-read_namespaced_event}{}}}
 \subsection{Method \code{read_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$read_namespaced_event(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$read_namespaced_event(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceEventsV1NamespacedEvent
+\item{\code{pretty}}{= NULL
+replaceEventsV1NamespacedEvent
 replace the specified Event}
 }
 \if{html}{\out{</div>}}
@@ -154,8 +283,11 @@ replace the specified Event}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$replace_namespaced_event(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -163,7 +295,11 @@ replace the specified Event}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchEventsV1NamespacedEvent
@@ -179,17 +315,31 @@ partially update the specified Event}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$patch_namespaced_event(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteEventsV1NamespacedEvent
 delete an Event}
 }
@@ -201,19 +351,34 @@ delete an Event}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-delete_namespaced_event}{}}}
 \subsection{Method \code{delete_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$delete_namespaced_event(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$delete_namespaced_event(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchEventsV1EventListForAllNamespaces
-watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
-watchEventsV1NamespacedEventList
-watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
-watchEventsV1NamespacedEvent
-watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -223,27 +388,151 @@ watch changes to an object of kind Event. deprecated: use the 'watch' parameter 
 \if{latex}{\out{\hypertarget{method-EventsV1Api-watch_event_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_event_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$watch_event_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$watch_event_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchEventsV1NamespacedEventList
+watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EventsV1Api-watch_namespaced_event_list"></a>}}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-watch_namespaced_event_list}{}}}
 \subsection{Method \code{watch_namespaced_event_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$watch_namespaced_event_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$watch_namespaced_event_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchEventsV1NamespacedEvent
+watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EventsV1Api-watch_namespaced_event"></a>}}
 \if{latex}{\out{\hypertarget{method-EventsV1Api-watch_namespaced_event}{}}}
 \subsection{Method \code{watch_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$watch_namespaced_event(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EventsV1Api$watch_namespaced_event(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EventsV1Api-clone"></a>}}

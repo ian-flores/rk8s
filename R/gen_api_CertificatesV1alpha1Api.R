@@ -35,12 +35,23 @@ CertificatesV1alpha1Api <- R6::R6Class(
     ,
     #' listCertificatesV1alpha1ClusterTrustBundle
     #' list or watch objects of kind ClusterTrustBundle
-    list_cluster_trust_bundle = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_cluster_trust_bundle = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha1ClusterTrustBundleList",
@@ -52,14 +63,16 @@ CertificatesV1alpha1Api <- R6::R6Class(
     #' createCertificatesV1alpha1ClusterTrustBundle
     #' create a ClusterTrustBundle
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_cluster_trust_bundle = function(body, dry_run = NULL, field_validation = NULL) {
+    create_cluster_trust_bundle = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1ClusterTrustBundle",
@@ -70,15 +83,28 @@ CertificatesV1alpha1Api <- R6::R6Class(
     ,
     #' deleteCertificatesV1alpha1CollectionClusterTrustBundle
     #' delete collection of ClusterTrustBundle
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_cluster_trust_bundle = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_cluster_trust_bundle = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -88,12 +114,13 @@ CertificatesV1alpha1Api <- R6::R6Class(
     #' readCertificatesV1alpha1ClusterTrustBundle
     #' read the specified ClusterTrustBundle
     #' @param name
-    read_cluster_trust_bundle = function(name) {
+    #' @param pretty = NULL
+    read_cluster_trust_bundle = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha1ClusterTrustBundle",
@@ -106,14 +133,16 @@ CertificatesV1alpha1Api <- R6::R6Class(
     #' replace the specified ClusterTrustBundle
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_cluster_trust_bundle = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_cluster_trust_bundle = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1ClusterTrustBundle",
@@ -125,18 +154,23 @@ CertificatesV1alpha1Api <- R6::R6Class(
     #' patchCertificatesV1alpha1ClusterTrustBundle
     #' partially update the specified ClusterTrustBundle
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_cluster_trust_bundle = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_cluster_trust_bundle = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1ClusterTrustBundle",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -144,15 +178,20 @@ CertificatesV1alpha1Api <- R6::R6Class(
     #' deleteCertificatesV1alpha1ClusterTrustBundle
     #' delete a ClusterTrustBundle
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_cluster_trust_bundle = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_cluster_trust_bundle = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/clustertrustbundles/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -161,12 +200,23 @@ CertificatesV1alpha1Api <- R6::R6Class(
     ,
     #' watchCertificatesV1alpha1ClusterTrustBundleList
     #' watch individual changes to a list of ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_cluster_trust_bundle_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_cluster_trust_bundle_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/watch/clustertrustbundles",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -178,12 +228,23 @@ CertificatesV1alpha1Api <- R6::R6Class(
     #' watchCertificatesV1alpha1ClusterTrustBundle
     #' watch changes to an object of kind ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_cluster_trust_bundle = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_cluster_trust_bundle = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/certificates.k8s.io/v1alpha1/watch/clustertrustbundles/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

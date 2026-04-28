@@ -35,12 +35,23 @@ StorageV1alpha1Api <- R6::R6Class(
     ,
     #' listStorageV1alpha1VolumeAttributesClass
     #' list or watch objects of kind VolumeAttributesClass
-    list_volume_attributes_class = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_volume_attributes_class = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha1VolumeAttributesClassList",
@@ -52,14 +63,16 @@ StorageV1alpha1Api <- R6::R6Class(
     #' createStorageV1alpha1VolumeAttributesClass
     #' create a VolumeAttributesClass
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_volume_attributes_class = function(body, dry_run = NULL, field_validation = NULL) {
+    create_volume_attributes_class = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1VolumeAttributesClass",
@@ -70,15 +83,28 @@ StorageV1alpha1Api <- R6::R6Class(
     ,
     #' deleteStorageV1alpha1CollectionVolumeAttributesClass
     #' delete collection of VolumeAttributesClass
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_volume_attributes_class = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_volume_attributes_class = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -88,12 +114,13 @@ StorageV1alpha1Api <- R6::R6Class(
     #' readStorageV1alpha1VolumeAttributesClass
     #' read the specified VolumeAttributesClass
     #' @param name
-    read_volume_attributes_class = function(name) {
+    #' @param pretty = NULL
+    read_volume_attributes_class = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1alpha1VolumeAttributesClass",
@@ -106,14 +133,16 @@ StorageV1alpha1Api <- R6::R6Class(
     #' replace the specified VolumeAttributesClass
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_volume_attributes_class = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_volume_attributes_class = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1VolumeAttributesClass",
@@ -125,18 +154,23 @@ StorageV1alpha1Api <- R6::R6Class(
     #' patchStorageV1alpha1VolumeAttributesClass
     #' partially update the specified VolumeAttributesClass
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_volume_attributes_class = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_volume_attributes_class = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1VolumeAttributesClass",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -144,15 +178,20 @@ StorageV1alpha1Api <- R6::R6Class(
     #' deleteStorageV1alpha1VolumeAttributesClass
     #' delete a VolumeAttributesClass
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_volume_attributes_class = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_volume_attributes_class = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/volumeattributesclasses/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1alpha1VolumeAttributesClass",
         content_type = "*/*",
         accept = "application/json"
@@ -161,12 +200,23 @@ StorageV1alpha1Api <- R6::R6Class(
     ,
     #' watchStorageV1alpha1VolumeAttributesClassList
     #' watch individual changes to a list of VolumeAttributesClass. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_volume_attributes_class_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_volume_attributes_class_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/watch/volumeattributesclasses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -178,12 +228,23 @@ StorageV1alpha1Api <- R6::R6Class(
     #' watchStorageV1alpha1VolumeAttributesClass
     #' watch changes to an object of kind VolumeAttributesClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_volume_attributes_class = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_volume_attributes_class = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/storage.k8s.io/v1alpha1/watch/volumeattributesclasses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

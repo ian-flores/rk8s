@@ -69,13 +69,7 @@ Typed Kubernetes API client for the `BatchV1` surface. See generated methods for
 getBatchV1APIResources
 get available resources
 listBatchV1CronJobForAllNamespaces
-list or watch objects of kind CronJob
-listBatchV1JobForAllNamespaces
-list or watch objects of kind Job
-listBatchV1NamespacedCronJob
-list or watch objects of kind CronJob
-createBatchV1NamespacedCronJob
-create a CronJob}
+list or watch objects of kind CronJob}
 }
 \if{html}{\out{</div>}}
 }
@@ -94,27 +88,151 @@ create a CronJob}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-list_cron_job_for_all_namespaces}{}}}
 \subsection{Method \code{list_cron_job_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_cron_job_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_cron_job_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listBatchV1JobForAllNamespaces
+list or watch objects of kind Job}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-list_job_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-list_job_for_all_namespaces}{}}}
 \subsection{Method \code{list_job_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_job_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_job_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listBatchV1NamespacedCronJob
+list or watch objects of kind CronJob}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-list_namespaced_cron_job"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-list_namespaced_cron_job}{}}}
 \subsection{Method \code{list_namespaced_cron_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_namespaced_cron_job()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_namespaced_cron_job(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createBatchV1NamespacedCronJob
+create a CronJob}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-create_namespaced_cron_job"></a>}}
@@ -122,8 +240,11 @@ create a CronJob}
 \subsection{Method \code{create_namespaced_cron_job()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$create_namespaced_cron_job(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -131,7 +252,11 @@ create a CronJob}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteBatchV1CollectionNamespacedCronJob
@@ -145,13 +270,55 @@ delete collection of CronJob}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-delete_collection_namespaced_cron_job}{}}}
 \subsection{Method \code{delete_collection_namespaced_cron_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_collection_namespaced_cron_job(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_collection_namespaced_cron_job(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readBatchV1NamespacedCronJob
 read the specified CronJob}
 }
@@ -163,13 +330,14 @@ read the specified CronJob}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-read_namespaced_cron_job}{}}}
 \subsection{Method \code{read_namespaced_cron_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_cron_job(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_cron_job(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceBatchV1NamespacedCronJob
+\item{\code{pretty}}{= NULL
+replaceBatchV1NamespacedCronJob
 replace the specified CronJob}
 }
 \if{html}{\out{</div>}}
@@ -182,8 +350,11 @@ replace the specified CronJob}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$replace_namespaced_cron_job(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -191,7 +362,11 @@ replace the specified CronJob}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchBatchV1NamespacedCronJob
@@ -207,17 +382,31 @@ partially update the specified CronJob}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$patch_namespaced_cron_job(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteBatchV1NamespacedCronJob
 delete a CronJob}
 }
@@ -229,13 +418,32 @@ delete a CronJob}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-delete_namespaced_cron_job}{}}}
 \subsection{Method \code{delete_namespaced_cron_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_namespaced_cron_job(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_namespaced_cron_job(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readBatchV1NamespacedCronJobStatus
 read status of the specified CronJob}
 }
@@ -247,13 +455,14 @@ read status of the specified CronJob}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-read_namespaced_cron_job_status}{}}}
 \subsection{Method \code{read_namespaced_cron_job_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_cron_job_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_cron_job_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceBatchV1NamespacedCronJobStatus
+\item{\code{pretty}}{= NULL
+replaceBatchV1NamespacedCronJobStatus
 replace status of the specified CronJob}
 }
 \if{html}{\out{</div>}}
@@ -266,8 +475,11 @@ replace status of the specified CronJob}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$replace_namespaced_cron_job_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -275,7 +487,11 @@ replace status of the specified CronJob}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchBatchV1NamespacedCronJobStatus
@@ -291,21 +507,33 @@ partially update status of the specified CronJob}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$patch_namespaced_cron_job_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listBatchV1NamespacedJob
-list or watch objects of kind Job
-createBatchV1NamespacedJob
-create a Job}
+list or watch objects of kind Job}
 }
 \if{html}{\out{</div>}}
 }
@@ -315,22 +543,75 @@ create a Job}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-list_namespaced_job}{}}}
 \subsection{Method \code{list_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_namespaced_job()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$list_namespaced_job(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createBatchV1NamespacedJob
+create a Job}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-create_namespaced_job"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-create_namespaced_job}{}}}
 \subsection{Method \code{create_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$create_namespaced_job(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$create_namespaced_job(
+  namespace,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteBatchV1CollectionNamespacedJob
@@ -344,13 +625,55 @@ delete collection of Job}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-delete_collection_namespaced_job}{}}}
 \subsection{Method \code{delete_collection_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_collection_namespaced_job(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_collection_namespaced_job(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readBatchV1NamespacedJob
 read the specified Job}
 }
@@ -362,13 +685,14 @@ read the specified Job}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-read_namespaced_job}{}}}
 \subsection{Method \code{read_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_job(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_job(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceBatchV1NamespacedJob
+\item{\code{pretty}}{= NULL
+replaceBatchV1NamespacedJob
 replace the specified Job}
 }
 \if{html}{\out{</div>}}
@@ -381,8 +705,11 @@ replace the specified Job}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$replace_namespaced_job(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -390,7 +717,11 @@ replace the specified Job}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchBatchV1NamespacedJob
@@ -404,15 +735,33 @@ partially update the specified Job}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-patch_namespaced_job}{}}}
 \subsection{Method \code{patch_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$patch_namespaced_job(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$patch_namespaced_job(
+  name,
+  namespace,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteBatchV1NamespacedJob
 delete a Job}
 }
@@ -424,13 +773,32 @@ delete a Job}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-delete_namespaced_job}{}}}
 \subsection{Method \code{delete_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_namespaced_job(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$delete_namespaced_job(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readBatchV1NamespacedJobStatus
 read status of the specified Job}
 }
@@ -442,13 +810,14 @@ read status of the specified Job}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-read_namespaced_job_status}{}}}
 \subsection{Method \code{read_namespaced_job_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_job_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$read_namespaced_job_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceBatchV1NamespacedJobStatus
+\item{\code{pretty}}{= NULL
+replaceBatchV1NamespacedJobStatus
 replace status of the specified Job}
 }
 \if{html}{\out{</div>}}
@@ -461,8 +830,11 @@ replace status of the specified Job}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$replace_namespaced_job_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -470,7 +842,11 @@ replace status of the specified Job}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchBatchV1NamespacedJobStatus
@@ -486,25 +862,33 @@ partially update status of the specified Job}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$patch_namespaced_job_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchBatchV1CronJobListForAllNamespaces
-watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.
-watchBatchV1JobListForAllNamespaces
-watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.
-watchBatchV1NamespacedCronJobList
-watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.
-watchBatchV1NamespacedCronJob
-watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -514,43 +898,200 @@ watch changes to an object of kind CronJob. deprecated: use the 'watch' paramete
 \if{latex}{\out{\hypertarget{method-BatchV1Api-watch_cron_job_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_cron_job_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_cron_job_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_cron_job_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchBatchV1JobListForAllNamespaces
+watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-watch_job_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-watch_job_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_job_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_job_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_job_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchBatchV1NamespacedCronJobList
+watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-watch_namespaced_cron_job_list"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-watch_namespaced_cron_job_list}{}}}
 \subsection{Method \code{watch_namespaced_cron_job_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_cron_job_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_cron_job_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchBatchV1NamespacedCronJob
+watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-watch_namespaced_cron_job"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-watch_namespaced_cron_job}{}}}
 \subsection{Method \code{watch_namespaced_cron_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_cron_job(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_cron_job(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchBatchV1NamespacedJobList
-watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.
-watchBatchV1NamespacedJob
-watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchBatchV1NamespacedJobList
+watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -560,18 +1101,101 @@ watch changes to an object of kind Job. deprecated: use the 'watch' parameter wi
 \if{latex}{\out{\hypertarget{method-BatchV1Api-watch_namespaced_job_list}{}}}
 \subsection{Method \code{watch_namespaced_job_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_job_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_job_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchBatchV1NamespacedJob
+watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-watch_namespaced_job"></a>}}
 \if{latex}{\out{\hypertarget{method-BatchV1Api-watch_namespaced_job}{}}}
 \subsection{Method \code{watch_namespaced_job()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_job(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{BatchV1Api$watch_namespaced_job(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BatchV1Api-clone"></a>}}

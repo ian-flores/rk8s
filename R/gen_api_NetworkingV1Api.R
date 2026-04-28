@@ -35,12 +35,23 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' listNetworkingV1IngressClass
     #' list or watch objects of kind IngressClass
-    list_ingress_class = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_ingress_class = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1IngressClassList",
@@ -52,14 +63,16 @@ NetworkingV1Api <- R6::R6Class(
     #' createNetworkingV1IngressClass
     #' create an IngressClass
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_ingress_class = function(body, dry_run = NULL, field_validation = NULL) {
+    create_ingress_class = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1IngressClass",
@@ -70,15 +83,28 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' deleteNetworkingV1CollectionIngressClass
     #' delete collection of IngressClass
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_ingress_class = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_ingress_class = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -88,12 +114,13 @@ NetworkingV1Api <- R6::R6Class(
     #' readNetworkingV1IngressClass
     #' read the specified IngressClass
     #' @param name
-    read_ingress_class = function(name) {
+    #' @param pretty = NULL
+    read_ingress_class = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1IngressClass",
@@ -106,14 +133,16 @@ NetworkingV1Api <- R6::R6Class(
     #' replace the specified IngressClass
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_ingress_class = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_ingress_class = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1IngressClass",
@@ -125,18 +154,23 @@ NetworkingV1Api <- R6::R6Class(
     #' patchNetworkingV1IngressClass
     #' partially update the specified IngressClass
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_ingress_class = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_ingress_class = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1IngressClass",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -144,15 +178,20 @@ NetworkingV1Api <- R6::R6Class(
     #' deleteNetworkingV1IngressClass
     #' delete an IngressClass
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_ingress_class = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_ingress_class = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingressclasses/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -161,12 +200,23 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' listNetworkingV1IngressForAllNamespaces
     #' list or watch objects of kind Ingress
-    list_ingress_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_ingress_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/ingresses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1IngressList",
@@ -177,12 +227,24 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' listNetworkingV1NamespacedIngress
     #' list or watch objects of kind Ingress
-    list_namespaced_ingress = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_ingress = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1IngressList",
@@ -193,15 +255,18 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' createNetworkingV1NamespacedIngress
     #' create an Ingress
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_ingress = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_ingress = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Ingress",
@@ -212,15 +277,29 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' deleteNetworkingV1CollectionNamespacedIngress
     #' delete collection of Ingress
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_ingress = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_ingress = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -230,12 +309,14 @@ NetworkingV1Api <- R6::R6Class(
     #' readNetworkingV1NamespacedIngress
     #' read the specified Ingress
     #' @param name
-    read_namespaced_ingress = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_ingress = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Ingress",
@@ -247,15 +328,18 @@ NetworkingV1Api <- R6::R6Class(
     #' replaceNetworkingV1NamespacedIngress
     #' replace the specified Ingress
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_ingress = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_ingress = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Ingress",
@@ -267,18 +351,24 @@ NetworkingV1Api <- R6::R6Class(
     #' patchNetworkingV1NamespacedIngress
     #' partially update the specified Ingress
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_ingress = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_ingress = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Ingress",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -286,15 +376,21 @@ NetworkingV1Api <- R6::R6Class(
     #' deleteNetworkingV1NamespacedIngress
     #' delete an Ingress
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_ingress = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_ingress = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -304,12 +400,14 @@ NetworkingV1Api <- R6::R6Class(
     #' readNetworkingV1NamespacedIngressStatus
     #' read status of the specified Ingress
     #' @param name
-    read_namespaced_ingress_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_ingress_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Ingress",
@@ -321,15 +419,18 @@ NetworkingV1Api <- R6::R6Class(
     #' replaceNetworkingV1NamespacedIngressStatus
     #' replace status of the specified Ingress
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_ingress_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_ingress_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Ingress",
@@ -341,30 +442,48 @@ NetworkingV1Api <- R6::R6Class(
     #' patchNetworkingV1NamespacedIngressStatus
     #' partially update status of the specified Ingress
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_ingress_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_ingress_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Ingress",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listNetworkingV1NamespacedNetworkPolicy
     #' list or watch objects of kind NetworkPolicy
-    list_namespaced_network_policy = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_network_policy = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1NetworkPolicyList",
@@ -375,15 +494,18 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' createNetworkingV1NamespacedNetworkPolicy
     #' create a NetworkPolicy
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_network_policy = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_network_policy = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1NetworkPolicy",
@@ -394,15 +516,29 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' deleteNetworkingV1CollectionNamespacedNetworkPolicy
     #' delete collection of NetworkPolicy
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_network_policy = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_network_policy = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -412,12 +548,14 @@ NetworkingV1Api <- R6::R6Class(
     #' readNetworkingV1NamespacedNetworkPolicy
     #' read the specified NetworkPolicy
     #' @param name
-    read_namespaced_network_policy = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_network_policy = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1NetworkPolicy",
@@ -429,15 +567,18 @@ NetworkingV1Api <- R6::R6Class(
     #' replaceNetworkingV1NamespacedNetworkPolicy
     #' replace the specified NetworkPolicy
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_network_policy = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_network_policy = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1NetworkPolicy",
@@ -449,18 +590,24 @@ NetworkingV1Api <- R6::R6Class(
     #' patchNetworkingV1NamespacedNetworkPolicy
     #' partially update the specified NetworkPolicy
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_network_policy = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_network_policy = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1NetworkPolicy",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -468,15 +615,21 @@ NetworkingV1Api <- R6::R6Class(
     #' deleteNetworkingV1NamespacedNetworkPolicy
     #' delete a NetworkPolicy
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_network_policy = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_network_policy = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -485,12 +638,23 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' listNetworkingV1NetworkPolicyForAllNamespaces
     #' list or watch objects of kind NetworkPolicy
-    list_network_policy_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_network_policy_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/networkpolicies",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1NetworkPolicyList",
@@ -501,12 +665,23 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' watchNetworkingV1IngressClassList
     #' watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_ingress_class_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_ingress_class_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/ingressclasses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -518,12 +693,23 @@ NetworkingV1Api <- R6::R6Class(
     #' watchNetworkingV1IngressClass
     #' watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_ingress_class = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_ingress_class = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -534,12 +720,23 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' watchNetworkingV1IngressListForAllNamespaces
     #' watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_ingress_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_ingress_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/ingresses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -550,12 +747,24 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' watchNetworkingV1NamespacedIngressList
     #' watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_ingress_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_ingress_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -567,12 +776,24 @@ NetworkingV1Api <- R6::R6Class(
     #' watchNetworkingV1NamespacedIngress
     #' watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_ingress = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_ingress = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -583,12 +804,24 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' watchNetworkingV1NamespacedNetworkPolicyList
     #' watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_network_policy_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_network_policy_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -600,12 +833,24 @@ NetworkingV1Api <- R6::R6Class(
     #' watchNetworkingV1NamespacedNetworkPolicy
     #' watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_network_policy = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_network_policy = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -616,12 +861,23 @@ NetworkingV1Api <- R6::R6Class(
     ,
     #' watchNetworkingV1NetworkPolicyListForAllNamespaces
     #' watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_network_policy_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_network_policy_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/networking.k8s.io/v1/watch/networkpolicies",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

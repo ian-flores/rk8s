@@ -65,9 +65,7 @@ Typed Kubernetes API client for the `FlowcontrolApiserverV1` surface. See genera
 getFlowcontrolApiserverV1APIResources
 get available resources
 listFlowcontrolApiserverV1FlowSchema
-list or watch objects of kind FlowSchema
-createFlowcontrolApiserverV1FlowSchema
-create a FlowSchema}
+list or watch objects of kind FlowSchema}
 }
 \if{html}{\out{</div>}}
 }
@@ -86,9 +84,50 @@ create a FlowSchema}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-list_flow_schema}{}}}
 \subsection{Method \code{list_flow_schema()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$list_flow_schema()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$list_flow_schema(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createFlowcontrolApiserverV1FlowSchema
+create a FlowSchema}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FlowcontrolApiserverV1Api-create_flow_schema"></a>}}
@@ -97,7 +136,9 @@ create a FlowSchema}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$create_flow_schema(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -105,7 +146,11 @@ create a FlowSchema}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteFlowcontrolApiserverV1CollectionFlowSchema
@@ -119,13 +164,54 @@ delete collection of FlowSchema}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-delete_collection_flow_schema}{}}}
 \subsection{Method \code{delete_collection_flow_schema()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$delete_collection_flow_schema(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$delete_collection_flow_schema(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readFlowcontrolApiserverV1FlowSchema
 read the specified FlowSchema}
 }
@@ -137,13 +223,14 @@ read the specified FlowSchema}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-read_flow_schema}{}}}
 \subsection{Method \code{read_flow_schema()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_flow_schema(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_flow_schema(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceFlowcontrolApiserverV1FlowSchema
+\item{\code{pretty}}{= NULL
+replaceFlowcontrolApiserverV1FlowSchema
 replace the specified FlowSchema}
 }
 \if{html}{\out{</div>}}
@@ -157,7 +244,9 @@ replace the specified FlowSchema}
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$replace_flow_schema(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -165,7 +254,11 @@ replace the specified FlowSchema}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchFlowcontrolApiserverV1FlowSchema
@@ -181,17 +274,30 @@ partially update the specified FlowSchema}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$patch_flow_schema(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteFlowcontrolApiserverV1FlowSchema
 delete a FlowSchema}
 }
@@ -203,13 +309,31 @@ delete a FlowSchema}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-delete_flow_schema}{}}}
 \subsection{Method \code{delete_flow_schema()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$delete_flow_schema(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$delete_flow_schema(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readFlowcontrolApiserverV1FlowSchemaStatus
 read status of the specified FlowSchema}
 }
@@ -221,13 +345,14 @@ read status of the specified FlowSchema}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-read_flow_schema_status}{}}}
 \subsection{Method \code{read_flow_schema_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_flow_schema_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_flow_schema_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceFlowcontrolApiserverV1FlowSchemaStatus
+\item{\code{pretty}}{= NULL
+replaceFlowcontrolApiserverV1FlowSchemaStatus
 replace status of the specified FlowSchema}
 }
 \if{html}{\out{</div>}}
@@ -241,7 +366,9 @@ replace status of the specified FlowSchema}
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$replace_flow_schema_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -249,7 +376,11 @@ replace status of the specified FlowSchema}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchFlowcontrolApiserverV1FlowSchemaStatus
@@ -265,21 +396,32 @@ partially update status of the specified FlowSchema}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$patch_flow_schema_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listFlowcontrolApiserverV1PriorityLevelConfiguration
-list or watch objects of kind PriorityLevelConfiguration
-createFlowcontrolApiserverV1PriorityLevelConfiguration
-create a PriorityLevelConfiguration}
+list or watch objects of kind PriorityLevelConfiguration}
 }
 \if{html}{\out{</div>}}
 }
@@ -289,9 +431,50 @@ create a PriorityLevelConfiguration}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-list_priority_level_configuration}{}}}
 \subsection{Method \code{list_priority_level_configuration()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$list_priority_level_configuration()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$list_priority_level_configuration(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createFlowcontrolApiserverV1PriorityLevelConfiguration
+create a PriorityLevelConfiguration}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FlowcontrolApiserverV1Api-create_priority_level_configuration"></a>}}
@@ -300,7 +483,9 @@ create a PriorityLevelConfiguration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$create_priority_level_configuration(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -308,7 +493,11 @@ create a PriorityLevelConfiguration}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguration
@@ -323,14 +512,53 @@ delete collection of PriorityLevelConfiguration}
 \subsection{Method \code{delete_collection_priority_level_configuration()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$delete_collection_priority_level_configuration(
-  dry_run = NULL
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readFlowcontrolApiserverV1PriorityLevelConfiguration
 read the specified PriorityLevelConfiguration}
 }
@@ -342,13 +570,17 @@ read the specified PriorityLevelConfiguration}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-read_priority_level_configuration}{}}}
 \subsection{Method \code{read_priority_level_configuration()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_priority_level_configuration(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_priority_level_configuration(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceFlowcontrolApiserverV1PriorityLevelConfiguration
+\item{\code{pretty}}{= NULL
+replaceFlowcontrolApiserverV1PriorityLevelConfiguration
 replace the specified PriorityLevelConfiguration}
 }
 \if{html}{\out{</div>}}
@@ -362,7 +594,9 @@ replace the specified PriorityLevelConfiguration}
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$replace_priority_level_configuration(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -370,7 +604,11 @@ replace the specified PriorityLevelConfiguration}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchFlowcontrolApiserverV1PriorityLevelConfiguration
@@ -386,17 +624,30 @@ partially update the specified PriorityLevelConfiguration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$patch_priority_level_configuration(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteFlowcontrolApiserverV1PriorityLevelConfiguration
 delete a PriorityLevelConfiguration}
 }
@@ -410,14 +661,29 @@ delete a PriorityLevelConfiguration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$delete_priority_level_configuration(
   name,
-  dry_run = NULL
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readFlowcontrolApiserverV1PriorityLevelConfigurationStatus
 read status of the specified PriorityLevelConfiguration}
 }
@@ -429,13 +695,17 @@ read status of the specified PriorityLevelConfiguration}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-read_priority_level_configuration_status}{}}}
 \subsection{Method \code{read_priority_level_configuration_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_priority_level_configuration_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$read_priority_level_configuration_status(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceFlowcontrolApiserverV1PriorityLevelConfigurationStatus
+\item{\code{pretty}}{= NULL
+replaceFlowcontrolApiserverV1PriorityLevelConfigurationStatus
 replace status of the specified PriorityLevelConfiguration}
 }
 \if{html}{\out{</div>}}
@@ -449,7 +719,9 @@ replace status of the specified PriorityLevelConfiguration}
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$replace_priority_level_configuration_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -457,7 +729,11 @@ replace status of the specified PriorityLevelConfiguration}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchFlowcontrolApiserverV1PriorityLevelConfigurationStatus
@@ -473,21 +749,32 @@ partially update status of the specified PriorityLevelConfiguration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$patch_priority_level_configuration_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchFlowcontrolApiserverV1FlowSchemaList
-watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list operation instead.
-watchFlowcontrolApiserverV1FlowSchema
-watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -497,25 +784,98 @@ watch changes to an object of kind FlowSchema. deprecated: use the 'watch' param
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-watch_flow_schema_list}{}}}
 \subsection{Method \code{watch_flow_schema_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_flow_schema_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_flow_schema_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchFlowcontrolApiserverV1FlowSchema
+watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FlowcontrolApiserverV1Api-watch_flow_schema"></a>}}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-watch_flow_schema}{}}}
 \subsection{Method \code{watch_flow_schema()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_flow_schema(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_flow_schema(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchFlowcontrolApiserverV1PriorityLevelConfigurationList
-watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead.
-watchFlowcontrolApiserverV1PriorityLevelConfiguration
-watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchFlowcontrolApiserverV1PriorityLevelConfigurationList
+watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -525,18 +885,99 @@ watch changes to an object of kind PriorityLevelConfiguration. deprecated: use t
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-watch_priority_level_configuration_list}{}}}
 \subsection{Method \code{watch_priority_level_configuration_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_priority_level_configuration_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_priority_level_configuration_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchFlowcontrolApiserverV1PriorityLevelConfiguration
+watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FlowcontrolApiserverV1Api-watch_priority_level_configuration"></a>}}
 \if{latex}{\out{\hypertarget{method-FlowcontrolApiserverV1Api-watch_priority_level_configuration}{}}}
 \subsection{Method \code{watch_priority_level_configuration()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_priority_level_configuration(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{FlowcontrolApiserverV1Api$watch_priority_level_configuration(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-FlowcontrolApiserverV1Api-clone"></a>}}

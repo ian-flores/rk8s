@@ -285,9 +285,7 @@ Typed Kubernetes API client for the `CoreV1` surface. See generated methods for 
 getCoreV1APIResources
 get available resources
 listCoreV1ComponentStatus
-list objects of kind ComponentStatus
-readCoreV1ComponentStatus
-read the specified ComponentStatus}
+list objects of kind ComponentStatus}
 }
 \if{html}{\out{</div>}}
 }
@@ -306,33 +304,65 @@ read the specified ComponentStatus}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_component_status}{}}}
 \subsection{Method \code{list_component_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_component_status()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_component_status(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+readCoreV1ComponentStatus
+read the specified ComponentStatus}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-read_component_status"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_component_status}{}}}
 \subsection{Method \code{read_component_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_component_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_component_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{listCoreV1ConfigMapForAllNamespaces
-list or watch objects of kind ConfigMap
-listCoreV1EndpointsForAllNamespaces
-list or watch objects of kind Endpoints
-listCoreV1EventForAllNamespaces
-list or watch objects of kind Event
-listCoreV1LimitRangeForAllNamespaces
-list or watch objects of kind LimitRange
-listCoreV1Namespace
-list or watch objects of kind Namespace
-createCoreV1Namespace
-create a Namespace}
+\item{\code{pretty}}{= NULL
+listCoreV1ConfigMapForAllNamespaces
+list or watch objects of kind ConfigMap}
 }
 \if{html}{\out{</div>}}
 }
@@ -342,58 +372,273 @@ create a Namespace}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_config_map_for_all_namespaces}{}}}
 \subsection{Method \code{list_config_map_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_config_map_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_config_map_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1EndpointsForAllNamespaces
+list or watch objects of kind Endpoints}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_endpoints_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_endpoints_for_all_namespaces}{}}}
 \subsection{Method \code{list_endpoints_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_endpoints_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_endpoints_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1EventForAllNamespaces
+list or watch objects of kind Event}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_event_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_event_for_all_namespaces}{}}}
 \subsection{Method \code{list_event_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_event_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_event_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1LimitRangeForAllNamespaces
+list or watch objects of kind LimitRange}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_limit_range_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_limit_range_for_all_namespaces}{}}}
 \subsection{Method \code{list_limit_range_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_limit_range_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_limit_range_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1Namespace
+list or watch objects of kind Namespace}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_namespace"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespace}{}}}
 \subsection{Method \code{list_namespace()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespace()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespace(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1Namespace
+create a Namespace}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespace"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-create_namespace}{}}}
 \subsection{Method \code{create_namespace()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespace(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespace(
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 createCoreV1NamespacedBinding
@@ -408,9 +653,12 @@ create a Binding}
 \subsection{Method \code{create_namespaced_binding()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_binding(
+  namespace,
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -419,11 +667,13 @@ create a Binding}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 listCoreV1NamespacedConfigMap
-list or watch objects of kind ConfigMap
-createCoreV1NamespacedConfigMap
-create a ConfigMap}
+list or watch objects of kind ConfigMap}
 }
 \if{html}{\out{</div>}}
 }
@@ -433,9 +683,51 @@ create a ConfigMap}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_config_map}{}}}
 \subsection{Method \code{list_namespaced_config_map()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_config_map()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_config_map(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedConfigMap
+create a ConfigMap}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_config_map"></a>}}
@@ -443,8 +735,11 @@ create a ConfigMap}
 \subsection{Method \code{create_namespaced_config_map()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_config_map(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -452,7 +747,11 @@ create a ConfigMap}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedConfigMap
@@ -466,13 +765,55 @@ delete collection of ConfigMap}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_config_map}{}}}
 \subsection{Method \code{delete_collection_namespaced_config_map()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_config_map(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_config_map(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedConfigMap
 read the specified ConfigMap}
 }
@@ -484,13 +825,14 @@ read the specified ConfigMap}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_config_map}{}}}
 \subsection{Method \code{read_namespaced_config_map()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_config_map(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_config_map(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedConfigMap
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedConfigMap
 replace the specified ConfigMap}
 }
 \if{html}{\out{</div>}}
@@ -503,8 +845,11 @@ replace the specified ConfigMap}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_config_map(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -512,7 +857,11 @@ replace the specified ConfigMap}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedConfigMap
@@ -528,17 +877,31 @@ partially update the specified ConfigMap}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_config_map(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedConfigMap
 delete a ConfigMap}
 }
@@ -550,17 +913,34 @@ delete a ConfigMap}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_config_map}{}}}
 \subsection{Method \code{delete_namespaced_config_map()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_config_map(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_config_map(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listCoreV1NamespacedEndpoints
-list or watch objects of kind Endpoints
-createCoreV1NamespacedEndpoints
-create Endpoints}
+list or watch objects of kind Endpoints}
 }
 \if{html}{\out{</div>}}
 }
@@ -570,9 +950,51 @@ create Endpoints}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_endpoints}{}}}
 \subsection{Method \code{list_namespaced_endpoints()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_endpoints()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_endpoints(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedEndpoints
+create Endpoints}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_endpoints"></a>}}
@@ -580,8 +1002,11 @@ create Endpoints}
 \subsection{Method \code{create_namespaced_endpoints()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_endpoints(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -589,7 +1014,11 @@ create Endpoints}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedEndpoints
@@ -603,13 +1032,55 @@ delete collection of Endpoints}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_endpoints}{}}}
 \subsection{Method \code{delete_collection_namespaced_endpoints()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_endpoints(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_endpoints(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedEndpoints
 read the specified Endpoints}
 }
@@ -621,13 +1092,14 @@ read the specified Endpoints}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_endpoints}{}}}
 \subsection{Method \code{read_namespaced_endpoints()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_endpoints(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_endpoints(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedEndpoints
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedEndpoints
 replace the specified Endpoints}
 }
 \if{html}{\out{</div>}}
@@ -640,8 +1112,11 @@ replace the specified Endpoints}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_endpoints(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -649,7 +1124,11 @@ replace the specified Endpoints}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedEndpoints
@@ -665,17 +1144,31 @@ partially update the specified Endpoints}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_endpoints(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedEndpoints
 delete Endpoints}
 }
@@ -687,17 +1180,34 @@ delete Endpoints}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_endpoints}{}}}
 \subsection{Method \code{delete_namespaced_endpoints()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_endpoints(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_endpoints(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listCoreV1NamespacedEvent
-list or watch objects of kind Event
-createCoreV1NamespacedEvent
-create an Event}
+list or watch objects of kind Event}
 }
 \if{html}{\out{</div>}}
 }
@@ -707,9 +1217,51 @@ create an Event}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_event}{}}}
 \subsection{Method \code{list_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_event()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_event(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedEvent
+create an Event}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_event"></a>}}
@@ -717,8 +1269,11 @@ create an Event}
 \subsection{Method \code{create_namespaced_event()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_event(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -726,7 +1281,11 @@ create an Event}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedEvent
@@ -740,13 +1299,55 @@ delete collection of Event}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_event}{}}}
 \subsection{Method \code{delete_collection_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_event(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_event(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedEvent
 read the specified Event}
 }
@@ -758,13 +1359,14 @@ read the specified Event}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_event}{}}}
 \subsection{Method \code{read_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_event(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_event(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedEvent
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedEvent
 replace the specified Event}
 }
 \if{html}{\out{</div>}}
@@ -777,8 +1379,11 @@ replace the specified Event}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_event(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -786,7 +1391,11 @@ replace the specified Event}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedEvent
@@ -800,15 +1409,33 @@ partially update the specified Event}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-patch_namespaced_event}{}}}
 \subsection{Method \code{patch_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_event(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_event(
+  name,
+  namespace,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedEvent
 delete an Event}
 }
@@ -820,17 +1447,34 @@ delete an Event}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_event}{}}}
 \subsection{Method \code{delete_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_event(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_event(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listCoreV1NamespacedLimitRange
-list or watch objects of kind LimitRange
-createCoreV1NamespacedLimitRange
-create a LimitRange}
+list or watch objects of kind LimitRange}
 }
 \if{html}{\out{</div>}}
 }
@@ -840,9 +1484,51 @@ create a LimitRange}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_limit_range}{}}}
 \subsection{Method \code{list_namespaced_limit_range()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_limit_range()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_limit_range(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedLimitRange
+create a LimitRange}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_limit_range"></a>}}
@@ -850,8 +1536,11 @@ create a LimitRange}
 \subsection{Method \code{create_namespaced_limit_range()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_limit_range(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -859,7 +1548,11 @@ create a LimitRange}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedLimitRange
@@ -873,13 +1566,55 @@ delete collection of LimitRange}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_limit_range}{}}}
 \subsection{Method \code{delete_collection_namespaced_limit_range()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_limit_range(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_limit_range(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedLimitRange
 read the specified LimitRange}
 }
@@ -891,13 +1626,14 @@ read the specified LimitRange}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_limit_range}{}}}
 \subsection{Method \code{read_namespaced_limit_range()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_limit_range(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_limit_range(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedLimitRange
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedLimitRange
 replace the specified LimitRange}
 }
 \if{html}{\out{</div>}}
@@ -910,8 +1646,11 @@ replace the specified LimitRange}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_limit_range(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -919,7 +1658,11 @@ replace the specified LimitRange}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedLimitRange
@@ -935,17 +1678,31 @@ partially update the specified LimitRange}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_limit_range(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedLimitRange
 delete a LimitRange}
 }
@@ -957,17 +1714,34 @@ delete a LimitRange}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_limit_range}{}}}
 \subsection{Method \code{delete_namespaced_limit_range()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_limit_range(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_limit_range(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listCoreV1NamespacedPersistentVolumeClaim
-list or watch objects of kind PersistentVolumeClaim
-createCoreV1NamespacedPersistentVolumeClaim
-create a PersistentVolumeClaim}
+list or watch objects of kind PersistentVolumeClaim}
 }
 \if{html}{\out{</div>}}
 }
@@ -977,9 +1751,51 @@ create a PersistentVolumeClaim}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_persistent_volume_claim}{}}}
 \subsection{Method \code{list_namespaced_persistent_volume_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_persistent_volume_claim()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_persistent_volume_claim(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedPersistentVolumeClaim
+create a PersistentVolumeClaim}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_persistent_volume_claim"></a>}}
@@ -987,8 +1803,11 @@ create a PersistentVolumeClaim}
 \subsection{Method \code{create_namespaced_persistent_volume_claim()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_persistent_volume_claim(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -996,7 +1815,11 @@ create a PersistentVolumeClaim}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedPersistentVolumeClaim
@@ -1010,13 +1833,55 @@ delete collection of PersistentVolumeClaim}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_persistent_volume_claim}{}}}
 \subsection{Method \code{delete_collection_namespaced_persistent_volume_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_persistent_volume_claim(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_persistent_volume_claim(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedPersistentVolumeClaim
 read the specified PersistentVolumeClaim}
 }
@@ -1028,13 +1893,18 @@ read the specified PersistentVolumeClaim}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_persistent_volume_claim}{}}}
 \subsection{Method \code{read_namespaced_persistent_volume_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_persistent_volume_claim(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_persistent_volume_claim(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedPersistentVolumeClaim
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedPersistentVolumeClaim
 replace the specified PersistentVolumeClaim}
 }
 \if{html}{\out{</div>}}
@@ -1047,8 +1917,11 @@ replace the specified PersistentVolumeClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_persistent_volume_claim(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1056,7 +1929,11 @@ replace the specified PersistentVolumeClaim}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedPersistentVolumeClaim
@@ -1072,17 +1949,31 @@ partially update the specified PersistentVolumeClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_persistent_volume_claim(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedPersistentVolumeClaim
 delete a PersistentVolumeClaim}
 }
@@ -1094,13 +1985,32 @@ delete a PersistentVolumeClaim}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_persistent_volume_claim}{}}}
 \subsection{Method \code{delete_namespaced_persistent_volume_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_persistent_volume_claim(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_persistent_volume_claim(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedPersistentVolumeClaimStatus
 read status of the specified PersistentVolumeClaim}
 }
@@ -1112,13 +2022,18 @@ read status of the specified PersistentVolumeClaim}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_persistent_volume_claim_status}{}}}
 \subsection{Method \code{read_namespaced_persistent_volume_claim_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_persistent_volume_claim_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_persistent_volume_claim_status(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedPersistentVolumeClaimStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedPersistentVolumeClaimStatus
 replace status of the specified PersistentVolumeClaim}
 }
 \if{html}{\out{</div>}}
@@ -1131,8 +2046,11 @@ replace status of the specified PersistentVolumeClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_persistent_volume_claim_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1140,7 +2058,11 @@ replace status of the specified PersistentVolumeClaim}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedPersistentVolumeClaimStatus
@@ -1156,21 +2078,33 @@ partially update status of the specified PersistentVolumeClaim}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_persistent_volume_claim_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1NamespacedPod
-list or watch objects of kind Pod
-createCoreV1NamespacedPod
-create a Pod}
+list or watch objects of kind Pod}
 }
 \if{html}{\out{</div>}}
 }
@@ -1180,22 +2114,75 @@ create a Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_pod}{}}}
 \subsection{Method \code{list_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_pod()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_pod(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedPod
+create a Pod}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_pod"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-create_namespaced_pod}{}}}
 \subsection{Method \code{create_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_pod(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_pod(
+  namespace,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedPod
@@ -1209,13 +2196,55 @@ delete collection of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_pod}{}}}
 \subsection{Method \code{delete_collection_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_pod(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_pod(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedPod
 read the specified Pod}
 }
@@ -1227,13 +2256,14 @@ read the specified Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_pod}{}}}
 \subsection{Method \code{read_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedPod
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedPod
 replace the specified Pod}
 }
 \if{html}{\out{</div>}}
@@ -1246,8 +2276,11 @@ replace the specified Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_pod(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1255,7 +2288,11 @@ replace the specified Pod}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedPod
@@ -1269,15 +2306,33 @@ partially update the specified Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-patch_namespaced_pod}{}}}
 \subsection{Method \code{patch_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_pod(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_pod(
+  name,
+  namespace,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedPod
 delete a Pod}
 }
@@ -1289,13 +2344,32 @@ delete a Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_pod}{}}}
 \subsection{Method \code{delete_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_pod(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_pod(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 connectCoreV1GetNamespacedPodAttach
 connect GET requests to attach of Pod}
 }
@@ -1307,13 +2381,30 @@ connect GET requests to attach of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_pod_attach}{}}}
 \subsection{Method \code{connect_get_namespaced_pod_attach()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_attach(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_attach(
+  name,
+  namespace,
+  container = NULL,
+  stderr = NULL,
+  stdin = NULL,
+  stdout = NULL,
+  tty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedPodAttach
+\item{\code{container}}{= NULL}
+
+\item{\code{stderr}}{= NULL}
+
+\item{\code{stdin}}{= NULL}
+
+\item{\code{stdout}}{= NULL}
+
+\item{\code{tty}}{= NULL
+connectCoreV1PostNamespacedPodAttach
 connect POST requests to attach of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1324,13 +2415,30 @@ connect POST requests to attach of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_pod_attach}{}}}
 \subsection{Method \code{connect_post_namespaced_pod_attach()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_attach(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_attach(
+  name,
+  namespace,
+  container = NULL,
+  stderr = NULL,
+  stdin = NULL,
+  stdout = NULL,
+  tty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{createCoreV1NamespacedPodBinding
+\item{\code{container}}{= NULL}
+
+\item{\code{stderr}}{= NULL}
+
+\item{\code{stdin}}{= NULL}
+
+\item{\code{stdout}}{= NULL}
+
+\item{\code{tty}}{= NULL
+createCoreV1NamespacedPodBinding
 create binding of a Pod}
 }
 \if{html}{\out{</div>}}
@@ -1343,9 +2451,12 @@ create binding of a Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_pod_binding(
   name,
+  namespace,
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -1354,7 +2465,11 @@ create binding of a Pod}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 readCoreV1NamespacedPodEphemeralcontainers
 read ephemeralcontainers of the specified Pod}
 }
@@ -1366,13 +2481,18 @@ read ephemeralcontainers of the specified Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_pod_ephemeralcontainers}{}}}
 \subsection{Method \code{read_namespaced_pod_ephemeralcontainers()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_ephemeralcontainers(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_ephemeralcontainers(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedPodEphemeralcontainers
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedPodEphemeralcontainers
 replace ephemeralcontainers of the specified Pod}
 }
 \if{html}{\out{</div>}}
@@ -1385,8 +2505,11 @@ replace ephemeralcontainers of the specified Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_pod_ephemeralcontainers(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1394,7 +2517,11 @@ replace ephemeralcontainers of the specified Pod}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedPodEphemeralcontainers
@@ -1410,17 +2537,31 @@ partially update ephemeralcontainers of the specified Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_pod_ephemeralcontainers(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 createCoreV1NamespacedPodEviction
 create eviction of a Pod}
 }
@@ -1434,9 +2575,12 @@ create eviction of a Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_pod_eviction(
   name,
+  namespace,
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -1445,7 +2589,11 @@ create eviction of a Pod}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 connectCoreV1GetNamespacedPodExec
 connect GET requests to exec of Pod}
 }
@@ -1457,13 +2605,33 @@ connect GET requests to exec of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_pod_exec}{}}}
 \subsection{Method \code{connect_get_namespaced_pod_exec()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_exec(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_exec(
+  name,
+  namespace,
+  command = NULL,
+  container = NULL,
+  stderr = NULL,
+  stdin = NULL,
+  stdout = NULL,
+  tty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedPodExec
+\item{\code{command}}{= NULL}
+
+\item{\code{container}}{= NULL}
+
+\item{\code{stderr}}{= NULL}
+
+\item{\code{stdin}}{= NULL}
+
+\item{\code{stdout}}{= NULL}
+
+\item{\code{tty}}{= NULL
+connectCoreV1PostNamespacedPodExec
 connect POST requests to exec of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1474,13 +2642,33 @@ connect POST requests to exec of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_pod_exec}{}}}
 \subsection{Method \code{connect_post_namespaced_pod_exec()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_exec(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_exec(
+  name,
+  namespace,
+  command = NULL,
+  container = NULL,
+  stderr = NULL,
+  stdin = NULL,
+  stdout = NULL,
+  tty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{readCoreV1NamespacedPodLog
+\item{\code{command}}{= NULL}
+
+\item{\code{container}}{= NULL}
+
+\item{\code{stderr}}{= NULL}
+
+\item{\code{stdin}}{= NULL}
+
+\item{\code{stdout}}{= NULL}
+
+\item{\code{tty}}{= NULL
+readCoreV1NamespacedPodLog
 read log of the specified Pod}
 }
 \if{html}{\out{</div>}}
@@ -1491,13 +2679,42 @@ read log of the specified Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_pod_log}{}}}
 \subsection{Method \code{read_namespaced_pod_log()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_log(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_log(
+  name,
+  namespace,
+  container = NULL,
+  follow = NULL,
+  insecure_skip_tls_verify_backend = NULL,
+  limit_bytes = NULL,
+  pretty = NULL,
+  previous = NULL,
+  since_seconds = NULL,
+  tail_lines = NULL,
+  timestamps = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1GetNamespacedPodPortforward
+\item{\code{container}}{= NULL}
+
+\item{\code{follow}}{= NULL}
+
+\item{\code{insecure_skip_tls_verify_backend}}{= NULL}
+
+\item{\code{limit_bytes}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{previous}}{= NULL}
+
+\item{\code{since_seconds}}{= NULL}
+
+\item{\code{tail_lines}}{= NULL}
+
+\item{\code{timestamps}}{= NULL
+connectCoreV1GetNamespacedPodPortforward
 connect GET requests to portforward of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1508,13 +2725,14 @@ connect GET requests to portforward of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_pod_portforward}{}}}
 \subsection{Method \code{connect_get_namespaced_pod_portforward()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_portforward(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_portforward(name, namespace, ports = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedPodPortforward
+\item{\code{ports}}{= NULL
+connectCoreV1PostNamespacedPodPortforward
 connect POST requests to portforward of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1525,13 +2743,18 @@ connect POST requests to portforward of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_pod_portforward}{}}}
 \subsection{Method \code{connect_post_namespaced_pod_portforward()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_portforward(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_portforward(
+  name,
+  namespace,
+  ports = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1GetNamespacedPodProxy
+\item{\code{ports}}{= NULL
+connectCoreV1GetNamespacedPodProxy
 connect GET requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1542,13 +2765,14 @@ connect GET requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_get_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedPodProxy
+\item{\code{path}}{= NULL
+connectCoreV1PostNamespacedPodProxy
 connect POST requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1559,13 +2783,14 @@ connect POST requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_post_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PutNamespacedPodProxy
+\item{\code{path}}{= NULL
+connectCoreV1PutNamespacedPodProxy
 connect PUT requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1576,13 +2801,14 @@ connect PUT requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_put_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_put_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_pod_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PatchNamespacedPodProxy
+\item{\code{path}}{= NULL
+connectCoreV1PatchNamespacedPodProxy
 connect PATCH requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1593,13 +2819,21 @@ connect PATCH requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_patch_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_patch_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_pod_proxy(
+  name,
+  namespace,
+  path = NULL,
+  content_type = "*/*"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1DeleteNamespacedPodProxy
+\item{\code{path}}{= NULL}
+
+\item{\code{content_type}}{= "*/*"
+connectCoreV1DeleteNamespacedPodProxy
 connect DELETE requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1610,13 +2844,14 @@ connect DELETE requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_delete_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_delete_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_pod_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1OptionsNamespacedPodProxy
+\item{\code{path}}{= NULL
+connectCoreV1OptionsNamespacedPodProxy
 connect OPTIONS requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1627,13 +2862,14 @@ connect OPTIONS requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_options_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_options_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_pod_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1HeadNamespacedPodProxy
+\item{\code{path}}{= NULL
+connectCoreV1HeadNamespacedPodProxy
 connect HEAD requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1644,13 +2880,14 @@ connect HEAD requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_head_namespaced_pod_proxy}{}}}
 \subsection{Method \code{connect_head_namespaced_pod_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_pod_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_pod_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1GetNamespacedPodProxyWithPath
+\item{\code{path}}{= NULL
+connectCoreV1GetNamespacedPodProxyWithPath
 connect GET requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1661,13 +2898,19 @@ connect GET requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_get_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedPodProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PostNamespacedPodProxyWithPath
 connect POST requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1678,13 +2921,19 @@ connect POST requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_post_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PutNamespacedPodProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PutNamespacedPodProxyWithPath
 connect PUT requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1695,13 +2944,19 @@ connect PUT requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_put_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_put_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PatchNamespacedPodProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PatchNamespacedPodProxyWithPath
 connect PATCH requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1712,13 +2967,22 @@ connect PATCH requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_patch_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_patch_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL,
+  content_type = "*/*"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1DeleteNamespacedPodProxyWithPath
+\item{\code{path_query}}{= NULL}
+
+\item{\code{content_type}}{= "*/*"
+connectCoreV1DeleteNamespacedPodProxyWithPath
 connect DELETE requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1729,13 +2993,19 @@ connect DELETE requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_delete_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_delete_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1OptionsNamespacedPodProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1OptionsNamespacedPodProxyWithPath
 connect OPTIONS requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1746,13 +3016,19 @@ connect OPTIONS requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_options_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_options_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1HeadNamespacedPodProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1HeadNamespacedPodProxyWithPath
 connect HEAD requests to proxy of Pod}
 }
 \if{html}{\out{</div>}}
@@ -1763,13 +3039,19 @@ connect HEAD requests to proxy of Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_head_namespaced_pod_proxy_with_path}{}}}
 \subsection{Method \code{connect_head_namespaced_pod_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_pod_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_pod_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{readCoreV1NamespacedPodStatus
+\item{\code{path_query}}{= NULL
+readCoreV1NamespacedPodStatus
 read status of the specified Pod}
 }
 \if{html}{\out{</div>}}
@@ -1780,13 +3062,14 @@ read status of the specified Pod}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_pod_status}{}}}
 \subsection{Method \code{read_namespaced_pod_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedPodStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedPodStatus
 replace status of the specified Pod}
 }
 \if{html}{\out{</div>}}
@@ -1799,8 +3082,11 @@ replace status of the specified Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_pod_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1808,7 +3094,11 @@ replace status of the specified Pod}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedPodStatus
@@ -1824,21 +3114,33 @@ partially update status of the specified Pod}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_pod_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1NamespacedPodTemplate
-list or watch objects of kind PodTemplate
-createCoreV1NamespacedPodTemplate
-create a PodTemplate}
+list or watch objects of kind PodTemplate}
 }
 \if{html}{\out{</div>}}
 }
@@ -1848,9 +3150,51 @@ create a PodTemplate}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_pod_template}{}}}
 \subsection{Method \code{list_namespaced_pod_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_pod_template()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_pod_template(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedPodTemplate
+create a PodTemplate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_pod_template"></a>}}
@@ -1858,8 +3202,11 @@ create a PodTemplate}
 \subsection{Method \code{create_namespaced_pod_template()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_pod_template(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1867,7 +3214,11 @@ create a PodTemplate}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedPodTemplate
@@ -1881,13 +3232,55 @@ delete collection of PodTemplate}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_pod_template}{}}}
 \subsection{Method \code{delete_collection_namespaced_pod_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_pod_template(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_pod_template(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedPodTemplate
 read the specified PodTemplate}
 }
@@ -1899,13 +3292,14 @@ read the specified PodTemplate}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_pod_template}{}}}
 \subsection{Method \code{read_namespaced_pod_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_template(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_pod_template(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedPodTemplate
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedPodTemplate
 replace the specified PodTemplate}
 }
 \if{html}{\out{</div>}}
@@ -1918,8 +3312,11 @@ replace the specified PodTemplate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_pod_template(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1927,7 +3324,11 @@ replace the specified PodTemplate}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedPodTemplate
@@ -1943,17 +3344,31 @@ partially update the specified PodTemplate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_pod_template(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedPodTemplate
 delete a PodTemplate}
 }
@@ -1965,17 +3380,34 @@ delete a PodTemplate}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_pod_template}{}}}
 \subsection{Method \code{delete_namespaced_pod_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_pod_template(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_pod_template(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listCoreV1NamespacedReplicationController
-list or watch objects of kind ReplicationController
-createCoreV1NamespacedReplicationController
-create a ReplicationController}
+list or watch objects of kind ReplicationController}
 }
 \if{html}{\out{</div>}}
 }
@@ -1985,9 +3417,51 @@ create a ReplicationController}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_replication_controller}{}}}
 \subsection{Method \code{list_namespaced_replication_controller()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_replication_controller()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_replication_controller(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedReplicationController
+create a ReplicationController}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_replication_controller"></a>}}
@@ -1995,8 +3469,11 @@ create a ReplicationController}
 \subsection{Method \code{create_namespaced_replication_controller()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_replication_controller(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2004,7 +3481,11 @@ create a ReplicationController}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedReplicationController
@@ -2018,13 +3499,55 @@ delete collection of ReplicationController}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_replication_controller}{}}}
 \subsection{Method \code{delete_collection_namespaced_replication_controller()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_replication_controller(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_replication_controller(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedReplicationController
 read the specified ReplicationController}
 }
@@ -2036,13 +3559,18 @@ read the specified ReplicationController}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_replication_controller}{}}}
 \subsection{Method \code{read_namespaced_replication_controller()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_replication_controller(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_replication_controller(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedReplicationController
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedReplicationController
 replace the specified ReplicationController}
 }
 \if{html}{\out{</div>}}
@@ -2055,8 +3583,11 @@ replace the specified ReplicationController}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_replication_controller(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2064,7 +3595,11 @@ replace the specified ReplicationController}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedReplicationController
@@ -2080,17 +3615,31 @@ partially update the specified ReplicationController}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_replication_controller(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedReplicationController
 delete a ReplicationController}
 }
@@ -2102,13 +3651,32 @@ delete a ReplicationController}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_replication_controller}{}}}
 \subsection{Method \code{delete_namespaced_replication_controller()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_replication_controller(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_replication_controller(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedReplicationControllerScale
 read scale of the specified ReplicationController}
 }
@@ -2120,13 +3688,18 @@ read scale of the specified ReplicationController}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_replication_controller_scale}{}}}
 \subsection{Method \code{read_namespaced_replication_controller_scale()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_replication_controller_scale(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_replication_controller_scale(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedReplicationControllerScale
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedReplicationControllerScale
 replace scale of the specified ReplicationController}
 }
 \if{html}{\out{</div>}}
@@ -2139,8 +3712,11 @@ replace scale of the specified ReplicationController}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_replication_controller_scale(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2148,7 +3724,11 @@ replace scale of the specified ReplicationController}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedReplicationControllerScale
@@ -2164,17 +3744,31 @@ partially update scale of the specified ReplicationController}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_replication_controller_scale(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 readCoreV1NamespacedReplicationControllerStatus
 read status of the specified ReplicationController}
 }
@@ -2186,13 +3780,18 @@ read status of the specified ReplicationController}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_replication_controller_status}{}}}
 \subsection{Method \code{read_namespaced_replication_controller_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_replication_controller_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_replication_controller_status(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedReplicationControllerStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedReplicationControllerStatus
 replace status of the specified ReplicationController}
 }
 \if{html}{\out{</div>}}
@@ -2205,8 +3804,11 @@ replace status of the specified ReplicationController}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_replication_controller_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2214,7 +3816,11 @@ replace status of the specified ReplicationController}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedReplicationControllerStatus
@@ -2230,21 +3836,33 @@ partially update status of the specified ReplicationController}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_replication_controller_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1NamespacedResourceQuota
-list or watch objects of kind ResourceQuota
-createCoreV1NamespacedResourceQuota
-create a ResourceQuota}
+list or watch objects of kind ResourceQuota}
 }
 \if{html}{\out{</div>}}
 }
@@ -2254,9 +3872,51 @@ create a ResourceQuota}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_resource_quota}{}}}
 \subsection{Method \code{list_namespaced_resource_quota()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_resource_quota()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_resource_quota(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedResourceQuota
+create a ResourceQuota}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_resource_quota"></a>}}
@@ -2264,8 +3924,11 @@ create a ResourceQuota}
 \subsection{Method \code{create_namespaced_resource_quota()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_resource_quota(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2273,7 +3936,11 @@ create a ResourceQuota}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedResourceQuota
@@ -2287,13 +3954,55 @@ delete collection of ResourceQuota}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_resource_quota}{}}}
 \subsection{Method \code{delete_collection_namespaced_resource_quota()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_resource_quota(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_resource_quota(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedResourceQuota
 read the specified ResourceQuota}
 }
@@ -2305,13 +4014,14 @@ read the specified ResourceQuota}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_resource_quota}{}}}
 \subsection{Method \code{read_namespaced_resource_quota()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_resource_quota(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_resource_quota(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedResourceQuota
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedResourceQuota
 replace the specified ResourceQuota}
 }
 \if{html}{\out{</div>}}
@@ -2324,8 +4034,11 @@ replace the specified ResourceQuota}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_resource_quota(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2333,7 +4046,11 @@ replace the specified ResourceQuota}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedResourceQuota
@@ -2349,17 +4066,31 @@ partially update the specified ResourceQuota}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_resource_quota(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedResourceQuota
 delete a ResourceQuota}
 }
@@ -2371,13 +4102,32 @@ delete a ResourceQuota}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_resource_quota}{}}}
 \subsection{Method \code{delete_namespaced_resource_quota()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_resource_quota(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_resource_quota(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedResourceQuotaStatus
 read status of the specified ResourceQuota}
 }
@@ -2389,13 +4139,14 @@ read status of the specified ResourceQuota}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_resource_quota_status}{}}}
 \subsection{Method \code{read_namespaced_resource_quota_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_resource_quota_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_resource_quota_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedResourceQuotaStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedResourceQuotaStatus
 replace status of the specified ResourceQuota}
 }
 \if{html}{\out{</div>}}
@@ -2408,8 +4159,11 @@ replace status of the specified ResourceQuota}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_resource_quota_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2417,7 +4171,11 @@ replace status of the specified ResourceQuota}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedResourceQuotaStatus
@@ -2433,21 +4191,33 @@ partially update status of the specified ResourceQuota}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_resource_quota_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1NamespacedSecret
-list or watch objects of kind Secret
-createCoreV1NamespacedSecret
-create a Secret}
+list or watch objects of kind Secret}
 }
 \if{html}{\out{</div>}}
 }
@@ -2457,9 +4227,51 @@ create a Secret}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_secret}{}}}
 \subsection{Method \code{list_namespaced_secret()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_secret()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_secret(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedSecret
+create a Secret}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_secret"></a>}}
@@ -2467,8 +4279,11 @@ create a Secret}
 \subsection{Method \code{create_namespaced_secret()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_secret(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2476,7 +4291,11 @@ create a Secret}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedSecret
@@ -2490,13 +4309,55 @@ delete collection of Secret}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_secret}{}}}
 \subsection{Method \code{delete_collection_namespaced_secret()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_secret(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_secret(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedSecret
 read the specified Secret}
 }
@@ -2508,13 +4369,14 @@ read the specified Secret}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_secret}{}}}
 \subsection{Method \code{read_namespaced_secret()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_secret(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_secret(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedSecret
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedSecret
 replace the specified Secret}
 }
 \if{html}{\out{</div>}}
@@ -2527,8 +4389,11 @@ replace the specified Secret}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_secret(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2536,7 +4401,11 @@ replace the specified Secret}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedSecret
@@ -2552,17 +4421,31 @@ partially update the specified Secret}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_secret(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedSecret
 delete a Secret}
 }
@@ -2574,17 +4457,34 @@ delete a Secret}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_secret}{}}}
 \subsection{Method \code{delete_namespaced_secret()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_secret(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_secret(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listCoreV1NamespacedServiceAccount
-list or watch objects of kind ServiceAccount
-createCoreV1NamespacedServiceAccount
-create a ServiceAccount}
+list or watch objects of kind ServiceAccount}
 }
 \if{html}{\out{</div>}}
 }
@@ -2594,9 +4494,51 @@ create a ServiceAccount}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_service_account}{}}}
 \subsection{Method \code{list_namespaced_service_account()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_service_account()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_service_account(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedServiceAccount
+create a ServiceAccount}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_service_account"></a>}}
@@ -2604,8 +4546,11 @@ create a ServiceAccount}
 \subsection{Method \code{create_namespaced_service_account()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_service_account(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2613,7 +4558,11 @@ create a ServiceAccount}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedServiceAccount
@@ -2627,13 +4576,55 @@ delete collection of ServiceAccount}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_service_account}{}}}
 \subsection{Method \code{delete_collection_namespaced_service_account()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_service_account(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_service_account(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedServiceAccount
 read the specified ServiceAccount}
 }
@@ -2645,13 +4636,14 @@ read the specified ServiceAccount}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_service_account}{}}}
 \subsection{Method \code{read_namespaced_service_account()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_service_account(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_service_account(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedServiceAccount
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedServiceAccount
 replace the specified ServiceAccount}
 }
 \if{html}{\out{</div>}}
@@ -2664,8 +4656,11 @@ replace the specified ServiceAccount}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_service_account(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2673,7 +4668,11 @@ replace the specified ServiceAccount}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedServiceAccount
@@ -2689,17 +4688,31 @@ partially update the specified ServiceAccount}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_service_account(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedServiceAccount
 delete a ServiceAccount}
 }
@@ -2711,13 +4724,32 @@ delete a ServiceAccount}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_service_account}{}}}
 \subsection{Method \code{delete_namespaced_service_account()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_service_account(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_service_account(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 createCoreV1NamespacedServiceAccountToken
 create token of a ServiceAccount}
 }
@@ -2731,9 +4763,12 @@ create token of a ServiceAccount}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_service_account_token(
   name,
+  namespace,
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -2742,11 +4777,13 @@ create token of a ServiceAccount}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 listCoreV1NamespacedService
-list or watch objects of kind Service
-createCoreV1NamespacedService
-create a Service}
+list or watch objects of kind Service}
 }
 \if{html}{\out{</div>}}
 }
@@ -2756,9 +4793,51 @@ create a Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_namespaced_service}{}}}
 \subsection{Method \code{list_namespaced_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_service()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_namespaced_service(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1NamespacedService
+create a Service}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_namespaced_service"></a>}}
@@ -2766,8 +4845,11 @@ create a Service}
 \subsection{Method \code{create_namespaced_service()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_namespaced_service(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2775,7 +4857,11 @@ create a Service}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNamespacedService
@@ -2789,13 +4875,55 @@ delete collection of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_namespaced_service}{}}}
 \subsection{Method \code{delete_collection_namespaced_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_service(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_namespaced_service(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1NamespacedService
 read the specified Service}
 }
@@ -2807,13 +4935,14 @@ read the specified Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_service}{}}}
 \subsection{Method \code{read_namespaced_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_service(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_service(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedService
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedService
 replace the specified Service}
 }
 \if{html}{\out{</div>}}
@@ -2826,8 +4955,11 @@ replace the specified Service}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_service(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -2835,7 +4967,11 @@ replace the specified Service}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedService
@@ -2851,17 +4987,31 @@ partially update the specified Service}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_service(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1NamespacedService
 delete a Service}
 }
@@ -2873,13 +5023,32 @@ delete a Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespaced_service}{}}}
 \subsection{Method \code{delete_namespaced_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_service(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespaced_service(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 connectCoreV1GetNamespacedServiceProxy
 connect GET requests to proxy of Service}
 }
@@ -2891,13 +5060,14 @@ connect GET requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_get_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_service_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedServiceProxy
+\item{\code{path}}{= NULL
+connectCoreV1PostNamespacedServiceProxy
 connect POST requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -2908,13 +5078,14 @@ connect POST requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_post_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_service_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PutNamespacedServiceProxy
+\item{\code{path}}{= NULL
+connectCoreV1PutNamespacedServiceProxy
 connect PUT requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -2925,13 +5096,14 @@ connect PUT requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_put_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_put_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_service_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PatchNamespacedServiceProxy
+\item{\code{path}}{= NULL
+connectCoreV1PatchNamespacedServiceProxy
 connect PATCH requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -2942,13 +5114,21 @@ connect PATCH requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_patch_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_patch_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_service_proxy(
+  name,
+  namespace,
+  path = NULL,
+  content_type = "*/*"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1DeleteNamespacedServiceProxy
+\item{\code{path}}{= NULL}
+
+\item{\code{content_type}}{= "*/*"
+connectCoreV1DeleteNamespacedServiceProxy
 connect DELETE requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -2959,13 +5139,14 @@ connect DELETE requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_delete_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_delete_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_service_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1OptionsNamespacedServiceProxy
+\item{\code{path}}{= NULL
+connectCoreV1OptionsNamespacedServiceProxy
 connect OPTIONS requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -2976,13 +5157,18 @@ connect OPTIONS requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_options_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_options_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_service_proxy(
+  name,
+  namespace,
+  path = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1HeadNamespacedServiceProxy
+\item{\code{path}}{= NULL
+connectCoreV1HeadNamespacedServiceProxy
 connect HEAD requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -2993,13 +5179,14 @@ connect HEAD requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_head_namespaced_service_proxy}{}}}
 \subsection{Method \code{connect_head_namespaced_service_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_service_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_service_proxy(name, namespace, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1GetNamespacedServiceProxyWithPath
+\item{\code{path}}{= NULL
+connectCoreV1GetNamespacedServiceProxyWithPath
 connect GET requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3010,13 +5197,19 @@ connect GET requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_get_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNamespacedServiceProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PostNamespacedServiceProxyWithPath
 connect POST requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3027,13 +5220,19 @@ connect POST requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_post_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PutNamespacedServiceProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PutNamespacedServiceProxyWithPath
 connect PUT requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3044,13 +5243,19 @@ connect PUT requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_put_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_put_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PatchNamespacedServiceProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PatchNamespacedServiceProxyWithPath
 connect PATCH requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3061,13 +5266,22 @@ connect PATCH requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_patch_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_patch_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL,
+  content_type = "*/*"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1DeleteNamespacedServiceProxyWithPath
+\item{\code{path_query}}{= NULL}
+
+\item{\code{content_type}}{= "*/*"
+connectCoreV1DeleteNamespacedServiceProxyWithPath
 connect DELETE requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3078,13 +5292,19 @@ connect DELETE requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_delete_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_delete_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1OptionsNamespacedServiceProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1OptionsNamespacedServiceProxyWithPath
 connect OPTIONS requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3095,13 +5315,19 @@ connect OPTIONS requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_options_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_options_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1HeadNamespacedServiceProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1HeadNamespacedServiceProxyWithPath
 connect HEAD requests to proxy of Service}
 }
 \if{html}{\out{</div>}}
@@ -3112,13 +5338,19 @@ connect HEAD requests to proxy of Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_head_namespaced_service_proxy_with_path}{}}}
 \subsection{Method \code{connect_head_namespaced_service_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_service_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_namespaced_service_proxy_with_path(
+  name,
+  namespace,
+  path,
+  path_query = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{readCoreV1NamespacedServiceStatus
+\item{\code{path_query}}{= NULL
+readCoreV1NamespacedServiceStatus
 read status of the specified Service}
 }
 \if{html}{\out{</div>}}
@@ -3129,13 +5361,14 @@ read status of the specified Service}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespaced_service_status}{}}}
 \subsection{Method \code{read_namespaced_service_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_service_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespaced_service_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespacedServiceStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespacedServiceStatus
 replace status of the specified Service}
 }
 \if{html}{\out{</div>}}
@@ -3148,8 +5381,11 @@ replace status of the specified Service}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespaced_service_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3157,7 +5393,11 @@ replace status of the specified Service}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespacedServiceStatus
@@ -3173,17 +5413,31 @@ partially update status of the specified Service}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespaced_service_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 readCoreV1Namespace
 read the specified Namespace}
 }
@@ -3195,13 +5449,14 @@ read the specified Namespace}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespace}{}}}
 \subsection{Method \code{read_namespace()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespace(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespace(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1Namespace
+\item{\code{pretty}}{= NULL
+replaceCoreV1Namespace
 replace the specified Namespace}
 }
 \if{html}{\out{</div>}}
@@ -3215,7 +5470,9 @@ replace the specified Namespace}
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespace(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3223,7 +5480,11 @@ replace the specified Namespace}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1Namespace
@@ -3237,15 +5498,32 @@ partially update the specified Namespace}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-patch_namespace}{}}}
 \subsection{Method \code{patch_namespace()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespace(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespace(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1Namespace
 delete a Namespace}
 }
@@ -3257,13 +5535,31 @@ delete a Namespace}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_namespace}{}}}
 \subsection{Method \code{delete_namespace()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespace(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_namespace(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 replaceCoreV1NamespaceFinalize
 replace finalize of the specified Namespace}
 }
@@ -3279,7 +5575,9 @@ replace finalize of the specified Namespace}
   name,
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -3288,7 +5586,11 @@ replace finalize of the specified Namespace}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 readCoreV1NamespaceStatus
 read status of the specified Namespace}
 }
@@ -3300,13 +5602,14 @@ read status of the specified Namespace}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_namespace_status}{}}}
 \subsection{Method \code{read_namespace_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespace_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_namespace_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NamespaceStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NamespaceStatus
 replace status of the specified Namespace}
 }
 \if{html}{\out{</div>}}
@@ -3320,7 +5623,9 @@ replace status of the specified Namespace}
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_namespace_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3328,7 +5633,11 @@ replace status of the specified Namespace}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NamespaceStatus
@@ -3342,19 +5651,34 @@ partially update status of the specified Namespace}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-patch_namespace_status}{}}}
 \subsection{Method \code{patch_namespace_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespace_status(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_namespace_status(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1Node
-list or watch objects of kind Node
-createCoreV1Node
-create a Node}
+list or watch objects of kind Node}
 }
 \if{html}{\out{</div>}}
 }
@@ -3364,22 +5688,73 @@ create a Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_node}{}}}
 \subsection{Method \code{list_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_node()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_node(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1Node
+create a Node}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_node"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-create_node}{}}}
 \subsection{Method \code{create_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_node(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_node(
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionNode
@@ -3393,13 +5768,54 @@ delete collection of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_node}{}}}
 \subsection{Method \code{delete_collection_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_node(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_node(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1Node
 read the specified Node}
 }
@@ -3411,13 +5827,14 @@ read the specified Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_node}{}}}
 \subsection{Method \code{read_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_node(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_node(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1Node
+\item{\code{pretty}}{= NULL
+replaceCoreV1Node
 replace the specified Node}
 }
 \if{html}{\out{</div>}}
@@ -3428,13 +5845,24 @@ replace the specified Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-replace_node}{}}}
 \subsection{Method \code{replace_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_node(name, body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_node(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1Node
@@ -3448,15 +5876,32 @@ partially update the specified Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-patch_node}{}}}
 \subsection{Method \code{patch_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_node(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_node(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1Node
 delete a Node}
 }
@@ -3468,13 +5913,31 @@ delete a Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_node}{}}}
 \subsection{Method \code{delete_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_node(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_node(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 connectCoreV1GetNodeProxy
 connect GET requests to proxy of Node}
 }
@@ -3486,13 +5949,14 @@ connect GET requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_node_proxy}{}}}
 \subsection{Method \code{connect_get_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_node_proxy(name, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNodeProxy
+\item{\code{path}}{= NULL
+connectCoreV1PostNodeProxy
 connect POST requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3503,13 +5967,14 @@ connect POST requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_node_proxy}{}}}
 \subsection{Method \code{connect_post_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_node_proxy(name, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PutNodeProxy
+\item{\code{path}}{= NULL
+connectCoreV1PutNodeProxy
 connect PUT requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3520,13 +5985,14 @@ connect PUT requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_put_node_proxy}{}}}
 \subsection{Method \code{connect_put_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_node_proxy(name, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PatchNodeProxy
+\item{\code{path}}{= NULL
+connectCoreV1PatchNodeProxy
 connect PATCH requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3537,13 +6003,16 @@ connect PATCH requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_patch_node_proxy}{}}}
 \subsection{Method \code{connect_patch_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_node_proxy(name, path = NULL, content_type = "*/*")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1DeleteNodeProxy
+\item{\code{path}}{= NULL}
+
+\item{\code{content_type}}{= "*/*"
+connectCoreV1DeleteNodeProxy
 connect DELETE requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3554,13 +6023,14 @@ connect DELETE requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_delete_node_proxy}{}}}
 \subsection{Method \code{connect_delete_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_node_proxy(name, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1OptionsNodeProxy
+\item{\code{path}}{= NULL
+connectCoreV1OptionsNodeProxy
 connect OPTIONS requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3571,13 +6041,14 @@ connect OPTIONS requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_options_node_proxy}{}}}
 \subsection{Method \code{connect_options_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_node_proxy(name, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1HeadNodeProxy
+\item{\code{path}}{= NULL
+connectCoreV1HeadNodeProxy
 connect HEAD requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3588,13 +6059,14 @@ connect HEAD requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_head_node_proxy}{}}}
 \subsection{Method \code{connect_head_node_proxy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_node_proxy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_node_proxy(name, path = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1GetNodeProxyWithPath
+\item{\code{path}}{= NULL
+connectCoreV1GetNodeProxyWithPath
 connect GET requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3605,13 +6077,14 @@ connect GET requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_get_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_get_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_get_node_proxy_with_path(name, path, path_query = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PostNodeProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PostNodeProxyWithPath
 connect POST requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3622,13 +6095,14 @@ connect POST requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_post_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_post_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_post_node_proxy_with_path(name, path, path_query = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PutNodeProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PutNodeProxyWithPath
 connect PUT requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3639,13 +6113,14 @@ connect PUT requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_put_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_put_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_put_node_proxy_with_path(name, path, path_query = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1PatchNodeProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1PatchNodeProxyWithPath
 connect PATCH requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3656,13 +6131,21 @@ connect PATCH requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_patch_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_patch_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_patch_node_proxy_with_path(
+  name,
+  path,
+  path_query = NULL,
+  content_type = "*/*"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1DeleteNodeProxyWithPath
+\item{\code{path_query}}{= NULL}
+
+\item{\code{content_type}}{= "*/*"
+connectCoreV1DeleteNodeProxyWithPath
 connect DELETE requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3673,13 +6156,14 @@ connect DELETE requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_delete_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_delete_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_delete_node_proxy_with_path(name, path, path_query = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1OptionsNodeProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1OptionsNodeProxyWithPath
 connect OPTIONS requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3690,13 +6174,14 @@ connect OPTIONS requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_options_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_options_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_options_node_proxy_with_path(name, path, path_query = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{connectCoreV1HeadNodeProxyWithPath
+\item{\code{path_query}}{= NULL
+connectCoreV1HeadNodeProxyWithPath
 connect HEAD requests to proxy of Node}
 }
 \if{html}{\out{</div>}}
@@ -3707,13 +6192,14 @@ connect HEAD requests to proxy of Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-connect_head_node_proxy_with_path}{}}}
 \subsection{Method \code{connect_head_node_proxy_with_path()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_node_proxy_with_path(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$connect_head_node_proxy_with_path(name, path, path_query = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{readCoreV1NodeStatus
+\item{\code{path_query}}{= NULL
+readCoreV1NodeStatus
 read status of the specified Node}
 }
 \if{html}{\out{</div>}}
@@ -3724,13 +6210,14 @@ read status of the specified Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_node_status}{}}}
 \subsection{Method \code{read_node_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_node_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_node_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1NodeStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1NodeStatus
 replace status of the specified Node}
 }
 \if{html}{\out{</div>}}
@@ -3744,7 +6231,9 @@ replace status of the specified Node}
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_node_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3752,7 +6241,11 @@ replace status of the specified Node}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1NodeStatus
@@ -3766,21 +6259,34 @@ partially update status of the specified Node}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-patch_node_status}{}}}
 \subsection{Method \code{patch_node_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_node_status(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_node_status(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1PersistentVolumeClaimForAllNamespaces
-list or watch objects of kind PersistentVolumeClaim
-listCoreV1PersistentVolume
-list or watch objects of kind PersistentVolume
-createCoreV1PersistentVolume
-create a PersistentVolume}
+list or watch objects of kind PersistentVolumeClaim}
 }
 \if{html}{\out{</div>}}
 }
@@ -3790,18 +6296,100 @@ create a PersistentVolume}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_persistent_volume_claim_for_all_namespaces}{}}}
 \subsection{Method \code{list_persistent_volume_claim_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_persistent_volume_claim_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_persistent_volume_claim_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1PersistentVolume
+list or watch objects of kind PersistentVolume}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_persistent_volume"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_persistent_volume}{}}}
 \subsection{Method \code{list_persistent_volume()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_persistent_volume()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_persistent_volume(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoreV1PersistentVolume
+create a PersistentVolume}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-create_persistent_volume"></a>}}
@@ -3810,7 +6398,9 @@ create a PersistentVolume}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$create_persistent_volume(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3818,7 +6408,11 @@ create a PersistentVolume}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoreV1CollectionPersistentVolume
@@ -3832,13 +6426,54 @@ delete collection of PersistentVolume}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_collection_persistent_volume}{}}}
 \subsection{Method \code{delete_collection_persistent_volume()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_persistent_volume(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_collection_persistent_volume(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1PersistentVolume
 read the specified PersistentVolume}
 }
@@ -3850,13 +6485,14 @@ read the specified PersistentVolume}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_persistent_volume}{}}}
 \subsection{Method \code{read_persistent_volume()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_persistent_volume(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_persistent_volume(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1PersistentVolume
+\item{\code{pretty}}{= NULL
+replaceCoreV1PersistentVolume
 replace the specified PersistentVolume}
 }
 \if{html}{\out{</div>}}
@@ -3870,7 +6506,9 @@ replace the specified PersistentVolume}
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_persistent_volume(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3878,7 +6516,11 @@ replace the specified PersistentVolume}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1PersistentVolume
@@ -3894,17 +6536,30 @@ partially update the specified PersistentVolume}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_persistent_volume(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoreV1PersistentVolume
 delete a PersistentVolume}
 }
@@ -3916,13 +6571,31 @@ delete a PersistentVolume}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-delete_persistent_volume}{}}}
 \subsection{Method \code{delete_persistent_volume()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_persistent_volume(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$delete_persistent_volume(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoreV1PersistentVolumeStatus
 read status of the specified PersistentVolume}
 }
@@ -3934,13 +6607,14 @@ read status of the specified PersistentVolume}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-read_persistent_volume_status}{}}}
 \subsection{Method \code{read_persistent_volume_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_persistent_volume_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$read_persistent_volume_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoreV1PersistentVolumeStatus
+\item{\code{pretty}}{= NULL
+replaceCoreV1PersistentVolumeStatus
 replace status of the specified PersistentVolume}
 }
 \if{html}{\out{</div>}}
@@ -3954,7 +6628,9 @@ replace status of the specified PersistentVolume}
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$replace_persistent_volume_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -3962,7 +6638,11 @@ replace status of the specified PersistentVolume}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoreV1PersistentVolumeStatus
@@ -3978,45 +6658,32 @@ partially update status of the specified PersistentVolume}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$patch_persistent_volume_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listCoreV1PodForAllNamespaces
-list or watch objects of kind Pod
-listCoreV1PodTemplateForAllNamespaces
-list or watch objects of kind PodTemplate
-listCoreV1ReplicationControllerForAllNamespaces
-list or watch objects of kind ReplicationController
-listCoreV1ResourceQuotaForAllNamespaces
-list or watch objects of kind ResourceQuota
-listCoreV1SecretForAllNamespaces
-list or watch objects of kind Secret
-listCoreV1ServiceAccountForAllNamespaces
-list or watch objects of kind ServiceAccount
-listCoreV1ServiceForAllNamespaces
-list or watch objects of kind Service
-watchCoreV1ConfigMapListForAllNamespaces
-watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1EndpointsListForAllNamespaces
-watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1EventListForAllNamespaces
-watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1LimitRangeListForAllNamespaces
-watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespaceList
-watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedConfigMapList
-watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedConfigMap
-watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+list or watch objects of kind Pod}
 }
 \if{html}{\out{</div>}}
 }
@@ -4026,133 +6693,700 @@ watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parame
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_pod_for_all_namespaces}{}}}
 \subsection{Method \code{list_pod_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_pod_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_pod_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1PodTemplateForAllNamespaces
+list or watch objects of kind PodTemplate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_pod_template_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_pod_template_for_all_namespaces}{}}}
 \subsection{Method \code{list_pod_template_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_pod_template_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_pod_template_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1ReplicationControllerForAllNamespaces
+list or watch objects of kind ReplicationController}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_replication_controller_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_replication_controller_for_all_namespaces}{}}}
 \subsection{Method \code{list_replication_controller_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_replication_controller_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_replication_controller_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1ResourceQuotaForAllNamespaces
+list or watch objects of kind ResourceQuota}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_resource_quota_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_resource_quota_for_all_namespaces}{}}}
 \subsection{Method \code{list_resource_quota_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_resource_quota_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_resource_quota_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1SecretForAllNamespaces
+list or watch objects of kind Secret}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_secret_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_secret_for_all_namespaces}{}}}
 \subsection{Method \code{list_secret_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_secret_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_secret_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1ServiceAccountForAllNamespaces
+list or watch objects of kind ServiceAccount}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_service_account_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_service_account_for_all_namespaces}{}}}
 \subsection{Method \code{list_service_account_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_service_account_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_service_account_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoreV1ServiceForAllNamespaces
+list or watch objects of kind Service}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-list_service_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-list_service_for_all_namespaces}{}}}
 \subsection{Method \code{list_service_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_service_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$list_service_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1ConfigMapListForAllNamespaces
+watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_config_map_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_config_map_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_config_map_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_config_map_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_config_map_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1EndpointsListForAllNamespaces
+watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_endpoints_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_endpoints_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_endpoints_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_endpoints_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_endpoints_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1EventListForAllNamespaces
+watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_event_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_event_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_event_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_event_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_event_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1LimitRangeListForAllNamespaces
+watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_limit_range_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_limit_range_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_limit_range_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_limit_range_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_limit_range_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespaceList
+watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespace_list"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespace_list}{}}}
 \subsection{Method \code{watch_namespace_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespace_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespace_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedConfigMapList
+watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_config_map_list"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_config_map_list}{}}}
 \subsection{Method \code{watch_namespaced_config_map_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_config_map_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_config_map_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedConfigMap
+watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_config_map"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_config_map}{}}}
 \subsection{Method \code{watch_namespaced_config_map()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_config_map(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_config_map(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedEndpointsList
-watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedEndpoints
-watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedEndpointsList
+watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4162,25 +7396,100 @@ watch changes to an object of kind Endpoints. deprecated: use the 'watch' parame
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_endpoints_list}{}}}
 \subsection{Method \code{watch_namespaced_endpoints_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_endpoints_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_endpoints_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedEndpoints
+watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_endpoints"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_endpoints}{}}}
 \subsection{Method \code{watch_namespaced_endpoints()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_endpoints(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_endpoints(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedEventList
-watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedEvent
-watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedEventList
+watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4190,25 +7499,100 @@ watch changes to an object of kind Event. deprecated: use the 'watch' parameter 
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_event_list}{}}}
 \subsection{Method \code{watch_namespaced_event_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_event_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_event_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedEvent
+watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_event"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_event}{}}}
 \subsection{Method \code{watch_namespaced_event()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_event(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_event(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedLimitRangeList
-watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedLimitRange
-watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedLimitRangeList
+watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4218,25 +7602,100 @@ watch changes to an object of kind LimitRange. deprecated: use the 'watch' param
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_limit_range_list}{}}}
 \subsection{Method \code{watch_namespaced_limit_range_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_limit_range_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_limit_range_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedLimitRange
+watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_limit_range"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_limit_range}{}}}
 \subsection{Method \code{watch_namespaced_limit_range()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_limit_range(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_limit_range(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedPersistentVolumeClaimList
-watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedPersistentVolumeClaim
-watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedPersistentVolumeClaimList
+watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4246,25 +7705,100 @@ watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'w
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_persistent_volume_claim_list}{}}}
 \subsection{Method \code{watch_namespaced_persistent_volume_claim_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_persistent_volume_claim_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_persistent_volume_claim_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedPersistentVolumeClaim
+watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_persistent_volume_claim"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_persistent_volume_claim}{}}}
 \subsection{Method \code{watch_namespaced_persistent_volume_claim()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_persistent_volume_claim(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_persistent_volume_claim(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedPodList
-watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedPod
-watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedPodList
+watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4274,25 +7808,100 @@ watch changes to an object of kind Pod. deprecated: use the 'watch' parameter wi
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_pod_list}{}}}
 \subsection{Method \code{watch_namespaced_pod_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedPod
+watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_pod"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_pod}{}}}
 \subsection{Method \code{watch_namespaced_pod()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedPodTemplateList
-watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedPodTemplate
-watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedPodTemplateList
+watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4302,25 +7911,100 @@ watch changes to an object of kind PodTemplate. deprecated: use the 'watch' para
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_pod_template_list}{}}}
 \subsection{Method \code{watch_namespaced_pod_template_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod_template_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod_template_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedPodTemplate
+watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_pod_template"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_pod_template}{}}}
 \subsection{Method \code{watch_namespaced_pod_template()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod_template(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_pod_template(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedReplicationControllerList
-watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedReplicationController
-watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedReplicationControllerList
+watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4330,25 +8014,100 @@ watch changes to an object of kind ReplicationController. deprecated: use the 'w
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_replication_controller_list}{}}}
 \subsection{Method \code{watch_namespaced_replication_controller_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_replication_controller_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_replication_controller_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedReplicationController
+watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_replication_controller"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_replication_controller}{}}}
 \subsection{Method \code{watch_namespaced_replication_controller()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_replication_controller(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_replication_controller(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedResourceQuotaList
-watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedResourceQuota
-watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedResourceQuotaList
+watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4358,25 +8117,100 @@ watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' pa
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_resource_quota_list}{}}}
 \subsection{Method \code{watch_namespaced_resource_quota_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_resource_quota_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_resource_quota_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedResourceQuota
+watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_resource_quota"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_resource_quota}{}}}
 \subsection{Method \code{watch_namespaced_resource_quota()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_resource_quota(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_resource_quota(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedSecretList
-watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedSecret
-watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedSecretList
+watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4386,25 +8220,100 @@ watch changes to an object of kind Secret. deprecated: use the 'watch' parameter
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_secret_list}{}}}
 \subsection{Method \code{watch_namespaced_secret_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_secret_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_secret_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedSecret
+watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_secret"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_secret}{}}}
 \subsection{Method \code{watch_namespaced_secret()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_secret(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_secret(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedServiceAccountList
-watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedServiceAccount
-watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedServiceAccountList
+watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4414,25 +8323,100 @@ watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' p
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_service_account_list}{}}}
 \subsection{Method \code{watch_namespaced_service_account_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service_account_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service_account_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedServiceAccount
+watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_service_account"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_service_account}{}}}
 \subsection{Method \code{watch_namespaced_service_account()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service_account(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service_account(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NamespacedServiceList
-watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1NamespacedService
-watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedServiceList
+watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4442,22 +8426,99 @@ watch changes to an object of kind Service. deprecated: use the 'watch' paramete
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_service_list}{}}}
 \subsection{Method \code{watch_namespaced_service_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NamespacedService
+watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_namespaced_service"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespaced_service}{}}}
 \subsection{Method \code{watch_namespaced_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespaced_service(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1Namespace
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1Namespace
 watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
 }
 \if{html}{\out{</div>}}
@@ -4468,16 +8529,48 @@ watch changes to an object of kind Namespace. deprecated: use the 'watch' parame
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_namespace}{}}}
 \subsection{Method \code{watch_namespace()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespace(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_namespace(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1NodeList
-watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1Node
-watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1NodeList
+watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4487,27 +8580,98 @@ watch changes to an object of kind Node. deprecated: use the 'watch' parameter w
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_node_list}{}}}
 \subsection{Method \code{watch_node_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_node_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_node_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1Node
+watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_node"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_node}{}}}
 \subsection{Method \code{watch_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_node(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_node(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1PersistentVolumeClaimListForAllNamespaces
-watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1PersistentVolumeList
-watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1PersistentVolume
-watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1PersistentVolumeClaimListForAllNamespaces
+watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4517,44 +8681,148 @@ watch changes to an object of kind PersistentVolume. deprecated: use the 'watch'
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_persistent_volume_claim_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_persistent_volume_claim_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_persistent_volume_claim_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_persistent_volume_claim_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1PersistentVolumeList
+watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_persistent_volume_list"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_persistent_volume_list}{}}}
 \subsection{Method \code{watch_persistent_volume_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_persistent_volume_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_persistent_volume_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1PersistentVolume
+watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_persistent_volume"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_persistent_volume}{}}}
 \subsection{Method \code{watch_persistent_volume()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_persistent_volume(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_persistent_volume(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchCoreV1PodListForAllNamespaces
-watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1PodTemplateListForAllNamespaces
-watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1ReplicationControllerListForAllNamespaces
-watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1ResourceQuotaListForAllNamespaces
-watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1SecretListForAllNamespaces
-watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1ServiceAccountListForAllNamespaces
-watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoreV1ServiceListForAllNamespaces
-watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1PodListForAllNamespaces
+watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -4564,63 +8832,348 @@ watch individual changes to a list of Service. deprecated: use the 'watch' param
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_pod_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_pod_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_pod_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_pod_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1PodTemplateListForAllNamespaces
+watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_pod_template_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_pod_template_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_pod_template_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_pod_template_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_pod_template_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1ReplicationControllerListForAllNamespaces
+watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_replication_controller_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_replication_controller_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_replication_controller_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_replication_controller_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_replication_controller_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1ResourceQuotaListForAllNamespaces
+watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_resource_quota_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_resource_quota_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_resource_quota_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_resource_quota_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_resource_quota_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1SecretListForAllNamespaces
+watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_secret_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_secret_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_secret_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_secret_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_secret_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1ServiceAccountListForAllNamespaces
+watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_service_account_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_service_account_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_service_account_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_service_account_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_service_account_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoreV1ServiceListForAllNamespaces
+watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-watch_service_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-CoreV1Api-watch_service_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_service_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_service_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoreV1Api$watch_service_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoreV1Api-clone"></a>}}

@@ -35,12 +35,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1ComponentStatus
     #' list objects of kind ComponentStatus
-    list_component_status = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_component_status = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/componentstatuses",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ComponentStatusList",
@@ -52,12 +63,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1ComponentStatus
     #' read the specified ComponentStatus
     #' @param name
-    read_component_status = function(name) {
+    #' @param pretty = NULL
+    read_component_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/componentstatuses/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ComponentStatus",
@@ -68,12 +80,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1ConfigMapForAllNamespaces
     #' list or watch objects of kind ConfigMap
-    list_config_map_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_config_map_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/configmaps",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ConfigMapList",
@@ -84,12 +107,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1EndpointsForAllNamespaces
     #' list or watch objects of kind Endpoints
-    list_endpoints_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_endpoints_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/endpoints",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1EndpointsList",
@@ -100,12 +134,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1EventForAllNamespaces
     #' list or watch objects of kind Event
-    list_event_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_event_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/events",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "CoreV1EventList",
@@ -116,12 +161,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1LimitRangeForAllNamespaces
     #' list or watch objects of kind LimitRange
-    list_limit_range_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_limit_range_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/limitranges",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1LimitRangeList",
@@ -132,12 +188,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1Namespace
     #' list or watch objects of kind Namespace
-    list_namespace = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespace = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1NamespaceList",
@@ -149,14 +216,16 @@ CoreV1Api <- R6::R6Class(
     #' createCoreV1Namespace
     #' create a Namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespace = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespace = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Namespace",
@@ -167,15 +236,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedBinding
     #' create a Binding
+    #' @param namespace
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_binding = function(body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_namespaced_binding = function(namespace, body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/bindings",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Binding",
@@ -186,12 +258,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedConfigMap
     #' list or watch objects of kind ConfigMap
-    list_namespaced_config_map = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_config_map = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ConfigMapList",
@@ -202,15 +286,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedConfigMap
     #' create a ConfigMap
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_config_map = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_config_map = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ConfigMap",
@@ -221,15 +308,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedConfigMap
     #' delete collection of ConfigMap
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_config_map = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_config_map = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -239,12 +340,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedConfigMap
     #' read the specified ConfigMap
     #' @param name
-    read_namespaced_config_map = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_config_map = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ConfigMap",
@@ -256,15 +359,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedConfigMap
     #' replace the specified ConfigMap
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_config_map = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_config_map = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ConfigMap",
@@ -276,18 +382,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedConfigMap
     #' partially update the specified ConfigMap
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_config_map = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_config_map = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ConfigMap",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -295,15 +407,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedConfigMap
     #' delete a ConfigMap
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_config_map = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_config_map = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/configmaps/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -312,12 +430,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedEndpoints
     #' list or watch objects of kind Endpoints
-    list_namespaced_endpoints = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_endpoints = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1EndpointsList",
@@ -328,15 +458,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedEndpoints
     #' create Endpoints
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_endpoints = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_endpoints = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Endpoints",
@@ -347,15 +480,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedEndpoints
     #' delete collection of Endpoints
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_endpoints = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_endpoints = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -365,12 +512,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedEndpoints
     #' read the specified Endpoints
     #' @param name
-    read_namespaced_endpoints = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_endpoints = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Endpoints",
@@ -382,15 +531,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedEndpoints
     #' replace the specified Endpoints
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_endpoints = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_endpoints = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Endpoints",
@@ -402,18 +554,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedEndpoints
     #' partially update the specified Endpoints
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_endpoints = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_endpoints = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Endpoints",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -421,15 +579,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedEndpoints
     #' delete Endpoints
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_endpoints = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_endpoints = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/endpoints/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -438,12 +602,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedEvent
     #' list or watch objects of kind Event
-    list_namespaced_event = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_event = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "CoreV1EventList",
@@ -454,15 +630,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedEvent
     #' create an Event
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_event = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_event = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "CoreV1Event",
@@ -473,15 +652,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedEvent
     #' delete collection of Event
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_event = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_event = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -491,12 +684,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedEvent
     #' read the specified Event
     #' @param name
-    read_namespaced_event = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_event = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "CoreV1Event",
@@ -508,15 +703,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedEvent
     #' replace the specified Event
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_event = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_event = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "CoreV1Event",
@@ -528,18 +726,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedEvent
     #' partially update the specified Event
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_event = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_event = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "CoreV1Event",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -547,15 +751,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedEvent
     #' delete an Event
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_event = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_event = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/events/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -564,12 +774,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedLimitRange
     #' list or watch objects of kind LimitRange
-    list_namespaced_limit_range = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_limit_range = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1LimitRangeList",
@@ -580,15 +802,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedLimitRange
     #' create a LimitRange
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_limit_range = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_limit_range = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1LimitRange",
@@ -599,15 +824,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedLimitRange
     #' delete collection of LimitRange
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_limit_range = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_limit_range = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -617,12 +856,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedLimitRange
     #' read the specified LimitRange
     #' @param name
-    read_namespaced_limit_range = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_limit_range = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1LimitRange",
@@ -634,15 +875,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedLimitRange
     #' replace the specified LimitRange
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_limit_range = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_limit_range = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1LimitRange",
@@ -654,18 +898,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedLimitRange
     #' partially update the specified LimitRange
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_limit_range = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_limit_range = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1LimitRange",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -673,15 +923,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedLimitRange
     #' delete a LimitRange
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_limit_range = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_limit_range = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/limitranges/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -690,12 +946,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedPersistentVolumeClaim
     #' list or watch objects of kind PersistentVolumeClaim
-    list_namespaced_persistent_volume_claim = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_persistent_volume_claim = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolumeClaimList",
@@ -706,15 +974,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedPersistentVolumeClaim
     #' create a PersistentVolumeClaim
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_persistent_volume_claim = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_persistent_volume_claim = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolumeClaim",
@@ -725,15 +996,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedPersistentVolumeClaim
     #' delete collection of PersistentVolumeClaim
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_persistent_volume_claim = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_persistent_volume_claim = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -743,12 +1028,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPersistentVolumeClaim
     #' read the specified PersistentVolumeClaim
     #' @param name
-    read_namespaced_persistent_volume_claim = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_persistent_volume_claim = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolumeClaim",
@@ -760,15 +1047,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedPersistentVolumeClaim
     #' replace the specified PersistentVolumeClaim
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_persistent_volume_claim = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_persistent_volume_claim = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolumeClaim",
@@ -780,18 +1070,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedPersistentVolumeClaim
     #' partially update the specified PersistentVolumeClaim
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_persistent_volume_claim = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_persistent_volume_claim = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolumeClaim",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -799,15 +1095,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedPersistentVolumeClaim
     #' delete a PersistentVolumeClaim
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_persistent_volume_claim = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_persistent_volume_claim = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolumeClaim",
         content_type = "*/*",
         accept = "application/json"
@@ -817,12 +1119,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPersistentVolumeClaimStatus
     #' read status of the specified PersistentVolumeClaim
     #' @param name
-    read_namespaced_persistent_volume_claim_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_persistent_volume_claim_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolumeClaim",
@@ -834,15 +1138,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedPersistentVolumeClaimStatus
     #' replace status of the specified PersistentVolumeClaim
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_persistent_volume_claim_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_persistent_volume_claim_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolumeClaim",
@@ -854,30 +1161,48 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedPersistentVolumeClaimStatus
     #' partially update status of the specified PersistentVolumeClaim
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_persistent_volume_claim_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_persistent_volume_claim_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolumeClaim",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1NamespacedPod
     #' list or watch objects of kind Pod
-    list_namespaced_pod = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_pod = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PodList",
@@ -888,15 +1213,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedPod
     #' create a Pod
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_pod = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_pod = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
@@ -907,15 +1235,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedPod
     #' delete collection of Pod
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_pod = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_pod = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -925,12 +1267,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPod
     #' read the specified Pod
     #' @param name
-    read_namespaced_pod = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_pod = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Pod",
@@ -942,15 +1286,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedPod
     #' replace the specified Pod
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_pod = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_pod = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
@@ -962,18 +1309,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedPod
     #' partially update the specified Pod
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_pod = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_pod = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -981,15 +1334,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedPod
     #' delete a Pod
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_pod = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_pod = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
         content_type = "*/*",
         accept = "application/json"
@@ -999,12 +1358,18 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedPodAttach
     #' connect GET requests to attach of Pod
     #' @param name
-    connect_get_namespaced_pod_attach = function(name) {
+    #' @param namespace
+    #' @param container = NULL
+    #' @param stderr = NULL
+    #' @param stdin = NULL
+    #' @param stdout = NULL
+    #' @param tty = NULL
+    connect_get_namespaced_pod_attach = function(name, namespace, container = NULL, stderr = NULL, stdin = NULL, stdout = NULL, tty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/attach",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`container` = container, `stderr` = stderr, `stdin` = stdin, `stdout` = stdout, `tty` = tty),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1016,12 +1381,18 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedPodAttach
     #' connect POST requests to attach of Pod
     #' @param name
-    connect_post_namespaced_pod_attach = function(name) {
+    #' @param namespace
+    #' @param container = NULL
+    #' @param stderr = NULL
+    #' @param stdin = NULL
+    #' @param stdout = NULL
+    #' @param tty = NULL
+    connect_post_namespaced_pod_attach = function(name, namespace, container = NULL, stderr = NULL, stdin = NULL, stdout = NULL, tty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/attach",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`container` = container, `stderr` = stderr, `stdin` = stdin, `stdout` = stdout, `tty` = tty),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1033,15 +1404,18 @@ CoreV1Api <- R6::R6Class(
     #' createCoreV1NamespacedPodBinding
     #' create binding of a Pod
     #' @param name
+    #' @param namespace
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_pod_binding = function(name, body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_namespaced_pod_binding = function(name, namespace, body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/binding",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Binding",
@@ -1053,12 +1427,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPodEphemeralcontainers
     #' read ephemeralcontainers of the specified Pod
     #' @param name
-    read_namespaced_pod_ephemeralcontainers = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_pod_ephemeralcontainers = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Pod",
@@ -1070,15 +1446,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedPodEphemeralcontainers
     #' replace ephemeralcontainers of the specified Pod
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_pod_ephemeralcontainers = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_pod_ephemeralcontainers = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
@@ -1090,18 +1469,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedPodEphemeralcontainers
     #' partially update ephemeralcontainers of the specified Pod
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_pod_ephemeralcontainers = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_pod_ephemeralcontainers = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -1109,15 +1494,18 @@ CoreV1Api <- R6::R6Class(
     #' createCoreV1NamespacedPodEviction
     #' create eviction of a Pod
     #' @param name
+    #' @param namespace
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_pod_eviction = function(name, body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_namespaced_pod_eviction = function(name, namespace, body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/eviction",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Eviction",
@@ -1129,12 +1517,19 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedPodExec
     #' connect GET requests to exec of Pod
     #' @param name
-    connect_get_namespaced_pod_exec = function(name) {
+    #' @param namespace
+    #' @param command = NULL
+    #' @param container = NULL
+    #' @param stderr = NULL
+    #' @param stdin = NULL
+    #' @param stdout = NULL
+    #' @param tty = NULL
+    connect_get_namespaced_pod_exec = function(name, namespace, command = NULL, container = NULL, stderr = NULL, stdin = NULL, stdout = NULL, tty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/exec",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`command` = command, `container` = container, `stderr` = stderr, `stdin` = stdin, `stdout` = stdout, `tty` = tty),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1146,12 +1541,19 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedPodExec
     #' connect POST requests to exec of Pod
     #' @param name
-    connect_post_namespaced_pod_exec = function(name) {
+    #' @param namespace
+    #' @param command = NULL
+    #' @param container = NULL
+    #' @param stderr = NULL
+    #' @param stdin = NULL
+    #' @param stdout = NULL
+    #' @param tty = NULL
+    connect_post_namespaced_pod_exec = function(name, namespace, command = NULL, container = NULL, stderr = NULL, stdin = NULL, stdout = NULL, tty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/exec",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`command` = command, `container` = container, `stderr` = stderr, `stdin` = stdin, `stdout` = stdout, `tty` = tty),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1163,12 +1565,22 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPodLog
     #' read log of the specified Pod
     #' @param name
-    read_namespaced_pod_log = function(name) {
+    #' @param namespace
+    #' @param container = NULL
+    #' @param follow = NULL
+    #' @param insecure_skip_tls_verify_backend = NULL
+    #' @param limit_bytes = NULL
+    #' @param pretty = NULL
+    #' @param previous = NULL
+    #' @param since_seconds = NULL
+    #' @param tail_lines = NULL
+    #' @param timestamps = NULL
+    read_namespaced_pod_log = function(name, namespace, container = NULL, follow = NULL, insecure_skip_tls_verify_backend = NULL, limit_bytes = NULL, pretty = NULL, previous = NULL, since_seconds = NULL, tail_lines = NULL, timestamps = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/log",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`container` = container, `follow` = follow, `insecureSkipTLSVerifyBackend` = insecure_skip_tls_verify_backend, `limitBytes` = limit_bytes, `pretty` = pretty, `previous` = previous, `sinceSeconds` = since_seconds, `tailLines` = tail_lines, `timestamps` = timestamps),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1180,12 +1592,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedPodPortforward
     #' connect GET requests to portforward of Pod
     #' @param name
-    connect_get_namespaced_pod_portforward = function(name) {
+    #' @param namespace
+    #' @param ports = NULL
+    connect_get_namespaced_pod_portforward = function(name, namespace, ports = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/portforward",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`ports` = ports),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1197,12 +1611,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedPodPortforward
     #' connect POST requests to portforward of Pod
     #' @param name
-    connect_post_namespaced_pod_portforward = function(name) {
+    #' @param namespace
+    #' @param ports = NULL
+    connect_post_namespaced_pod_portforward = function(name, namespace, ports = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/portforward",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`ports` = ports),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1214,12 +1630,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedPodProxy
     #' connect GET requests to proxy of Pod
     #' @param name
-    connect_get_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_get_namespaced_pod_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1231,12 +1649,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedPodProxy
     #' connect POST requests to proxy of Pod
     #' @param name
-    connect_post_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_post_namespaced_pod_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1248,12 +1668,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PutNamespacedPodProxy
     #' connect PUT requests to proxy of Pod
     #' @param name
-    connect_put_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_put_namespaced_pod_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1265,16 +1687,19 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PatchNamespacedPodProxy
     #' connect PATCH requests to proxy of Pod
     #' @param name
-    connect_patch_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    #' @param content_type = "*/*"
+    connect_patch_namespaced_pod_proxy = function(name, namespace, path = NULL, content_type = "*/*") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
-        content_type = "*/*",
+        content_type = content_type,
         accept = "*/*"
       )
     }
@@ -1282,12 +1707,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1DeleteNamespacedPodProxy
     #' connect DELETE requests to proxy of Pod
     #' @param name
-    connect_delete_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_delete_namespaced_pod_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1299,12 +1726,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1OptionsNamespacedPodProxy
     #' connect OPTIONS requests to proxy of Pod
     #' @param name
-    connect_options_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_options_namespaced_pod_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "OPTIONS",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1316,12 +1745,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1HeadNamespacedPodProxy
     #' connect HEAD requests to proxy of Pod
     #' @param name
-    connect_head_namespaced_pod_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_head_namespaced_pod_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy",
         method = "HEAD",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1333,12 +1764,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedPodProxyWithPath
     #' connect GET requests to proxy of Pod
     #' @param name
-    connect_get_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_get_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1350,12 +1784,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedPodProxyWithPath
     #' connect POST requests to proxy of Pod
     #' @param name
-    connect_post_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_post_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1367,12 +1804,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PutNamespacedPodProxyWithPath
     #' connect PUT requests to proxy of Pod
     #' @param name
-    connect_put_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_put_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1384,16 +1824,20 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PatchNamespacedPodProxyWithPath
     #' connect PATCH requests to proxy of Pod
     #' @param name
-    connect_patch_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    #' @param content_type = "*/*"
+    connect_patch_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL, content_type = "*/*") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
-        content_type = "*/*",
+        content_type = content_type,
         accept = "*/*"
       )
     }
@@ -1401,12 +1845,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1DeleteNamespacedPodProxyWithPath
     #' connect DELETE requests to proxy of Pod
     #' @param name
-    connect_delete_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_delete_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1418,12 +1865,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1OptionsNamespacedPodProxyWithPath
     #' connect OPTIONS requests to proxy of Pod
     #' @param name
-    connect_options_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_options_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "OPTIONS",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1435,12 +1885,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1HeadNamespacedPodProxyWithPath
     #' connect HEAD requests to proxy of Pod
     #' @param name
-    connect_head_namespaced_pod_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_head_namespaced_pod_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}",
         method = "HEAD",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -1452,12 +1905,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPodStatus
     #' read status of the specified Pod
     #' @param name
-    read_namespaced_pod_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_pod_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Pod",
@@ -1469,15 +1924,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedPodStatus
     #' replace status of the specified Pod
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_pod_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_pod_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
@@ -1489,30 +1947,48 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedPodStatus
     #' partially update status of the specified Pod
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_pod_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_pod_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/pods/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Pod",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1NamespacedPodTemplate
     #' list or watch objects of kind PodTemplate
-    list_namespaced_pod_template = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_pod_template = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PodTemplateList",
@@ -1523,15 +1999,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedPodTemplate
     #' create a PodTemplate
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_pod_template = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_pod_template = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PodTemplate",
@@ -1542,15 +2021,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedPodTemplate
     #' delete collection of PodTemplate
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_pod_template = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_pod_template = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -1560,12 +2053,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedPodTemplate
     #' read the specified PodTemplate
     #' @param name
-    read_namespaced_pod_template = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_pod_template = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PodTemplate",
@@ -1577,15 +2072,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedPodTemplate
     #' replace the specified PodTemplate
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_pod_template = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_pod_template = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PodTemplate",
@@ -1597,18 +2095,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedPodTemplate
     #' partially update the specified PodTemplate
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_pod_template = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_pod_template = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PodTemplate",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -1616,15 +2120,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedPodTemplate
     #' delete a PodTemplate
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_pod_template = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_pod_template = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/podtemplates/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PodTemplate",
         content_type = "*/*",
         accept = "application/json"
@@ -1633,12 +2143,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedReplicationController
     #' list or watch objects of kind ReplicationController
-    list_namespaced_replication_controller = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_replication_controller = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ReplicationControllerList",
@@ -1649,15 +2171,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedReplicationController
     #' create a ReplicationController
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_replication_controller = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_replication_controller = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ReplicationController",
@@ -1668,15 +2193,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedReplicationController
     #' delete collection of ReplicationController
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_replication_controller = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_replication_controller = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -1686,12 +2225,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedReplicationController
     #' read the specified ReplicationController
     #' @param name
-    read_namespaced_replication_controller = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_replication_controller = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ReplicationController",
@@ -1703,15 +2244,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedReplicationController
     #' replace the specified ReplicationController
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_replication_controller = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_replication_controller = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ReplicationController",
@@ -1723,18 +2267,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedReplicationController
     #' partially update the specified ReplicationController
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_replication_controller = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_replication_controller = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ReplicationController",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -1742,15 +2292,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedReplicationController
     #' delete a ReplicationController
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_replication_controller = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_replication_controller = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -1760,12 +2316,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedReplicationControllerScale
     #' read scale of the specified ReplicationController
     #' @param name
-    read_namespaced_replication_controller_scale = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_replication_controller_scale = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Scale",
@@ -1777,15 +2335,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedReplicationControllerScale
     #' replace scale of the specified ReplicationController
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_replication_controller_scale = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_replication_controller_scale = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Scale",
@@ -1797,18 +2358,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedReplicationControllerScale
     #' partially update scale of the specified ReplicationController
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_replication_controller_scale = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_replication_controller_scale = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Scale",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -1816,12 +2383,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedReplicationControllerStatus
     #' read status of the specified ReplicationController
     #' @param name
-    read_namespaced_replication_controller_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_replication_controller_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ReplicationController",
@@ -1833,15 +2402,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedReplicationControllerStatus
     #' replace status of the specified ReplicationController
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_replication_controller_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_replication_controller_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ReplicationController",
@@ -1853,30 +2425,48 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedReplicationControllerStatus
     #' partially update status of the specified ReplicationController
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_replication_controller_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_replication_controller_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ReplicationController",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1NamespacedResourceQuota
     #' list or watch objects of kind ResourceQuota
-    list_namespaced_resource_quota = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_resource_quota = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ResourceQuotaList",
@@ -1887,15 +2477,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedResourceQuota
     #' create a ResourceQuota
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_resource_quota = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_resource_quota = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ResourceQuota",
@@ -1906,15 +2499,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedResourceQuota
     #' delete collection of ResourceQuota
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_resource_quota = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_resource_quota = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -1924,12 +2531,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedResourceQuota
     #' read the specified ResourceQuota
     #' @param name
-    read_namespaced_resource_quota = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_resource_quota = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ResourceQuota",
@@ -1941,15 +2550,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedResourceQuota
     #' replace the specified ResourceQuota
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_resource_quota = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_resource_quota = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ResourceQuota",
@@ -1961,18 +2573,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedResourceQuota
     #' partially update the specified ResourceQuota
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_resource_quota = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_resource_quota = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ResourceQuota",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -1980,15 +2598,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedResourceQuota
     #' delete a ResourceQuota
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_resource_quota = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_resource_quota = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ResourceQuota",
         content_type = "*/*",
         accept = "application/json"
@@ -1998,12 +2622,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedResourceQuotaStatus
     #' read status of the specified ResourceQuota
     #' @param name
-    read_namespaced_resource_quota_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_resource_quota_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ResourceQuota",
@@ -2015,15 +2641,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedResourceQuotaStatus
     #' replace status of the specified ResourceQuota
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_resource_quota_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_resource_quota_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ResourceQuota",
@@ -2035,30 +2664,48 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedResourceQuotaStatus
     #' partially update status of the specified ResourceQuota
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_resource_quota_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_resource_quota_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ResourceQuota",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1NamespacedSecret
     #' list or watch objects of kind Secret
-    list_namespaced_secret = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_secret = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1SecretList",
@@ -2069,15 +2716,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedSecret
     #' create a Secret
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_secret = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_secret = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Secret",
@@ -2088,15 +2738,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedSecret
     #' delete collection of Secret
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_secret = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_secret = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -2106,12 +2770,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedSecret
     #' read the specified Secret
     #' @param name
-    read_namespaced_secret = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_secret = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Secret",
@@ -2123,15 +2789,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedSecret
     #' replace the specified Secret
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_secret = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_secret = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Secret",
@@ -2143,18 +2812,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedSecret
     #' partially update the specified Secret
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_secret = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_secret = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Secret",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -2162,15 +2837,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedSecret
     #' delete a Secret
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_secret = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_secret = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/secrets/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -2179,12 +2860,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedServiceAccount
     #' list or watch objects of kind ServiceAccount
-    list_namespaced_service_account = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_service_account = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ServiceAccountList",
@@ -2195,15 +2888,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedServiceAccount
     #' create a ServiceAccount
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_service_account = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_service_account = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ServiceAccount",
@@ -2214,15 +2910,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedServiceAccount
     #' delete collection of ServiceAccount
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_service_account = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_service_account = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -2232,12 +2942,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedServiceAccount
     #' read the specified ServiceAccount
     #' @param name
-    read_namespaced_service_account = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_service_account = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1ServiceAccount",
@@ -2249,15 +2961,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedServiceAccount
     #' replace the specified ServiceAccount
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_service_account = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_service_account = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ServiceAccount",
@@ -2269,18 +2984,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedServiceAccount
     #' partially update the specified ServiceAccount
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_service_account = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_service_account = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ServiceAccount",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -2288,15 +3009,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedServiceAccount
     #' delete a ServiceAccount
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_service_account = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_service_account = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1ServiceAccount",
         content_type = "*/*",
         accept = "application/json"
@@ -2306,15 +3033,18 @@ CoreV1Api <- R6::R6Class(
     #' createCoreV1NamespacedServiceAccountToken
     #' create token of a ServiceAccount
     #' @param name
+    #' @param namespace
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_service_account_token = function(name, body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_namespaced_service_account_token = function(name, namespace, body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/serviceaccounts/{name}/token",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "AuthenticationV1TokenRequest",
@@ -2325,12 +3055,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1NamespacedService
     #' list or watch objects of kind Service
-    list_namespaced_service = function() {
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_namespaced_service = function(namespace, pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ServiceList",
@@ -2341,15 +3083,18 @@ CoreV1Api <- R6::R6Class(
     ,
     #' createCoreV1NamespacedService
     #' create a Service
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_service = function(body, dry_run = NULL, field_validation = NULL) {
+    create_namespaced_service = function(namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Service",
@@ -2360,15 +3105,29 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNamespacedService
     #' delete collection of Service
+    #' @param namespace
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_namespaced_service = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_namespaced_service = function(namespace, pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services",
         method = "DELETE",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -2378,12 +3137,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedService
     #' read the specified Service
     #' @param name
-    read_namespaced_service = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_service = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Service",
@@ -2395,15 +3156,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedService
     #' replace the specified Service
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_service = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_service = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Service",
@@ -2415,18 +3179,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedService
     #' partially update the specified Service
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_service = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_service = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Service",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -2434,15 +3204,21 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1NamespacedService
     #' delete a Service
     #' @param name
+    #' @param namespace
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespaced_service = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespaced_service = function(name, namespace, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Service",
         content_type = "*/*",
         accept = "application/json"
@@ -2452,12 +3228,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedServiceProxy
     #' connect GET requests to proxy of Service
     #' @param name
-    connect_get_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_get_namespaced_service_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2469,12 +3247,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedServiceProxy
     #' connect POST requests to proxy of Service
     #' @param name
-    connect_post_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_post_namespaced_service_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2486,12 +3266,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PutNamespacedServiceProxy
     #' connect PUT requests to proxy of Service
     #' @param name
-    connect_put_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_put_namespaced_service_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2503,16 +3285,19 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PatchNamespacedServiceProxy
     #' connect PATCH requests to proxy of Service
     #' @param name
-    connect_patch_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    #' @param content_type = "*/*"
+    connect_patch_namespaced_service_proxy = function(name, namespace, path = NULL, content_type = "*/*") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
-        content_type = "*/*",
+        content_type = content_type,
         accept = "*/*"
       )
     }
@@ -2520,12 +3305,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1DeleteNamespacedServiceProxy
     #' connect DELETE requests to proxy of Service
     #' @param name
-    connect_delete_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_delete_namespaced_service_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2537,12 +3324,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1OptionsNamespacedServiceProxy
     #' connect OPTIONS requests to proxy of Service
     #' @param name
-    connect_options_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_options_namespaced_service_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "OPTIONS",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2554,12 +3343,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1HeadNamespacedServiceProxy
     #' connect HEAD requests to proxy of Service
     #' @param name
-    connect_head_namespaced_service_proxy = function(name) {
+    #' @param namespace
+    #' @param path = NULL
+    connect_head_namespaced_service_proxy = function(name, namespace, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy",
         method = "HEAD",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2571,12 +3362,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNamespacedServiceProxyWithPath
     #' connect GET requests to proxy of Service
     #' @param name
-    connect_get_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_get_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2588,12 +3382,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNamespacedServiceProxyWithPath
     #' connect POST requests to proxy of Service
     #' @param name
-    connect_post_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_post_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2605,12 +3402,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PutNamespacedServiceProxyWithPath
     #' connect PUT requests to proxy of Service
     #' @param name
-    connect_put_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_put_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2622,16 +3422,20 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PatchNamespacedServiceProxyWithPath
     #' connect PATCH requests to proxy of Service
     #' @param name
-    connect_patch_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    #' @param content_type = "*/*"
+    connect_patch_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL, content_type = "*/*") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
-        content_type = "*/*",
+        content_type = content_type,
         accept = "*/*"
       )
     }
@@ -2639,12 +3443,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1DeleteNamespacedServiceProxyWithPath
     #' connect DELETE requests to proxy of Service
     #' @param name
-    connect_delete_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_delete_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2656,12 +3463,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1OptionsNamespacedServiceProxyWithPath
     #' connect OPTIONS requests to proxy of Service
     #' @param name
-    connect_options_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_options_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "OPTIONS",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2673,12 +3483,15 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1HeadNamespacedServiceProxyWithPath
     #' connect HEAD requests to proxy of Service
     #' @param name
-    connect_head_namespaced_service_proxy_with_path = function(name) {
+    #' @param namespace
+    #' @param path
+    #' @param path_query = NULL
+    connect_head_namespaced_service_proxy_with_path = function(name, namespace, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}",
         method = "HEAD",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -2690,12 +3503,14 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespacedServiceStatus
     #' read status of the specified Service
     #' @param name
-    read_namespaced_service_status = function(name) {
+    #' @param namespace
+    #' @param pretty = NULL
+    read_namespaced_service_status = function(name, namespace, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/status",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Service",
@@ -2707,15 +3522,18 @@ CoreV1Api <- R6::R6Class(
     #' replaceCoreV1NamespacedServiceStatus
     #' replace status of the specified Service
     #' @param name
+    #' @param namespace
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespaced_service_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespaced_service_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/status",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Service",
@@ -2727,18 +3545,24 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespacedServiceStatus
     #' partially update status of the specified Service
     #' @param name
+    #' @param namespace
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespaced_service_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespaced_service_status = function(name, namespace, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{namespace}/services/{name}/status",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Service",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -2746,12 +3570,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1Namespace
     #' read the specified Namespace
     #' @param name
-    read_namespace = function(name) {
+    #' @param pretty = NULL
+    read_namespace = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Namespace",
@@ -2764,14 +3589,16 @@ CoreV1Api <- R6::R6Class(
     #' replace the specified Namespace
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespace = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespace = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Namespace",
@@ -2783,18 +3610,23 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1Namespace
     #' partially update the specified Namespace
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespace = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespace = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Namespace",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -2802,15 +3634,20 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1Namespace
     #' delete a Namespace
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_namespace = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_namespace = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -2822,13 +3659,15 @@ CoreV1Api <- R6::R6Class(
     #' @param name
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespace_finalize = function(name, body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    replace_namespace_finalize = function(name, body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}/finalize",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Namespace",
@@ -2840,12 +3679,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NamespaceStatus
     #' read status of the specified Namespace
     #' @param name
-    read_namespace_status = function(name) {
+    #' @param pretty = NULL
+    read_namespace_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}/status",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Namespace",
@@ -2858,14 +3698,16 @@ CoreV1Api <- R6::R6Class(
     #' replace status of the specified Namespace
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_namespace_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_namespace_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}/status",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Namespace",
@@ -2877,30 +3719,46 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NamespaceStatus
     #' partially update status of the specified Namespace
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_namespace_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_namespace_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/namespaces/{name}/status",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Namespace",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1Node
     #' list or watch objects of kind Node
-    list_node = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_node = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1NodeList",
@@ -2912,14 +3770,16 @@ CoreV1Api <- R6::R6Class(
     #' createCoreV1Node
     #' create a Node
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_node = function(body, dry_run = NULL, field_validation = NULL) {
+    create_node = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Node",
@@ -2930,15 +3790,28 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionNode
     #' delete collection of Node
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_node = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_node = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -2948,12 +3821,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1Node
     #' read the specified Node
     #' @param name
-    read_node = function(name) {
+    #' @param pretty = NULL
+    read_node = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Node",
@@ -2966,14 +3840,16 @@ CoreV1Api <- R6::R6Class(
     #' replace the specified Node
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_node = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_node = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Node",
@@ -2985,18 +3861,23 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1Node
     #' partially update the specified Node
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_node = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_node = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Node",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -3004,15 +3885,20 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1Node
     #' delete a Node
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_node = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_node = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -3022,12 +3908,13 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNodeProxy
     #' connect GET requests to proxy of Node
     #' @param name
-    connect_get_node_proxy = function(name) {
+    #' @param path = NULL
+    connect_get_node_proxy = function(name, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3039,12 +3926,13 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNodeProxy
     #' connect POST requests to proxy of Node
     #' @param name
-    connect_post_node_proxy = function(name) {
+    #' @param path = NULL
+    connect_post_node_proxy = function(name, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "POST",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3056,12 +3944,13 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PutNodeProxy
     #' connect PUT requests to proxy of Node
     #' @param name
-    connect_put_node_proxy = function(name) {
+    #' @param path = NULL
+    connect_put_node_proxy = function(name, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3073,16 +3962,18 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PatchNodeProxy
     #' connect PATCH requests to proxy of Node
     #' @param name
-    connect_patch_node_proxy = function(name) {
+    #' @param path = NULL
+    #' @param content_type = "*/*"
+    connect_patch_node_proxy = function(name, path = NULL, content_type = "*/*") {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
-        content_type = "*/*",
+        content_type = content_type,
         accept = "*/*"
       )
     }
@@ -3090,12 +3981,13 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1DeleteNodeProxy
     #' connect DELETE requests to proxy of Node
     #' @param name
-    connect_delete_node_proxy = function(name) {
+    #' @param path = NULL
+    connect_delete_node_proxy = function(name, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3107,12 +3999,13 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1OptionsNodeProxy
     #' connect OPTIONS requests to proxy of Node
     #' @param name
-    connect_options_node_proxy = function(name) {
+    #' @param path = NULL
+    connect_options_node_proxy = function(name, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "OPTIONS",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3124,12 +4017,13 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1HeadNodeProxy
     #' connect HEAD requests to proxy of Node
     #' @param name
-    connect_head_node_proxy = function(name) {
+    #' @param path = NULL
+    connect_head_node_proxy = function(name, path = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy",
         method = "HEAD",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`path` = path),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3141,12 +4035,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1GetNodeProxyWithPath
     #' connect GET requests to proxy of Node
     #' @param name
-    connect_get_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    connect_get_node_proxy_with_path = function(name, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3158,12 +4054,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PostNodeProxyWithPath
     #' connect POST requests to proxy of Node
     #' @param name
-    connect_post_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    connect_post_node_proxy_with_path = function(name, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "POST",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3175,12 +4073,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PutNodeProxyWithPath
     #' connect PUT requests to proxy of Node
     #' @param name
-    connect_put_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    connect_put_node_proxy_with_path = function(name, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "PUT",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3192,16 +4092,19 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1PatchNodeProxyWithPath
     #' connect PATCH requests to proxy of Node
     #' @param name
-    connect_patch_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    #' @param content_type = "*/*"
+    connect_patch_node_proxy_with_path = function(name, path, path_query = NULL, content_type = "*/*") {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "PATCH",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
-        content_type = "*/*",
+        content_type = content_type,
         accept = "*/*"
       )
     }
@@ -3209,12 +4112,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1DeleteNodeProxyWithPath
     #' connect DELETE requests to proxy of Node
     #' @param name
-    connect_delete_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    connect_delete_node_proxy_with_path = function(name, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "DELETE",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3226,12 +4131,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1OptionsNodeProxyWithPath
     #' connect OPTIONS requests to proxy of Node
     #' @param name
-    connect_options_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    connect_options_node_proxy_with_path = function(name, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "OPTIONS",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3243,12 +4150,14 @@ CoreV1Api <- R6::R6Class(
     #' connectCoreV1HeadNodeProxyWithPath
     #' connect HEAD requests to proxy of Node
     #' @param name
-    connect_head_node_proxy_with_path = function(name) {
+    #' @param path
+    #' @param path_query = NULL
+    connect_head_node_proxy_with_path = function(name, path, path_query = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/proxy/{path}",
         method = "HEAD",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `path` = path),
+        query_params = list(`path` = path_query),
         header_params = list(),
         body = NULL,
         response_type = NULL,
@@ -3260,12 +4169,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1NodeStatus
     #' read status of the specified Node
     #' @param name
-    read_node_status = function(name) {
+    #' @param pretty = NULL
+    read_node_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/status",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1Node",
@@ -3278,14 +4188,16 @@ CoreV1Api <- R6::R6Class(
     #' replace status of the specified Node
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_node_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_node_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/status",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Node",
@@ -3297,30 +4209,46 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1NodeStatus
     #' partially update status of the specified Node
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_node_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_node_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/nodes/{name}/status",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Node",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1PersistentVolumeClaimForAllNamespaces
     #' list or watch objects of kind PersistentVolumeClaim
-    list_persistent_volume_claim_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_persistent_volume_claim_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumeclaims",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolumeClaimList",
@@ -3331,12 +4259,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1PersistentVolume
     #' list or watch objects of kind PersistentVolume
-    list_persistent_volume = function() {
+    #' @param pretty = NULL
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_persistent_volume = function(pretty = NULL, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`pretty` = pretty, `allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolumeList",
@@ -3348,14 +4287,16 @@ CoreV1Api <- R6::R6Class(
     #' createCoreV1PersistentVolume
     #' create a PersistentVolume
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_persistent_volume = function(body, dry_run = NULL, field_validation = NULL) {
+    create_persistent_volume = function(body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolume",
@@ -3366,15 +4307,28 @@ CoreV1Api <- R6::R6Class(
     ,
     #' deleteCoreV1CollectionPersistentVolume
     #' delete collection of PersistentVolume
+    #' @param pretty = NULL
+    #' @param continue = NULL
     #' @param dry_run = NULL
-    delete_collection_persistent_volume = function(dry_run = NULL) {
+    #' @param field_selector = NULL
+    #' @param grace_period_seconds = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param body = NULL
+    delete_collection_persistent_volume = function(pretty = NULL, continue = NULL, dry_run = NULL, field_selector = NULL, grace_period_seconds = NULL, label_selector = NULL, limit = NULL, orphan_dependents = NULL, propagation_policy = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes",
         method = "DELETE",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `continue` = continue, `dryRun` = dry_run, `fieldSelector` = field_selector, `gracePeriodSeconds` = grace_period_seconds, `labelSelector` = label_selector, `limit` = limit, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1Status",
         content_type = "*/*",
         accept = "application/json"
@@ -3384,12 +4338,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1PersistentVolume
     #' read the specified PersistentVolume
     #' @param name
-    read_persistent_volume = function(name) {
+    #' @param pretty = NULL
+    read_persistent_volume = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolume",
@@ -3402,14 +4357,16 @@ CoreV1Api <- R6::R6Class(
     #' replace the specified PersistentVolume
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_persistent_volume = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_persistent_volume = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolume",
@@ -3421,18 +4378,23 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1PersistentVolume
     #' partially update the specified PersistentVolume
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_persistent_volume = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_persistent_volume = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolume",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
@@ -3440,15 +4402,20 @@ CoreV1Api <- R6::R6Class(
     #' deleteCoreV1PersistentVolume
     #' delete a PersistentVolume
     #' @param name
+    #' @param pretty = NULL
     #' @param dry_run = NULL
-    delete_persistent_volume = function(name, dry_run = NULL) {
+    #' @param grace_period_seconds = NULL
+    #' @param orphan_dependents = NULL
+    #' @param propagation_policy = NULL
+    #' @param body = NULL
+    delete_persistent_volume = function(name, pretty = NULL, dry_run = NULL, grace_period_seconds = NULL, orphan_dependents = NULL, propagation_policy = NULL, body = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}",
         method = "DELETE",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `gracePeriodSeconds` = grace_period_seconds, `orphanDependents` = orphan_dependents, `propagationPolicy` = propagation_policy),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolume",
         content_type = "*/*",
         accept = "application/json"
@@ -3458,12 +4425,13 @@ CoreV1Api <- R6::R6Class(
     #' readCoreV1PersistentVolumeStatus
     #' read status of the specified PersistentVolume
     #' @param name
-    read_persistent_volume_status = function(name) {
+    #' @param pretty = NULL
+    read_persistent_volume_status = function(name, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}/status",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`pretty` = pretty),
         header_params = list(),
         body = NULL,
         response_type = "V1PersistentVolume",
@@ -3476,14 +4444,16 @@ CoreV1Api <- R6::R6Class(
     #' replace status of the specified PersistentVolume
     #' @param name
     #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    replace_persistent_volume_status = function(name, body, dry_run = NULL, field_validation = NULL) {
+    replace_persistent_volume_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}/status",
         method = "PUT",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolume",
@@ -3495,30 +4465,46 @@ CoreV1Api <- R6::R6Class(
     #' patchCoreV1PersistentVolumeStatus
     #' partially update status of the specified PersistentVolume
     #' @param name
+    #' @param body
+    #' @param pretty = NULL
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    patch_persistent_volume_status = function(name, dry_run = NULL, field_validation = NULL) {
+    #' @param force = NULL
+    #' @param content_type = "application/json-patch+json"
+    patch_persistent_volume_status = function(name, body, pretty = NULL, dry_run = NULL, field_manager = NULL, field_validation = NULL, force = NULL, content_type = "application/json-patch+json") {
       self$api_client$call_api(
         resource_path = "/api/v1/persistentvolumes/{name}/status",
         method = "PATCH",
         path_params = list(`name` = name),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`pretty` = pretty, `dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `force` = force),
         header_params = list(),
-        body = NULL,
+        body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1PersistentVolume",
-        content_type = "application/json-patch+json",
+        content_type = content_type,
         accept = "application/json"
       )
     }
     ,
     #' listCoreV1PodForAllNamespaces
     #' list or watch objects of kind Pod
-    list_pod_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_pod_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/pods",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PodList",
@@ -3529,12 +4515,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1PodTemplateForAllNamespaces
     #' list or watch objects of kind PodTemplate
-    list_pod_template_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_pod_template_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/podtemplates",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1PodTemplateList",
@@ -3545,12 +4542,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1ReplicationControllerForAllNamespaces
     #' list or watch objects of kind ReplicationController
-    list_replication_controller_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_replication_controller_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/replicationcontrollers",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ReplicationControllerList",
@@ -3561,12 +4569,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1ResourceQuotaForAllNamespaces
     #' list or watch objects of kind ResourceQuota
-    list_resource_quota_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_resource_quota_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/resourcequotas",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ResourceQuotaList",
@@ -3577,12 +4596,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1SecretForAllNamespaces
     #' list or watch objects of kind Secret
-    list_secret_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_secret_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/secrets",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1SecretList",
@@ -3593,12 +4623,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1ServiceAccountForAllNamespaces
     #' list or watch objects of kind ServiceAccount
-    list_service_account_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_service_account_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/serviceaccounts",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ServiceAccountList",
@@ -3609,12 +4650,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' listCoreV1ServiceForAllNamespaces
     #' list or watch objects of kind Service
-    list_service_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    list_service_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/services",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1ServiceList",
@@ -3625,12 +4677,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1ConfigMapListForAllNamespaces
     #' watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_config_map_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_config_map_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/configmaps",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3641,12 +4704,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1EndpointsListForAllNamespaces
     #' watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_endpoints_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_endpoints_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/endpoints",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3657,12 +4731,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1EventListForAllNamespaces
     #' watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_event_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_event_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/events",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3673,12 +4758,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1LimitRangeListForAllNamespaces
     #' watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_limit_range_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_limit_range_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/limitranges",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3689,12 +4785,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespaceList
     #' watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespace_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespace_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3705,12 +4812,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedConfigMapList
     #' watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_config_map_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_config_map_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/configmaps",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3722,12 +4841,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedConfigMap
     #' watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_config_map = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_config_map = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/configmaps/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3738,12 +4869,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedEndpointsList
     #' watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_endpoints_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_endpoints_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/endpoints",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3755,12 +4898,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedEndpoints
     #' watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_endpoints = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_endpoints = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/endpoints/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3771,12 +4926,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedEventList
     #' watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_event_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_event_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/events",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3788,12 +4955,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedEvent
     #' watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_event = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_event = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/events/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3804,12 +4983,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedLimitRangeList
     #' watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_limit_range_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_limit_range_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/limitranges",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3821,12 +5012,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedLimitRange
     #' watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_limit_range = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_limit_range = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/limitranges/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3837,12 +5040,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedPersistentVolumeClaimList
     #' watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_persistent_volume_claim_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_persistent_volume_claim_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3854,12 +5069,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedPersistentVolumeClaim
     #' watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_persistent_volume_claim = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_persistent_volume_claim = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3870,12 +5097,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedPodList
     #' watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_pod_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_pod_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/pods",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3887,12 +5126,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedPod
     #' watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_pod = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_pod = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/pods/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3903,12 +5154,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedPodTemplateList
     #' watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_pod_template_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_pod_template_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/podtemplates",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3920,12 +5183,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedPodTemplate
     #' watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_pod_template = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_pod_template = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3936,12 +5211,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedReplicationControllerList
     #' watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_replication_controller_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_replication_controller_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/replicationcontrollers",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3953,12 +5240,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedReplicationController
     #' watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_replication_controller = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_replication_controller = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3969,12 +5268,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedResourceQuotaList
     #' watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_resource_quota_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_resource_quota_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/resourcequotas",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -3986,12 +5297,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedResourceQuota
     #' watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_resource_quota = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_resource_quota = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4002,12 +5325,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedSecretList
     #' watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_secret_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_secret_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/secrets",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4019,12 +5354,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedSecret
     #' watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_secret = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_secret = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/secrets/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4035,12 +5382,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedServiceAccountList
     #' watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_service_account_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_service_account_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/serviceaccounts",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4052,12 +5411,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedServiceAccount
     #' watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_service_account = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_service_account = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4068,12 +5439,24 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NamespacedServiceList
     #' watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_namespaced_service_list = function() {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_service_list = function(namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/services",
         method = "GET",
-        path_params = list(),
-        query_params = list(),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4085,12 +5468,24 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1NamespacedService
     #' watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespaced_service = function(name) {
+    #' @param namespace
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespaced_service = function(name, namespace, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{namespace}/services/{name}",
         method = "GET",
-        path_params = list(`name` = name),
-        query_params = list(),
+        path_params = list(`name` = name, `namespace` = namespace),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4102,12 +5497,23 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1Namespace
     #' watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_namespace = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_namespace = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/namespaces/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4118,12 +5524,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1NodeList
     #' watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_node_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_node_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/nodes",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4135,12 +5552,23 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1Node
     #' watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_node = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_node = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/nodes/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4151,12 +5579,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1PersistentVolumeClaimListForAllNamespaces
     #' watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_persistent_volume_claim_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_persistent_volume_claim_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/persistentvolumeclaims",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4167,12 +5606,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1PersistentVolumeList
     #' watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_persistent_volume_list = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_persistent_volume_list = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/persistentvolumes",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4184,12 +5634,23 @@ CoreV1Api <- R6::R6Class(
     #' watchCoreV1PersistentVolume
     #' watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
     #' @param name
-    watch_persistent_volume = function(name) {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_persistent_volume = function(name, allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/persistentvolumes/{name}",
         method = "GET",
         path_params = list(`name` = name),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4200,12 +5661,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1PodListForAllNamespaces
     #' watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_pod_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_pod_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/pods",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4216,12 +5688,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1PodTemplateListForAllNamespaces
     #' watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_pod_template_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_pod_template_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/podtemplates",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4232,12 +5715,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1ReplicationControllerListForAllNamespaces
     #' watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_replication_controller_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_replication_controller_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/replicationcontrollers",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4248,12 +5742,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1ResourceQuotaListForAllNamespaces
     #' watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_resource_quota_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_resource_quota_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/resourcequotas",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4264,12 +5769,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1SecretListForAllNamespaces
     #' watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_secret_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_secret_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/secrets",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4280,12 +5796,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1ServiceAccountListForAllNamespaces
     #' watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_service_account_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_service_account_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/serviceaccounts",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",
@@ -4296,12 +5823,23 @@ CoreV1Api <- R6::R6Class(
     ,
     #' watchCoreV1ServiceListForAllNamespaces
     #' watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
-    watch_service_list_for_all_namespaces = function() {
+    #' @param allow_watch_bookmarks = NULL
+    #' @param continue = NULL
+    #' @param field_selector = NULL
+    #' @param label_selector = NULL
+    #' @param limit = NULL
+    #' @param pretty = NULL
+    #' @param resource_version = NULL
+    #' @param resource_version_match = NULL
+    #' @param send_initial_events = NULL
+    #' @param timeout_seconds = NULL
+    #' @param watch = NULL
+    watch_service_list_for_all_namespaces = function(allow_watch_bookmarks = NULL, continue = NULL, field_selector = NULL, label_selector = NULL, limit = NULL, pretty = NULL, resource_version = NULL, resource_version_match = NULL, send_initial_events = NULL, timeout_seconds = NULL, watch = NULL) {
       self$api_client$call_api(
         resource_path = "/api/v1/watch/services",
         method = "GET",
         path_params = list(),
-        query_params = list(),
+        query_params = list(`allowWatchBookmarks` = allow_watch_bookmarks, `continue` = continue, `fieldSelector` = field_selector, `labelSelector` = label_selector, `limit` = limit, `pretty` = pretty, `resourceVersion` = resource_version, `resourceVersionMatch` = resource_version_match, `sendInitialEvents` = send_initial_events, `timeoutSeconds` = timeout_seconds, `watch` = watch),
         header_params = list(),
         body = NULL,
         response_type = "V1WatchEvent",

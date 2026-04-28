@@ -52,11 +52,7 @@ Typed Kubernetes API client for the `CoordinationV1alpha1` surface. See generate
 getCoordinationV1alpha1APIResources
 get available resources
 listCoordinationV1alpha1LeaseCandidateForAllNamespaces
-list or watch objects of kind LeaseCandidate
-listCoordinationV1alpha1NamespacedLeaseCandidate
-list or watch objects of kind LeaseCandidate
-createCoordinationV1alpha1NamespacedLeaseCandidate
-create a LeaseCandidate}
+list or watch objects of kind LeaseCandidate}
 }
 \if{html}{\out{</div>}}
 }
@@ -75,18 +71,101 @@ create a LeaseCandidate}
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-list_lease_candidate_for_all_namespaces}{}}}
 \subsection{Method \code{list_lease_candidate_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$list_lease_candidate_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$list_lease_candidate_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listCoordinationV1alpha1NamespacedLeaseCandidate
+list or watch objects of kind LeaseCandidate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoordinationV1alpha1Api-list_namespaced_lease_candidate"></a>}}
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-list_namespaced_lease_candidate}{}}}
 \subsection{Method \code{list_namespaced_lease_candidate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$list_namespaced_lease_candidate()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$list_namespaced_lease_candidate(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCoordinationV1alpha1NamespacedLeaseCandidate
+create a LeaseCandidate}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoordinationV1alpha1Api-create_namespaced_lease_candidate"></a>}}
@@ -94,8 +173,11 @@ create a LeaseCandidate}
 \subsection{Method \code{create_namespaced_lease_candidate()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$create_namespaced_lease_candidate(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -103,7 +185,11 @@ create a LeaseCandidate}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCoordinationV1alpha1CollectionNamespacedLeaseCandidate
@@ -118,14 +204,54 @@ delete collection of LeaseCandidate}
 \subsection{Method \code{delete_collection_namespaced_lease_candidate()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$delete_collection_namespaced_lease_candidate(
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCoordinationV1alpha1NamespacedLeaseCandidate
 read the specified LeaseCandidate}
 }
@@ -137,13 +263,18 @@ read the specified LeaseCandidate}
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-read_namespaced_lease_candidate}{}}}
 \subsection{Method \code{read_namespaced_lease_candidate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$read_namespaced_lease_candidate(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$read_namespaced_lease_candidate(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCoordinationV1alpha1NamespacedLeaseCandidate
+\item{\code{pretty}}{= NULL
+replaceCoordinationV1alpha1NamespacedLeaseCandidate
 replace the specified LeaseCandidate}
 }
 \if{html}{\out{</div>}}
@@ -156,8 +287,11 @@ replace the specified LeaseCandidate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$replace_namespaced_lease_candidate(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -165,7 +299,11 @@ replace the specified LeaseCandidate}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCoordinationV1alpha1NamespacedLeaseCandidate
@@ -181,17 +319,31 @@ partially update the specified LeaseCandidate}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$patch_namespaced_lease_candidate(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCoordinationV1alpha1NamespacedLeaseCandidate
 delete a LeaseCandidate}
 }
@@ -203,19 +355,34 @@ delete a LeaseCandidate}
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-delete_namespaced_lease_candidate}{}}}
 \subsection{Method \code{delete_namespaced_lease_candidate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$delete_namespaced_lease_candidate(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$delete_namespaced_lease_candidate(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchCoordinationV1alpha1LeaseCandidateListForAllNamespaces
-watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoordinationV1alpha1NamespacedLeaseCandidateList
-watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.
-watchCoordinationV1alpha1NamespacedLeaseCandidate
-watch changes to an object of kind LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -225,27 +392,151 @@ watch changes to an object of kind LeaseCandidate. deprecated: use the 'watch' p
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-watch_lease_candidate_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_lease_candidate_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$watch_lease_candidate_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$watch_lease_candidate_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoordinationV1alpha1NamespacedLeaseCandidateList
+watch individual changes to a list of LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoordinationV1alpha1Api-watch_namespaced_lease_candidate_list"></a>}}
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-watch_namespaced_lease_candidate_list}{}}}
 \subsection{Method \code{watch_namespaced_lease_candidate_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$watch_namespaced_lease_candidate_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$watch_namespaced_lease_candidate_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCoordinationV1alpha1NamespacedLeaseCandidate
+watch changes to an object of kind LeaseCandidate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoordinationV1alpha1Api-watch_namespaced_lease_candidate"></a>}}
 \if{latex}{\out{\hypertarget{method-CoordinationV1alpha1Api-watch_namespaced_lease_candidate}{}}}
 \subsection{Method \code{watch_namespaced_lease_candidate()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$watch_namespaced_lease_candidate(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CoordinationV1alpha1Api$watch_namespaced_lease_candidate(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CoordinationV1alpha1Api-clone"></a>}}

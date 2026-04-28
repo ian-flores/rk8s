@@ -55,11 +55,7 @@ Typed Kubernetes API client for the `AutoscalingV2` surface. See generated metho
 getAutoscalingV2APIResources
 get available resources
 listAutoscalingV2HorizontalPodAutoscalerForAllNamespaces
-list or watch objects of kind HorizontalPodAutoscaler
-listAutoscalingV2NamespacedHorizontalPodAutoscaler
-list or watch objects of kind HorizontalPodAutoscaler
-createAutoscalingV2NamespacedHorizontalPodAutoscaler
-create a HorizontalPodAutoscaler}
+list or watch objects of kind HorizontalPodAutoscaler}
 }
 \if{html}{\out{</div>}}
 }
@@ -78,18 +74,101 @@ create a HorizontalPodAutoscaler}
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-list_horizontal_pod_autoscaler_for_all_namespaces}{}}}
 \subsection{Method \code{list_horizontal_pod_autoscaler_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$list_horizontal_pod_autoscaler_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$list_horizontal_pod_autoscaler_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listAutoscalingV2NamespacedHorizontalPodAutoscaler
+list or watch objects of kind HorizontalPodAutoscaler}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AutoscalingV2Api-list_namespaced_horizontal_pod_autoscaler"></a>}}
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-list_namespaced_horizontal_pod_autoscaler}{}}}
 \subsection{Method \code{list_namespaced_horizontal_pod_autoscaler()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$list_namespaced_horizontal_pod_autoscaler()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$list_namespaced_horizontal_pod_autoscaler(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAutoscalingV2NamespacedHorizontalPodAutoscaler
+create a HorizontalPodAutoscaler}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AutoscalingV2Api-create_namespaced_horizontal_pod_autoscaler"></a>}}
@@ -97,8 +176,11 @@ create a HorizontalPodAutoscaler}
 \subsection{Method \code{create_namespaced_horizontal_pod_autoscaler()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$create_namespaced_horizontal_pod_autoscaler(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -106,7 +188,11 @@ create a HorizontalPodAutoscaler}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscaler
@@ -121,14 +207,54 @@ delete collection of HorizontalPodAutoscaler}
 \subsection{Method \code{delete_collection_namespaced_horizontal_pod_autoscaler()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$delete_collection_namespaced_horizontal_pod_autoscaler(
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAutoscalingV2NamespacedHorizontalPodAutoscaler
 read the specified HorizontalPodAutoscaler}
 }
@@ -140,13 +266,18 @@ read the specified HorizontalPodAutoscaler}
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-read_namespaced_horizontal_pod_autoscaler}{}}}
 \subsection{Method \code{read_namespaced_horizontal_pod_autoscaler()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$read_namespaced_horizontal_pod_autoscaler(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$read_namespaced_horizontal_pod_autoscaler(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAutoscalingV2NamespacedHorizontalPodAutoscaler
+\item{\code{pretty}}{= NULL
+replaceAutoscalingV2NamespacedHorizontalPodAutoscaler
 replace the specified HorizontalPodAutoscaler}
 }
 \if{html}{\out{</div>}}
@@ -159,8 +290,11 @@ replace the specified HorizontalPodAutoscaler}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$replace_namespaced_horizontal_pod_autoscaler(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -168,7 +302,11 @@ replace the specified HorizontalPodAutoscaler}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAutoscalingV2NamespacedHorizontalPodAutoscaler
@@ -184,17 +322,31 @@ partially update the specified HorizontalPodAutoscaler}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$patch_namespaced_horizontal_pod_autoscaler(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAutoscalingV2NamespacedHorizontalPodAutoscaler
 delete a HorizontalPodAutoscaler}
 }
@@ -208,14 +360,30 @@ delete a HorizontalPodAutoscaler}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$delete_namespaced_horizontal_pod_autoscaler(
   name,
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAutoscalingV2NamespacedHorizontalPodAutoscalerStatus
 read status of the specified HorizontalPodAutoscaler}
 }
@@ -227,13 +395,18 @@ read status of the specified HorizontalPodAutoscaler}
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-read_namespaced_horizontal_pod_autoscaler_status}{}}}
 \subsection{Method \code{read_namespaced_horizontal_pod_autoscaler_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$read_namespaced_horizontal_pod_autoscaler_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$read_namespaced_horizontal_pod_autoscaler_status(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus
+\item{\code{pretty}}{= NULL
+replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus
 replace status of the specified HorizontalPodAutoscaler}
 }
 \if{html}{\out{</div>}}
@@ -246,8 +419,11 @@ replace status of the specified HorizontalPodAutoscaler}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$replace_namespaced_horizontal_pod_autoscaler_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -255,7 +431,11 @@ replace status of the specified HorizontalPodAutoscaler}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAutoscalingV2NamespacedHorizontalPodAutoscalerStatus
@@ -271,23 +451,33 @@ partially update status of the specified HorizontalPodAutoscaler}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$patch_namespaced_horizontal_pod_autoscaler_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchAutoscalingV2HorizontalPodAutoscalerListForAllNamespaces
-watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead.
-watchAutoscalingV2NamespacedHorizontalPodAutoscalerList
-watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead.
-watchAutoscalingV2NamespacedHorizontalPodAutoscaler
-watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -297,27 +487,151 @@ watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-watch_horizontal_pod_autoscaler_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_horizontal_pod_autoscaler_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$watch_horizontal_pod_autoscaler_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$watch_horizontal_pod_autoscaler_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAutoscalingV2NamespacedHorizontalPodAutoscalerList
+watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AutoscalingV2Api-watch_namespaced_horizontal_pod_autoscaler_list"></a>}}
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-watch_namespaced_horizontal_pod_autoscaler_list}{}}}
 \subsection{Method \code{watch_namespaced_horizontal_pod_autoscaler_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$watch_namespaced_horizontal_pod_autoscaler_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$watch_namespaced_horizontal_pod_autoscaler_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAutoscalingV2NamespacedHorizontalPodAutoscaler
+watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AutoscalingV2Api-watch_namespaced_horizontal_pod_autoscaler"></a>}}
 \if{latex}{\out{\hypertarget{method-AutoscalingV2Api-watch_namespaced_horizontal_pod_autoscaler}{}}}
 \subsection{Method \code{watch_namespaced_horizontal_pod_autoscaler()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$watch_namespaced_horizontal_pod_autoscaler(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AutoscalingV2Api$watch_namespaced_horizontal_pod_autoscaler(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AutoscalingV2Api-clone"></a>}}

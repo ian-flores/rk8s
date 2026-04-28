@@ -50,9 +50,7 @@ Typed Kubernetes API client for the `StorageV1beta1` surface. See generated meth
 getStorageV1beta1APIResources
 get available resources
 listStorageV1beta1VolumeAttributesClass
-list or watch objects of kind VolumeAttributesClass
-createStorageV1beta1VolumeAttributesClass
-create a VolumeAttributesClass}
+list or watch objects of kind VolumeAttributesClass}
 }
 \if{html}{\out{</div>}}
 }
@@ -71,9 +69,50 @@ create a VolumeAttributesClass}
 \if{latex}{\out{\hypertarget{method-StorageV1beta1Api-list_volume_attributes_class}{}}}
 \subsection{Method \code{list_volume_attributes_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$list_volume_attributes_class()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$list_volume_attributes_class(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStorageV1beta1VolumeAttributesClass
+create a VolumeAttributesClass}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1beta1Api-create_volume_attributes_class"></a>}}
@@ -82,7 +121,9 @@ create a VolumeAttributesClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$create_volume_attributes_class(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -90,7 +131,11 @@ create a VolumeAttributesClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStorageV1beta1CollectionVolumeAttributesClass
@@ -104,13 +149,54 @@ delete collection of VolumeAttributesClass}
 \if{latex}{\out{\hypertarget{method-StorageV1beta1Api-delete_collection_volume_attributes_class}{}}}
 \subsection{Method \code{delete_collection_volume_attributes_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$delete_collection_volume_attributes_class(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$delete_collection_volume_attributes_class(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1beta1VolumeAttributesClass
 read the specified VolumeAttributesClass}
 }
@@ -122,13 +208,14 @@ read the specified VolumeAttributesClass}
 \if{latex}{\out{\hypertarget{method-StorageV1beta1Api-read_volume_attributes_class}{}}}
 \subsection{Method \code{read_volume_attributes_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$read_volume_attributes_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$read_volume_attributes_class(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1beta1VolumeAttributesClass
+\item{\code{pretty}}{= NULL
+replaceStorageV1beta1VolumeAttributesClass
 replace the specified VolumeAttributesClass}
 }
 \if{html}{\out{</div>}}
@@ -142,7 +229,9 @@ replace the specified VolumeAttributesClass}
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$replace_volume_attributes_class(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -150,7 +239,11 @@ replace the specified VolumeAttributesClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1beta1VolumeAttributesClass
@@ -166,17 +259,30 @@ partially update the specified VolumeAttributesClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$patch_volume_attributes_class(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStorageV1beta1VolumeAttributesClass
 delete a VolumeAttributesClass}
 }
@@ -188,17 +294,33 @@ delete a VolumeAttributesClass}
 \if{latex}{\out{\hypertarget{method-StorageV1beta1Api-delete_volume_attributes_class}{}}}
 \subsection{Method \code{delete_volume_attributes_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$delete_volume_attributes_class(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$delete_volume_attributes_class(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchStorageV1beta1VolumeAttributesClassList
-watch individual changes to a list of VolumeAttributesClass. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1beta1VolumeAttributesClass
-watch changes to an object of kind VolumeAttributesClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of VolumeAttributesClass. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -208,18 +330,99 @@ watch changes to an object of kind VolumeAttributesClass. deprecated: use the 'w
 \if{latex}{\out{\hypertarget{method-StorageV1beta1Api-watch_volume_attributes_class_list}{}}}
 \subsection{Method \code{watch_volume_attributes_class_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$watch_volume_attributes_class_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$watch_volume_attributes_class_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1beta1VolumeAttributesClass
+watch changes to an object of kind VolumeAttributesClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1beta1Api-watch_volume_attributes_class"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1beta1Api-watch_volume_attributes_class}{}}}
 \subsection{Method \code{watch_volume_attributes_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$watch_volume_attributes_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1beta1Api$watch_volume_attributes_class(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1beta1Api-clone"></a>}}

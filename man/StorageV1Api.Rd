@@ -91,9 +91,7 @@ Typed Kubernetes API client for the `StorageV1` surface. See generated methods f
 getStorageV1APIResources
 get available resources
 listStorageV1CSIDriver
-list or watch objects of kind CSIDriver
-createStorageV1CSIDriver
-create a CSIDriver}
+list or watch objects of kind CSIDriver}
 }
 \if{html}{\out{</div>}}
 }
@@ -112,22 +110,73 @@ create a CSIDriver}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-list_csi_driver}{}}}
 \subsection{Method \code{list_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_csi_driver()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_csi_driver(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStorageV1CSIDriver
+create a CSIDriver}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-create_csi_driver"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-create_csi_driver}{}}}
 \subsection{Method \code{create_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_csi_driver(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_csi_driver(
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStorageV1CollectionCSIDriver
@@ -141,13 +190,54 @@ delete collection of CSIDriver}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_collection_csi_driver}{}}}
 \subsection{Method \code{delete_collection_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_csi_driver(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_csi_driver(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1CSIDriver
 read the specified CSIDriver}
 }
@@ -159,13 +249,14 @@ read the specified CSIDriver}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-read_csi_driver}{}}}
 \subsection{Method \code{read_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_csi_driver(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_csi_driver(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1CSIDriver
+\item{\code{pretty}}{= NULL
+replaceStorageV1CSIDriver
 replace the specified CSIDriver}
 }
 \if{html}{\out{</div>}}
@@ -179,7 +270,9 @@ replace the specified CSIDriver}
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$replace_csi_driver(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -187,7 +280,11 @@ replace the specified CSIDriver}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1CSIDriver
@@ -201,15 +298,32 @@ partially update the specified CSIDriver}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-patch_csi_driver}{}}}
 \subsection{Method \code{patch_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_csi_driver(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_csi_driver(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStorageV1CSIDriver
 delete a CSIDriver}
 }
@@ -221,17 +335,33 @@ delete a CSIDriver}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_csi_driver}{}}}
 \subsection{Method \code{delete_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_csi_driver(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_csi_driver(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listStorageV1CSINode
-list or watch objects of kind CSINode
-createStorageV1CSINode
-create a CSINode}
+list or watch objects of kind CSINode}
 }
 \if{html}{\out{</div>}}
 }
@@ -241,22 +371,73 @@ create a CSINode}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-list_csi_node}{}}}
 \subsection{Method \code{list_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_csi_node()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_csi_node(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStorageV1CSINode
+create a CSINode}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-create_csi_node"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-create_csi_node}{}}}
 \subsection{Method \code{create_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_csi_node(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_csi_node(
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStorageV1CollectionCSINode
@@ -270,13 +451,54 @@ delete collection of CSINode}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_collection_csi_node}{}}}
 \subsection{Method \code{delete_collection_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_csi_node(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_csi_node(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1CSINode
 read the specified CSINode}
 }
@@ -288,13 +510,14 @@ read the specified CSINode}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-read_csi_node}{}}}
 \subsection{Method \code{read_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_csi_node(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_csi_node(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1CSINode
+\item{\code{pretty}}{= NULL
+replaceStorageV1CSINode
 replace the specified CSINode}
 }
 \if{html}{\out{</div>}}
@@ -308,7 +531,9 @@ replace the specified CSINode}
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$replace_csi_node(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -316,7 +541,11 @@ replace the specified CSINode}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1CSINode
@@ -330,15 +559,32 @@ partially update the specified CSINode}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-patch_csi_node}{}}}
 \subsection{Method \code{patch_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_csi_node(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_csi_node(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStorageV1CSINode
 delete a CSINode}
 }
@@ -350,19 +596,33 @@ delete a CSINode}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_csi_node}{}}}
 \subsection{Method \code{delete_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_csi_node(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_csi_node(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listStorageV1CSIStorageCapacityForAllNamespaces
-list or watch objects of kind CSIStorageCapacity
-listStorageV1NamespacedCSIStorageCapacity
-list or watch objects of kind CSIStorageCapacity
-createStorageV1NamespacedCSIStorageCapacity
-create a CSIStorageCapacity}
+list or watch objects of kind CSIStorageCapacity}
 }
 \if{html}{\out{</div>}}
 }
@@ -372,18 +632,101 @@ create a CSIStorageCapacity}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-list_csi_storage_capacity_for_all_namespaces}{}}}
 \subsection{Method \code{list_csi_storage_capacity_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_csi_storage_capacity_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_csi_storage_capacity_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listStorageV1NamespacedCSIStorageCapacity
+list or watch objects of kind CSIStorageCapacity}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-list_namespaced_csi_storage_capacity"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-list_namespaced_csi_storage_capacity}{}}}
 \subsection{Method \code{list_namespaced_csi_storage_capacity()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_namespaced_csi_storage_capacity()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_namespaced_csi_storage_capacity(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStorageV1NamespacedCSIStorageCapacity
+create a CSIStorageCapacity}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-create_namespaced_csi_storage_capacity"></a>}}
@@ -391,8 +734,11 @@ create a CSIStorageCapacity}
 \subsection{Method \code{create_namespaced_csi_storage_capacity()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_namespaced_csi_storage_capacity(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -400,7 +746,11 @@ create a CSIStorageCapacity}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStorageV1CollectionNamespacedCSIStorageCapacity
@@ -414,13 +764,55 @@ delete collection of CSIStorageCapacity}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_collection_namespaced_csi_storage_capacity}{}}}
 \subsection{Method \code{delete_collection_namespaced_csi_storage_capacity()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_namespaced_csi_storage_capacity(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_namespaced_csi_storage_capacity(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1NamespacedCSIStorageCapacity
 read the specified CSIStorageCapacity}
 }
@@ -432,13 +824,18 @@ read the specified CSIStorageCapacity}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-read_namespaced_csi_storage_capacity}{}}}
 \subsection{Method \code{read_namespaced_csi_storage_capacity()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_namespaced_csi_storage_capacity(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_namespaced_csi_storage_capacity(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1NamespacedCSIStorageCapacity
+\item{\code{pretty}}{= NULL
+replaceStorageV1NamespacedCSIStorageCapacity
 replace the specified CSIStorageCapacity}
 }
 \if{html}{\out{</div>}}
@@ -451,8 +848,11 @@ replace the specified CSIStorageCapacity}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$replace_namespaced_csi_storage_capacity(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -460,7 +860,11 @@ replace the specified CSIStorageCapacity}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1NamespacedCSIStorageCapacity
@@ -476,17 +880,31 @@ partially update the specified CSIStorageCapacity}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_namespaced_csi_storage_capacity(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStorageV1NamespacedCSIStorageCapacity
 delete a CSIStorageCapacity}
 }
@@ -498,17 +916,34 @@ delete a CSIStorageCapacity}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_namespaced_csi_storage_capacity}{}}}
 \subsection{Method \code{delete_namespaced_csi_storage_capacity()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_namespaced_csi_storage_capacity(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_namespaced_csi_storage_capacity(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listStorageV1StorageClass
-list or watch objects of kind StorageClass
-createStorageV1StorageClass
-create a StorageClass}
+list or watch objects of kind StorageClass}
 }
 \if{html}{\out{</div>}}
 }
@@ -518,9 +953,50 @@ create a StorageClass}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-list_storage_class}{}}}
 \subsection{Method \code{list_storage_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_storage_class()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_storage_class(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStorageV1StorageClass
+create a StorageClass}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-create_storage_class"></a>}}
@@ -529,7 +1005,9 @@ create a StorageClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_storage_class(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -537,7 +1015,11 @@ create a StorageClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStorageV1CollectionStorageClass
@@ -551,13 +1033,54 @@ delete collection of StorageClass}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_collection_storage_class}{}}}
 \subsection{Method \code{delete_collection_storage_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_storage_class(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_storage_class(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1StorageClass
 read the specified StorageClass}
 }
@@ -569,13 +1092,14 @@ read the specified StorageClass}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-read_storage_class}{}}}
 \subsection{Method \code{read_storage_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_storage_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_storage_class(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1StorageClass
+\item{\code{pretty}}{= NULL
+replaceStorageV1StorageClass
 replace the specified StorageClass}
 }
 \if{html}{\out{</div>}}
@@ -589,7 +1113,9 @@ replace the specified StorageClass}
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$replace_storage_class(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -597,7 +1123,11 @@ replace the specified StorageClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1StorageClass
@@ -611,15 +1141,32 @@ partially update the specified StorageClass}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-patch_storage_class}{}}}
 \subsection{Method \code{patch_storage_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_storage_class(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_storage_class(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStorageV1StorageClass
 delete a StorageClass}
 }
@@ -631,17 +1178,33 @@ delete a StorageClass}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_storage_class}{}}}
 \subsection{Method \code{delete_storage_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_storage_class(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_storage_class(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listStorageV1VolumeAttachment
-list or watch objects of kind VolumeAttachment
-createStorageV1VolumeAttachment
-create a VolumeAttachment}
+list or watch objects of kind VolumeAttachment}
 }
 \if{html}{\out{</div>}}
 }
@@ -651,9 +1214,50 @@ create a VolumeAttachment}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-list_volume_attachment}{}}}
 \subsection{Method \code{list_volume_attachment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_volume_attachment()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$list_volume_attachment(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStorageV1VolumeAttachment
+create a VolumeAttachment}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-create_volume_attachment"></a>}}
@@ -662,7 +1266,9 @@ create a VolumeAttachment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$create_volume_attachment(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -670,7 +1276,11 @@ create a VolumeAttachment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStorageV1CollectionVolumeAttachment
@@ -684,13 +1294,54 @@ delete collection of VolumeAttachment}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_collection_volume_attachment}{}}}
 \subsection{Method \code{delete_collection_volume_attachment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_volume_attachment(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_collection_volume_attachment(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1VolumeAttachment
 read the specified VolumeAttachment}
 }
@@ -702,13 +1353,14 @@ read the specified VolumeAttachment}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-read_volume_attachment}{}}}
 \subsection{Method \code{read_volume_attachment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_volume_attachment(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_volume_attachment(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1VolumeAttachment
+\item{\code{pretty}}{= NULL
+replaceStorageV1VolumeAttachment
 replace the specified VolumeAttachment}
 }
 \if{html}{\out{</div>}}
@@ -722,7 +1374,9 @@ replace the specified VolumeAttachment}
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$replace_volume_attachment(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -730,7 +1384,11 @@ replace the specified VolumeAttachment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1VolumeAttachment
@@ -746,17 +1404,30 @@ partially update the specified VolumeAttachment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_volume_attachment(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStorageV1VolumeAttachment
 delete a VolumeAttachment}
 }
@@ -768,13 +1439,31 @@ delete a VolumeAttachment}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-delete_volume_attachment}{}}}
 \subsection{Method \code{delete_volume_attachment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_volume_attachment(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$delete_volume_attachment(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStorageV1VolumeAttachmentStatus
 read status of the specified VolumeAttachment}
 }
@@ -786,13 +1475,14 @@ read status of the specified VolumeAttachment}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-read_volume_attachment_status}{}}}
 \subsection{Method \code{read_volume_attachment_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_volume_attachment_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$read_volume_attachment_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStorageV1VolumeAttachmentStatus
+\item{\code{pretty}}{= NULL
+replaceStorageV1VolumeAttachmentStatus
 replace status of the specified VolumeAttachment}
 }
 \if{html}{\out{</div>}}
@@ -806,7 +1496,9 @@ replace status of the specified VolumeAttachment}
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$replace_volume_attachment_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -814,7 +1506,11 @@ replace status of the specified VolumeAttachment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStorageV1VolumeAttachmentStatus
@@ -830,21 +1526,32 @@ partially update status of the specified VolumeAttachment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$patch_volume_attachment_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchStorageV1CSIDriverList
-watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1CSIDriver
-watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -854,25 +1561,98 @@ watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parame
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_csi_driver_list}{}}}
 \subsection{Method \code{watch_csi_driver_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_driver_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_driver_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1CSIDriver
+watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-watch_csi_driver"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_csi_driver}{}}}
 \subsection{Method \code{watch_csi_driver()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_driver(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_driver(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchStorageV1CSINodeList
-watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1CSINode
-watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1CSINodeList
+watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -882,27 +1662,98 @@ watch changes to an object of kind CSINode. deprecated: use the 'watch' paramete
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_csi_node_list}{}}}
 \subsection{Method \code{watch_csi_node_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_node_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_node_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1CSINode
+watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-watch_csi_node"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_csi_node}{}}}
 \subsection{Method \code{watch_csi_node()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_node(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_node(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchStorageV1CSIStorageCapacityListForAllNamespaces
-watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1NamespacedCSIStorageCapacityList
-watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1NamespacedCSIStorageCapacity
-watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1CSIStorageCapacityListForAllNamespaces
+watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -912,34 +1763,150 @@ watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watc
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_csi_storage_capacity_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_csi_storage_capacity_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_storage_capacity_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_csi_storage_capacity_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1NamespacedCSIStorageCapacityList
+watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-watch_namespaced_csi_storage_capacity_list"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_namespaced_csi_storage_capacity_list}{}}}
 \subsection{Method \code{watch_namespaced_csi_storage_capacity_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_namespaced_csi_storage_capacity_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_namespaced_csi_storage_capacity_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1NamespacedCSIStorageCapacity
+watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-watch_namespaced_csi_storage_capacity"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_namespaced_csi_storage_capacity}{}}}
 \subsection{Method \code{watch_namespaced_csi_storage_capacity()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_namespaced_csi_storage_capacity(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_namespaced_csi_storage_capacity(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchStorageV1StorageClassList
-watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1StorageClass
-watch changes to an object of kind StorageClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1StorageClassList
+watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -949,25 +1916,98 @@ watch changes to an object of kind StorageClass. deprecated: use the 'watch' par
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_storage_class_list}{}}}
 \subsection{Method \code{watch_storage_class_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_storage_class_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_storage_class_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1StorageClass
+watch changes to an object of kind StorageClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-watch_storage_class"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_storage_class}{}}}
 \subsection{Method \code{watch_storage_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_storage_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_storage_class(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchStorageV1VolumeAttachmentList
-watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with a list operation instead.
-watchStorageV1VolumeAttachment
-watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1VolumeAttachmentList
+watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -977,18 +2017,99 @@ watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch'
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_volume_attachment_list}{}}}
 \subsection{Method \code{watch_volume_attachment_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_volume_attachment_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_volume_attachment_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStorageV1VolumeAttachment
+watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-watch_volume_attachment"></a>}}
 \if{latex}{\out{\hypertarget{method-StorageV1Api-watch_volume_attachment}{}}}
 \subsection{Method \code{watch_volume_attachment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_volume_attachment(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StorageV1Api$watch_volume_attachment(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StorageV1Api-clone"></a>}}

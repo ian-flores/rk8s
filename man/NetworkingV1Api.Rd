@@ -75,9 +75,7 @@ Typed Kubernetes API client for the `NetworkingV1` surface. See generated method
 getNetworkingV1APIResources
 get available resources
 listNetworkingV1IngressClass
-list or watch objects of kind IngressClass
-createNetworkingV1IngressClass
-create an IngressClass}
+list or watch objects of kind IngressClass}
 }
 \if{html}{\out{</div>}}
 }
@@ -96,9 +94,50 @@ create an IngressClass}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-list_ingress_class}{}}}
 \subsection{Method \code{list_ingress_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_ingress_class()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_ingress_class(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createNetworkingV1IngressClass
+create an IngressClass}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-create_ingress_class"></a>}}
@@ -107,7 +146,9 @@ create an IngressClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$create_ingress_class(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -115,7 +156,11 @@ create an IngressClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteNetworkingV1CollectionIngressClass
@@ -129,13 +174,54 @@ delete collection of IngressClass}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-delete_collection_ingress_class}{}}}
 \subsection{Method \code{delete_collection_ingress_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_collection_ingress_class(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_collection_ingress_class(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1IngressClass
 read the specified IngressClass}
 }
@@ -147,13 +233,14 @@ read the specified IngressClass}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-read_ingress_class}{}}}
 \subsection{Method \code{read_ingress_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_ingress_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_ingress_class(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1IngressClass
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1IngressClass
 replace the specified IngressClass}
 }
 \if{html}{\out{</div>}}
@@ -167,7 +254,9 @@ replace the specified IngressClass}
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$replace_ingress_class(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -175,7 +264,11 @@ replace the specified IngressClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1IngressClass
@@ -191,17 +284,30 @@ partially update the specified IngressClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$patch_ingress_class(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteNetworkingV1IngressClass
 delete an IngressClass}
 }
@@ -213,19 +319,33 @@ delete an IngressClass}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-delete_ingress_class}{}}}
 \subsection{Method \code{delete_ingress_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_ingress_class(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_ingress_class(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listNetworkingV1IngressForAllNamespaces
-list or watch objects of kind Ingress
-listNetworkingV1NamespacedIngress
-list or watch objects of kind Ingress
-createNetworkingV1NamespacedIngress
-create an Ingress}
+list or watch objects of kind Ingress}
 }
 \if{html}{\out{</div>}}
 }
@@ -235,18 +355,101 @@ create an Ingress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-list_ingress_for_all_namespaces}{}}}
 \subsection{Method \code{list_ingress_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_ingress_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_ingress_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listNetworkingV1NamespacedIngress
+list or watch objects of kind Ingress}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-list_namespaced_ingress"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-list_namespaced_ingress}{}}}
 \subsection{Method \code{list_namespaced_ingress()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_namespaced_ingress()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_namespaced_ingress(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createNetworkingV1NamespacedIngress
+create an Ingress}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-create_namespaced_ingress"></a>}}
@@ -254,8 +457,11 @@ create an Ingress}
 \subsection{Method \code{create_namespaced_ingress()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$create_namespaced_ingress(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -263,7 +469,11 @@ create an Ingress}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteNetworkingV1CollectionNamespacedIngress
@@ -277,13 +487,55 @@ delete collection of Ingress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-delete_collection_namespaced_ingress}{}}}
 \subsection{Method \code{delete_collection_namespaced_ingress()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_collection_namespaced_ingress(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_collection_namespaced_ingress(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1NamespacedIngress
 read the specified Ingress}
 }
@@ -295,13 +547,14 @@ read the specified Ingress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-read_namespaced_ingress}{}}}
 \subsection{Method \code{read_namespaced_ingress()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_namespaced_ingress(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_namespaced_ingress(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1NamespacedIngress
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1NamespacedIngress
 replace the specified Ingress}
 }
 \if{html}{\out{</div>}}
@@ -314,8 +567,11 @@ replace the specified Ingress}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$replace_namespaced_ingress(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -323,7 +579,11 @@ replace the specified Ingress}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1NamespacedIngress
@@ -339,17 +599,31 @@ partially update the specified Ingress}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$patch_namespaced_ingress(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteNetworkingV1NamespacedIngress
 delete an Ingress}
 }
@@ -361,13 +635,32 @@ delete an Ingress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-delete_namespaced_ingress}{}}}
 \subsection{Method \code{delete_namespaced_ingress()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_namespaced_ingress(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_namespaced_ingress(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1NamespacedIngressStatus
 read status of the specified Ingress}
 }
@@ -379,13 +672,14 @@ read status of the specified Ingress}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-read_namespaced_ingress_status}{}}}
 \subsection{Method \code{read_namespaced_ingress_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_namespaced_ingress_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_namespaced_ingress_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1NamespacedIngressStatus
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1NamespacedIngressStatus
 replace status of the specified Ingress}
 }
 \if{html}{\out{</div>}}
@@ -398,8 +692,11 @@ replace status of the specified Ingress}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$replace_namespaced_ingress_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -407,7 +704,11 @@ replace status of the specified Ingress}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1NamespacedIngressStatus
@@ -423,21 +724,33 @@ partially update status of the specified Ingress}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$patch_namespaced_ingress_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listNetworkingV1NamespacedNetworkPolicy
-list or watch objects of kind NetworkPolicy
-createNetworkingV1NamespacedNetworkPolicy
-create a NetworkPolicy}
+list or watch objects of kind NetworkPolicy}
 }
 \if{html}{\out{</div>}}
 }
@@ -447,9 +760,51 @@ create a NetworkPolicy}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-list_namespaced_network_policy}{}}}
 \subsection{Method \code{list_namespaced_network_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_namespaced_network_policy()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_namespaced_network_policy(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createNetworkingV1NamespacedNetworkPolicy
+create a NetworkPolicy}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-create_namespaced_network_policy"></a>}}
@@ -457,8 +812,11 @@ create a NetworkPolicy}
 \subsection{Method \code{create_namespaced_network_policy()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$create_namespaced_network_policy(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -466,7 +824,11 @@ create a NetworkPolicy}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteNetworkingV1CollectionNamespacedNetworkPolicy
@@ -480,13 +842,55 @@ delete collection of NetworkPolicy}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-delete_collection_namespaced_network_policy}{}}}
 \subsection{Method \code{delete_collection_namespaced_network_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_collection_namespaced_network_policy(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_collection_namespaced_network_policy(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNetworkingV1NamespacedNetworkPolicy
 read the specified NetworkPolicy}
 }
@@ -498,13 +902,14 @@ read the specified NetworkPolicy}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-read_namespaced_network_policy}{}}}
 \subsection{Method \code{read_namespaced_network_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_namespaced_network_policy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$read_namespaced_network_policy(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNetworkingV1NamespacedNetworkPolicy
+\item{\code{pretty}}{= NULL
+replaceNetworkingV1NamespacedNetworkPolicy
 replace the specified NetworkPolicy}
 }
 \if{html}{\out{</div>}}
@@ -517,8 +922,11 @@ replace the specified NetworkPolicy}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$replace_namespaced_network_policy(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -526,7 +934,11 @@ replace the specified NetworkPolicy}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNetworkingV1NamespacedNetworkPolicy
@@ -542,17 +954,31 @@ partially update the specified NetworkPolicy}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$patch_namespaced_network_policy(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteNetworkingV1NamespacedNetworkPolicy
 delete a NetworkPolicy}
 }
@@ -564,19 +990,34 @@ delete a NetworkPolicy}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-delete_namespaced_network_policy}{}}}
 \subsection{Method \code{delete_namespaced_network_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_namespaced_network_policy(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$delete_namespaced_network_policy(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listNetworkingV1NetworkPolicyForAllNamespaces
-list or watch objects of kind NetworkPolicy
-watchNetworkingV1IngressClassList
-watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a list operation instead.
-watchNetworkingV1IngressClass
-watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+list or watch objects of kind NetworkPolicy}
 }
 \if{html}{\out{</div>}}
 }
@@ -586,36 +1027,148 @@ watch changes to an object of kind IngressClass. deprecated: use the 'watch' par
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-list_network_policy_for_all_namespaces}{}}}
 \subsection{Method \code{list_network_policy_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_network_policy_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$list_network_policy_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1IngressClassList
+watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-watch_ingress_class_list"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_ingress_class_list}{}}}
 \subsection{Method \code{watch_ingress_class_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_ingress_class_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_ingress_class_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1IngressClass
+watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-watch_ingress_class"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_ingress_class}{}}}
 \subsection{Method \code{watch_ingress_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_ingress_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_ingress_class(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchNetworkingV1IngressListForAllNamespaces
-watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
-watchNetworkingV1NamespacedIngressList
-watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
-watchNetworkingV1NamespacedIngress
-watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1IngressListForAllNamespaces
+watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -625,34 +1178,150 @@ watch changes to an object of kind Ingress. deprecated: use the 'watch' paramete
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_ingress_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_ingress_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_ingress_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_ingress_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1NamespacedIngressList
+watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-watch_namespaced_ingress_list"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_namespaced_ingress_list}{}}}
 \subsection{Method \code{watch_namespaced_ingress_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_ingress_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_ingress_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1NamespacedIngress
+watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-watch_namespaced_ingress"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_namespaced_ingress}{}}}
 \subsection{Method \code{watch_namespaced_ingress()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_ingress(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_ingress(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchNetworkingV1NamespacedNetworkPolicyList
-watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
-watchNetworkingV1NamespacedNetworkPolicy
-watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1NamespacedNetworkPolicyList
+watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -662,22 +1331,99 @@ watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' pa
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_namespaced_network_policy_list}{}}}
 \subsection{Method \code{watch_namespaced_network_policy_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_network_policy_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_network_policy_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1NamespacedNetworkPolicy
+watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-watch_namespaced_network_policy"></a>}}
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_namespaced_network_policy}{}}}
 \subsection{Method \code{watch_namespaced_network_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_network_policy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_namespaced_network_policy(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchNetworkingV1NetworkPolicyListForAllNamespaces
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNetworkingV1NetworkPolicyListForAllNamespaces
 watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
@@ -688,9 +1434,48 @@ watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch'
 \if{latex}{\out{\hypertarget{method-NetworkingV1Api-watch_network_policy_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_network_policy_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_network_policy_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NetworkingV1Api$watch_network_policy_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NetworkingV1Api-clone"></a>}}

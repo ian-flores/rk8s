@@ -55,9 +55,7 @@ Typed Kubernetes API client for the `PolicyV1` surface. See generated methods fo
 getPolicyV1APIResources
 get available resources
 listPolicyV1NamespacedPodDisruptionBudget
-list or watch objects of kind PodDisruptionBudget
-createPolicyV1NamespacedPodDisruptionBudget
-create a PodDisruptionBudget}
+list or watch objects of kind PodDisruptionBudget}
 }
 \if{html}{\out{</div>}}
 }
@@ -76,9 +74,51 @@ create a PodDisruptionBudget}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-list_namespaced_pod_disruption_budget}{}}}
 \subsection{Method \code{list_namespaced_pod_disruption_budget()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$list_namespaced_pod_disruption_budget()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$list_namespaced_pod_disruption_budget(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createPolicyV1NamespacedPodDisruptionBudget
+create a PodDisruptionBudget}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PolicyV1Api-create_namespaced_pod_disruption_budget"></a>}}
@@ -86,8 +126,11 @@ create a PodDisruptionBudget}
 \subsection{Method \code{create_namespaced_pod_disruption_budget()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$create_namespaced_pod_disruption_budget(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -95,7 +138,11 @@ create a PodDisruptionBudget}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deletePolicyV1CollectionNamespacedPodDisruptionBudget
@@ -109,13 +156,55 @@ delete collection of PodDisruptionBudget}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-delete_collection_namespaced_pod_disruption_budget}{}}}
 \subsection{Method \code{delete_collection_namespaced_pod_disruption_budget()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$delete_collection_namespaced_pod_disruption_budget(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$delete_collection_namespaced_pod_disruption_budget(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readPolicyV1NamespacedPodDisruptionBudget
 read the specified PodDisruptionBudget}
 }
@@ -127,13 +216,18 @@ read the specified PodDisruptionBudget}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-read_namespaced_pod_disruption_budget}{}}}
 \subsection{Method \code{read_namespaced_pod_disruption_budget()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$read_namespaced_pod_disruption_budget(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$read_namespaced_pod_disruption_budget(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replacePolicyV1NamespacedPodDisruptionBudget
+\item{\code{pretty}}{= NULL
+replacePolicyV1NamespacedPodDisruptionBudget
 replace the specified PodDisruptionBudget}
 }
 \if{html}{\out{</div>}}
@@ -146,8 +240,11 @@ replace the specified PodDisruptionBudget}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$replace_namespaced_pod_disruption_budget(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -155,7 +252,11 @@ replace the specified PodDisruptionBudget}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchPolicyV1NamespacedPodDisruptionBudget
@@ -171,17 +272,31 @@ partially update the specified PodDisruptionBudget}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$patch_namespaced_pod_disruption_budget(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deletePolicyV1NamespacedPodDisruptionBudget
 delete a PodDisruptionBudget}
 }
@@ -193,13 +308,32 @@ delete a PodDisruptionBudget}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-delete_namespaced_pod_disruption_budget}{}}}
 \subsection{Method \code{delete_namespaced_pod_disruption_budget()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$delete_namespaced_pod_disruption_budget(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$delete_namespaced_pod_disruption_budget(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readPolicyV1NamespacedPodDisruptionBudgetStatus
 read status of the specified PodDisruptionBudget}
 }
@@ -211,13 +345,18 @@ read status of the specified PodDisruptionBudget}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-read_namespaced_pod_disruption_budget_status}{}}}
 \subsection{Method \code{read_namespaced_pod_disruption_budget_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$read_namespaced_pod_disruption_budget_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$read_namespaced_pod_disruption_budget_status(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replacePolicyV1NamespacedPodDisruptionBudgetStatus
+\item{\code{pretty}}{= NULL
+replacePolicyV1NamespacedPodDisruptionBudgetStatus
 replace status of the specified PodDisruptionBudget}
 }
 \if{html}{\out{</div>}}
@@ -230,8 +369,11 @@ replace status of the specified PodDisruptionBudget}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$replace_namespaced_pod_disruption_budget_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -239,7 +381,11 @@ replace status of the specified PodDisruptionBudget}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchPolicyV1NamespacedPodDisruptionBudgetStatus
@@ -255,23 +401,33 @@ partially update status of the specified PodDisruptionBudget}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$patch_namespaced_pod_disruption_budget_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listPolicyV1PodDisruptionBudgetForAllNamespaces
-list or watch objects of kind PodDisruptionBudget
-watchPolicyV1NamespacedPodDisruptionBudgetList
-watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.
-watchPolicyV1NamespacedPodDisruptionBudget
-watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+list or watch objects of kind PodDisruptionBudget}
 }
 \if{html}{\out{</div>}}
 }
@@ -281,31 +437,149 @@ watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'wat
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-list_pod_disruption_budget_for_all_namespaces}{}}}
 \subsection{Method \code{list_pod_disruption_budget_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$list_pod_disruption_budget_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$list_pod_disruption_budget_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchPolicyV1NamespacedPodDisruptionBudgetList
+watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PolicyV1Api-watch_namespaced_pod_disruption_budget_list"></a>}}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-watch_namespaced_pod_disruption_budget_list}{}}}
 \subsection{Method \code{watch_namespaced_pod_disruption_budget_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$watch_namespaced_pod_disruption_budget_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$watch_namespaced_pod_disruption_budget_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchPolicyV1NamespacedPodDisruptionBudget
+watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PolicyV1Api-watch_namespaced_pod_disruption_budget"></a>}}
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-watch_namespaced_pod_disruption_budget}{}}}
 \subsection{Method \code{watch_namespaced_pod_disruption_budget()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$watch_namespaced_pod_disruption_budget(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$watch_namespaced_pod_disruption_budget(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchPolicyV1PodDisruptionBudgetListForAllNamespaces
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchPolicyV1PodDisruptionBudgetListForAllNamespaces
 watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
@@ -316,9 +590,48 @@ watch individual changes to a list of PodDisruptionBudget. deprecated: use the '
 \if{latex}{\out{\hypertarget{method-PolicyV1Api-watch_pod_disruption_budget_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_pod_disruption_budget_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$watch_pod_disruption_budget_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{PolicyV1Api$watch_pod_disruption_budget_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PolicyV1Api-clone"></a>}}

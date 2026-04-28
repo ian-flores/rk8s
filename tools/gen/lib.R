@@ -292,6 +292,38 @@ emit_from_list_body <- function(cls, field_names, r_names, props, name_map) {
 # API class emission
 # -----------------------------------------------------------------------------
 
+# Resolve `{"$ref": "#/parameters/<key>"}` entries in every path-level and
+# operation-level `parameters` list against the top-level `spec.parameters`
+# table. Returns the same `paths` structure with refs replaced by their full
+# parameter objects.
+resolve_param_refs <- function(paths, registry) {
+  resolve_one <- function(p) {
+    if (!is.null(p[["$ref"]])) {
+      key <- sub("^#/parameters/", "", p[["$ref"]])
+      r <- registry[[key]]
+      if (is.null(r)) {
+        warning("Unknown parameter ref: ", p[["$ref"]], call. = FALSE)
+        return(p)
+      }
+      return(r)
+    }
+    p
+  }
+  resolve_list <- function(plist) lapply(plist %||% list(), resolve_one)
+  for (path_name in names(paths)) {
+    item <- paths[[path_name]]
+    if (!is.null(item$parameters)) {
+      paths[[path_name]]$parameters <- resolve_list(item$parameters)
+    }
+    for (m in c("get", "post", "put", "patch", "delete", "options", "head")) {
+      if (!is.null(item[[m]]) && !is.null(item[[m]]$parameters)) {
+        paths[[path_name]][[m]]$parameters <- resolve_list(item[[m]]$parameters)
+      }
+    }
+  }
+  paths
+}
+
 group_operations_by_tag <- function(paths) {
   out <- list()
   for (p in names(paths)) {
@@ -380,12 +412,39 @@ emit_operation <- function(cls, o, name_map) {
   r_body <- if (has_body) snake(body_param[[1]]$name) else character()
   body_required <- has_body && isTRUE(body_param[[1]]$required)
 
+  # PATCH: expose `content_type` so callers can pick between strategic-merge
+  # (default), JSON-merge, RFC 6902 JSON Patch, or apply-patch (server-side
+  # apply). The default is always the first `consumes` value from the spec,
+  # which matches the historical hard-coded behaviour.
+  is_patch <- identical(o$method, "patch")
+  consumes <- unlist(op$consumes %||% list("application/json"))
+  default_content_type <- consumes[1]
+
+  # A few k8s ops have a same-named param in two different `in:` locations
+  # (notably /pods/{name}/proxy/{path} which has `path` as a path param AND
+  # `path` as a query param). Disambiguate query/header collisions with a
+  # `_query` / `_header` suffix; remember the renames so the call_api list
+  # still carries the original JSON key.
+  query_orig <- vapply(query_params, function(p) p$name, character(1))
+  header_orig <- vapply(header_params, function(p) p$name, character(1))
+  taken <- r_path
+  for (i in seq_along(r_query)) {
+    if (r_query[i] %in% taken) r_query[i] <- paste0(r_query[i], "_query")
+    taken <- c(taken, r_query[i])
+  }
+  for (i in seq_along(r_header)) {
+    if (r_header[i] %in% taken) r_header[i] <- paste0(r_header[i], "_header")
+    taken <- c(taken, r_header[i])
+  }
+  if (has_body && r_body %in% taken) r_body <- paste0(r_body, "_body")
+
   arg_defs <- c(
     r_path,
     if (has_body && body_required) r_body,
     if (length(r_query)) paste0(r_query, " = NULL"),
     if (length(r_header)) paste0(r_header, " = NULL"),
-    if (has_body && !body_required) paste0(r_body, " = NULL")
+    if (has_body && !body_required) paste0(r_body, " = NULL"),
+    if (is_patch) sprintf("content_type = \"%s\"", default_content_type)
   )
   arg_str <- paste(arg_defs, collapse = ", ")
 
@@ -397,24 +456,26 @@ emit_operation <- function(cls, o, name_map) {
     if (info$kind == "model") resp_type <- paste0("\"", info$type_name, "\"")
   }
 
-  # Path param list, query param list, body, content-type (for patches)
+  # Path/query/header param lists keep the original JSON names as keys but
+  # bind the (possibly suffix-disambiguated) R variable names as values.
   path_list <- if (length(r_path)) paste0(
     "list(", paste(sprintf("`%s` = %s", sapply(path_params, `[[`, "name"), r_path), collapse = ", "),
     ")") else "list()"
   query_list <- if (length(r_query)) paste0(
-    "list(", paste(sprintf("`%s` = %s", sapply(query_params, `[[`, "name"), r_query), collapse = ", "),
+    "list(", paste(sprintf("`%s` = %s", query_orig, r_query), collapse = ", "),
     ")") else "list()"
   header_list <- if (length(r_header)) paste0(
-    "list(", paste(sprintf("`%s` = %s", sapply(header_params, `[[`, "name"), r_header), collapse = ", "),
+    "list(", paste(sprintf("`%s` = %s", header_orig, r_header), collapse = ", "),
     ")") else "list()"
   body_expr <- if (has_body)
     sprintf("if (inherits(%s, \"R6\")) %s$to_list() else %s", r_body, r_body, r_body)
   else "NULL"
 
-  consumes <- unlist(op$consumes %||% list("application/json"))
   produces <- unlist(op$produces %||% list("application/json"))
-  # For PATCH, the first `consumes` is the default (e.g. application/merge-patch+json).
-  content_type <- consumes[1]
+  # For PATCH the content_type comes from the function argument (defaulted
+  # above); for everything else it's fixed from the spec.
+  content_type_expr <- if (is_patch) "content_type"
+                       else paste0("\"", default_content_type, "\"")
   accept <- produces[1]
 
   doc <- c(
@@ -434,7 +495,7 @@ emit_operation <- function(cls, o, name_map) {
     paste0("        header_params = ", header_list, ","),
     paste0("        body = ", body_expr, ","),
     paste0("        response_type = ", resp_type, ","),
-    paste0("        content_type = \"", content_type, "\","),
+    paste0("        content_type = ", content_type_expr, ","),
     paste0("        accept = \"", accept, "\""),
     "      )",
     "    }"

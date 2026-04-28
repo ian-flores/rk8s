@@ -50,9 +50,7 @@ Typed Kubernetes API client for the `NodeV1` surface. See generated methods for 
 getNodeV1APIResources
 get available resources
 listNodeV1RuntimeClass
-list or watch objects of kind RuntimeClass
-createNodeV1RuntimeClass
-create a RuntimeClass}
+list or watch objects of kind RuntimeClass}
 }
 \if{html}{\out{</div>}}
 }
@@ -71,22 +69,73 @@ create a RuntimeClass}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-list_runtime_class}{}}}
 \subsection{Method \code{list_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$list_runtime_class()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$list_runtime_class(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createNodeV1RuntimeClass
+create a RuntimeClass}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NodeV1Api-create_runtime_class"></a>}}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-create_runtime_class}{}}}
 \subsection{Method \code{create_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$create_runtime_class(body, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$create_runtime_class(
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteNodeV1CollectionRuntimeClass
@@ -100,13 +149,54 @@ delete collection of RuntimeClass}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-delete_collection_runtime_class}{}}}
 \subsection{Method \code{delete_collection_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$delete_collection_runtime_class(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$delete_collection_runtime_class(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readNodeV1RuntimeClass
 read the specified RuntimeClass}
 }
@@ -118,13 +208,14 @@ read the specified RuntimeClass}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-read_runtime_class}{}}}
 \subsection{Method \code{read_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$read_runtime_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$read_runtime_class(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceNodeV1RuntimeClass
+\item{\code{pretty}}{= NULL
+replaceNodeV1RuntimeClass
 replace the specified RuntimeClass}
 }
 \if{html}{\out{</div>}}
@@ -138,7 +229,9 @@ replace the specified RuntimeClass}
 \if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$replace_runtime_class(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -146,7 +239,11 @@ replace the specified RuntimeClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchNodeV1RuntimeClass
@@ -160,15 +257,32 @@ partially update the specified RuntimeClass}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-patch_runtime_class}{}}}
 \subsection{Method \code{patch_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$patch_runtime_class(name, dry_run = NULL, field_validation = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$patch_runtime_class(
+  name,
+  body,
+  pretty = NULL,
+  dry_run = NULL,
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteNodeV1RuntimeClass
 delete a RuntimeClass}
 }
@@ -180,17 +294,33 @@ delete a RuntimeClass}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-delete_runtime_class}{}}}
 \subsection{Method \code{delete_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$delete_runtime_class(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$delete_runtime_class(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchNodeV1RuntimeClassList
-watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a list operation instead.
-watchNodeV1RuntimeClass
-watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -200,18 +330,99 @@ watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' par
 \if{latex}{\out{\hypertarget{method-NodeV1Api-watch_runtime_class_list}{}}}
 \subsection{Method \code{watch_runtime_class_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$watch_runtime_class_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$watch_runtime_class_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchNodeV1RuntimeClass
+watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NodeV1Api-watch_runtime_class"></a>}}
 \if{latex}{\out{\hypertarget{method-NodeV1Api-watch_runtime_class}{}}}
 \subsection{Method \code{watch_runtime_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$watch_runtime_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{NodeV1Api$watch_runtime_class(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NodeV1Api-clone"></a>}}

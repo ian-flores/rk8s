@@ -117,15 +117,7 @@ Typed Kubernetes API client for the `AppsV1` surface. See generated methods for 
 getAppsV1APIResources
 get available resources
 listAppsV1ControllerRevisionForAllNamespaces
-list or watch objects of kind ControllerRevision
-listAppsV1DaemonSetForAllNamespaces
-list or watch objects of kind DaemonSet
-listAppsV1DeploymentForAllNamespaces
-list or watch objects of kind Deployment
-listAppsV1NamespacedControllerRevision
-list or watch objects of kind ControllerRevision
-createAppsV1NamespacedControllerRevision
-create a ControllerRevision}
+list or watch objects of kind ControllerRevision}
 }
 \if{html}{\out{</div>}}
 }
@@ -144,36 +136,201 @@ create a ControllerRevision}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_controller_revision_for_all_namespaces}{}}}
 \subsection{Method \code{list_controller_revision_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_controller_revision_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_controller_revision_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listAppsV1DaemonSetForAllNamespaces
+list or watch objects of kind DaemonSet}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-list_daemon_set_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_daemon_set_for_all_namespaces}{}}}
 \subsection{Method \code{list_daemon_set_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_daemon_set_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_daemon_set_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listAppsV1DeploymentForAllNamespaces
+list or watch objects of kind Deployment}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-list_deployment_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_deployment_for_all_namespaces}{}}}
 \subsection{Method \code{list_deployment_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_deployment_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_deployment_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listAppsV1NamespacedControllerRevision
+list or watch objects of kind ControllerRevision}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-list_namespaced_controller_revision"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_namespaced_controller_revision}{}}}
 \subsection{Method \code{list_namespaced_controller_revision()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_controller_revision()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_controller_revision(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAppsV1NamespacedControllerRevision
+create a ControllerRevision}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-create_namespaced_controller_revision"></a>}}
@@ -181,8 +338,11 @@ create a ControllerRevision}
 \subsection{Method \code{create_namespaced_controller_revision()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$create_namespaced_controller_revision(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -190,7 +350,11 @@ create a ControllerRevision}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAppsV1CollectionNamespacedControllerRevision
@@ -204,13 +368,55 @@ delete collection of ControllerRevision}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_collection_namespaced_controller_revision}{}}}
 \subsection{Method \code{delete_collection_namespaced_controller_revision()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_controller_revision(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_controller_revision(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedControllerRevision
 read the specified ControllerRevision}
 }
@@ -222,13 +428,14 @@ read the specified ControllerRevision}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_controller_revision}{}}}
 \subsection{Method \code{read_namespaced_controller_revision()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_controller_revision(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_controller_revision(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedControllerRevision
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedControllerRevision
 replace the specified ControllerRevision}
 }
 \if{html}{\out{</div>}}
@@ -241,8 +448,11 @@ replace the specified ControllerRevision}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_controller_revision(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -250,7 +460,11 @@ replace the specified ControllerRevision}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedControllerRevision
@@ -266,17 +480,31 @@ partially update the specified ControllerRevision}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_controller_revision(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAppsV1NamespacedControllerRevision
 delete a ControllerRevision}
 }
@@ -288,17 +516,34 @@ delete a ControllerRevision}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_namespaced_controller_revision}{}}}
 \subsection{Method \code{delete_namespaced_controller_revision()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_controller_revision(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_controller_revision(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listAppsV1NamespacedDaemonSet
-list or watch objects of kind DaemonSet
-createAppsV1NamespacedDaemonSet
-create a DaemonSet}
+list or watch objects of kind DaemonSet}
 }
 \if{html}{\out{</div>}}
 }
@@ -308,9 +553,51 @@ create a DaemonSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_namespaced_daemon_set}{}}}
 \subsection{Method \code{list_namespaced_daemon_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_daemon_set()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_daemon_set(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAppsV1NamespacedDaemonSet
+create a DaemonSet}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-create_namespaced_daemon_set"></a>}}
@@ -318,8 +605,11 @@ create a DaemonSet}
 \subsection{Method \code{create_namespaced_daemon_set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$create_namespaced_daemon_set(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -327,7 +617,11 @@ create a DaemonSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAppsV1CollectionNamespacedDaemonSet
@@ -341,13 +635,55 @@ delete collection of DaemonSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_collection_namespaced_daemon_set}{}}}
 \subsection{Method \code{delete_collection_namespaced_daemon_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_daemon_set(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_daemon_set(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedDaemonSet
 read the specified DaemonSet}
 }
@@ -359,13 +695,14 @@ read the specified DaemonSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_daemon_set}{}}}
 \subsection{Method \code{read_namespaced_daemon_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_daemon_set(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_daemon_set(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedDaemonSet
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedDaemonSet
 replace the specified DaemonSet}
 }
 \if{html}{\out{</div>}}
@@ -378,8 +715,11 @@ replace the specified DaemonSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_daemon_set(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -387,7 +727,11 @@ replace the specified DaemonSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedDaemonSet
@@ -403,17 +747,31 @@ partially update the specified DaemonSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_daemon_set(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAppsV1NamespacedDaemonSet
 delete a DaemonSet}
 }
@@ -425,13 +783,32 @@ delete a DaemonSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_namespaced_daemon_set}{}}}
 \subsection{Method \code{delete_namespaced_daemon_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_daemon_set(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_daemon_set(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedDaemonSetStatus
 read status of the specified DaemonSet}
 }
@@ -443,13 +820,14 @@ read status of the specified DaemonSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_daemon_set_status}{}}}
 \subsection{Method \code{read_namespaced_daemon_set_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_daemon_set_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_daemon_set_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedDaemonSetStatus
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedDaemonSetStatus
 replace status of the specified DaemonSet}
 }
 \if{html}{\out{</div>}}
@@ -462,8 +840,11 @@ replace status of the specified DaemonSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_daemon_set_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -471,7 +852,11 @@ replace status of the specified DaemonSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedDaemonSetStatus
@@ -487,21 +872,33 @@ partially update status of the specified DaemonSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_daemon_set_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listAppsV1NamespacedDeployment
-list or watch objects of kind Deployment
-createAppsV1NamespacedDeployment
-create a Deployment}
+list or watch objects of kind Deployment}
 }
 \if{html}{\out{</div>}}
 }
@@ -511,9 +908,51 @@ create a Deployment}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_namespaced_deployment}{}}}
 \subsection{Method \code{list_namespaced_deployment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_deployment()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_deployment(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAppsV1NamespacedDeployment
+create a Deployment}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-create_namespaced_deployment"></a>}}
@@ -521,8 +960,11 @@ create a Deployment}
 \subsection{Method \code{create_namespaced_deployment()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$create_namespaced_deployment(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -530,7 +972,11 @@ create a Deployment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAppsV1CollectionNamespacedDeployment
@@ -544,13 +990,55 @@ delete collection of Deployment}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_collection_namespaced_deployment}{}}}
 \subsection{Method \code{delete_collection_namespaced_deployment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_deployment(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_deployment(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedDeployment
 read the specified Deployment}
 }
@@ -562,13 +1050,14 @@ read the specified Deployment}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_deployment}{}}}
 \subsection{Method \code{read_namespaced_deployment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_deployment(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_deployment(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedDeployment
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedDeployment
 replace the specified Deployment}
 }
 \if{html}{\out{</div>}}
@@ -581,8 +1070,11 @@ replace the specified Deployment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_deployment(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -590,7 +1082,11 @@ replace the specified Deployment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedDeployment
@@ -606,17 +1102,31 @@ partially update the specified Deployment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_deployment(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAppsV1NamespacedDeployment
 delete a Deployment}
 }
@@ -628,13 +1138,32 @@ delete a Deployment}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_namespaced_deployment}{}}}
 \subsection{Method \code{delete_namespaced_deployment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_deployment(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_deployment(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedDeploymentScale
 read scale of the specified Deployment}
 }
@@ -646,13 +1175,14 @@ read scale of the specified Deployment}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_deployment_scale}{}}}
 \subsection{Method \code{read_namespaced_deployment_scale()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_deployment_scale(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_deployment_scale(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedDeploymentScale
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedDeploymentScale
 replace scale of the specified Deployment}
 }
 \if{html}{\out{</div>}}
@@ -665,8 +1195,11 @@ replace scale of the specified Deployment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_deployment_scale(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -674,7 +1207,11 @@ replace scale of the specified Deployment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedDeploymentScale
@@ -690,17 +1227,31 @@ partially update scale of the specified Deployment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_deployment_scale(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 readAppsV1NamespacedDeploymentStatus
 read status of the specified Deployment}
 }
@@ -712,13 +1263,14 @@ read status of the specified Deployment}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_deployment_status}{}}}
 \subsection{Method \code{read_namespaced_deployment_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_deployment_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_deployment_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedDeploymentStatus
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedDeploymentStatus
 replace status of the specified Deployment}
 }
 \if{html}{\out{</div>}}
@@ -731,8 +1283,11 @@ replace status of the specified Deployment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_deployment_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -740,7 +1295,11 @@ replace status of the specified Deployment}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedDeploymentStatus
@@ -756,21 +1315,33 @@ partially update status of the specified Deployment}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_deployment_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listAppsV1NamespacedReplicaSet
-list or watch objects of kind ReplicaSet
-createAppsV1NamespacedReplicaSet
-create a ReplicaSet}
+list or watch objects of kind ReplicaSet}
 }
 \if{html}{\out{</div>}}
 }
@@ -780,9 +1351,51 @@ create a ReplicaSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_namespaced_replica_set}{}}}
 \subsection{Method \code{list_namespaced_replica_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_replica_set()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_replica_set(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAppsV1NamespacedReplicaSet
+create a ReplicaSet}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-create_namespaced_replica_set"></a>}}
@@ -790,8 +1403,11 @@ create a ReplicaSet}
 \subsection{Method \code{create_namespaced_replica_set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$create_namespaced_replica_set(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -799,7 +1415,11 @@ create a ReplicaSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAppsV1CollectionNamespacedReplicaSet
@@ -813,13 +1433,55 @@ delete collection of ReplicaSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_collection_namespaced_replica_set}{}}}
 \subsection{Method \code{delete_collection_namespaced_replica_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_replica_set(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_replica_set(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedReplicaSet
 read the specified ReplicaSet}
 }
@@ -831,13 +1493,14 @@ read the specified ReplicaSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_replica_set}{}}}
 \subsection{Method \code{read_namespaced_replica_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_replica_set(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_replica_set(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedReplicaSet
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedReplicaSet
 replace the specified ReplicaSet}
 }
 \if{html}{\out{</div>}}
@@ -850,8 +1513,11 @@ replace the specified ReplicaSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_replica_set(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -859,7 +1525,11 @@ replace the specified ReplicaSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedReplicaSet
@@ -875,17 +1545,31 @@ partially update the specified ReplicaSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_replica_set(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAppsV1NamespacedReplicaSet
 delete a ReplicaSet}
 }
@@ -897,13 +1581,32 @@ delete a ReplicaSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_namespaced_replica_set}{}}}
 \subsection{Method \code{delete_namespaced_replica_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_replica_set(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_replica_set(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedReplicaSetScale
 read scale of the specified ReplicaSet}
 }
@@ -915,13 +1618,14 @@ read scale of the specified ReplicaSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_replica_set_scale}{}}}
 \subsection{Method \code{read_namespaced_replica_set_scale()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_replica_set_scale(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_replica_set_scale(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedReplicaSetScale
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedReplicaSetScale
 replace scale of the specified ReplicaSet}
 }
 \if{html}{\out{</div>}}
@@ -934,8 +1638,11 @@ replace scale of the specified ReplicaSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_replica_set_scale(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -943,7 +1650,11 @@ replace scale of the specified ReplicaSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedReplicaSetScale
@@ -959,17 +1670,31 @@ partially update scale of the specified ReplicaSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_replica_set_scale(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 readAppsV1NamespacedReplicaSetStatus
 read status of the specified ReplicaSet}
 }
@@ -981,13 +1706,14 @@ read status of the specified ReplicaSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_replica_set_status}{}}}
 \subsection{Method \code{read_namespaced_replica_set_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_replica_set_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_replica_set_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedReplicaSetStatus
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedReplicaSetStatus
 replace status of the specified ReplicaSet}
 }
 \if{html}{\out{</div>}}
@@ -1000,8 +1726,11 @@ replace status of the specified ReplicaSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_replica_set_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1009,7 +1738,11 @@ replace status of the specified ReplicaSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedReplicaSetStatus
@@ -1025,21 +1758,33 @@ partially update status of the specified ReplicaSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_replica_set_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listAppsV1NamespacedStatefulSet
-list or watch objects of kind StatefulSet
-createAppsV1NamespacedStatefulSet
-create a StatefulSet}
+list or watch objects of kind StatefulSet}
 }
 \if{html}{\out{</div>}}
 }
@@ -1049,9 +1794,51 @@ create a StatefulSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_namespaced_stateful_set}{}}}
 \subsection{Method \code{list_namespaced_stateful_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_stateful_set()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_namespaced_stateful_set(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAppsV1NamespacedStatefulSet
+create a StatefulSet}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-create_namespaced_stateful_set"></a>}}
@@ -1059,8 +1846,11 @@ create a StatefulSet}
 \subsection{Method \code{create_namespaced_stateful_set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$create_namespaced_stateful_set(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1068,7 +1858,11 @@ create a StatefulSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAppsV1CollectionNamespacedStatefulSet
@@ -1082,13 +1876,55 @@ delete collection of StatefulSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_collection_namespaced_stateful_set}{}}}
 \subsection{Method \code{delete_collection_namespaced_stateful_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_stateful_set(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_collection_namespaced_stateful_set(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedStatefulSet
 read the specified StatefulSet}
 }
@@ -1100,13 +1936,14 @@ read the specified StatefulSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_stateful_set}{}}}
 \subsection{Method \code{read_namespaced_stateful_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_stateful_set(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_stateful_set(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedStatefulSet
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedStatefulSet
 replace the specified StatefulSet}
 }
 \if{html}{\out{</div>}}
@@ -1119,8 +1956,11 @@ replace the specified StatefulSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_stateful_set(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1128,7 +1968,11 @@ replace the specified StatefulSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedStatefulSet
@@ -1144,17 +1988,31 @@ partially update the specified StatefulSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_stateful_set(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAppsV1NamespacedStatefulSet
 delete a StatefulSet}
 }
@@ -1166,13 +2024,32 @@ delete a StatefulSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-delete_namespaced_stateful_set}{}}}
 \subsection{Method \code{delete_namespaced_stateful_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_stateful_set(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$delete_namespaced_stateful_set(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAppsV1NamespacedStatefulSetScale
 read scale of the specified StatefulSet}
 }
@@ -1184,13 +2061,14 @@ read scale of the specified StatefulSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_stateful_set_scale}{}}}
 \subsection{Method \code{read_namespaced_stateful_set_scale()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_stateful_set_scale(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_stateful_set_scale(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedStatefulSetScale
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedStatefulSetScale
 replace scale of the specified StatefulSet}
 }
 \if{html}{\out{</div>}}
@@ -1203,8 +2081,11 @@ replace scale of the specified StatefulSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_stateful_set_scale(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1212,7 +2093,11 @@ replace scale of the specified StatefulSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedStatefulSetScale
@@ -1228,17 +2113,31 @@ partially update scale of the specified StatefulSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_stateful_set_scale(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 readAppsV1NamespacedStatefulSetStatus
 read status of the specified StatefulSet}
 }
@@ -1250,13 +2149,14 @@ read status of the specified StatefulSet}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-read_namespaced_stateful_set_status}{}}}
 \subsection{Method \code{read_namespaced_stateful_set_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_stateful_set_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$read_namespaced_stateful_set_status(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAppsV1NamespacedStatefulSetStatus
+\item{\code{pretty}}{= NULL
+replaceAppsV1NamespacedStatefulSetStatus
 replace status of the specified StatefulSet}
 }
 \if{html}{\out{</div>}}
@@ -1269,8 +2169,11 @@ replace status of the specified StatefulSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$replace_namespaced_stateful_set_status(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -1278,7 +2181,11 @@ replace status of the specified StatefulSet}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAppsV1NamespacedStatefulSetStatus
@@ -1294,31 +2201,33 @@ partially update status of the specified StatefulSet}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$patch_namespaced_stateful_set_status(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listAppsV1ReplicaSetForAllNamespaces
-list or watch objects of kind ReplicaSet
-listAppsV1StatefulSetForAllNamespaces
-list or watch objects of kind StatefulSet
-watchAppsV1ControllerRevisionListForAllNamespaces
-watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1DaemonSetListForAllNamespaces
-watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1DeploymentListForAllNamespaces
-watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1NamespacedControllerRevisionList
-watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1NamespacedControllerRevision
-watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+list or watch objects of kind ReplicaSet}
 }
 \if{html}{\out{</div>}}
 }
@@ -1328,70 +2237,350 @@ watch changes to an object of kind ControllerRevision. deprecated: use the 'watc
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_replica_set_for_all_namespaces}{}}}
 \subsection{Method \code{list_replica_set_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_replica_set_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_replica_set_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listAppsV1StatefulSetForAllNamespaces
+list or watch objects of kind StatefulSet}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-list_stateful_set_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-list_stateful_set_for_all_namespaces}{}}}
 \subsection{Method \code{list_stateful_set_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_stateful_set_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$list_stateful_set_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1ControllerRevisionListForAllNamespaces
+watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_controller_revision_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_controller_revision_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_controller_revision_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_controller_revision_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_controller_revision_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1DaemonSetListForAllNamespaces
+watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_daemon_set_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_daemon_set_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_daemon_set_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_daemon_set_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_daemon_set_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1DeploymentListForAllNamespaces
+watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_deployment_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_deployment_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_deployment_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_deployment_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_deployment_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedControllerRevisionList
+watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_namespaced_controller_revision_list"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_controller_revision_list}{}}}
 \subsection{Method \code{watch_namespaced_controller_revision_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_controller_revision_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_controller_revision_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedControllerRevision
+watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_namespaced_controller_revision"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_controller_revision}{}}}
 \subsection{Method \code{watch_namespaced_controller_revision()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_controller_revision(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_controller_revision(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchAppsV1NamespacedDaemonSetList
-watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1NamespacedDaemonSet
-watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedDaemonSetList
+watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1401,25 +2590,100 @@ watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parame
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_daemon_set_list}{}}}
 \subsection{Method \code{watch_namespaced_daemon_set_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_daemon_set_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_daemon_set_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedDaemonSet
+watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_namespaced_daemon_set"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_daemon_set}{}}}
 \subsection{Method \code{watch_namespaced_daemon_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_daemon_set(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_daemon_set(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchAppsV1NamespacedDeploymentList
-watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1NamespacedDeployment
-watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedDeploymentList
+watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1429,25 +2693,100 @@ watch changes to an object of kind Deployment. deprecated: use the 'watch' param
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_deployment_list}{}}}
 \subsection{Method \code{watch_namespaced_deployment_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_deployment_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_deployment_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedDeployment
+watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_namespaced_deployment"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_deployment}{}}}
 \subsection{Method \code{watch_namespaced_deployment()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_deployment(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_deployment(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchAppsV1NamespacedReplicaSetList
-watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1NamespacedReplicaSet
-watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedReplicaSetList
+watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1457,25 +2796,100 @@ watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' param
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_replica_set_list}{}}}
 \subsection{Method \code{watch_namespaced_replica_set_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_replica_set_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_replica_set_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedReplicaSet
+watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_namespaced_replica_set"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_replica_set}{}}}
 \subsection{Method \code{watch_namespaced_replica_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_replica_set(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_replica_set(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchAppsV1NamespacedStatefulSetList
-watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1NamespacedStatefulSet
-watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedStatefulSetList
+watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1485,25 +2899,100 @@ watch changes to an object of kind StatefulSet. deprecated: use the 'watch' para
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_stateful_set_list}{}}}
 \subsection{Method \code{watch_namespaced_stateful_set_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_stateful_set_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_stateful_set_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1NamespacedStatefulSet
+watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_namespaced_stateful_set"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_namespaced_stateful_set}{}}}
 \subsection{Method \code{watch_namespaced_stateful_set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_stateful_set(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_namespaced_stateful_set(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchAppsV1ReplicaSetListForAllNamespaces
-watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
-watchAppsV1StatefulSetListForAllNamespaces
-watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1ReplicaSetListForAllNamespaces
+watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1513,18 +3002,98 @@ watch individual changes to a list of StatefulSet. deprecated: use the 'watch' p
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_replica_set_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_replica_set_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_replica_set_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_replica_set_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAppsV1StatefulSetListForAllNamespaces
+watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-watch_stateful_set_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-AppsV1Api-watch_stateful_set_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_stateful_set_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_stateful_set_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AppsV1Api$watch_stateful_set_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AppsV1Api-clone"></a>}}

@@ -81,9 +81,7 @@ Typed Kubernetes API client for the `RbacAuthorizationV1` surface. See generated
 getRbacAuthorizationV1APIResources
 get available resources
 listRbacAuthorizationV1ClusterRoleBinding
-list or watch objects of kind ClusterRoleBinding
-createRbacAuthorizationV1ClusterRoleBinding
-create a ClusterRoleBinding}
+list or watch objects of kind ClusterRoleBinding}
 }
 \if{html}{\out{</div>}}
 }
@@ -102,9 +100,50 @@ create a ClusterRoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-list_cluster_role_binding}{}}}
 \subsection{Method \code{list_cluster_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_cluster_role_binding()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_cluster_role_binding(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createRbacAuthorizationV1ClusterRoleBinding
+create a ClusterRoleBinding}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-create_cluster_role_binding"></a>}}
@@ -113,7 +152,9 @@ create a ClusterRoleBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$create_cluster_role_binding(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -121,7 +162,11 @@ create a ClusterRoleBinding}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteRbacAuthorizationV1CollectionClusterRoleBinding
@@ -135,13 +180,54 @@ delete collection of ClusterRoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_collection_cluster_role_binding}{}}}
 \subsection{Method \code{delete_collection_cluster_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_cluster_role_binding(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_cluster_role_binding(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readRbacAuthorizationV1ClusterRoleBinding
 read the specified ClusterRoleBinding}
 }
@@ -153,13 +239,14 @@ read the specified ClusterRoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-read_cluster_role_binding}{}}}
 \subsection{Method \code{read_cluster_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_cluster_role_binding(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_cluster_role_binding(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceRbacAuthorizationV1ClusterRoleBinding
+\item{\code{pretty}}{= NULL
+replaceRbacAuthorizationV1ClusterRoleBinding
 replace the specified ClusterRoleBinding}
 }
 \if{html}{\out{</div>}}
@@ -173,7 +260,9 @@ replace the specified ClusterRoleBinding}
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$replace_cluster_role_binding(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -181,7 +270,11 @@ replace the specified ClusterRoleBinding}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchRbacAuthorizationV1ClusterRoleBinding
@@ -197,17 +290,30 @@ partially update the specified ClusterRoleBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$patch_cluster_role_binding(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteRbacAuthorizationV1ClusterRoleBinding
 delete a ClusterRoleBinding}
 }
@@ -219,17 +325,33 @@ delete a ClusterRoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_cluster_role_binding}{}}}
 \subsection{Method \code{delete_cluster_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_cluster_role_binding(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_cluster_role_binding(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listRbacAuthorizationV1ClusterRole
-list or watch objects of kind ClusterRole
-createRbacAuthorizationV1ClusterRole
-create a ClusterRole}
+list or watch objects of kind ClusterRole}
 }
 \if{html}{\out{</div>}}
 }
@@ -239,9 +361,50 @@ create a ClusterRole}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-list_cluster_role}{}}}
 \subsection{Method \code{list_cluster_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_cluster_role()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_cluster_role(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createRbacAuthorizationV1ClusterRole
+create a ClusterRole}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-create_cluster_role"></a>}}
@@ -250,7 +413,9 @@ create a ClusterRole}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$create_cluster_role(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -258,7 +423,11 @@ create a ClusterRole}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteRbacAuthorizationV1CollectionClusterRole
@@ -272,13 +441,54 @@ delete collection of ClusterRole}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_collection_cluster_role}{}}}
 \subsection{Method \code{delete_collection_cluster_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_cluster_role(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_cluster_role(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readRbacAuthorizationV1ClusterRole
 read the specified ClusterRole}
 }
@@ -290,13 +500,14 @@ read the specified ClusterRole}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-read_cluster_role}{}}}
 \subsection{Method \code{read_cluster_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_cluster_role(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_cluster_role(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceRbacAuthorizationV1ClusterRole
+\item{\code{pretty}}{= NULL
+replaceRbacAuthorizationV1ClusterRole
 replace the specified ClusterRole}
 }
 \if{html}{\out{</div>}}
@@ -310,7 +521,9 @@ replace the specified ClusterRole}
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$replace_cluster_role(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -318,7 +531,11 @@ replace the specified ClusterRole}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchRbacAuthorizationV1ClusterRole
@@ -334,17 +551,30 @@ partially update the specified ClusterRole}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$patch_cluster_role(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteRbacAuthorizationV1ClusterRole
 delete a ClusterRole}
 }
@@ -356,17 +586,33 @@ delete a ClusterRole}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_cluster_role}{}}}
 \subsection{Method \code{delete_cluster_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_cluster_role(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_cluster_role(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listRbacAuthorizationV1NamespacedRoleBinding
-list or watch objects of kind RoleBinding
-createRbacAuthorizationV1NamespacedRoleBinding
-create a RoleBinding}
+list or watch objects of kind RoleBinding}
 }
 \if{html}{\out{</div>}}
 }
@@ -376,9 +622,51 @@ create a RoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-list_namespaced_role_binding}{}}}
 \subsection{Method \code{list_namespaced_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_namespaced_role_binding()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_namespaced_role_binding(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createRbacAuthorizationV1NamespacedRoleBinding
+create a RoleBinding}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-create_namespaced_role_binding"></a>}}
@@ -386,8 +674,11 @@ create a RoleBinding}
 \subsection{Method \code{create_namespaced_role_binding()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$create_namespaced_role_binding(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -395,7 +686,11 @@ create a RoleBinding}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteRbacAuthorizationV1CollectionNamespacedRoleBinding
@@ -410,14 +705,54 @@ delete collection of RoleBinding}
 \subsection{Method \code{delete_collection_namespaced_role_binding()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_namespaced_role_binding(
-  dry_run = NULL
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readRbacAuthorizationV1NamespacedRoleBinding
 read the specified RoleBinding}
 }
@@ -429,13 +764,18 @@ read the specified RoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-read_namespaced_role_binding}{}}}
 \subsection{Method \code{read_namespaced_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_namespaced_role_binding(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_namespaced_role_binding(
+  name,
+  namespace,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceRbacAuthorizationV1NamespacedRoleBinding
+\item{\code{pretty}}{= NULL
+replaceRbacAuthorizationV1NamespacedRoleBinding
 replace the specified RoleBinding}
 }
 \if{html}{\out{</div>}}
@@ -448,8 +788,11 @@ replace the specified RoleBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$replace_namespaced_role_binding(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -457,7 +800,11 @@ replace the specified RoleBinding}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchRbacAuthorizationV1NamespacedRoleBinding
@@ -473,17 +820,31 @@ partially update the specified RoleBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$patch_namespaced_role_binding(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteRbacAuthorizationV1NamespacedRoleBinding
 delete a RoleBinding}
 }
@@ -495,17 +856,34 @@ delete a RoleBinding}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_namespaced_role_binding}{}}}
 \subsection{Method \code{delete_namespaced_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_namespaced_role_binding(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_namespaced_role_binding(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listRbacAuthorizationV1NamespacedRole
-list or watch objects of kind Role
-createRbacAuthorizationV1NamespacedRole
-create a Role}
+list or watch objects of kind Role}
 }
 \if{html}{\out{</div>}}
 }
@@ -515,9 +893,51 @@ create a Role}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-list_namespaced_role}{}}}
 \subsection{Method \code{list_namespaced_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_namespaced_role()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_namespaced_role(
+  namespace,
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createRbacAuthorizationV1NamespacedRole
+create a Role}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-create_namespaced_role"></a>}}
@@ -525,8 +945,11 @@ create a Role}
 \subsection{Method \code{create_namespaced_role()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$create_namespaced_role(
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -534,7 +957,11 @@ create a Role}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteRbacAuthorizationV1CollectionNamespacedRole
@@ -548,13 +975,55 @@ delete collection of Role}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_collection_namespaced_role}{}}}
 \subsection{Method \code{delete_collection_namespaced_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_namespaced_role(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_collection_namespaced_role(
+  namespace,
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readRbacAuthorizationV1NamespacedRole
 read the specified Role}
 }
@@ -566,13 +1035,14 @@ read the specified Role}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-read_namespaced_role}{}}}
 \subsection{Method \code{read_namespaced_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_namespaced_role(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$read_namespaced_role(name, namespace, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceRbacAuthorizationV1NamespacedRole
+\item{\code{pretty}}{= NULL
+replaceRbacAuthorizationV1NamespacedRole
 replace the specified Role}
 }
 \if{html}{\out{</div>}}
@@ -585,8 +1055,11 @@ replace the specified Role}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$replace_namespaced_role(
   name,
+  namespace,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -594,7 +1067,11 @@ replace the specified Role}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchRbacAuthorizationV1NamespacedRole
@@ -610,17 +1087,31 @@ partially update the specified Role}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$patch_namespaced_role(
   name,
+  namespace,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteRbacAuthorizationV1NamespacedRole
 delete a Role}
 }
@@ -632,21 +1123,34 @@ delete a Role}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-delete_namespaced_role}{}}}
 \subsection{Method \code{delete_namespaced_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_namespaced_role(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$delete_namespaced_role(
+  name,
+  namespace,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 listRbacAuthorizationV1RoleBindingForAllNamespaces
-list or watch objects of kind RoleBinding
-listRbacAuthorizationV1RoleForAllNamespaces
-list or watch objects of kind Role
-watchRbacAuthorizationV1ClusterRoleBindingList
-watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
-watchRbacAuthorizationV1ClusterRoleBinding
-watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+list or watch objects of kind RoleBinding}
 }
 \if{html}{\out{</div>}}
 }
@@ -656,43 +1160,198 @@ watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watc
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-list_role_binding_for_all_namespaces}{}}}
 \subsection{Method \code{list_role_binding_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_role_binding_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_role_binding_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+listRbacAuthorizationV1RoleForAllNamespaces
+list or watch objects of kind Role}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-list_role_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-list_role_for_all_namespaces}{}}}
 \subsection{Method \code{list_role_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_role_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$list_role_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1ClusterRoleBindingList
+watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-watch_cluster_role_binding_list"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_cluster_role_binding_list}{}}}
 \subsection{Method \code{watch_cluster_role_binding_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role_binding_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role_binding_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1ClusterRoleBinding
+watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-watch_cluster_role_binding"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_cluster_role_binding}{}}}
 \subsection{Method \code{watch_cluster_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role_binding(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role_binding(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchRbacAuthorizationV1ClusterRoleList
-watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list operation instead.
-watchRbacAuthorizationV1ClusterRole
-watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1ClusterRoleList
+watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -702,25 +1361,98 @@ watch changes to an object of kind ClusterRole. deprecated: use the 'watch' para
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_cluster_role_list}{}}}
 \subsection{Method \code{watch_cluster_role_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1ClusterRole
+watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-watch_cluster_role"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_cluster_role}{}}}
 \subsection{Method \code{watch_cluster_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_cluster_role(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchRbacAuthorizationV1NamespacedRoleBindingList
-watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
-watchRbacAuthorizationV1NamespacedRoleBinding
-watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1NamespacedRoleBindingList
+watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -730,25 +1462,100 @@ watch changes to an object of kind RoleBinding. deprecated: use the 'watch' para
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_namespaced_role_binding_list}{}}}
 \subsection{Method \code{watch_namespaced_role_binding_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role_binding_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role_binding_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1NamespacedRoleBinding
+watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-watch_namespaced_role_binding"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_namespaced_role_binding}{}}}
 \subsection{Method \code{watch_namespaced_role_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role_binding(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role_binding(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchRbacAuthorizationV1NamespacedRoleList
-watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.
-watchRbacAuthorizationV1NamespacedRole
-watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1NamespacedRoleList
+watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -758,25 +1565,100 @@ watch changes to an object of kind Role. deprecated: use the 'watch' parameter w
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_namespaced_role_list}{}}}
 \subsection{Method \code{watch_namespaced_role_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role_list(
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1NamespacedRole
+watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-watch_namespaced_role"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_namespaced_role}{}}}
 \subsection{Method \code{watch_namespaced_role()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_namespaced_role(
+  name,
+  namespace,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchRbacAuthorizationV1RoleBindingListForAllNamespaces
-watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
-watchRbacAuthorizationV1RoleListForAllNamespaces
-watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1RoleBindingListForAllNamespaces
+watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -786,18 +1668,98 @@ watch individual changes to a list of Role. deprecated: use the 'watch' paramete
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_role_binding_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_role_binding_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_role_binding_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_role_binding_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchRbacAuthorizationV1RoleListForAllNamespaces
+watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-watch_role_list_for_all_namespaces"></a>}}
 \if{latex}{\out{\hypertarget{method-RbacAuthorizationV1Api-watch_role_list_for_all_namespaces}{}}}
 \subsection{Method \code{watch_role_list_for_all_namespaces()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_role_list_for_all_namespaces()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{RbacAuthorizationV1Api$watch_role_list_for_all_namespaces(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-RbacAuthorizationV1Api-clone"></a>}}

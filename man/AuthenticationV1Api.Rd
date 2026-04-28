@@ -65,7 +65,9 @@ create a SelfSubjectReview}
 \if{html}{\out{<div class="r">}}\preformatted{AuthenticationV1Api$create_self_subject_review(
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -74,7 +76,11 @@ create a SelfSubjectReview}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 createAuthenticationV1TokenReview
 create a TokenReview}
 }
@@ -89,7 +95,9 @@ create a TokenReview}
 \if{html}{\out{<div class="r">}}\preformatted{AuthenticationV1Api$create_token_review(
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -98,7 +106,11 @@ create a TokenReview}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
+\item{\code{field_manager}}{= NULL}
+
 \item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
 }
 \if{html}{\out{</div>}}
 }

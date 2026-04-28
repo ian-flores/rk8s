@@ -53,9 +53,7 @@ Typed Kubernetes API client for the `StoragemigrationV1alpha1` surface. See gene
 getStoragemigrationV1alpha1APIResources
 get available resources
 listStoragemigrationV1alpha1StorageVersionMigration
-list or watch objects of kind StorageVersionMigration
-createStoragemigrationV1alpha1StorageVersionMigration
-create a StorageVersionMigration}
+list or watch objects of kind StorageVersionMigration}
 }
 \if{html}{\out{</div>}}
 }
@@ -74,9 +72,50 @@ create a StorageVersionMigration}
 \if{latex}{\out{\hypertarget{method-StoragemigrationV1alpha1Api-list_storage_version_migration}{}}}
 \subsection{Method \code{list_storage_version_migration()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$list_storage_version_migration()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$list_storage_version_migration(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createStoragemigrationV1alpha1StorageVersionMigration
+create a StorageVersionMigration}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StoragemigrationV1alpha1Api-create_storage_version_migration"></a>}}
@@ -85,7 +124,9 @@ create a StorageVersionMigration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$create_storage_version_migration(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -93,7 +134,11 @@ create a StorageVersionMigration}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteStoragemigrationV1alpha1CollectionStorageVersionMigration
@@ -108,14 +153,53 @@ delete collection of StorageVersionMigration}
 \subsection{Method \code{delete_collection_storage_version_migration()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$delete_collection_storage_version_migration(
-  dry_run = NULL
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStoragemigrationV1alpha1StorageVersionMigration
 read the specified StorageVersionMigration}
 }
@@ -127,13 +211,14 @@ read the specified StorageVersionMigration}
 \if{latex}{\out{\hypertarget{method-StoragemigrationV1alpha1Api-read_storage_version_migration}{}}}
 \subsection{Method \code{read_storage_version_migration()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$read_storage_version_migration(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$read_storage_version_migration(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStoragemigrationV1alpha1StorageVersionMigration
+\item{\code{pretty}}{= NULL
+replaceStoragemigrationV1alpha1StorageVersionMigration
 replace the specified StorageVersionMigration}
 }
 \if{html}{\out{</div>}}
@@ -147,7 +232,9 @@ replace the specified StorageVersionMigration}
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$replace_storage_version_migration(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -155,7 +242,11 @@ replace the specified StorageVersionMigration}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStoragemigrationV1alpha1StorageVersionMigration
@@ -171,17 +262,30 @@ partially update the specified StorageVersionMigration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$patch_storage_version_migration(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteStoragemigrationV1alpha1StorageVersionMigration
 delete a StorageVersionMigration}
 }
@@ -195,14 +299,29 @@ delete a StorageVersionMigration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$delete_storage_version_migration(
   name,
-  dry_run = NULL
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readStoragemigrationV1alpha1StorageVersionMigrationStatus
 read status of the specified StorageVersionMigration}
 }
@@ -214,13 +333,17 @@ read status of the specified StorageVersionMigration}
 \if{latex}{\out{\hypertarget{method-StoragemigrationV1alpha1Api-read_storage_version_migration_status}{}}}
 \subsection{Method \code{read_storage_version_migration_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$read_storage_version_migration_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$read_storage_version_migration_status(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceStoragemigrationV1alpha1StorageVersionMigrationStatus
+\item{\code{pretty}}{= NULL
+replaceStoragemigrationV1alpha1StorageVersionMigrationStatus
 replace status of the specified StorageVersionMigration}
 }
 \if{html}{\out{</div>}}
@@ -234,7 +357,9 @@ replace status of the specified StorageVersionMigration}
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$replace_storage_version_migration_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -242,7 +367,11 @@ replace status of the specified StorageVersionMigration}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchStoragemigrationV1alpha1StorageVersionMigrationStatus
@@ -258,21 +387,32 @@ partially update status of the specified StorageVersionMigration}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$patch_storage_version_migration_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchStoragemigrationV1alpha1StorageVersionMigrationList
-watch individual changes to a list of StorageVersionMigration. deprecated: use the 'watch' parameter with a list operation instead.
-watchStoragemigrationV1alpha1StorageVersionMigration
-watch changes to an object of kind StorageVersionMigration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of StorageVersionMigration. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -282,18 +422,99 @@ watch changes to an object of kind StorageVersionMigration. deprecated: use the 
 \if{latex}{\out{\hypertarget{method-StoragemigrationV1alpha1Api-watch_storage_version_migration_list}{}}}
 \subsection{Method \code{watch_storage_version_migration_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$watch_storage_version_migration_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$watch_storage_version_migration_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchStoragemigrationV1alpha1StorageVersionMigration
+watch changes to an object of kind StorageVersionMigration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StoragemigrationV1alpha1Api-watch_storage_version_migration"></a>}}
 \if{latex}{\out{\hypertarget{method-StoragemigrationV1alpha1Api-watch_storage_version_migration}{}}}
 \subsection{Method \code{watch_storage_version_migration()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$watch_storage_version_migration(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{StoragemigrationV1alpha1Api$watch_storage_version_migration(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-StoragemigrationV1alpha1Api-clone"></a>}}

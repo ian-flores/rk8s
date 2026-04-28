@@ -81,7 +81,7 @@ Construct a Configuration. All arguments are optional.
   key_file = NULL,
   verify_ssl = TRUE,
   proxy = NULL,
-  user_agent = "rk8s/0.1.0",
+  user_agent = "rk8s/0.2.0",
   exec = NULL,
   token_file = NULL,
   context_name = NULL

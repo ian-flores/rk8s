@@ -50,9 +50,7 @@ Typed Kubernetes API client for the `CertificatesV1alpha1` surface. See generate
 getCertificatesV1alpha1APIResources
 get available resources
 listCertificatesV1alpha1ClusterTrustBundle
-list or watch objects of kind ClusterTrustBundle
-createCertificatesV1alpha1ClusterTrustBundle
-create a ClusterTrustBundle}
+list or watch objects of kind ClusterTrustBundle}
 }
 \if{html}{\out{</div>}}
 }
@@ -71,9 +69,50 @@ create a ClusterTrustBundle}
 \if{latex}{\out{\hypertarget{method-CertificatesV1alpha1Api-list_cluster_trust_bundle}{}}}
 \subsection{Method \code{list_cluster_trust_bundle()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$list_cluster_trust_bundle()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$list_cluster_trust_bundle(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCertificatesV1alpha1ClusterTrustBundle
+create a ClusterTrustBundle}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CertificatesV1alpha1Api-create_cluster_trust_bundle"></a>}}
@@ -82,7 +121,9 @@ create a ClusterTrustBundle}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$create_cluster_trust_bundle(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -90,7 +131,11 @@ create a ClusterTrustBundle}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCertificatesV1alpha1CollectionClusterTrustBundle
@@ -104,13 +149,54 @@ delete collection of ClusterTrustBundle}
 \if{latex}{\out{\hypertarget{method-CertificatesV1alpha1Api-delete_collection_cluster_trust_bundle}{}}}
 \subsection{Method \code{delete_collection_cluster_trust_bundle()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$delete_collection_cluster_trust_bundle(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$delete_collection_cluster_trust_bundle(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCertificatesV1alpha1ClusterTrustBundle
 read the specified ClusterTrustBundle}
 }
@@ -122,13 +208,14 @@ read the specified ClusterTrustBundle}
 \if{latex}{\out{\hypertarget{method-CertificatesV1alpha1Api-read_cluster_trust_bundle}{}}}
 \subsection{Method \code{read_cluster_trust_bundle()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$read_cluster_trust_bundle(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$read_cluster_trust_bundle(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCertificatesV1alpha1ClusterTrustBundle
+\item{\code{pretty}}{= NULL
+replaceCertificatesV1alpha1ClusterTrustBundle
 replace the specified ClusterTrustBundle}
 }
 \if{html}{\out{</div>}}
@@ -142,7 +229,9 @@ replace the specified ClusterTrustBundle}
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$replace_cluster_trust_bundle(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -150,7 +239,11 @@ replace the specified ClusterTrustBundle}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCertificatesV1alpha1ClusterTrustBundle
@@ -166,17 +259,30 @@ partially update the specified ClusterTrustBundle}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$patch_cluster_trust_bundle(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCertificatesV1alpha1ClusterTrustBundle
 delete a ClusterTrustBundle}
 }
@@ -188,17 +294,33 @@ delete a ClusterTrustBundle}
 \if{latex}{\out{\hypertarget{method-CertificatesV1alpha1Api-delete_cluster_trust_bundle}{}}}
 \subsection{Method \code{delete_cluster_trust_bundle()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$delete_cluster_trust_bundle(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$delete_cluster_trust_bundle(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchCertificatesV1alpha1ClusterTrustBundleList
-watch individual changes to a list of ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead.
-watchCertificatesV1alpha1ClusterTrustBundle
-watch changes to an object of kind ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -208,18 +330,99 @@ watch changes to an object of kind ClusterTrustBundle. deprecated: use the 'watc
 \if{latex}{\out{\hypertarget{method-CertificatesV1alpha1Api-watch_cluster_trust_bundle_list}{}}}
 \subsection{Method \code{watch_cluster_trust_bundle_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$watch_cluster_trust_bundle_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$watch_cluster_trust_bundle_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCertificatesV1alpha1ClusterTrustBundle
+watch changes to an object of kind ClusterTrustBundle. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CertificatesV1alpha1Api-watch_cluster_trust_bundle"></a>}}
 \if{latex}{\out{\hypertarget{method-CertificatesV1alpha1Api-watch_cluster_trust_bundle}{}}}
 \subsection{Method \code{watch_cluster_trust_bundle()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$watch_cluster_trust_bundle(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1alpha1Api$watch_cluster_trust_bundle(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CertificatesV1alpha1Api-clone"></a>}}

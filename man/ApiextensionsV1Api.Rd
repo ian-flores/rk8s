@@ -53,9 +53,7 @@ Typed Kubernetes API client for the `ApiextensionsV1` surface. See generated met
 getApiextensionsV1APIResources
 get available resources
 listApiextensionsV1CustomResourceDefinition
-list or watch objects of kind CustomResourceDefinition
-createApiextensionsV1CustomResourceDefinition
-create a CustomResourceDefinition}
+list or watch objects of kind CustomResourceDefinition}
 }
 \if{html}{\out{</div>}}
 }
@@ -74,9 +72,50 @@ create a CustomResourceDefinition}
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-list_custom_resource_definition}{}}}
 \subsection{Method \code{list_custom_resource_definition()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$list_custom_resource_definition()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$list_custom_resource_definition(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createApiextensionsV1CustomResourceDefinition
+create a CustomResourceDefinition}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ApiextensionsV1Api-create_custom_resource_definition"></a>}}
@@ -85,7 +124,9 @@ create a CustomResourceDefinition}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$create_custom_resource_definition(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -93,7 +134,11 @@ create a CustomResourceDefinition}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteApiextensionsV1CollectionCustomResourceDefinition
@@ -107,13 +152,54 @@ delete collection of CustomResourceDefinition}
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-delete_collection_custom_resource_definition}{}}}
 \subsection{Method \code{delete_collection_custom_resource_definition()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$delete_collection_custom_resource_definition(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$delete_collection_custom_resource_definition(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readApiextensionsV1CustomResourceDefinition
 read the specified CustomResourceDefinition}
 }
@@ -125,13 +211,14 @@ read the specified CustomResourceDefinition}
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-read_custom_resource_definition}{}}}
 \subsection{Method \code{read_custom_resource_definition()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$read_custom_resource_definition(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$read_custom_resource_definition(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceApiextensionsV1CustomResourceDefinition
+\item{\code{pretty}}{= NULL
+replaceApiextensionsV1CustomResourceDefinition
 replace the specified CustomResourceDefinition}
 }
 \if{html}{\out{</div>}}
@@ -145,7 +232,9 @@ replace the specified CustomResourceDefinition}
 \if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$replace_custom_resource_definition(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -153,7 +242,11 @@ replace the specified CustomResourceDefinition}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchApiextensionsV1CustomResourceDefinition
@@ -169,17 +262,30 @@ partially update the specified CustomResourceDefinition}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$patch_custom_resource_definition(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteApiextensionsV1CustomResourceDefinition
 delete a CustomResourceDefinition}
 }
@@ -191,13 +297,31 @@ delete a CustomResourceDefinition}
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-delete_custom_resource_definition}{}}}
 \subsection{Method \code{delete_custom_resource_definition()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$delete_custom_resource_definition(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$delete_custom_resource_definition(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readApiextensionsV1CustomResourceDefinitionStatus
 read status of the specified CustomResourceDefinition}
 }
@@ -209,13 +333,14 @@ read status of the specified CustomResourceDefinition}
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-read_custom_resource_definition_status}{}}}
 \subsection{Method \code{read_custom_resource_definition_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$read_custom_resource_definition_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$read_custom_resource_definition_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceApiextensionsV1CustomResourceDefinitionStatus
+\item{\code{pretty}}{= NULL
+replaceApiextensionsV1CustomResourceDefinitionStatus
 replace status of the specified CustomResourceDefinition}
 }
 \if{html}{\out{</div>}}
@@ -229,7 +354,9 @@ replace status of the specified CustomResourceDefinition}
 \if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$replace_custom_resource_definition_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -237,7 +364,11 @@ replace status of the specified CustomResourceDefinition}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchApiextensionsV1CustomResourceDefinitionStatus
@@ -253,21 +384,32 @@ partially update status of the specified CustomResourceDefinition}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$patch_custom_resource_definition_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchApiextensionsV1CustomResourceDefinitionList
-watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch' parameter with a list operation instead.
-watchApiextensionsV1CustomResourceDefinition
-watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -277,18 +419,99 @@ watch changes to an object of kind CustomResourceDefinition. deprecated: use the
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-watch_custom_resource_definition_list}{}}}
 \subsection{Method \code{watch_custom_resource_definition_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$watch_custom_resource_definition_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$watch_custom_resource_definition_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchApiextensionsV1CustomResourceDefinition
+watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ApiextensionsV1Api-watch_custom_resource_definition"></a>}}
 \if{latex}{\out{\hypertarget{method-ApiextensionsV1Api-watch_custom_resource_definition}{}}}
 \subsection{Method \code{watch_custom_resource_definition()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$watch_custom_resource_definition(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiextensionsV1Api$watch_custom_resource_definition(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ApiextensionsV1Api-clone"></a>}}

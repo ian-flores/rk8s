@@ -65,9 +65,12 @@ create a LocalSubjectAccessReview}
 \subsection{Method \code{create_namespaced_local_subject_access_review()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AuthorizationV1Api$create_namespaced_local_subject_access_review(
+  namespace,
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -76,7 +79,11 @@ create a LocalSubjectAccessReview}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 createAuthorizationV1SelfSubjectAccessReview
 create a SelfSubjectAccessReview}
 }
@@ -91,7 +98,9 @@ create a SelfSubjectAccessReview}
 \if{html}{\out{<div class="r">}}\preformatted{AuthorizationV1Api$create_self_subject_access_review(
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -100,7 +109,11 @@ create a SelfSubjectAccessReview}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 createAuthorizationV1SelfSubjectRulesReview
 create a SelfSubjectRulesReview}
 }
@@ -115,7 +128,9 @@ create a SelfSubjectRulesReview}
 \if{html}{\out{<div class="r">}}\preformatted{AuthorizationV1Api$create_self_subject_rules_review(
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -124,7 +139,11 @@ create a SelfSubjectRulesReview}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL
 createAuthorizationV1SubjectAccessReview
 create a SubjectAccessReview}
 }
@@ -139,7 +158,9 @@ create a SubjectAccessReview}
 \if{html}{\out{<div class="r">}}\preformatted{AuthorizationV1Api$create_subject_access_review(
   body,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  pretty = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -148,7 +169,11 @@ create a SubjectAccessReview}
 \describe{
 \item{\code{dry_run}}{= NULL}
 
+\item{\code{field_manager}}{= NULL}
+
 \item{\code{field_validation}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
 }
 \if{html}{\out{</div>}}
 }

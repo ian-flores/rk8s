@@ -59,7 +59,7 @@ logFileHandler}
 \if{latex}{\out{\hypertarget{method-LogsApi-log_file_handler}{}}}
 \subsection{Method \code{log_file_handler()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LogsApi$log_file_handler()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LogsApi$log_file_handler(logpath)}\if{html}{\out{</div>}}
 }
 
 }

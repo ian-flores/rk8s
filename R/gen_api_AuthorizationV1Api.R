@@ -35,15 +35,18 @@ AuthorizationV1Api <- R6::R6Class(
     ,
     #' createAuthorizationV1NamespacedLocalSubjectAccessReview
     #' create a LocalSubjectAccessReview
+    #' @param namespace
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_namespaced_local_subject_access_review = function(body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_namespaced_local_subject_access_review = function(namespace, body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews",
         method = "POST",
-        path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        path_params = list(`namespace` = namespace),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1LocalSubjectAccessReview",
@@ -56,13 +59,15 @@ AuthorizationV1Api <- R6::R6Class(
     #' create a SelfSubjectAccessReview
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_self_subject_access_review = function(body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_self_subject_access_review = function(body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1SelfSubjectAccessReview",
@@ -75,13 +80,15 @@ AuthorizationV1Api <- R6::R6Class(
     #' create a SelfSubjectRulesReview
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_self_subject_rules_review = function(body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_self_subject_rules_review = function(body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1SelfSubjectRulesReview",
@@ -94,13 +101,15 @@ AuthorizationV1Api <- R6::R6Class(
     #' create a SubjectAccessReview
     #' @param body
     #' @param dry_run = NULL
+    #' @param field_manager = NULL
     #' @param field_validation = NULL
-    create_subject_access_review = function(body, dry_run = NULL, field_validation = NULL) {
+    #' @param pretty = NULL
+    create_subject_access_review = function(body, dry_run = NULL, field_manager = NULL, field_validation = NULL, pretty = NULL) {
       self$api_client$call_api(
         resource_path = "/apis/authorization.k8s.io/v1/subjectaccessreviews",
         method = "POST",
         path_params = list(),
-        query_params = list(`dryRun` = dry_run, `fieldValidation` = field_validation),
+        query_params = list(`dryRun` = dry_run, `fieldManager` = field_manager, `fieldValidation` = field_validation, `pretty` = pretty),
         header_params = list(),
         body = if (inherits(body, "R6")) body$to_list() else body,
         response_type = "V1SubjectAccessReview",

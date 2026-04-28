@@ -1,15 +1,15 @@
 Package: rk8s
 Type: Package
 Title: Kubernetes Client for R
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Ian", "Flores Siaca", email = "iflores.siaca@gmail.com", role = c("aut", "cre"))
-Description: An R client for the Kubernetes API, providing access to typed
-    resource APIs (Core, Apps, Batch, Networking, RBAC, ...) and a dynamic
-    client for custom resources. Mirrors the design of the official
-    Kubernetes Python client and Go client-go: a hand-written runtime
-    (configuration, authentication, watch, streaming, dynamic client) plus
-    typed API and model classes code-generated from the Kubernetes OpenAPI
-    specification.
+Description: An R client for the Kubernetes API. Provides a high-level
+    verb-based interface (kube_get, kube_apply, kube_logs, kube_watch,
+    ...) and a typed/generated layer mirroring the Kubernetes Python
+    client and Go client-go: a hand-written runtime (configuration,
+    authentication, watch, informer, dynamic client, leader election,
+    pod exec/port-forward over WebSocket) plus typed API and model
+    classes code-generated from the Kubernetes OpenAPI specification.
 License: Apache License (>= 2)
 URL: https://github.com/ian-flores/rk8s
 BugReports: https://github.com/ian-flores/rk8s/issues
@@ -30,7 +30,9 @@ Suggests:
     withr,
     callr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    websocket,
+    later
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 RoxygenNote: 7.2.3

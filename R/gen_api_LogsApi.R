@@ -33,11 +33,12 @@ LogsApi <- R6::R6Class(
     }
     ,
     #' logFileHandler
-    log_file_handler = function() {
+    #' @param logpath
+    log_file_handler = function(logpath) {
       self$api_client$call_api(
         resource_path = "/logs/{logpath}",
         method = "GET",
-        path_params = list(),
+        path_params = list(`logpath` = logpath),
         query_params = list(),
         header_params = list(),
         body = NULL,

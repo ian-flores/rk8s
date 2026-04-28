@@ -38,7 +38,7 @@ Configuration <- R6::R6Class(
     #' @field proxy Optional proxy URL.
     proxy = NULL,
     #' @field user_agent User-Agent header.
-    user_agent = "rk8s/0.1.0",
+    user_agent = "rk8s/0.2.0",
     #' @field exec Optional `list(command, args, env, apiVersion)` exec plugin.
     exec = NULL,
     #' @field token_file Optional path to a file holding a bearer token (reread
@@ -54,7 +54,7 @@ Configuration <- R6::R6Class(
     initialize = function(host = NULL, api_key = NULL, username = NULL,
                           password = NULL, ssl_ca_cert = NULL, cert_file = NULL,
                           key_file = NULL, verify_ssl = TRUE, proxy = NULL,
-                          user_agent = "rk8s/0.1.0", exec = NULL,
+                          user_agent = "rk8s/0.2.0", exec = NULL,
                           token_file = NULL, context_name = NULL) {
       self$host <- host
       self$api_key <- api_key %||% list()

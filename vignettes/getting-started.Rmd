@@ -11,129 +11,168 @@ vignette: >
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
 ```
 
-rk8s is an R client for the Kubernetes API. It mirrors the architecture of
-the official Python client and Go client-go: a small hand-written runtime
-(configuration, HTTP client, watch, dynamic client, informer, leader
-election, utilities) plus typed API and model classes code-generated
-from the Kubernetes OpenAPI specification.
+rk8s is an R client for the Kubernetes API. It has two layers:
 
-This vignette walks through the essentials. Every code chunk assumes a
-reachable Kubernetes API server and a valid kubeconfig (or in-cluster
-service account).
+* **A high-level verb API** — `kube_get()`, `kube_apply()`, `kube_logs()`,
+  `kube_watch()`, … This is what most users want. You never have to type
+  `V1Deployment$new(...)` to do everyday work.
+* **A low-level typed/generated API** — `CoreV1Api`, `AppsV1Api`,
+  `V1Pod`, `V1Deployment`, … 944 operations and 635 model classes
+  generated from the Kubernetes OpenAPI spec, mirroring the official
+  Python client and Go client-go. There when you need it.
+
+A `Watch` helper, `Informer`/`Lister` for client-go-style controllers,
+`DynamicClient` for CustomResources, and `run_as_leader()` for leader
+election sit alongside both layers.
 
 ## Installing
 
 ```r
-# From a local tarball:
-install.packages("rk8s_0.1.0.tar.gz", repos = NULL)
-
-# Or from GitHub:
 # remotes::install_github("ian-flores/rk8s")
+install.packages("rk8s_0.2.0.tar.gz", repos = NULL)
 ```
 
 ## Authenticating
 
-Most users rely on their existing kubeconfig:
-
 ```{r}
 library(rk8s)
-
-client <- new_client_from_config()            # ~/.kube/config
-# client <- new_client_from_config(context = "my-dev")
-# client <- new_client_from_config("~/configs/prod.yaml")
+k <- kube()                                   # ~/.kube/config
+# k <- kube(context = "my-dev")
+# k <- kube(config_file = "~/configs/prod.yaml")
+# k <- kube(namespace = "my-app")             # change default namespace
 ```
 
-Inside a pod running as a ServiceAccount, use `load_incluster_config()`:
+Inside a pod running as a ServiceAccount:
 
 ```{r}
-client <- ApiClient$new(load_incluster_config())
+k <- kube(client = ApiClient$new(load_incluster_config()))
 ```
 
-`load_kube_config()` supports everything `kubectl` does: bearer tokens,
-token files, basic auth, inline base64 client certs, on-disk PEM files,
-and `exec` credential plugins (EKS's `aws-iam-authenticator`, GKE's
-`gke-gcloud-auth-plugin`, any OIDC helper).
+`load_kube_config()` understands everything `kubectl` does: bearer
+tokens, token files, basic auth, inline base64 client certs, on-disk
+PEM files, and `exec` credential plugins (EKS's `aws-iam-authenticator`,
+GKE's `gke-gcloud-auth-plugin`, any OIDC helper).
 
-## Typed API classes
+## The verb API
 
-The generated API classes give you CRUD + subresource methods for every
-resource:
+Resource references can be:
+
+* a kind alias: `"pod"`, `"pods"`, `"po"`, `"deploy"`, `"svc"`, `"ing"`,
+  `"crd"`, …
+* `"kind/name"`: `"deployment/nginx"`
+* explicit `"apiVersion:Kind"`: `"apps/v1:Deployment"`
+* a `c(apiVersion, Kind)` vector: `c("apps/v1", "Deployment")`
+
+### Get / list
 
 ```{r}
-core <- CoreV1Api$new(client)
-
-# List pods across all namespaces
-pods <- V1PodList$from_list(core$list_pod_for_all_namespaces())
-for (p in pods$items) {
-  cat(p$metadata$namespace, "/", p$metadata$name, "\n", sep = "")
-}
-
-# Read a specific pod
-pod <- core$read_namespaced_pod(namespace = "default", name = "nginx")
-
-# Delete
-core$delete_namespaced_pod(namespace = "default", name = "nginx")
+kube_get(k, "pods", namespace = "default")              # list
+kube_get(k, "pod", "nginx-abc")                          # single
+kube_get(k, "deployment/nginx")                          # alt syntax
+kube_get(k, "pods", label_selector = "app=nginx")
+kube_get(k, "apps/v1:Deployment", "nginx")               # explicit GVK
 ```
 
-### Creating resources
-
-Build resources with the typed model classes. They round-trip to and
-from JSON cleanly:
+`kube_get()` returns an `rk8s_object` (single) or `rk8s_list` (collection).
+A built-in `as.data.frame()` method gives you a tabular view:
 
 ```{r}
-apps <- AppsV1Api$new(client)
-dep <- V1Deployment$new(
-  api_version = "apps/v1", kind = "Deployment",
-  metadata = V1ObjectMeta$new(name = "nginx"),
-  spec = V1DeploymentSpec$new(
-    replicas = 3L,
-    selector = V1LabelSelector$new(match_labels = list(app = "nginx")),
-    strategy = V1DeploymentStrategy$new(
-      type = "RollingUpdate",
-      rolling_update = V1RollingUpdateDeployment$new(
-        max_surge = IntOrString$new(value = "25%"),
-        max_unavailable = IntOrString$new(value = 0L))),
-    template = V1PodTemplateSpec$new(
-      metadata = V1ObjectMeta$new(labels = list(app = "nginx")),
-      spec = V1PodSpec$new(containers = list(
-        V1Container$new(name = "nginx", image = "nginx:1.25",
-                         ports = list(V1ContainerPort$new(container_port = 80L))))))))
-
-apps$create_namespaced_deployment(namespace = "default", body = dep)
+pods <- kube_get(k, "pods")
+head(as.data.frame(pods))
+#>     namespace                    name kind     age   status
+#> 1     default                  nginx-1  Pod    12m  Running
+#> 2     default                  nginx-2  Pod    12m  Running
+#> 3 kube-system          coredns-abc-xyz  Pod      4h  Running
 ```
 
-You can also pass a plain nested `list` as `body` — model classes are
-convenience, not requirement.
+### Apply (server-side apply)
 
-## Watching
-
-`Watch` streams events from any list endpoint. The callback receives
-`type` (`ADDED`/`MODIFIED`/`DELETED`/`BOOKMARK`) and the object. Return
-`FALSE` to stop; the stream automatically reconnects with the last
-observed `resourceVersion`, re-listing on 410 Gone.
+`kube_apply()` accepts a path, a YAML/JSON string, an R `list`, or a
+generated model. Multi-document YAML works — each document is routed
+to the correct endpoint via discovery:
 
 ```{r}
-w <- Watch$new()
-w$stream(
-  client,
-  resource_path = "/api/v1/namespaces/default/pods",
-  callback = function(type, object) {
-    cat(type, object$metadata$name, "\n")
-    TRUE
+# From a file
+kube_apply(k, "deployment.yaml")
+
+# From an R list (the most natural form for programmatic generation)
+kube_apply(k, list(
+  apiVersion = "v1", kind = "ConfigMap",
+  metadata = list(name = "demo"),
+  data = list(hello = "world")
+))
+
+# From a multi-doc YAML string
+kube_apply(k, "
+apiVersion: v1
+kind: ConfigMap
+metadata: {name: demo-cm}
+data: {greeting: hello}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: demo-svc}
+spec:
+  selector: {app: demo}
+  ports: [{port: 80, targetPort: 8080}]
+")
+
+# Force-take ownership of conflicting fields (server-side apply force):
+kube_apply(k, "deployment.yaml", force = TRUE)
+```
+
+Field manager defaults to `"rk8s"`; override with `field_manager =`.
+
+### Delete, scale, logs, watch
+
+```{r}
+kube_delete(k, "pod", "nginx-abc")
+kube_delete(k, "deployment/nginx")
+kube_delete(k, "deployment/nginx", grace_period = 0)
+
+kube_scale(k, "deployment", "nginx", replicas = 5)
+kube_scale(k, "statefulset/postgres", replicas = 3)
+
+cat(kube_logs(k, "nginx-abc", tail = 50))
+kube_logs(k, "nginx-abc", container = "sidecar", follow = TRUE)
+
+kube_watch(k, "pods",
+  on_event = function(type, obj) {
+    message(type, " ", obj$metadata$name)
+    TRUE  # keep watching; return FALSE to stop
   },
-  timeout_seconds = 60
+  timeout_seconds = 30
 )
 ```
 
-## Informer + Lister
+### Anything custom
 
-When you want to react to changes *without* re-listing the API server
-every tick, use `Informer`: a local cache kept in sync by one watch,
-plus event handlers. This is how controllers are built.
+`kube_apply()` works for CRs out of the box (any `apiVersion+kind`),
+and `kube_get()` resolves them via the dynamic client. So a typical
+controller is:
+
+```{r}
+foos <- kube_list(k, "example.com/v1:Foo", namespace = "default")
+for (f in foos$items) {
+  if (is.null(f$status$ready) || !isTRUE(f$status$ready)) {
+    kube_apply(k, list(
+      apiVersion = "example.com/v1", kind = "Foo",
+      metadata = list(name = f$metadata$name),
+      status = list(ready = TRUE)
+    ))
+  }
+}
+```
+
+## Watching with a local cache: Informer + Lister
+
+When you want to react to changes without re-listing the API server
+every tick, use `Informer`. One watch feeds an in-memory cache plus
+your event handlers; `Lister` gives you O(1) lookups.
 
 ```{r}
 inf <- Informer$new(
-  client,
+  k$client,
   resource_path = "/api/v1/namespaces/default/pods",
   object_from_list = V1Pod$from_list
 )
@@ -141,56 +180,25 @@ inf$add_event_handler(
   on_add    = function(obj) message("add: ", obj$metadata$name),
   on_update = function(old, new) {
     if (!identical(old$status$phase, new$status$phase))
-      message(new$metadata$name, ": ", old$status$phase, " -> ", new$status$phase)
+      message(new$metadata$name, ": ",
+              old$status$phase, " -> ", new$status$phase)
   },
   on_delete = function(obj) message("gone: ", obj$metadata$name)
 )
 inf$run(stop_seconds = 120)
 
 pods <- inf$lister()
-pods$get("nginx")       # O(1) cache lookup, no API call
-pods$list()             # current cache snapshot
-```
-
-## Dynamic client (CustomResources and anything untyped)
-
-For CRDs (or when you'd rather not import a typed class), use
-`DynamicClient`. It discovers the REST path for any `apiVersion+kind`:
-
-```{r}
-dc <- DynamicClient$new(client)
-
-# Built-in:
-pods <- dc$resource("v1", "Pod")
-pods$list(namespace = "kube-system")
-pods$get("kube-dns-abc", namespace = "kube-system")
-
-# CustomResource:
-foos <- dc$resource("example.com/v1", "Foo")
-foos$list(namespace = "default")
-foos$create(list(
-  apiVersion = "example.com/v1", kind = "Foo",
-  metadata = list(name = "my-foo"),
-  spec = list(bar = 1)
-), namespace = "default")
-```
-
-## Apply a YAML manifest
-
-`create_from_yaml()` routes each document to the right endpoint via the
-dynamic client, like `kubectl apply -f`:
-
-```{r}
-create_from_yaml(client, yaml_file = "manifest.yaml")
+pods$get("nginx")    # cache lookup, no API call
+pods$list()
 ```
 
 ## Leader election
 
-For controllers that need exactly-one-active semantics across replicas:
+For controllers that need exactly-one-active across replicas:
 
 ```{r}
 run_as_leader(
-  client,
+  k$client,
   lease_name = "my-controller",
   lease_namespace = "kube-system",
   identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
@@ -199,29 +207,50 @@ run_as_leader(
 )
 ```
 
-A background renewer (via the optional `callr` package) keeps the lease
-fresh while your controller loop runs; on failure or `Ctrl-C`, the
-`on_stopped_leading` callback fires.
+A `callr`-driven background renewer keeps the lease fresh; on failure
+or `Ctrl-C`, `on_stopped_leading` fires.
 
-## Handling errors
+## Errors
 
 API failures surface as `rk8s_api_error` conditions whose `$exception`
-is an `ApiException` with the HTTP status, reason phrase, headers, and
-parsed `metav1.Status`.
+is an `ApiException` with the HTTP status, reason, headers, and parsed
+`metav1.Status`.
 
 ```{r}
 pod <- tryCatch(
-  core$read_namespaced_pod(namespace = "default", name = "nope"),
+  kube_get(k, "pod", "nope"),
   rk8s_api_error = function(e) {
     if (e$exception$status == 404L) NULL else stop(e)
   }
 )
 ```
 
-## Regenerating from a newer OpenAPI spec
+## Dropping to the typed/generated layer
 
-The generator in `tools/gen/` produces the typed classes (`gen_model_*.R`
-and `gen_api_*.R`). To update to a newer Kubernetes version:
+Any time `kube_*` doesn't expose what you need, drop down. The verb
+client carries the underlying `ApiClient` and `DynamicClient`:
+
+```{r}
+# Typed:
+core <- CoreV1Api$new(k$client)
+pods <- V1PodList$from_list(core$list_pod_for_all_namespaces())
+
+# Or build a typed model explicitly:
+dep <- V1Deployment$new(
+  api_version = "apps/v1", kind = "Deployment",
+  metadata = V1ObjectMeta$new(name = "nginx"),
+  spec = V1DeploymentSpec$new(
+    replicas = 3L,
+    selector = V1LabelSelector$new(match_labels = list(app = "nginx")),
+    template = V1PodTemplateSpec$new(
+      metadata = V1ObjectMeta$new(labels = list(app = "nginx")),
+      spec = V1PodSpec$new(containers = list(
+        V1Container$new(name = "nginx", image = "nginx:1.25"))))))
+AppsV1Api$new(k$client)$create_namespaced_deployment(
+  namespace = "default", body = dep)
+```
+
+## Regenerating from a newer Kubernetes spec
 
 ```bash
 curl -L -o tools/gen/spec/swagger.json \
@@ -230,4 +259,6 @@ Rscript tools/gen/generate.R tools/gen/spec/swagger.json R
 R CMD build .
 ```
 
-See `tools/gen/README.md` for generator internals.
+The generator (`tools/gen/`) reads OpenAPI v2 JSON and emits R6 model
+classes plus per-tag API classes — about 700 R files. NAMESPACE entries
+between sentinel lines are managed automatically.

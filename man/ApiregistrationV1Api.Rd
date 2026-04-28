@@ -53,9 +53,7 @@ Typed Kubernetes API client for the `ApiregistrationV1` surface. See generated m
 getApiregistrationV1APIResources
 get available resources
 listApiregistrationV1APIService
-list or watch objects of kind APIService
-createApiregistrationV1APIService
-create an APIService}
+list or watch objects of kind APIService}
 }
 \if{html}{\out{</div>}}
 }
@@ -74,9 +72,50 @@ create an APIService}
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-list_api_service}{}}}
 \subsection{Method \code{list_api_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$list_api_service()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$list_api_service(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createApiregistrationV1APIService
+create an APIService}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ApiregistrationV1Api-create_api_service"></a>}}
@@ -85,7 +124,9 @@ create an APIService}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$create_api_service(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -93,7 +134,11 @@ create an APIService}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteApiregistrationV1CollectionAPIService
@@ -107,13 +152,54 @@ delete collection of APIService}
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-delete_collection_api_service}{}}}
 \subsection{Method \code{delete_collection_api_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$delete_collection_api_service(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$delete_collection_api_service(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readApiregistrationV1APIService
 read the specified APIService}
 }
@@ -125,13 +211,14 @@ read the specified APIService}
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-read_api_service}{}}}
 \subsection{Method \code{read_api_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$read_api_service(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$read_api_service(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceApiregistrationV1APIService
+\item{\code{pretty}}{= NULL
+replaceApiregistrationV1APIService
 replace the specified APIService}
 }
 \if{html}{\out{</div>}}
@@ -145,7 +232,9 @@ replace the specified APIService}
 \if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$replace_api_service(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -153,7 +242,11 @@ replace the specified APIService}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchApiregistrationV1APIService
@@ -169,17 +262,30 @@ partially update the specified APIService}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$patch_api_service(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteApiregistrationV1APIService
 delete an APIService}
 }
@@ -191,13 +297,31 @@ delete an APIService}
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-delete_api_service}{}}}
 \subsection{Method \code{delete_api_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$delete_api_service(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$delete_api_service(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readApiregistrationV1APIServiceStatus
 read status of the specified APIService}
 }
@@ -209,13 +333,14 @@ read status of the specified APIService}
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-read_api_service_status}{}}}
 \subsection{Method \code{read_api_service_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$read_api_service_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$read_api_service_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceApiregistrationV1APIServiceStatus
+\item{\code{pretty}}{= NULL
+replaceApiregistrationV1APIServiceStatus
 replace status of the specified APIService}
 }
 \if{html}{\out{</div>}}
@@ -229,7 +354,9 @@ replace status of the specified APIService}
 \if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$replace_api_service_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -237,7 +364,11 @@ replace status of the specified APIService}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchApiregistrationV1APIServiceStatus
@@ -253,21 +384,32 @@ partially update status of the specified APIService}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$patch_api_service_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchApiregistrationV1APIServiceList
-watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a list operation instead.
-watchApiregistrationV1APIService
-watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -277,18 +419,99 @@ watch changes to an object of kind APIService. deprecated: use the 'watch' param
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-watch_api_service_list}{}}}
 \subsection{Method \code{watch_api_service_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$watch_api_service_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$watch_api_service_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchApiregistrationV1APIService
+watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ApiregistrationV1Api-watch_api_service"></a>}}
 \if{latex}{\out{\hypertarget{method-ApiregistrationV1Api-watch_api_service}{}}}
 \subsection{Method \code{watch_api_service()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$watch_api_service(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{ApiregistrationV1Api$watch_api_service(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ApiregistrationV1Api-clone"></a>}}

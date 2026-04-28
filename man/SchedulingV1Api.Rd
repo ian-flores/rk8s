@@ -50,9 +50,7 @@ Typed Kubernetes API client for the `SchedulingV1` surface. See generated method
 getSchedulingV1APIResources
 get available resources
 listSchedulingV1PriorityClass
-list or watch objects of kind PriorityClass
-createSchedulingV1PriorityClass
-create a PriorityClass}
+list or watch objects of kind PriorityClass}
 }
 \if{html}{\out{</div>}}
 }
@@ -71,9 +69,50 @@ create a PriorityClass}
 \if{latex}{\out{\hypertarget{method-SchedulingV1Api-list_priority_class}{}}}
 \subsection{Method \code{list_priority_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$list_priority_class()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$list_priority_class(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createSchedulingV1PriorityClass
+create a PriorityClass}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SchedulingV1Api-create_priority_class"></a>}}
@@ -82,7 +121,9 @@ create a PriorityClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$create_priority_class(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -90,7 +131,11 @@ create a PriorityClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteSchedulingV1CollectionPriorityClass
@@ -104,13 +149,54 @@ delete collection of PriorityClass}
 \if{latex}{\out{\hypertarget{method-SchedulingV1Api-delete_collection_priority_class}{}}}
 \subsection{Method \code{delete_collection_priority_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$delete_collection_priority_class(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$delete_collection_priority_class(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readSchedulingV1PriorityClass
 read the specified PriorityClass}
 }
@@ -122,13 +208,14 @@ read the specified PriorityClass}
 \if{latex}{\out{\hypertarget{method-SchedulingV1Api-read_priority_class}{}}}
 \subsection{Method \code{read_priority_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$read_priority_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$read_priority_class(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceSchedulingV1PriorityClass
+\item{\code{pretty}}{= NULL
+replaceSchedulingV1PriorityClass
 replace the specified PriorityClass}
 }
 \if{html}{\out{</div>}}
@@ -142,7 +229,9 @@ replace the specified PriorityClass}
 \if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$replace_priority_class(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -150,7 +239,11 @@ replace the specified PriorityClass}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchSchedulingV1PriorityClass
@@ -166,17 +259,30 @@ partially update the specified PriorityClass}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$patch_priority_class(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteSchedulingV1PriorityClass
 delete a PriorityClass}
 }
@@ -188,17 +294,33 @@ delete a PriorityClass}
 \if{latex}{\out{\hypertarget{method-SchedulingV1Api-delete_priority_class}{}}}
 \subsection{Method \code{delete_priority_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$delete_priority_class(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$delete_priority_class(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchSchedulingV1PriorityClassList
-watch individual changes to a list of PriorityClass. deprecated: use the 'watch' parameter with a list operation instead.
-watchSchedulingV1PriorityClass
-watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of PriorityClass. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -208,18 +330,99 @@ watch changes to an object of kind PriorityClass. deprecated: use the 'watch' pa
 \if{latex}{\out{\hypertarget{method-SchedulingV1Api-watch_priority_class_list}{}}}
 \subsection{Method \code{watch_priority_class_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$watch_priority_class_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$watch_priority_class_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchSchedulingV1PriorityClass
+watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SchedulingV1Api-watch_priority_class"></a>}}
 \if{latex}{\out{\hypertarget{method-SchedulingV1Api-watch_priority_class}{}}}
 \subsection{Method \code{watch_priority_class()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$watch_priority_class(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SchedulingV1Api$watch_priority_class(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SchedulingV1Api-clone"></a>}}

@@ -1,50 +1,131 @@
 # rk8s — Kubernetes client for R
 
-`rk8s` is an R port of the official [Kubernetes Python client][py] and
-[Go `client-go`][go]. Like those, it combines a hand-written runtime
-(configuration, authentication, watch, dynamic client, utilities) with
-typed API and model classes code-generated from the Kubernetes OpenAPI
-spec.
+[![R-CMD-check](https://github.com/ian-flores/rk8s/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ian-flores/rk8s/actions/workflows/R-CMD-check.yaml)
 
-- **635 model classes** (`V1Pod`, `V1Deployment`, `V1ConfigMap`, …) with
-  `to_list()` / `from_list()` round-tripping.
-- **62 typed API classes** (`CoreV1Api`, `AppsV1Api`, `BatchV1Api`,
-  `NetworkingV1Api`, …) covering **944 operations**.
-- **`DynamicClient`** for CustomResources and any resource you'd rather
-  not import a typed class for.
-- **`Watch`** for streaming list endpoints with resourceVersion
-  resumption.
-- **`load_kube_config()`** / **`load_incluster_config()`** with bearer
-  tokens, client certificates (inline or on-disk), token files, and
-  exec credential plugins (EKS / GKE).
+`rk8s` gives R first-class access to the Kubernetes API. Two layers:
+
+1. **A high-level verb API** — `kube_get()`, `kube_apply()`,
+   `kube_logs()`, `kube_watch()`, `kube_scale()`, `kube_delete()`. The
+   surface most users want — never write `V1Deployment$new(...)` to do
+   ordinary work.
+2. **A typed / generated API** — `CoreV1Api`, `AppsV1Api`, `V1Pod`,
+   `V1Deployment`, … 944 operations and 635 model classes generated
+   from the Kubernetes OpenAPI spec, mirroring the official Python
+   client and Go client-go. Use it when you want full fidelity.
+
+Watch helpers, an Informer + Lister cache, a DynamicClient for
+CustomResources, and a coordination.k8s.io/Lease-backed leader
+election round it out.
 
 ## Install
 
 ```r
-# remotes::install_github("your-org/rk8s")
-install.packages("rk8s_0.1.0.tar.gz", repos = NULL)
+# remotes::install_github("ian-flores/rk8s")
+install.packages("rk8s_0.2.0.tar.gz", repos = NULL)
 ```
 
-Depends on `R6`, `httr2`, `jsonlite`, `yaml`, `openssl`, `base64enc`,
-`curl`.
+Depends on `R6`, `httr2`, `jsonlite`, `yaml`, `openssl`, `base64enc`.
 
 ## Quickstart
 
 ```r
 library(rk8s)
+k <- kube()                             # ~/.kube/config; or kube(context=…)
 
-client <- new_client_from_config()          # reads ~/.kube/config
-core   <- CoreV1Api$new(client)
+# List, get, table-ize
+kube_get(k, "pods", namespace = "default")
+kube_get(k, "deployment/nginx")
+as.data.frame(kube_get(k, "pods"))      # tibble-like flattening
 
-# List pods across all namespaces
+# Apply manifests (server-side apply, force optional)
+kube_apply(k, "deployment.yaml")
+kube_apply(k, list(
+  apiVersion = "v1", kind = "ConfigMap",
+  metadata = list(name = "demo"),
+  data = list(hello = "world")
+))
+kube_apply(k, "
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata: {name: nginx}
+  spec:
+    replicas: 3
+    selector: {matchLabels: {app: nginx}}
+    template:
+      metadata: {labels: {app: nginx}}
+      spec:
+        containers: [{name: nginx, image: nginx:1.25}]
+")
+
+# Logs, scale, delete, watch
+cat(kube_logs(k, "nginx-abc", tail = 50))
+kube_scale(k, "deployment", "nginx", replicas = 5)
+kube_delete(k, "deployment/nginx")
+kube_watch(k, "pods", on_event = function(type, obj) {
+  message(type, " ", obj$metadata$name); TRUE
+})
+```
+
+Resource refs accept any of: `"pods"`, `"pod"`, `"po"`,
+`"deployment/nginx"`, `"apps/v1:Deployment"`, `c("apps/v1", "Deployment")`.
+
+CustomResources work out of the box — `kube_apply()` and `kube_get()`
+discover the REST path for any `apiVersion+kind`.
+
+## Authentication
+
+`load_kube_config()` understands everything `kubectl` does:
+
+- bearer tokens (`users.user.token` / `tokenFile`)
+- basic auth (`username` / `password`)
+- inline base64 client certs (`*-data` keys)
+- on-disk PEM files (absolute, or relative to the kubeconfig)
+- `exec` credential plugins with output caching (EKS, GKE, OIDC)
+- `insecure-skip-tls-verify`
+
+Inside a pod:
+
+```r
+k <- kube(client = ApiClient$new(load_incluster_config()))
+```
+
+## Informers + Listers (controllers)
+
+Build a controller without re-listing every tick:
+
+```r
+inf <- Informer$new(k$client,
+  resource_path = "/api/v1/namespaces/default/pods",
+  object_from_list = V1Pod$from_list)
+
+inf$add_event_handler(
+  on_add    = function(obj) message("add: ", obj$metadata$name),
+  on_update = function(old, new) message("upd: ", new$metadata$name),
+  on_delete = function(obj) message("del: ", obj$metadata$name))
+
+inf$run(stop_seconds = 120)
+inf$lister()$get("nginx")            # O(1) cache lookup
+```
+
+## Leader election
+
+```r
+run_as_leader(k$client,
+  lease_name = "my-controller",
+  lease_namespace = "kube-system",
+  identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
+  on_started_leading = function() controller_loop(),
+  on_stopped_leading = function() message("stopped"))
+```
+
+## When you need the full API surface
+
+Drop down to typed classes any time:
+
+```r
+core <- CoreV1Api$new(k$client)
 pods <- V1PodList$from_list(core$list_pod_for_all_namespaces())
-for (p in pods$items) {
-  cat(p$metadata$namespace, "/", p$metadata$name, " - ",
-      p$status$phase, "\n", sep = "")
-}
 
-# Create a Deployment
-apps <- AppsV1Api$new(client)
 dep <- V1Deployment$new(
   api_version = "apps/v1", kind = "Deployment",
   metadata = V1ObjectMeta$new(name = "nginx"),
@@ -55,101 +136,36 @@ dep <- V1Deployment$new(
       metadata = V1ObjectMeta$new(labels = list(app = "nginx")),
       spec = V1PodSpec$new(containers = list(
         V1Container$new(name = "nginx", image = "nginx:1.25"))))))
-apps$create_namespaced_deployment(namespace = "default", body = dep)
+
+AppsV1Api$new(k$client)$create_namespaced_deployment(
+  namespace = "default", body = dep)
 ```
 
-See [`inst/examples/`](inst/examples/) for more: `list_pods.R`,
-`create_deployment.R`, `watch_pods.R`, `dynamic_crd.R`, `apply_yaml.R`.
+## Architecture
 
-## Authentication
+| Concern                   | Hand-written (`R/*.R`)                            | Generated (`R/gen_*.R`)               |
+| ------------------------- | ------------------------------------------------- | ------------------------------------- |
+| Verb API                  | `kube`, `kube_get/apply/delete/scale/logs/watch`  | —                                     |
+| Transport / auth          | `ApiClient`, `Configuration`                      | —                                     |
+| Config loading            | `load_kube_config`, `_incluster`, exec plugin     | —                                     |
+| Errors                    | `ApiException`                                    | —                                     |
+| Watch                     | `Watch`                                           | —                                     |
+| Cache                     | `Informer`, `Lister`                              | —                                     |
+| Dynamic / discovery       | `DynamicClient`, `DynamicResource`                | —                                     |
+| Leader election           | `run_as_leader`                                   | —                                     |
+| YAML apply / quantity     | `create_from_yaml`, `parse_quantity`              | —                                     |
+| Typed API classes         | —                                                 | `CoreV1Api`, `AppsV1Api`, … (62)      |
+| Model classes             | —                                                 | `V1Pod`, `V1Deployment`, … (635)      |
 
-`load_kube_config()` understands everything `kubectl` does:
-
-- bearer tokens (`users.user.token` / `users.user.tokenFile`)
-- basic auth (`users.user.username` / `password`)
-- inline base64 client certs (`client-certificate-data`, `client-key-data`,
-  `certificate-authority-data`)
-- on-disk PEM files (absolute, or relative to the kubeconfig dir)
-- `exec` credential plugins with output caching (EKS, GKE, OIDC, etc.)
-- `insecure-skip-tls-verify`
-
-For in-cluster workloads:
-
-```r
-client <- ApiClient$new(load_incluster_config())
-```
-
-## Watching
-
-```r
-w <- Watch$new()
-w$stream(
-  client,
-  resource_path = "/api/v1/namespaces/default/pods",
-  callback = function(type, object) {
-    cat(type, object$metadata$name, "\n")
-    TRUE
-  }
-)
-```
-
-Reconnects automatically on 410 Gone; the loop exits when the callback
-returns `FALSE` or `$stop()` is called.
-
-## Dynamic client
-
-For CustomResources or when you want to avoid importing a typed class:
-
-```r
-dc <- DynamicClient$new(client)
-foos <- dc$resource("example.com/v1", "Foo")
-foos$list(namespace = "default")
-foos$get("my-foo", namespace = "default")
-foos$create(list(apiVersion = "example.com/v1", kind = "Foo",
-                  metadata = list(name = "my-foo"),
-                  spec = list(bar = 1)),
-             namespace = "default")
-```
-
-## Regenerating from the OpenAPI spec
-
-The typed classes under `R/gen_model_*.R` and `R/gen_api_*.R` are
-produced from the Kubernetes OpenAPI v2 specification by the generator
-in [`tools/gen/`](tools/gen/). **Do not hand-edit generated files.** To
-update to a newer Kubernetes version:
+The generator in `tools/gen/` reads the Kubernetes OpenAPI v2
+swagger.json (pinned in `tools/gen/spec/`) and emits the typed
+classes — same architectural split as the Python client. To update
+to a newer cluster version, swap the spec and re-run:
 
 ```bash
-# Fetch the desired spec (example: release-1.31)
-curl -L -o tools/gen/spec/swagger.json \
-  https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.31/api/openapi-spec/swagger.json
-
-# Regenerate
 Rscript tools/gen/generate.R tools/gen/spec/swagger.json R
-
-# Rebuild
-R CMD build .
 ```
-
-The generator is ~430 lines of R; the architectural split (hand-written
-runtime vs. generated API/models) matches the Python client, so the same
-OpenAPI spec that drives `kubernetes-client/python` drives `rk8s`.
-
-## Design
-
-| Concern                | Hand-written (`R/*.R`)                 | Generated (`R/gen_*.R`)               |
-| ---------------------- | -------------------------------------- | ------------------------------------- |
-| HTTP transport / auth  | `ApiClient`, `Configuration`           | —                                     |
-| Config loading         | `load_kube_config`, `_incluster`, exec | —                                     |
-| Exceptions             | `ApiException`                         | —                                     |
-| Watch                  | `Watch`                                | —                                     |
-| Dynamic / discovery    | `DynamicClient`, `DynamicResource`     | —                                     |
-| YAML apply / quantity  | `create_from_yaml`, `parse_quantity`   | —                                     |
-| Typed API classes      | —                                      | `CoreV1Api`, `AppsV1Api`, … (62)     |
-| Model classes          | —                                      | `V1Pod`, `V1Deployment`, … (635)     |
 
 ## License
 
 Apache 2.0.
-
-[py]: https://github.com/kubernetes-client/python
-[go]: https://github.com/kubernetes/client-go

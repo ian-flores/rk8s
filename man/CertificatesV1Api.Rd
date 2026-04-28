@@ -56,9 +56,7 @@ Typed Kubernetes API client for the `CertificatesV1` surface. See generated meth
 getCertificatesV1APIResources
 get available resources
 listCertificatesV1CertificateSigningRequest
-list or watch objects of kind CertificateSigningRequest
-createCertificatesV1CertificateSigningRequest
-create a CertificateSigningRequest}
+list or watch objects of kind CertificateSigningRequest}
 }
 \if{html}{\out{</div>}}
 }
@@ -77,9 +75,50 @@ create a CertificateSigningRequest}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-list_certificate_signing_request}{}}}
 \subsection{Method \code{list_certificate_signing_request()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$list_certificate_signing_request()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$list_certificate_signing_request(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createCertificatesV1CertificateSigningRequest
+create a CertificateSigningRequest}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CertificatesV1Api-create_certificate_signing_request"></a>}}
@@ -88,7 +127,9 @@ create a CertificateSigningRequest}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$create_certificate_signing_request(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -96,7 +137,11 @@ create a CertificateSigningRequest}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteCertificatesV1CollectionCertificateSigningRequest
@@ -110,13 +155,54 @@ delete collection of CertificateSigningRequest}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-delete_collection_certificate_signing_request}{}}}
 \subsection{Method \code{delete_collection_certificate_signing_request()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$delete_collection_certificate_signing_request(dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$delete_collection_certificate_signing_request(
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCertificatesV1CertificateSigningRequest
 read the specified CertificateSigningRequest}
 }
@@ -128,13 +214,14 @@ read the specified CertificateSigningRequest}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-read_certificate_signing_request}{}}}
 \subsection{Method \code{read_certificate_signing_request()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$read_certificate_signing_request(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$read_certificate_signing_request(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCertificatesV1CertificateSigningRequest
+\item{\code{pretty}}{= NULL
+replaceCertificatesV1CertificateSigningRequest
 replace the specified CertificateSigningRequest}
 }
 \if{html}{\out{</div>}}
@@ -148,7 +235,9 @@ replace the specified CertificateSigningRequest}
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$replace_certificate_signing_request(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -156,7 +245,11 @@ replace the specified CertificateSigningRequest}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCertificatesV1CertificateSigningRequest
@@ -172,17 +265,30 @@ partially update the specified CertificateSigningRequest}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$patch_certificate_signing_request(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteCertificatesV1CertificateSigningRequest
 delete a CertificateSigningRequest}
 }
@@ -194,13 +300,31 @@ delete a CertificateSigningRequest}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-delete_certificate_signing_request}{}}}
 \subsection{Method \code{delete_certificate_signing_request()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$delete_certificate_signing_request(name, dry_run = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$delete_certificate_signing_request(
+  name,
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readCertificatesV1CertificateSigningRequestApproval
 read approval of the specified CertificateSigningRequest}
 }
@@ -212,13 +336,17 @@ read approval of the specified CertificateSigningRequest}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-read_certificate_signing_request_approval}{}}}
 \subsection{Method \code{read_certificate_signing_request_approval()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$read_certificate_signing_request_approval(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$read_certificate_signing_request_approval(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCertificatesV1CertificateSigningRequestApproval
+\item{\code{pretty}}{= NULL
+replaceCertificatesV1CertificateSigningRequestApproval
 replace approval of the specified CertificateSigningRequest}
 }
 \if{html}{\out{</div>}}
@@ -232,7 +360,9 @@ replace approval of the specified CertificateSigningRequest}
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$replace_certificate_signing_request_approval(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -240,7 +370,11 @@ replace approval of the specified CertificateSigningRequest}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCertificatesV1CertificateSigningRequestApproval
@@ -256,17 +390,30 @@ partially update approval of the specified CertificateSigningRequest}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$patch_certificate_signing_request_approval(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 readCertificatesV1CertificateSigningRequestStatus
 read status of the specified CertificateSigningRequest}
 }
@@ -278,13 +425,14 @@ read status of the specified CertificateSigningRequest}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-read_certificate_signing_request_status}{}}}
 \subsection{Method \code{read_certificate_signing_request_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$read_certificate_signing_request_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$read_certificate_signing_request_status(name, pretty = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceCertificatesV1CertificateSigningRequestStatus
+\item{\code{pretty}}{= NULL
+replaceCertificatesV1CertificateSigningRequestStatus
 replace status of the specified CertificateSigningRequest}
 }
 \if{html}{\out{</div>}}
@@ -298,7 +446,9 @@ replace status of the specified CertificateSigningRequest}
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$replace_certificate_signing_request_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -306,7 +456,11 @@ replace status of the specified CertificateSigningRequest}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchCertificatesV1CertificateSigningRequestStatus
@@ -322,21 +476,32 @@ partially update status of the specified CertificateSigningRequest}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$patch_certificate_signing_request_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 watchCertificatesV1CertificateSigningRequestList
-watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead.
-watchCertificatesV1CertificateSigningRequest
-watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -346,18 +511,99 @@ watch changes to an object of kind CertificateSigningRequest. deprecated: use th
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-watch_certificate_signing_request_list}{}}}
 \subsection{Method \code{watch_certificate_signing_request_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$watch_certificate_signing_request_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$watch_certificate_signing_request_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchCertificatesV1CertificateSigningRequest
+watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CertificatesV1Api-watch_certificate_signing_request"></a>}}
 \if{latex}{\out{\hypertarget{method-CertificatesV1Api-watch_certificate_signing_request}{}}}
 \subsection{Method \code{watch_certificate_signing_request()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$watch_certificate_signing_request(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{CertificatesV1Api$watch_certificate_signing_request(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-CertificatesV1Api-clone"></a>}}

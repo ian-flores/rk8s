@@ -1,3 +1,62 @@
+# rk8s 0.2.0
+
+## High-level verb API
+
+* New `kube()` session and idiomatic verbs: `kube_get()`, `kube_list()`,
+  `kube_apply()`, `kube_delete()`, `kube_scale()`, `kube_logs()`,
+  `kube_watch()`. This is the surface most users want — you never have
+  to type `V1Deployment$new(...)` to do everyday work.
+* Resource refs accept any of: kind alias (`"pod"`, `"po"`, `"pods"`),
+  `"kind/name"` (`"deployment/nginx"`), explicit `"apiVersion:Kind"`,
+  or `c(apiVersion, Kind)`. Built-in alias table covers the common
+  kubectl shortcodes (`po`, `svc`, `deploy`, `sts`, `ds`, `rs`, `cm`,
+  `sa`, `pv`, `pvc`, `ing`, `netpol`, `hpa`, `pdb`, `sc`, `crd`, …).
+* `as.data.frame()` method for `rk8s_list` returns a tabular view
+  (namespace / name / kind / age / status), so `kube_get(k, "pods")`
+  is directly viewable.
+* `kube_apply()` is server-side apply (`Content-Type:
+  application/apply-patch+yaml`) by default, with `force = TRUE`
+  conflict resolution and a configurable `field_manager`.
+
+## Pod exec and port-forward (WebSocket)
+
+* New `pod_exec_open()` / `pod_exec()` and `PodExecSession`. Speaks
+  `v4.channel.k8s.io` over WebSocket, demuxes stdin/stdout/stderr/error/
+  resize channels, surfaces the kubelet's exit code.
+* New `pod_port_forward_open()` and `PodPortForwardSession`. Same
+  subprotocol; per-port `write()` / `on_data()` API matching the
+  Python client's design (no local TCP listener required).
+* Both depend on the `websocket` package (Suggests). Bearer-token
+  auth only — client-cert auth over WebSocket is not yet supported.
+
+## Generated layer fixes
+
+* **Critical correctness fix**: the generator now resolves
+  `$ref` parameters against `spec$parameters` before emitting
+  signatures. Prior versions silently dropped `namespace`, `body`,
+  `fieldManager`, `force`, and other shared parameters from every
+  namespaced operation — making most generated `*_namespaced_*`
+  methods unusable. All 944 operations regenerated.
+* PATCH methods now accept an optional `content_type` argument,
+  defaulting to the spec's first `consumes` entry. Pass
+  `application/apply-patch+yaml` for server-side apply, or
+  `application/json-patch+json` for RFC 6902 patches.
+* Argument-name collisions in mixed-`in` operations (notably
+  `connect_*_namespaced_pod_proxy_with_path`, where `path` is both
+  a path and a query parameter) are disambiguated with a `_query` /
+  `_header` / `_body` suffix while preserving the wire key.
+
+## Other changes
+
+* Windows: relaxed the URL-assertion in `test-client-request.R` to
+  decode the query before comparing, fixing a Windows-only failure
+  caused by httr2's platform-dependent percent-encoding of `=`.
+* Vignette and README rewritten to lead with the verb API; the typed
+  layer is documented as a drop-down for advanced cases.
+* Integration test suite under `tests/integration/` running against a
+  kind cluster, gated on `RK8S_E2E=1`. New
+  `.github/workflows/integration.yaml` runs it on push and PR.
+
 # rk8s 0.1.0
 
 Initial release.

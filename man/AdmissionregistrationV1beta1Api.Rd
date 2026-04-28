@@ -62,9 +62,7 @@ Typed Kubernetes API client for the `AdmissionregistrationV1beta1` surface. See 
 getAdmissionregistrationV1beta1APIResources
 get available resources
 listAdmissionregistrationV1beta1ValidatingAdmissionPolicy
-list or watch objects of kind ValidatingAdmissionPolicy
-createAdmissionregistrationV1beta1ValidatingAdmissionPolicy
-create a ValidatingAdmissionPolicy}
+list or watch objects of kind ValidatingAdmissionPolicy}
 }
 \if{html}{\out{</div>}}
 }
@@ -83,9 +81,50 @@ create a ValidatingAdmissionPolicy}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-list_validating_admission_policy}{}}}
 \subsection{Method \code{list_validating_admission_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$list_validating_admission_policy()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$list_validating_admission_policy(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAdmissionregistrationV1beta1ValidatingAdmissionPolicy
+create a ValidatingAdmissionPolicy}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AdmissionregistrationV1beta1Api-create_validating_admission_policy"></a>}}
@@ -94,7 +133,9 @@ create a ValidatingAdmissionPolicy}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$create_validating_admission_policy(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -102,7 +143,11 @@ create a ValidatingAdmissionPolicy}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAdmissionregistrationV1beta1CollectionValidatingAdmissionPolicy
@@ -117,14 +162,53 @@ delete collection of ValidatingAdmissionPolicy}
 \subsection{Method \code{delete_collection_validating_admission_policy()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$delete_collection_validating_admission_policy(
-  dry_run = NULL
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAdmissionregistrationV1beta1ValidatingAdmissionPolicy
 read the specified ValidatingAdmissionPolicy}
 }
@@ -136,13 +220,17 @@ read the specified ValidatingAdmissionPolicy}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-read_validating_admission_policy}{}}}
 \subsection{Method \code{read_validating_admission_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$read_validating_admission_policy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$read_validating_admission_policy(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAdmissionregistrationV1beta1ValidatingAdmissionPolicy
+\item{\code{pretty}}{= NULL
+replaceAdmissionregistrationV1beta1ValidatingAdmissionPolicy
 replace the specified ValidatingAdmissionPolicy}
 }
 \if{html}{\out{</div>}}
@@ -156,7 +244,9 @@ replace the specified ValidatingAdmissionPolicy}
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$replace_validating_admission_policy(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -164,7 +254,11 @@ replace the specified ValidatingAdmissionPolicy}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAdmissionregistrationV1beta1ValidatingAdmissionPolicy
@@ -180,17 +274,30 @@ partially update the specified ValidatingAdmissionPolicy}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$patch_validating_admission_policy(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAdmissionregistrationV1beta1ValidatingAdmissionPolicy
 delete a ValidatingAdmissionPolicy}
 }
@@ -204,14 +311,29 @@ delete a ValidatingAdmissionPolicy}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$delete_validating_admission_policy(
   name,
-  dry_run = NULL
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAdmissionregistrationV1beta1ValidatingAdmissionPolicyStatus
 read status of the specified ValidatingAdmissionPolicy}
 }
@@ -223,13 +345,17 @@ read status of the specified ValidatingAdmissionPolicy}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-read_validating_admission_policy_status}{}}}
 \subsection{Method \code{read_validating_admission_policy_status()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$read_validating_admission_policy_status(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$read_validating_admission_policy_status(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAdmissionregistrationV1beta1ValidatingAdmissionPolicyStatus
+\item{\code{pretty}}{= NULL
+replaceAdmissionregistrationV1beta1ValidatingAdmissionPolicyStatus
 replace status of the specified ValidatingAdmissionPolicy}
 }
 \if{html}{\out{</div>}}
@@ -243,7 +369,9 @@ replace status of the specified ValidatingAdmissionPolicy}
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$replace_validating_admission_policy_status(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -251,7 +379,11 @@ replace status of the specified ValidatingAdmissionPolicy}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAdmissionregistrationV1beta1ValidatingAdmissionPolicyStatus
@@ -267,21 +399,32 @@ partially update status of the specified ValidatingAdmissionPolicy}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$patch_validating_admission_policy_status(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 listAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
-list or watch objects of kind ValidatingAdmissionPolicyBinding
-createAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
-create a ValidatingAdmissionPolicyBinding}
+list or watch objects of kind ValidatingAdmissionPolicyBinding}
 }
 \if{html}{\out{</div>}}
 }
@@ -291,9 +434,50 @@ create a ValidatingAdmissionPolicyBinding}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-list_validating_admission_policy_binding}{}}}
 \subsection{Method \code{list_validating_admission_policy_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$list_validating_admission_policy_binding()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$list_validating_admission_policy_binding(
+  pretty = NULL,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{pretty}}{= NULL}
+
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+createAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
+create a ValidatingAdmissionPolicyBinding}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AdmissionregistrationV1beta1Api-create_validating_admission_policy_binding"></a>}}
@@ -302,7 +486,9 @@ create a ValidatingAdmissionPolicyBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$create_validating_admission_policy_binding(
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -310,7 +496,11 @@ create a ValidatingAdmissionPolicyBinding}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 deleteAdmissionregistrationV1beta1CollectionValidatingAdmissionPolicyBinding
@@ -325,14 +515,53 @@ delete collection of ValidatingAdmissionPolicyBinding}
 \subsection{Method \code{delete_collection_validating_admission_policy_binding()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$delete_collection_validating_admission_policy_binding(
-  dry_run = NULL
+  pretty = NULL,
+  continue = NULL,
+  dry_run = NULL,
+  field_selector = NULL,
+  grace_period_seconds = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{body}}{= NULL
 readAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
 read the specified ValidatingAdmissionPolicyBinding}
 }
@@ -344,13 +573,17 @@ read the specified ValidatingAdmissionPolicyBinding}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-read_validating_admission_policy_binding}{}}}
 \subsection{Method \code{read_validating_admission_policy_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$read_validating_admission_policy_binding(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$read_validating_admission_policy_binding(
+  name,
+  pretty = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{replaceAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
+\item{\code{pretty}}{= NULL
+replaceAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
 replace the specified ValidatingAdmissionPolicyBinding}
 }
 \if{html}{\out{</div>}}
@@ -364,7 +597,9 @@ replace the specified ValidatingAdmissionPolicyBinding}
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$replace_validating_admission_policy_binding(
   name,
   body,
+  pretty = NULL,
   dry_run = NULL,
+  field_manager = NULL,
   field_validation = NULL
 )}\if{html}{\out{</div>}}
 }
@@ -372,7 +607,11 @@ replace the specified ValidatingAdmissionPolicyBinding}
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
+
+\item{\code{field_manager}}{= NULL}
 
 \item{\code{field_validation}}{= NULL
 patchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
@@ -388,17 +627,30 @@ partially update the specified ValidatingAdmissionPolicyBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$patch_validating_admission_policy_binding(
   name,
+  body,
+  pretty = NULL,
   dry_run = NULL,
-  field_validation = NULL
+  field_manager = NULL,
+  field_validation = NULL,
+  force = NULL,
+  content_type = "application/json-patch+json"
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{pretty}}{= NULL}
+
 \item{\code{dry_run}}{= NULL}
 
-\item{\code{field_validation}}{= NULL
+\item{\code{field_manager}}{= NULL}
+
+\item{\code{field_validation}}{= NULL}
+
+\item{\code{force}}{= NULL}
+
+\item{\code{content_type}}{= "application/json-patch+json"
 deleteAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
 delete a ValidatingAdmissionPolicyBinding}
 }
@@ -412,18 +664,31 @@ delete a ValidatingAdmissionPolicyBinding}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$delete_validating_admission_policy_binding(
   name,
-  dry_run = NULL
+  pretty = NULL,
+  dry_run = NULL,
+  grace_period_seconds = NULL,
+  orphan_dependents = NULL,
+  propagation_policy = NULL,
+  body = NULL
 )}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{dry_run}}{= NULL
+\item{\code{pretty}}{= NULL}
+
+\item{\code{dry_run}}{= NULL}
+
+\item{\code{grace_period_seconds}}{= NULL}
+
+\item{\code{orphan_dependents}}{= NULL}
+
+\item{\code{propagation_policy}}{= NULL}
+
+\item{\code{body}}{= NULL
 watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyList
-watch individual changes to a list of ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.
-watchAdmissionregistrationV1beta1ValidatingAdmissionPolicy
-watch changes to an object of kind ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+watch individual changes to a list of ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -433,25 +698,98 @@ watch changes to an object of kind ValidatingAdmissionPolicy. deprecated: use th
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-watch_validating_admission_policy_list}{}}}
 \subsection{Method \code{watch_validating_admission_policy_list()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy_list()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy_list(
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAdmissionregistrationV1beta1ValidatingAdmissionPolicy
+watch changes to an object of kind ValidatingAdmissionPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AdmissionregistrationV1beta1Api-watch_validating_admission_policy"></a>}}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-watch_validating_admission_policy}{}}}
 \subsection{Method \code{watch_validating_admission_policy()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{name}}{watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBindingList
-watch individual changes to a list of ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.
-watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
-watch changes to an object of kind ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBindingList
+watch individual changes to a list of ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead.}
 }
 \if{html}{\out{</div>}}
 }
@@ -462,19 +800,98 @@ watch changes to an object of kind ValidatingAdmissionPolicyBinding. deprecated:
 \subsection{Method \code{watch_validating_admission_policy_binding_list()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy_binding_list(
-  
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
 )}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL
+watchAdmissionregistrationV1beta1ValidatingAdmissionPolicyBinding
+watch changes to an object of kind ValidatingAdmissionPolicyBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AdmissionregistrationV1beta1Api-watch_validating_admission_policy_binding"></a>}}
 \if{latex}{\out{\hypertarget{method-AdmissionregistrationV1beta1Api-watch_validating_admission_policy_binding}{}}}
 \subsection{Method \code{watch_validating_admission_policy_binding()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy_binding(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{AdmissionregistrationV1beta1Api$watch_validating_admission_policy_binding(
+  name,
+  allow_watch_bookmarks = NULL,
+  continue = NULL,
+  field_selector = NULL,
+  label_selector = NULL,
+  limit = NULL,
+  pretty = NULL,
+  resource_version = NULL,
+  resource_version_match = NULL,
+  send_initial_events = NULL,
+  timeout_seconds = NULL,
+  watch = NULL
+)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{allow_watch_bookmarks}}{= NULL}
+
+\item{\code{continue}}{= NULL}
+
+\item{\code{field_selector}}{= NULL}
+
+\item{\code{label_selector}}{= NULL}
+
+\item{\code{limit}}{= NULL}
+
+\item{\code{pretty}}{= NULL}
+
+\item{\code{resource_version}}{= NULL}
+
+\item{\code{resource_version_match}}{= NULL}
+
+\item{\code{send_initial_events}}{= NULL}
+
+\item{\code{timeout_seconds}}{= NULL}
+
+\item{\code{watch}}{= NULL}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AdmissionregistrationV1beta1Api-clone"></a>}}
