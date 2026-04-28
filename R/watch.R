@@ -83,23 +83,37 @@ Watch <- R6::R6Class(
 
   private = list(
     consume = function(req, callback) {
-      resp <- httr2::req_perform_connection(req)
-      on.exit(try(close(resp), silent = TRUE), add = TRUE)
-      status <- httr2::resp_status(resp)
-      if (status == 410) return("gone")
-      if (status >= 400) api_stop(resp)
-
+      # Decide between httr2's pull-based (`req_perform_connection`, 1.1+)
+      # and callback-based (`req_perform_stream`, 1.0+) APIs at runtime so
+      # we work on whichever ships with the user's `httr2`. The local-buffer
+      # parsing logic is the same either way.
       buf <- ""
-      repeat {
-        if (self$stop_requested) return("stop")
-        chunk <- httr2::resp_stream_raw(resp, kb = 64)
-        if (length(chunk) == 0) return("eof")
-        buf <- paste0(buf, rawToChar(chunk))
-        # Split on newlines; keep trailing partial.
+      status_code <- NA_integer_
+      stop_reason <- NULL
+
+      handle_chunk <- function(chunk) {
+        if (self$stop_requested) {
+          stop_reason <<- "stop"
+          return(FALSE)
+        }
+        if (length(chunk) == 0) return(TRUE)
+        buf <<- paste0(buf, rawToChar(chunk))
+        # `strsplit("a\n", "\n")` returns `c("a")`, dropping the trailing
+        # empty — so we can't tell from `length(pieces)` alone whether the
+        # last piece is complete. Decide based on whether buf ends with a
+        # newline. (Without this, a chunk that delivers exactly one event
+        # ending in '\n' would be held indefinitely as "still in progress".)
+        ends_with_nl <- endsWith(buf, "\n")
         pieces <- strsplit(buf, "\n", fixed = TRUE)[[1]]
-        buf <- pieces[length(pieces)]
-        if (length(pieces) > 1) {
-          for (line in pieces[-length(pieces)]) {
+        if (ends_with_nl) {
+          to_process <- pieces
+          buf <<- ""
+        } else {
+          to_process <- if (length(pieces) > 1) pieces[-length(pieces)] else character()
+          buf <<- if (length(pieces)) pieces[length(pieces)] else ""
+        }
+        if (length(to_process) > 0) {
+          for (line in to_process) {
             if (!nzchar(line)) next
             evt <- tryCatch(jsonlite::fromJSON(line, simplifyVector = FALSE),
                             error = function(e) NULL)
@@ -109,11 +123,11 @@ Watch <- R6::R6Class(
               self$resource_version <- obj$metadata$resourceVersion
             }
             if (identical(evt$type, "ERROR")) {
-              # Surface as a condition; caller may translate to ApiException.
               message(sprintf("watch ERROR: %s",
                               obj$message %||% "unknown"))
               if (identical(obj$code, 410L) || identical(obj$reason, "Gone")) {
-                return("gone")
+                stop_reason <<- "gone"
+                return(FALSE)
               }
               next
             }
@@ -123,10 +137,46 @@ Watch <- R6::R6Class(
             })
             if (isFALSE(keep)) {
               self$stop_requested <- TRUE
-              return("stop")
+              stop_reason <<- "stop"
+              return(FALSE)
             }
           }
         }
+        TRUE
+      }
+
+      if (exists("req_perform_connection", envir = asNamespace("httr2"),
+                  inherits = FALSE)) {
+        # httr2 >= 1.1: pull-based
+        resp <- httr2::req_perform_connection(req)
+        on.exit(try(close(resp), silent = TRUE), add = TRUE)
+        status_code <- httr2::resp_status(resp)
+        if (status_code == 410) return("gone")
+        if (status_code >= 400) api_stop(resp)
+        repeat {
+          chunk <- httr2::resp_stream_raw(resp, kb = 64)
+          if (length(chunk) == 0) {
+            if (!is.null(stop_reason)) return(stop_reason)
+            return("eof")
+          }
+          ok <- handle_chunk(chunk)
+          if (!ok) return(stop_reason %||% "stop")
+        }
+      } else {
+        # httr2 1.0: callback-based
+        on_chunk <- function(chunk) {
+          if (is.na(status_code)) {
+            # First call also provides metadata via attributes? No — status is
+            # only readable post-perform. We rely on req_error() returning
+            # FALSE so a 410 will arrive as a normal stream and parse-error;
+            # for that, surface 4xx as an early end-of-stream below.
+          }
+          handle_chunk(chunk)
+        }
+        resp <- httr2::req_perform_stream(req, on_chunk, buffer_kb = 64)
+        if (httr2::resp_status(resp) == 410) return("gone")
+        if (httr2::resp_status(resp) >= 400) api_stop(resp)
+        return(stop_reason %||% "eof")
       }
     }
   )

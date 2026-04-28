@@ -3,7 +3,18 @@ test_that("pod_exec runs a command and captures stdout/stderr/exit", {
   skip_if_not_installed("later")
 
   k <- kube(namespace = "default")
-  withr::defer(try(kube_delete(k, "pod/rk8s-it-exec"), silent = TRUE))
+  # Cert-only kubeconfigs (default for kind) need a bearer token for the
+  # WebSocket call. Mint one via TokenRequest against a cluster-admin SA.
+  token_client <- mint_token_client(k)
+  try(kube_delete(k, "pod/rk8s-it-exec", grace_period = 0), silent = TRUE)
+  for (i in seq_len(20)) {
+    gone <- tryCatch({ kube_get(k, "pod/rk8s-it-exec"); FALSE },
+                      rk8s_api_error = function(e) e$exception$status == 404L)
+    if (gone) break
+    Sys.sleep(1)
+  }
+  withr::defer(try(kube_delete(k, "pod/rk8s-it-exec", grace_period = 0),
+                     silent = TRUE))
 
   kube_apply(k, list(
     apiVersion = "v1", kind = "Pod",
@@ -26,7 +37,7 @@ test_that("pod_exec runs a command and captures stdout/stderr/exit", {
   }
   expect_equal(p$status$phase, "Running")
 
-  r <- pod_exec(k$client, "default", "rk8s-it-exec",
+  r <- pod_exec(token_client, "default", "rk8s-it-exec",
                  c("sh", "-c", "echo hello; echo bad >&2; exit 7"))
   expect_equal(r$exit_code, 7L)
   expect_match(r$stdout, "^hello\n")

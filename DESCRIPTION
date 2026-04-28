@@ -1,7 +1,7 @@
 Package: rk8s
 Type: Package
 Title: Kubernetes Client for R
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person("Ian", "Flores Siaca", email = "iflores.siaca@gmail.com", role = c("aut", "cre"))
 Description: An R client for the Kubernetes API. Provides a high-level
     verb-based interface (kube_get, kube_apply, kube_logs, kube_watch,

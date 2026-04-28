@@ -1,3 +1,57 @@
+# ---- WebSocket TLS arguments -------------------------------------------------
+#
+# The `websocket` R package didn't ship TLS configuration knobs in its initial
+# releases (clientCertificate / clientKey / caCertificate /
+# disableTLSVerification). When a future version exposes those, we want to
+# pass them through automatically. When it doesn't, and the user is
+# authenticated only by client cert, we surface a clear workaround instead of
+# a cryptic TLS handshake failure.
+#
+# Returns a named list ready to splat into `WebSocket$new(...)`.
+ws_tls_args <- function(cfg) {
+  init_args <- names(formals(websocket::WebSocket$public_methods$initialize))
+  has <- function(arg) arg %in% init_args
+  out <- list()
+  if (!is.null(cfg$ssl_ca_cert) && has("caCertificate")) {
+    out$caCertificate <- cfg$ssl_ca_cert
+  }
+  if (!is.null(cfg$cert_file) && has("clientCertificate")) {
+    out$clientCertificate <- cfg$cert_file
+  }
+  if (!is.null(cfg$key_file) && has("clientKey")) {
+    out$clientKey <- cfg$key_file
+  }
+  if (!isTRUE(cfg$verify_ssl) && has("disableTLSVerification")) {
+    out$disableTLSVerification <- TRUE
+  }
+
+  # If the user only has client-cert auth (no bearer token, no exec plugin)
+  # AND the local websocket package can't accept the cert, fail fast with the
+  # actionable workaround rather than letting the TLS handshake mystery-fail.
+  has_token <- {
+    tok <- tryCatch(cfg$bearer_token(), error = function(e) NULL)
+    !is.null(tok) && nzchar(tok)
+  }
+  needs_cert <- !is.null(cfg$cert_file) && !is.null(cfg$key_file)
+  if (!has_token && needs_cert && !has("clientCertificate")) {
+    stop(
+      "pod exec / port-forward needs a bearer token, but the active ",
+      "kubeconfig context only has client-certificate auth, and the installed ",
+      "`websocket` package (", as.character(packageVersion("websocket")),
+      ") does not yet expose TLS client-cert options.\n",
+      "Workarounds:\n",
+      "  - use a token-based kubeconfig (exec plugin, ServiceAccount token, ",
+      "or `kubectl config set-credentials --token=...`)\n",
+      "  - run from inside the cluster (load_incluster_config())\n",
+      "  - upgrade `websocket` once it gains clientCertificate / clientKey ",
+      "/ caCertificate / disableTLSVerification arguments\n",
+      "Track upstream: https://github.com/rstudio/websocket/issues",
+      call. = FALSE
+    )
+  }
+  out
+}
+
 # Pod exec/attach over WebSocket — implements the v4.channel.k8s.io subprotocol.
 #
 # Each WS binary frame from the server is prefixed with a 1-byte channel id:
@@ -223,27 +277,20 @@ PodExecSession <- R6::R6Class(
       )
       url <- paste0(base, path, "?", paste(qparts, collapse = "&"))
 
-      # Auth: bearer token only. Client-cert auth would need a TLS-aware
-      # websocket lib; surface that limitation explicitly.
-      tok <- cfg$bearer_token()
-      if (is.null(tok) || !nzchar(tok)) {
-        if (!is.null(cfg$cert_file)) {
-          stop("pod_exec over WebSocket with client-certificate auth is not ",
-               "currently supported. Use a bearer-token kubeconfig (e.g. an ",
-               "exec plugin or service-account token) instead.", call. = FALSE)
-        }
-      }
       headers <- list()
+      tok <- cfg$bearer_token()
       if (!is.null(tok) && nzchar(tok)) {
         headers[["Authorization"]] <- paste("Bearer", tok)
       }
+      ws_args <- ws_tls_args(cfg)
 
-      ws <- websocket::WebSocket$new(
-        url,
-        protocols = "v4.channel.k8s.io",
-        headers = headers,
-        accessLogChannels = "none"
-      )
+      ws <- do.call(websocket::WebSocket$new, c(
+        list(url = url,
+             protocols = "v4.channel.k8s.io",
+             headers = headers,
+             accessLogChannels = "none"),
+        ws_args
+      ))
       ws$onMessage(function(event) private$handle_frame(event$data))
       ws$onClose(function(event) {
         private$closed <- TRUE
@@ -253,7 +300,7 @@ PodExecSession <- R6::R6Class(
         warning("websocket error: ", event$message, call. = FALSE)
         private$closed <- TRUE
       })
-      ws$connect()
+      # WebSocket$new() auto-connects by default; an extra $connect() warns.
       ws
     },
 

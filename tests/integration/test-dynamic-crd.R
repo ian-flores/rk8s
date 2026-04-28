@@ -28,8 +28,9 @@ spec:
   for (i in seq_len(30)) {
     crd <- tryCatch(kube_get(k, "crd/widgets.rk8s.test"),
                      rk8s_api_error = function(e) NULL)
-    conds <- if (!is.null(crd)) crd$status$conditions else NULL
-    est <- any(vapply(conds %||% list(), function(c)
+    conds <- if (!is.null(crd)) crd$status$conditions else list()
+    if (is.null(conds)) conds <- list()
+    est <- any(vapply(conds, function(c)
       identical(c$type, "Established") && identical(c$status, "True"),
       logical(1)))
     if (isTRUE(est)) break

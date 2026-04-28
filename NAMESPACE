@@ -32,8 +32,10 @@ export(pod_exec_open)
 export(PodExecSession)
 
 # Pod port-forward
+export(pod_port_forward)
 export(pod_port_forward_open)
 export(PodPortForwardSession)
+S3method(print, PortForwardBridge)
 
 # High-level verb API
 export(kube)

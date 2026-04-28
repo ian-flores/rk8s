@@ -1,3 +1,29 @@
+# rk8s 0.2.1 (in development)
+
+* `pod_port_forward()` (local TCP listener) now works against kind/local
+  clusters. Three correctness fixes folded together:
+  * The bridge child process now references the internal `bridge_one`
+    helper as `rk8s:::bridge_one` since callr ships the function body
+    into a fresh R process where unexported bindings aren't injected.
+  * The accept loop pumps the websocket event loop via `later::run_now`
+    while waiting for incoming TCP connections, instead of busy-spinning
+    on `blocking=FALSE` accept.
+  * Local connections are accepted in non-blocking mode so `readBin`
+    returns immediately with whatever the kernel has buffered. With
+    `blocking=TRUE` + `socketSelect`, the local round-trip stretched into
+    seconds for short HTTP exchanges on macOS.
+* `Watch` no longer hangs on chunks containing exactly one
+  newline-terminated event. R's `strsplit("a\\n", "\\n")` returns
+  `c("a")` (drops the trailing empty piece), which previously made the
+  buffer-based parser keep waiting for "more". Now we detect the
+  trailing-newline case explicitly. Regression covered by
+  `test-watch-buffer.R`.
+* New integration tests for exec and port-forward that mint a
+  cluster-admin ServiceAccount token via `TokenRequest` so the
+  websocket transport (which can't currently use client-cert auth) is
+  reachable on cert-only kubeconfigs like kind. Lives in
+  `tests/integration/helper.R` as `mint_token_client()`.
+
 # rk8s 0.2.0
 
 ## High-level verb API

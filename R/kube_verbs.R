@@ -196,15 +196,23 @@ kube_logs <- function(k, pod, namespace = k$namespace, container = NULL,
     return(k$client$call_api(path, method = "GET", query_params = q,
                               accept = "text/plain", response_type = "text"))
   }
-  # Streaming follow: build the request and pipe lines to stdout.
+  # Streaming follow: pipe chunks to stdout. Use whichever httr2 streaming
+  # API is available on the local install.
   req <- k$client$call_api(path, method = "GET", query_params = q,
                             accept = "text/plain", stream = TRUE)
-  resp <- httr2::req_perform_connection(req)
-  on.exit(try(close(resp), silent = TRUE), add = TRUE)
-  repeat {
-    chunk <- httr2::resp_stream_raw(resp, kb = 64)
-    if (length(chunk) == 0) break
-    cat(rawToChar(chunk))
+  if (exists("req_perform_connection", envir = asNamespace("httr2"),
+              inherits = FALSE)) {
+    resp <- httr2::req_perform_connection(req)
+    on.exit(try(close(resp), silent = TRUE), add = TRUE)
+    repeat {
+      chunk <- httr2::resp_stream_raw(resp, kb = 64)
+      if (length(chunk) == 0) break
+      cat(rawToChar(chunk))
+    }
+  } else {
+    httr2::req_perform_stream(req, function(chunk) {
+      cat(rawToChar(chunk)); TRUE
+    }, buffer_kb = 64)
   }
   invisible(NULL)
 }
