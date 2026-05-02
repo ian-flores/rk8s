@@ -202,10 +202,14 @@ kube_logs <- function(k, pod, namespace = k$namespace, container = NULL,
                             accept = "text/plain", stream = TRUE)
   if (exists("req_perform_connection", envir = asNamespace("httr2"),
               inherits = FALSE)) {
-    resp <- httr2::req_perform_connection(req)
+    # See `R/watch.R`: dynamic lookup keeps R CMD check quiet when the local
+    # httr2 is 1.0 (where these aren't exported yet).
+    rpc <- get("req_perform_connection", envir = asNamespace("httr2"))
+    rsr <- get("resp_stream_raw",        envir = asNamespace("httr2"))
+    resp <- rpc(req)
     on.exit(try(close(resp), silent = TRUE), add = TRUE)
     repeat {
-      chunk <- httr2::resp_stream_raw(resp, kb = 64)
+      chunk <- rsr(resp, kb = 64)
       if (length(chunk) == 0) break
       cat(rawToChar(chunk))
     }

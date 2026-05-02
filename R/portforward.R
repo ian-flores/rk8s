@@ -235,19 +235,17 @@ port_is_open <- function(port) {
       error = function(e) NULL
     )
     if (is.null(local)) next
-    # Qualify with `:::` because callr ships this function body into a fresh
-    # R process where rk8s is reachable via namespace lookup but unexported
+    # Resolve the internal helper at call time. `getFromNamespace` is the
+    # CRAN-blessed way to reach a package's unexported binding; using `:::`
+    # in package code triggers a check warning. callr ships this function
+    # body into a fresh R process where rk8s is reachable but its private
     # bindings aren't injected.
-    rk8s:::bridge_one(session, remote_port, local)
+    bridge_one <- utils::getFromNamespace("bridge_one", "rk8s")
+    bridge_one(session, remote_port, local)
   }
 }
 
 bridge_one <- function(session, remote_port, local) {
-  log <- function(...) {
-    cat(format(Sys.time(), "%H:%M:%OS3"), " [b] ", ..., "\n", sep = "")
-    flush.console()
-  }
-  log("entered bridge_one")
   on.exit(try(close.connection(local), silent = TRUE), add = TRUE)
 
   # Per-connection inbox for pod->local bytes. Closures around `inbox`

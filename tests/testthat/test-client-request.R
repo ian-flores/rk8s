@@ -20,7 +20,14 @@ test_that("call_api builds URL, path params, query params, and Authorization", {
                "^https://example\\.test:6443/api/v1/namespaces/kube-system/pods/kube-proxy-abc\\?")
   parts <- strsplit(req$url, "?", fixed = TRUE)[[1]]
   expect_equal(URLdecode(parts[2]), "labelSelector=app=proxy")
-  expect_equal(req$headers[["Authorization"]], "Bearer xyz")
+  # httr2 >= 1.1 wraps Authorization header values in an obfuscated/redacted
+  # marker so they don't leak via printed `req` objects. Read the raw value
+  # via `req_get_headers(redact = FALSE)` when available, otherwise fall
+  # back to the direct list lookup.
+  auth <- if ("req_get_headers" %in% getNamespaceExports("httr2"))
+    httr2::req_get_headers(req, redact = FALSE)[["Authorization"]]
+    else req$headers[["Authorization"]]
+  expect_equal(auth, "Bearer xyz")
 })
 
 test_that("path parameters are URL-encoded", {

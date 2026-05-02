@@ -147,14 +147,17 @@ Watch <- R6::R6Class(
 
       if (exists("req_perform_connection", envir = asNamespace("httr2"),
                   inherits = FALSE)) {
-        # httr2 >= 1.1: pull-based
-        resp <- httr2::req_perform_connection(req)
+        # httr2 >= 1.1: pull-based. Resolve the symbols dynamically so that
+        # R CMD check on httr2 1.0 doesn't warn about missing exports.
+        rpc <- get("req_perform_connection", envir = asNamespace("httr2"))
+        rsr <- get("resp_stream_raw",        envir = asNamespace("httr2"))
+        resp <- rpc(req)
         on.exit(try(close(resp), silent = TRUE), add = TRUE)
         status_code <- httr2::resp_status(resp)
         if (status_code == 410) return("gone")
         if (status_code >= 400) api_stop(resp)
         repeat {
-          chunk <- httr2::resp_stream_raw(resp, kb = 64)
+          chunk <- rsr(resp, kb = 64)
           if (length(chunk) == 0) {
             if (!is.null(stop_reason)) return(stop_reason)
             return("eof")

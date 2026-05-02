@@ -37,7 +37,7 @@ ws_tls_args <- function(cfg) {
     stop(
       "pod exec / port-forward needs a bearer token, but the active ",
       "kubeconfig context only has client-certificate auth, and the installed ",
-      "`websocket` package (", as.character(packageVersion("websocket")),
+      "`websocket` package (", as.character(utils::packageVersion("websocket")),
       ") does not yet expose TLS client-cert options.\n",
       "Workarounds:\n",
       "  - use a token-based kubeconfig (exec plugin, ServiceAccount token, ",

@@ -34,6 +34,7 @@
 #' @param field_manager Field manager used by [kube_apply()] (defaults to
 #'   `"rk8s"`).
 #' @return A `Kube` object.
+#' @rdname Kube
 #' @export
 kube <- function(config_file = NULL, context = NULL, namespace = "default",
                   client = NULL, field_manager = "rk8s") {
@@ -51,6 +52,8 @@ kube <- function(config_file = NULL, context = NULL, namespace = "default",
 #' Usually you don't call `Kube` methods directly; use the `kube_*` verbs
 #' which dispatch into here.
 #'
+#' @name Kube
+#' @rdname Kube
 #' @export
 Kube <- R6::R6Class(
   "Kube",
