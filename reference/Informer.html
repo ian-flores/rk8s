@@ -58,6 +58,10 @@ and many <a href="Lister.html">Lister</a> views, without each consumer re-listin
 Returns when <code>stop_seconds</code> of wall-clock time elapse (whether or not
 events arrive) or <code>$stop()</code> is called from a handler. Safe to re-invoke;
 the informer resumes from the last observed resourceVersion.</p></li>
+<li><p><code>$start()</code>, then <code>$poll(max_wait)</code> in your own loop, then <code>$close()</code> -
+the same work without blocking, so one process can drive several
+informers (and other work) from a single loop. <code>poll()</code> handles events
+that have arrived, firing handlers, and returns.</p></li>
 <li><p>On 410 Gone (the watch fell too far behind), the informer re-lists and
 reconciles the cache against the fresh list: objects that disappeared
 fire <code>on_delete</code>, new ones <code>on_add</code>, and changed ones (different
@@ -95,6 +99,9 @@ when supplied, cached objects are R6 instances. Otherwise raw lists.</p></dd>
 
 <ul><li><p><a href="#method-Informer-new"><code>Informer$new()</code></a></p></li>
 <li><p><a href="#method-Informer-add_event_handler"><code>Informer$add_event_handler()</code></a></p></li>
+<li><p><a href="#method-Informer-start"><code>Informer$start()</code></a></p></li>
+<li><p><a href="#method-Informer-poll"><code>Informer$poll()</code></a></p></li>
+<li><p><a href="#method-Informer-close"><code>Informer$close()</code></a></p></li>
 <li><p><a href="#method-Informer-run"><code>Informer$run()</code></a></p></li>
 <li><p><a href="#method-Informer-stop"><code>Informer$stop()</code></a></p></li>
 <li><p><a href="#method-Informer-has_synced"><code>Informer$has_synced()</code></a></p></li>
@@ -164,16 +171,57 @@ when supplied, cached objects are R6 instances. Otherwise raw lists.</p></dd>
 </dl><p></p></div>
 </div>
 
-</div><p></p><hr><a id="method-Informer-run"></a><div class="section">
-<h3 id="method-run-">Method <code>run()</code><a class="anchor" aria-label="anchor" href="#method-run-"></a></h3>
-<p>Run the informer: list (or resume), notify handlers, then
-watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.</p><div class="section">
+</div><p></p><hr><a id="method-Informer-start"></a><div class="section">
+<h3 id="method-start-">Method <code><a href="https://rdrr.io/r/stats/start.html" class="external-link">start()</a></code><a class="anchor" aria-label="anchor" href="#method-start-"></a></h3>
+<p>List (unless the cache is already in sync) and open
+the watch, without blocking. Follow with <code>$poll()</code>.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">run</span><span class="op">(</span>stop_seconds <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">start</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-Informer-poll"></a><div class="section">
+<h3 id="method-poll-">Method <code>poll()</code><a class="anchor" aria-label="anchor" href="#method-poll-"></a></h3>
+<p>Handle the events that have arrived, firing handlers.
+Starts the informer if needed. After a 410 Gone it re-lists,
+reconciles the cache and re-opens the watch.</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">poll</span><span class="op">(</span>max_wait <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>max_wait</code></dt>
+<dd><p>Seconds to wait when nothing is pending (default 0).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>The number of watch events handled, invisibly.</p>
+</div>
+
+</div><p></p><hr><a id="method-Informer-close"></a><div class="section">
+<h3 id="method-close-">Method <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code><a class="anchor" aria-label="anchor" href="#method-close-"></a></h3>
+<p>Close the watch opened by <code>$start()</code> / <code>$poll()</code>. The
+cache is kept; a later <code>$start()</code> resumes from the last
+resourceVersion.</p><div class="section">
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-Informer-run"></a><div class="section">
+<h3 id="method-run-">Method <code>run()</code><a class="anchor" aria-label="anchor" href="#method-run-"></a></h3>
+<p>Run the informer: list (or resume), notify handlers, then
+watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.</p><div class="section">
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">run</span><span class="op">(</span>stop_seconds <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>stop_seconds</code></dt>
 <dd><p>Optional wall-clock limit. <code>NULL</code> runs until
 <code>$stop()</code> is called from an event handler.</p></dd>
@@ -184,8 +232,9 @@ watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.<
 
 </div><p></p><hr><a id="method-Informer-stop"></a><div class="section">
 <h3 id="method-stop-">Method <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code><a class="anchor" aria-label="anchor" href="#method-stop-"></a></h3>
-<p>Stop the running watch. Call from an event handler.</p><div class="section">
-<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p>Make a running <code>$run()</code> return. Call from an event
+handler.</p><div class="section">
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="kw">stop</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -193,7 +242,7 @@ watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.<
 </div><p></p><hr><a id="method-Informer-has_synced"></a><div class="section">
 <h3 id="method-has-synced-">Method <code>has_synced()</code><a class="anchor" aria-label="anchor" href="#method-has-synced-"></a></h3>
 <p>Has the initial list completed?</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">has_synced</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -201,7 +250,7 @@ watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.<
 </div><p></p><hr><a id="method-Informer-lister"></a><div class="section">
 <h3 id="method-lister-">Method <code>lister()</code><a class="anchor" aria-label="anchor" href="#method-lister-"></a></h3>
 <p>Return a <a href="Lister.html">Lister</a> view over the current cache.</p><div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">lister</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -209,7 +258,7 @@ watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.<
 </div><p></p><hr><a id="method-Informer-list"></a><div class="section">
 <h3 id="method-list-">Method <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code><a class="anchor" aria-label="anchor" href="#method-list-"></a></h3>
 <p>Return a list of all cached objects (snapshot).</p><div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
+<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">list</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -217,12 +266,12 @@ watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.<
 </div><p></p><hr><a id="method-Informer-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
+<h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Informer</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -250,6 +299,11 @@ watch until <code>stop_seconds</code> elapse or <code>$stop()</code> is called.<
 <span class="r-in"><span>  on_delete <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"gone: "</span>, <span class="va">obj</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">inf</span><span class="op">$</span><span class="fu">run</span><span class="op">(</span>stop_seconds <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Or drive it yourself, e.g. alongside other informers:</span></span></span>
+<span class="r-in"><span><span class="va">inf</span><span class="op">$</span><span class="fu">start</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">repeat</span> <span class="va">inf</span><span class="op">$</span><span class="fu">poll</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">pods</span> <span class="op">&lt;-</span> <span class="va">inf</span><span class="op">$</span><span class="fu">lister</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pods</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"nginx"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pods</span><span class="op">$</span><span class="fu">list</span><span class="op">(</span><span class="op">)</span></span></span>

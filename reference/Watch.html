@@ -53,7 +53,13 @@ endpoint that supports <code>?watch=true</code>. Mirrors the Python client's
 <p>The server returns line-delimited JSON; each line is a <code>WatchEvent</code> with
 <code>type</code> and <code>object</code> fields. The <code>object</code>'s <code>resourceVersion</code> is tracked so
 the stream can be resumed after a 410 Gone.</p>
-    </div>
+<p>There are two ways to consume a watch:</p><ul><li><p><code>$stream()</code> blocks and calls a callback for each event.</p></li>
+<li><p><code>$open()</code>, then <code>$poll()</code> repeatedly, then <code>$close()</code>. <code>poll()</code> returns
+the events that have arrived (waiting at most <code>max_wait</code> seconds), so a
+single R process can drive several watches from one loop. When the
+server ends a connection normally, <code>poll()</code> reconnects from the last
+resourceVersion, so callers see one continuous stream.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
     <p></p><div class="r6-fields"><dl><dt><code>resource_version</code></dt>
@@ -65,10 +71,10 @@ the stream can be resumed after a 410 Gone.</p>
 
 
 <dt><code>end_reason</code></dt>
-<dd><p>Why the last <code>stream()</code> call returned: <code>"stop"</code>
-(callback returned <code>FALSE</code> or <code>$stop()</code> was called), <code>"timeout"</code>
+<dd><p>Why the watch ended: <code>"stop"</code> (the callback returned
+<code>FALSE</code>, or <code>$stop()</code> / <code>$close()</code> was called), <code>"timeout"</code>
 (<code>timeout_seconds</code> elapsed), or <code>"gone"</code> (410 Gone with
-<code>return_on_gone = TRUE</code>).</p></dd>
+<code>return_on_gone = TRUE</code>). <code>NULL</code> while the watch is open.</p></dd>
 
 
 </dl><p></p></div>
@@ -80,6 +86,10 @@ the stream can be resumed after a 410 Gone.</p>
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-Watch-stream"><code>Watch$stream()</code></a></p></li>
+<li><p><a href="#method-Watch-open"><code>Watch$open()</code></a></p></li>
+<li><p><a href="#method-Watch-poll"><code>Watch$poll()</code></a></p></li>
+<li><p><a href="#method-Watch-is_open"><code>Watch$is_open()</code></a></p></li>
+<li><p><a href="#method-Watch-close"><code>Watch$close()</code></a></p></li>
 <li><p><a href="#method-Watch-stop"><code>Watch$stop()</code></a></p></li>
 <li><p><a href="#method-Watch-clone"><code>Watch$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-Watch-stream"></a><div class="section">
@@ -140,10 +150,85 @@ deleted while the watch was disconnected.</p></dd>
 </dl><p></p></div>
 </div>
 
+</div><p></p><hr><a id="method-Watch-open"></a><div class="section">
+<h3 id="method-open-">Method <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">open()</a></code><a class="anchor" aria-label="anchor" href="#method-open-"></a></h3>
+<p>Open the watch for polling with <code>$poll()</code>.</p><div class="section">
+<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Watch</span><span class="op">$</span><span class="fu">open</span><span class="op">(</span></span>
+<span>  <span class="va">client</span>,</span>
+<span>  <span class="va">resource_path</span>,</span>
+<span>  query_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  resource_version <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout_seconds <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  server_timeout <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  return_on_gone <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>client, resource_path, query_params, resource_version, return_on_gone</code></dt>
+<dd><p>As for <code>$stream()</code>.</p></dd>
+
+
+<dt><code>timeout_seconds</code></dt>
+<dd><p>Optional overall limit; once it passes, <code>poll()</code>
+closes the watch with <code>end_reason = "timeout"</code>.</p></dd>
+
+
+<dt><code>server_timeout</code></dt>
+<dd><p>Optional <code>timeoutSeconds</code> for each connection.
+The server ends the connection after this long and <code>poll()</code>
+reconnects. <code>NULL</code> leaves it to the server (usually 30-60 minutes).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-Watch-poll"></a><div class="section">
+<h3 id="method-poll-">Method <code>poll()</code><a class="anchor" aria-label="anchor" href="#method-poll-"></a></h3>
+<p>Return the events that have arrived, waiting up to
+<code>max_wait</code> seconds for the first one.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Watch</span><span class="op">$</span><span class="fu">poll</span><span class="op">(</span>max_wait <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>max_wait</code></dt>
+<dd><p>Seconds to wait when nothing is pending (default 0:
+just collect what is already there).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>A list of events, each <code>list(type, object, resource_version)</code>.
+Empty when nothing arrived or the watch is closed.</p>
+</div>
+
+</div><p></p><hr><a id="method-Watch-is_open"></a><div class="section">
+<h3 id="method-is-open-">Method <code>is_open()</code><a class="anchor" aria-label="anchor" href="#method-is-open-"></a></h3>
+<p>Is the watch open (for polling)?</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Watch</span><span class="op">$</span><span class="fu">is_open</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
+</div><p></p><hr><a id="method-Watch-close"></a><div class="section">
+<h3 id="method-close-">Method <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code><a class="anchor" aria-label="anchor" href="#method-close-"></a></h3>
+<p>Close a watch opened with <code>$open()</code>.</p><div class="section">
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Watch</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
 </div><p></p><hr><a id="method-Watch-stop"></a><div class="section">
 <h3 id="method-stop-">Method <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code><a class="anchor" aria-label="anchor" href="#method-stop-"></a></h3>
-<p>Ask the current <code>stream()</code> call to return.</p><div class="section">
-<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<p>Ask the watch to end: <code>$stream()</code> returns after the
+current event, and the next <code>$poll()</code> closes the watch.</p><div class="section">
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Watch</span><span class="op">$</span><span class="kw">stop</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -151,12 +236,12 @@ deleted while the watch was disconnected.</p></dd>
 </div><p></p><hr><a id="method-Watch-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Watch</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -182,6 +267,13 @@ deleted while the watch was disconnected.</p></dd>
 <span class="r-in"><span>  <span class="op">}</span>,</span></span>
 <span class="r-in"><span>  timeout_seconds <span class="op">=</span> <span class="fl">30</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Polling</span></span></span>
+<span class="r-in"><span><span class="va">w</span> <span class="op">&lt;-</span> <span class="va">Watch</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">w</span><span class="op">$</span><span class="fu">open</span><span class="op">(</span><span class="va">client</span>, <span class="st">"/api/v1/namespaces/default/pods"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">repeat</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="kw">for</span> <span class="op">(</span><span class="va">e</span> <span class="kw">in</span> <span class="va">w</span><span class="op">$</span><span class="fu">poll</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">e</span><span class="op">$</span><span class="va">type</span>, <span class="va">e</span><span class="op">$</span><span class="va">object</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span>, <span class="st">"\n"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

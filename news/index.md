@@ -2,6 +2,27 @@
 
 ## rk8s (development version)
 
+### Controller building blocks
+
+- `Watch` gains [`open()`](https://rdrr.io/r/base/connections.html),
+  `poll(max_wait)` and
+  [`close()`](https://rdrr.io/r/base/connections.html): `poll()` returns
+  the events that have arrived without blocking for longer than
+  `max_wait`, and reconnects from the last resourceVersion when the
+  server ends a connection. `stream()` is now built on them. Events
+  record their own resourceVersion, so a watch stopped part-way through
+  a batch resumes after the last event delivered.
+- `Informer` gains [`start()`](https://rdrr.io/r/stats/start.html),
+  `poll(max_wait)` and
+  [`close()`](https://rdrr.io/r/base/connections.html), so one R process
+  can drive several informers from a single loop. `poll()` relists and
+  reconciles after 410 Gone. `run()` is now built on them.
+- Watches now run on curl’s multi interface instead of a curl
+  connection. Opening a connection waited for the first byte of the
+  body, and the API server sends none on a resumed watch until there is
+  an event, so an informer on a quiet resource could block for about a
+  minute (until the next bookmark) each time its watch reconnected.
+
 ### Security
 
 - [`pod_exec()`](https://ian-flores.github.io/rk8s/reference/pod_exec.md),

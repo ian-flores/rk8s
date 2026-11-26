@@ -25,6 +25,11 @@ Lifecycle:
   re-invoke; the informer resumes from the last observed
   resourceVersion.
 
+- `$start()`, then `$poll(max_wait)` in your own loop, then `$close()` -
+  the same work without blocking, so one process can drive several
+  informers (and other work) from a single loop. `poll()` handles events
+  that have arrived, firing handlers, and returns.
+
 - On 410 Gone (the watch fell too far behind), the informer re-lists and
   reconciles the cache against the fresh list: objects that disappeared
   fire `on_delete`, new ones `on_add`, and changed ones (different
@@ -65,6 +70,12 @@ Lifecycle:
 - [`Informer$new()`](#method-Informer-new)
 
 - [`Informer$add_event_handler()`](#method-Informer-add_event_handler)
+
+- [`Informer$start()`](#method-Informer-start)
+
+- [`Informer$poll()`](#method-Informer-poll)
+
+- [`Informer$close()`](#method-Informer-close)
 
 - [`Informer$run()`](#method-Informer-run)
 
@@ -144,6 +155,50 @@ Register event handlers.
 
 ------------------------------------------------------------------------
 
+### Method [`start()`](https://rdrr.io/r/stats/start.html)
+
+List (unless the cache is already in sync) and open the watch, without
+blocking. Follow with `$poll()`.
+
+#### Usage
+
+    Informer$start()
+
+------------------------------------------------------------------------
+
+### Method `poll()`
+
+Handle the events that have arrived, firing handlers. Starts the
+informer if needed. After a 410 Gone it re-lists, reconciles the cache
+and re-opens the watch.
+
+#### Usage
+
+    Informer$poll(max_wait = 0)
+
+#### Arguments
+
+- `max_wait`:
+
+  Seconds to wait when nothing is pending (default 0).
+
+#### Returns
+
+The number of watch events handled, invisibly.
+
+------------------------------------------------------------------------
+
+### Method [`close()`](https://rdrr.io/r/base/connections.html)
+
+Close the watch opened by `$start()` / `$poll()`. The cache is kept; a
+later `$start()` resumes from the last resourceVersion.
+
+#### Usage
+
+    Informer$close()
+
+------------------------------------------------------------------------
+
 ### Method `run()`
 
 Run the informer: list (or resume), notify handlers, then watch until
@@ -164,7 +219,7 @@ Run the informer: list (or resume), notify handlers, then watch until
 
 ### Method [`stop()`](https://rdrr.io/r/base/stop.html)
 
-Stop the running watch. Call from an event handler.
+Make a running `$run()` return. Call from an event handler.
 
 #### Usage
 
@@ -234,6 +289,11 @@ inf$add_event_handler(
   on_delete = function(obj) message("gone: ", obj$metadata$name)
 )
 inf$run(stop_seconds = 30)
+
+# Or drive it yourself, e.g. alongside other informers:
+inf$start()
+repeat inf$poll(1)
+
 pods <- inf$lister()
 pods$get("nginx")
 pods$list()

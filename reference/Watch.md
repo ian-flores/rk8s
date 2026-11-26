@@ -14,6 +14,16 @@ The server returns line-delimited JSON; each line is a `WatchEvent` with
 `type` and `object` fields. The `object`'s `resourceVersion` is tracked
 so the stream can be resumed after a 410 Gone.
 
+There are two ways to consume a watch:
+
+- `$stream()` blocks and calls a callback for each event.
+
+- `$open()`, then `$poll()` repeatedly, then `$close()`. `poll()`
+  returns the events that have arrived (waiting at most `max_wait`
+  seconds), so a single R process can drive several watches from one
+  loop. When the server ends a connection normally, `poll()` reconnects
+  from the last resourceVersion, so callers see one continuous stream.
+
 ## Public fields
 
 - `resource_version`:
@@ -26,15 +36,24 @@ so the stream can be resumed after a 410 Gone.
 
 - `end_reason`:
 
-  Why the last `stream()` call returned: `"stop"` (callback returned
-  `FALSE` or `$stop()` was called), `"timeout"` (`timeout_seconds`
-  elapsed), or `"gone"` (410 Gone with `return_on_gone = TRUE`).
+  Why the watch ended: `"stop"` (the callback returned `FALSE`, or
+  `$stop()` / `$close()` was called), `"timeout"` (`timeout_seconds`
+  elapsed), or `"gone"` (410 Gone with `return_on_gone = TRUE`). `NULL`
+  while the watch is open.
 
 ## Methods
 
 ### Public methods
 
 - [`Watch$stream()`](#method-Watch-stream)
+
+- [`Watch$open()`](#method-Watch-open)
+
+- [`Watch$poll()`](#method-Watch-poll)
+
+- [`Watch$is_open()`](#method-Watch-is_open)
+
+- [`Watch$close()`](#method-Watch-close)
 
 - [`Watch$stop()`](#method-Watch-stop)
 
@@ -102,9 +121,88 @@ Stream events to a callback.
 
 ------------------------------------------------------------------------
 
+### Method [`open()`](https://rdrr.io/r/base/connections.html)
+
+Open the watch for polling with `$poll()`.
+
+#### Usage
+
+    Watch$open(
+      client,
+      resource_path,
+      query_params = list(),
+      resource_version = NULL,
+      timeout_seconds = NULL,
+      server_timeout = NULL,
+      return_on_gone = FALSE
+    )
+
+#### Arguments
+
+- `client, resource_path, query_params, resource_version, return_on_gone`:
+
+  As for `$stream()`.
+
+- `timeout_seconds`:
+
+  Optional overall limit; once it passes, `poll()` closes the watch with
+  `end_reason = "timeout"`.
+
+- `server_timeout`:
+
+  Optional `timeoutSeconds` for each connection. The server ends the
+  connection after this long and `poll()` reconnects. `NULL` leaves it
+  to the server (usually 30-60 minutes).
+
+------------------------------------------------------------------------
+
+### Method `poll()`
+
+Return the events that have arrived, waiting up to `max_wait` seconds
+for the first one.
+
+#### Usage
+
+    Watch$poll(max_wait = 0)
+
+#### Arguments
+
+- `max_wait`:
+
+  Seconds to wait when nothing is pending (default 0: just collect what
+  is already there).
+
+#### Returns
+
+A list of events, each `list(type, object, resource_version)`. Empty
+when nothing arrived or the watch is closed.
+
+------------------------------------------------------------------------
+
+### Method `is_open()`
+
+Is the watch open (for polling)?
+
+#### Usage
+
+    Watch$is_open()
+
+------------------------------------------------------------------------
+
+### Method [`close()`](https://rdrr.io/r/base/connections.html)
+
+Close a watch opened with `$open()`.
+
+#### Usage
+
+    Watch$close()
+
+------------------------------------------------------------------------
+
 ### Method [`stop()`](https://rdrr.io/r/base/stop.html)
 
-Ask the current `stream()` call to return.
+Ask the watch to end: `$stream()` returns after the current event, and
+the next `$poll()` closes the watch.
 
 #### Usage
 
@@ -141,5 +239,12 @@ w$stream(
   },
   timeout_seconds = 30
 )
+
+# Polling
+w <- Watch$new()
+w$open(client, "/api/v1/namespaces/default/pods")
+repeat {
+  for (e in w$poll(1)) cat(e$type, e$object$metadata$name, "\n")
+}
 } # }
 ```

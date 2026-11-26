@@ -39,6 +39,14 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="rk8s-development-version">rk8s (development version)<a class="anchor" aria-label="anchor" href="#rk8s-development-version"></a></h2>
 <div class="section level3">
+<h3 id="controller-building-blocks-development-version">Controller building blocks<a class="anchor" aria-label="anchor" href="#controller-building-blocks-development-version"></a></h3>
+<ul><li>
+<code>Watch</code> gains <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">open()</a></code>, <code>poll(max_wait)</code> and <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code>: <code>poll()</code> returns the events that have arrived without blocking for longer than <code>max_wait</code>, and reconnects from the last resourceVersion when the server ends a connection. <code>stream()</code> is now built on them. Events record their own resourceVersion, so a watch stopped part-way through a batch resumes after the last event delivered.</li>
+<li>
+<code>Informer</code> gains <code><a href="https://rdrr.io/r/stats/start.html" class="external-link">start()</a></code>, <code>poll(max_wait)</code> and <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code>, so one R process can drive several informers from a single loop. <code>poll()</code> relists and reconciles after 410 Gone. <code>run()</code> is now built on them.</li>
+<li>Watches now run on curl’s multi interface instead of a curl connection. Opening a connection waited for the first byte of the body, and the API server sends none on a resumed watch until there is an event, so an informer on a quiet resource could block for about a minute (until the next bookmark) each time its watch reconnected.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="security-development-version">Security<a class="anchor" aria-label="anchor" href="#security-development-version"></a></h3>
 <ul><li>
 <code><a href="../reference/pod_exec.html">pod_exec()</a></code>, <code><a href="../reference/pod_exec_open.html">pod_exec_open()</a></code>, <code><a href="../reference/pod_port_forward.html">pod_port_forward()</a></code> and <code><a href="../reference/pod_port_forward_open.html">pod_port_forward_open()</a></code> now verify the API server’s TLS certificate. They previously used the <code>websocket</code> package, which accepts any certificate for any hostname, so the bearer token could be sent to an impersonating server. They now use <code>nanonext</code> (&gt;= 1.10.3, in Suggests instead of <code>websocket</code> and <code>later</code>), verify against the kubeconfig CA (or the system CA bundle) and check the hostname. <code>insecure-skip-tls-verify</code> is still honoured when set.</li>

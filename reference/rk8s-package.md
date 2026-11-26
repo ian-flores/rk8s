@@ -24,6 +24,8 @@ Do not hand-edit files under `R/gen/`; regenerate via
 
 Useful links:
 
+- <https://ian-flores.github.io/rk8s/>
+
 - <https://github.com/ian-flores/rk8s>
 
 - Report bugs at <https://github.com/ian-flores/rk8s/issues>
