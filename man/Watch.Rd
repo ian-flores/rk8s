@@ -16,6 +16,16 @@ endpoint that supports \code{?watch=true}. Mirrors the Python client's
 The server returns line-delimited JSON; each line is a \code{WatchEvent} with
 \code{type} and \code{object} fields. The \code{object}'s \code{resourceVersion} is tracked so
 the stream can be resumed after a 410 Gone.
+
+There are two ways to consume a watch:
+\itemize{
+\item \verb{$stream()} blocks and calls a callback for each event.
+\item \verb{$open()}, then \verb{$poll()} repeatedly, then \verb{$close()}. \code{poll()} returns
+the events that have arrived (waiting at most \code{max_wait} seconds), so a
+single R process can drive several watches from one loop. When the
+server ends a connection normally, \code{poll()} reconnects from the last
+resourceVersion, so callers see one continuous stream.
+}
 }
 \examples{
 \dontrun{
@@ -30,6 +40,13 @@ w$stream(
   },
   timeout_seconds = 30
 )
+
+# Polling
+w <- Watch$new()
+w$open(client, "/api/v1/namespaces/default/pods")
+repeat {
+  for (e in w$poll(1)) cat(e$type, e$object$metadata$name, "\n")
+}
 }
 }
 \section{Public fields}{
@@ -39,10 +56,10 @@ w$stream(
 
 \item{\code{stop_requested}}{Set to TRUE by \verb{$stop()} to break the loop.}
 
-\item{\code{end_reason}}{Why the last \code{stream()} call returned: \code{"stop"}
-(callback returned \code{FALSE} or \verb{$stop()} was called), \code{"timeout"}
+\item{\code{end_reason}}{Why the watch ended: \code{"stop"} (the callback returned
+\code{FALSE}, or \verb{$stop()} / \verb{$close()} was called), \code{"timeout"}
 (\code{timeout_seconds} elapsed), or \code{"gone"} (410 Gone with
-\code{return_on_gone = TRUE}).}
+\code{return_on_gone = TRUE}). \code{NULL} while the watch is open.}
 }
 \if{html}{\out{</div>}}
 }
@@ -50,6 +67,10 @@ w$stream(
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Watch-stream}{\code{Watch$stream()}}
+\item \href{#method-Watch-open}{\code{Watch$open()}}
+\item \href{#method-Watch-poll}{\code{Watch$poll()}}
+\item \href{#method-Watch-is_open}{\code{Watch$is_open()}}
+\item \href{#method-Watch-close}{\code{Watch$close()}}
 \item \href{#method-Watch-stop}{\code{Watch$stop()}}
 \item \href{#method-Watch-clone}{\code{Watch$clone()}}
 }
@@ -102,10 +123,86 @@ deleted while the watch was disconnected.}
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Watch-open"></a>}}
+\if{latex}{\out{\hypertarget{method-Watch-open}{}}}
+\subsection{Method \code{open()}}{
+Open the watch for polling with \verb{$poll()}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Watch$open(
+  client,
+  resource_path,
+  query_params = list(),
+  resource_version = NULL,
+  timeout_seconds = NULL,
+  server_timeout = NULL,
+  return_on_gone = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{client, resource_path, query_params, resource_version, return_on_gone}}{As for \verb{$stream()}.}
+
+\item{\code{timeout_seconds}}{Optional overall limit; once it passes, \code{poll()}
+closes the watch with \code{end_reason = "timeout"}.}
+
+\item{\code{server_timeout}}{Optional \code{timeoutSeconds} for each connection.
+The server ends the connection after this long and \code{poll()}
+reconnects. \code{NULL} leaves it to the server (usually 30-60 minutes).}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Watch-poll"></a>}}
+\if{latex}{\out{\hypertarget{method-Watch-poll}{}}}
+\subsection{Method \code{poll()}}{
+Return the events that have arrived, waiting up to
+\code{max_wait} seconds for the first one.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Watch$poll(max_wait = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{max_wait}}{Seconds to wait when nothing is pending (default 0:
+just collect what is already there).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list of events, each \code{list(type, object, resource_version)}.
+Empty when nothing arrived or the watch is closed.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Watch-is_open"></a>}}
+\if{latex}{\out{\hypertarget{method-Watch-is_open}{}}}
+\subsection{Method \code{is_open()}}{
+Is the watch open (for polling)?
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Watch$is_open()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Watch-close"></a>}}
+\if{latex}{\out{\hypertarget{method-Watch-close}{}}}
+\subsection{Method \code{close()}}{
+Close a watch opened with \verb{$open()}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Watch$close()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Watch-stop"></a>}}
 \if{latex}{\out{\hypertarget{method-Watch-stop}{}}}
 \subsection{Method \code{stop()}}{
-Ask the current \code{stream()} call to return.
+Ask the watch to end: \verb{$stream()} returns after the
+current event, and the next \verb{$poll()} closes the watch.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Watch$stop()}\if{html}{\out{</div>}}
 }

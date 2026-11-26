@@ -24,6 +24,10 @@ Lifecycle:
 Returns when \code{stop_seconds} of wall-clock time elapse (whether or not
 events arrive) or \verb{$stop()} is called from a handler. Safe to re-invoke;
 the informer resumes from the last observed resourceVersion.
+\item \verb{$start()}, then \verb{$poll(max_wait)} in your own loop, then \verb{$close()} -
+the same work without blocking, so one process can drive several
+informers (and other work) from a single loop. \code{poll()} handles events
+that have arrived, firing handlers, and returns.
 \item On 410 Gone (the watch fell too far behind), the informer re-lists and
 reconciles the cache against the fresh list: objects that disappeared
 fire \code{on_delete}, new ones \code{on_add}, and changed ones (different
@@ -48,6 +52,11 @@ inf$add_event_handler(
   on_delete = function(obj) message("gone: ", obj$metadata$name)
 )
 inf$run(stop_seconds = 30)
+
+# Or drive it yourself, e.g. alongside other informers:
+inf$start()
+repeat inf$poll(1)
+
 pods <- inf$lister()
 pods$get("nginx")
 pods$list()
@@ -72,6 +81,9 @@ when supplied, cached objects are R6 instances. Otherwise raw lists.}
 \itemize{
 \item \href{#method-Informer-new}{\code{Informer$new()}}
 \item \href{#method-Informer-add_event_handler}{\code{Informer$add_event_handler()}}
+\item \href{#method-Informer-start}{\code{Informer$start()}}
+\item \href{#method-Informer-poll}{\code{Informer$poll()}}
+\item \href{#method-Informer-close}{\code{Informer$close()}}
 \item \href{#method-Informer-run}{\code{Informer$run()}}
 \item \href{#method-Informer-stop}{\code{Informer$stop()}}
 \item \href{#method-Informer-has_synced}{\code{Informer$has_synced()}}
@@ -134,6 +146,51 @@ Register event handlers.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Informer-start"></a>}}
+\if{latex}{\out{\hypertarget{method-Informer-start}{}}}
+\subsection{Method \code{start()}}{
+List (unless the cache is already in sync) and open
+the watch, without blocking. Follow with \verb{$poll()}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Informer$start()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Informer-poll"></a>}}
+\if{latex}{\out{\hypertarget{method-Informer-poll}{}}}
+\subsection{Method \code{poll()}}{
+Handle the events that have arrived, firing handlers.
+Starts the informer if needed. After a 410 Gone it re-lists,
+reconciles the cache and re-opens the watch.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Informer$poll(max_wait = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{max_wait}}{Seconds to wait when nothing is pending (default 0).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The number of watch events handled, invisibly.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Informer-close"></a>}}
+\if{latex}{\out{\hypertarget{method-Informer-close}{}}}
+\subsection{Method \code{close()}}{
+Close the watch opened by \verb{$start()} / \verb{$poll()}. The
+cache is kept; a later \verb{$start()} resumes from the last
+resourceVersion.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Informer$close()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Informer-run"></a>}}
 \if{latex}{\out{\hypertarget{method-Informer-run}{}}}
 \subsection{Method \code{run()}}{
@@ -156,7 +213,8 @@ watch until \code{stop_seconds} elapse or \verb{$stop()} is called.
 \if{html}{\out{<a id="method-Informer-stop"></a>}}
 \if{latex}{\out{\hypertarget{method-Informer-stop}{}}}
 \subsection{Method \code{stop()}}{
-Stop the running watch. Call from an event handler.
+Make a running \verb{$run()} return. Call from an event
+handler.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Informer$stop()}\if{html}{\out{</div>}}
 }

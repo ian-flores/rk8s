@@ -2,6 +2,20 @@
 
 ## Controller building blocks
 
+* `Watch` gains `open()`, `poll(max_wait)` and `close()`: `poll()` returns
+  the events that have arrived without blocking for longer than
+  `max_wait`, and reconnects from the last resourceVersion when the server
+  ends a connection. `stream()` is now built on them. Events record their
+  own resourceVersion, so a watch stopped part-way through a batch resumes
+  after the last event delivered.
+* `Informer` gains `start()`, `poll(max_wait)` and `close()`, so one R
+  process can drive several informers from a single loop. `poll()` relists
+  and reconciles after 410 Gone. `run()` is now built on them.
+* Watches now run on curl's multi interface instead of a curl connection.
+  Opening a connection waited for the first byte of the body, and the API
+  server sends none on a resumed watch until there is an event, so an
+  informer on a quiet resource could block for about a minute (until the
+  next bookmark) each time its watch reconnected.
 * New `WorkQueue`: a queue of object keys with client-go's semantics. Keys
   are de-duplicated, never handed out twice at once (a key re-added while
   in progress is queued again on `done()`), can be delayed with

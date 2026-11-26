@@ -109,3 +109,34 @@ test_that("run_as_leader notices a takeover on a real cluster", {
   expect_lt(as.numeric(difftime(Sys.time(), t0, units = "secs")), 10)
   expect_equal(k$client$call_api(lease)$spec$holderIdentity, "someone-else")
 })
+
+test_that("one loop drives informers on two resources against a real API server", {
+  k <- kube(namespace = "default")
+  withr::defer({
+    try(kube_delete(k, "configmap/rk8s-it-mux"), silent = TRUE)
+    try(kube_delete(k, "secret/rk8s-it-mux"), silent = TRUE)
+  })
+  seen <- character()
+  cms <- Informer$new(k$client, "/api/v1/namespaces/default/configmaps",
+                      query_params = list(labelSelector = "rk8s-it=mux"))
+  secrets <- Informer$new(k$client, "/api/v1/namespaces/default/secrets",
+                          query_params = list(labelSelector = "rk8s-it=mux"))
+  cms$add_event_handler(on_add = function(obj) seen <<- c(seen, "cm"))
+  secrets$add_event_handler(on_add = function(obj) seen <<- c(seen, "secret"))
+  cms$start(); secrets$start()
+  withr::defer({ cms$close(); secrets$close() })
+
+  labels <- list(`rk8s-it` = "mux")
+  kube_apply(k, list(apiVersion = "v1", kind = "ConfigMap",
+                     metadata = list(name = "rk8s-it-mux", labels = labels),
+                     data = list(a = "1")))
+  kube_apply(k, list(apiVersion = "v1", kind = "Secret",
+                     metadata = list(name = "rk8s-it-mux", labels = labels),
+                     stringData = list(a = "1")))
+  t0 <- Sys.time()
+  while (length(seen) < 2 && Sys.time() - t0 < 10) {
+    cms$poll(0.1); secrets$poll(0.1)
+  }
+  expect_setequal(seen, c("cm", "secret"))
+  expect_lt(as.numeric(difftime(Sys.time(), t0, units = "secs")), 3)
+})
