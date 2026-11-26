@@ -67,6 +67,7 @@ mgr$run(leader_election = "site-operator")
 \item \href{#method-Manager-controller}{\code{Manager$controller()}}
 \item \href{#method-Manager-controllers}{\code{Manager$controllers()}}
 \item \href{#method-Manager-start}{\code{Manager$start()}}
+\item \href{#method-Manager-serve_health}{\code{Manager$serve_health()}}
 \item \href{#method-Manager-step}{\code{Manager$step()}}
 \item \href{#method-Manager-run}{\code{Manager$run()}}
 \item \href{#method-Manager-stop}{\code{Manager$stop()}}
@@ -164,6 +165,28 @@ List every watched resource and open the watches.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Manager-serve_health"></a>}}
+\if{latex}{\out{\hypertarget{method-Manager-serve_health}{}}}
+\subsection{Method \code{serve_health()}}{
+Answer Kubernetes probes on \code{port}: \code{GET /healthz}
+returns 200 whenever the loop is turning, and \code{GET /readyz} returns
+200 once the manager is running or standing by for the leader lease
+(503 before). Requests are answered between reconciles, so a
+reconcile that hangs makes the liveness probe fail. \code{run()} calls
+this for you when given \code{health_port}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Manager$serve_health(port)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{port}}{TCP port to listen on (all interfaces).}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Manager-step"></a>}}
 \if{latex}{\out{\hypertarget{method-Manager-step}{}}}
 \subsection{Method \code{step()}}{
@@ -196,6 +219,7 @@ Run until \code{stop_seconds} pass or \code{stop()} is called.
   leader_election = NULL,
   lease_namespace = NULL,
   identity = NULL,
+  health_port = NULL,
   ...
 )}\if{html}{\out{</div>}}
 }
@@ -213,6 +237,9 @@ than one replica runs.}
 \item{\code{lease_namespace}}{Namespace of the Lease (default: the session's).}
 
 \item{\code{identity}}{This replica's identity (default: host name and PID).}
+
+\item{\code{health_port}}{If set, answer \verb{/healthz} and \verb{/readyz} on this port
+(see \code{serve_health()}), including while waiting for the lease.}
 
 \item{\code{...}}{Passed to \code{\link[=run_as_leader]{run_as_leader()}} (lease timings).}
 }

@@ -94,6 +94,20 @@ Manager <- R6::R6Class(
     #'   `run()` does this for you; call it yourself to drive `step()`.
     start = function() {
       for (ctl in private$ctls) ctl$start()
+      private$state <- "running"
+      invisible(self)
+    },
+
+    #' @description Answer Kubernetes probes on `port`: `GET /healthz`
+    #'   returns 200 whenever the loop is turning, and `GET /readyz` returns
+    #'   200 once the manager is running or standing by for the leader lease
+    #'   (503 before). Requests are answered between reconciles, so a
+    #'   reconcile that hangs makes the liveness probe fail. `run()` calls
+    #'   this for you when given `health_port`.
+    #' @param port TCP port to listen on (all interfaces).
+    serve_health = function(port) {
+      if (!is.null(private$health)) private$health$close()
+      private$health <- HealthServer$new(port)
       invisible(self)
     },
 
@@ -106,6 +120,7 @@ Manager <- R6::R6Class(
       deadline <- as.numeric(Sys.time()) + max_wait
       n <- 0L
       repeat {
+        private$poll_health()
         for (ctl in private$ctls) ctl$poll()
         for (ctl in private$ctls) {
           n <- n + ctl$process(check = private$check,
@@ -129,37 +144,67 @@ Manager <- R6::R6Class(
     #'   than one replica runs.
     #' @param lease_namespace Namespace of the Lease (default: the session's).
     #' @param identity This replica's identity (default: host name and PID).
+    #' @param health_port If set, answer `/healthz` and `/readyz` on this port
+    #'   (see `serve_health()`), including while waiting for the lease.
     #' @param ... Passed to [run_as_leader()] (lease timings).
     run = function(stop_seconds = NULL, leader_election = NULL,
-                   lease_namespace = NULL, identity = NULL, ...) {
+                   lease_namespace = NULL, identity = NULL,
+                   health_port = NULL, ...) {
       deadline <- if (is.null(stop_seconds)) Inf
                   else as.numeric(Sys.time()) + as.numeric(stop_seconds)
       private$stopping <- FALSE
+      private$state <- "starting"
+      if (!is.null(health_port)) {
+        self$serve_health(health_port)
+        on.exit({ private$health$close(); private$health <- NULL }, add = TRUE)
+      }
+      time_up <- function() {
+        private$stopping || as.numeric(Sys.time()) >= deadline
+      }
       loop <- function(leader = NULL) {
         private$check <- if (is.null(leader)) NULL else function() leader$check()
         on.exit({ private$check <- NULL; self$close() }, add = TRUE)
         self$start()
         repeat {
-          if (private$stopping) break
-          left <- deadline - as.numeric(Sys.time())
-          if (left <= 0) break
+          if (time_up()) break
           if (!is.null(private$check)) private$check()
-          self$step(min(0.25, left))
+          self$step(min(0.25, deadline - as.numeric(Sys.time())))
+        }
+      }
+      # While waiting for the lease: keep answering probes, and give up
+      # waiting once time is up or stop() was called.
+      standby <- function(seconds) {
+        private$state <- "standby"
+        until <- as.numeric(Sys.time()) + seconds
+        repeat {
+          if (time_up()) {
+            stop(structure(class = c("rk8s_stop_waiting", "error", "condition"),
+                           list(message = "stopped while waiting for the lease",
+                                call = NULL)))
+          }
+          private$poll_health()
+          left <- until - as.numeric(Sys.time())
+          if (left <= 0) break
+          Sys.sleep(min(0.1, left))
         }
       }
       if (is.null(leader_election)) {
         loop()
       } else {
-        run_as_leader(
-          self$kube$client,
-          lease_name = leader_election,
-          lease_namespace = lease_namespace %||% self$kube$namespace,
-          identity = identity %||%
-            paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
-          on_started_leading = function(leader) loop(leader),
-          ...
-        )
+        tryCatch(
+          run_as_leader(
+            self$kube$client,
+            lease_name = leader_election,
+            lease_namespace = lease_namespace %||% self$kube$namespace,
+            identity = identity %||%
+              paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
+            on_started_leading = function(leader) loop(leader),
+            on_wait = standby,
+            ...
+          ),
+          rk8s_stop_waiting = function(e) NULL)
       }
+      private$state <- "stopped"
       invisible(self)
     },
 
@@ -180,7 +225,15 @@ Manager <- R6::R6Class(
     ctls = NULL,
     poll_interval = 0.05,
     stopping = FALSE,
-    check = NULL       # leader$check while running under leader election
+    check = NULL,      # leader$check while running under leader election
+    health = NULL,     # HealthServer, if serving probes
+    state = "new",     # new, starting, standby, running, stopped
+
+    poll_health = function() {
+      if (!is.null(private$health)) {
+        private$health$poll(ready = private$state %in% c("running", "standby"))
+      }
+    }
   )
 )
 

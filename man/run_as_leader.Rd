@@ -15,7 +15,8 @@ run_as_leader(
   lease_duration_seconds = 15,
   renew_deadline_seconds = 10,
   retry_period_seconds = 2,
-  release_on_exit = TRUE
+  release_on_exit = TRUE,
+  on_wait = NULL
 )
 }
 \arguments{
@@ -49,7 +50,12 @@ giving up and calling \code{on_stopped_leading} (default 10s).}
 renewals (default 2s).}
 
 \item{release_on_exit}{Release the lease when leadership ends, so a
-successor does not have to wait for it to expire (default \code{TRUE}).
+successor does not have to wait for it to expire (default \code{TRUE}).}
+
+\item{on_wait}{Optional \verb{function(seconds)} called instead of
+\code{\link[=Sys.sleep]{Sys.sleep()}} between attempts while waiting for the lease. Use it to
+keep doing other work (such as answering health checks) on a standby
+replica; it may signal a condition to stop waiting.
 
 Requires \verb{lease_duration_seconds > renew_deadline_seconds > retry_period_seconds}, as in client-go.}
 }
