@@ -1,5 +1,13 @@
 # rk8s (development version)
 
+## Controller building blocks
+
+* New `WorkQueue`: a queue of object keys with client-go's semantics. Keys
+  are de-duplicated, never handed out twice at once (a key re-added while
+  in progress is queued again on `done()`), can be delayed with
+  `add_after()`, and retried with per-key exponential backoff via
+  `add_rate_limited()` / `forget()`.
+
 ## Security
 
 * `pod_exec()`, `pod_exec_open()`, `pod_port_forward()` and

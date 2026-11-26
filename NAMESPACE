@@ -15,6 +15,7 @@ export(new_client_from_config)
 
 # Watch
 export(Watch)
+export(WorkQueue)
 
 # Dynamic client
 export(DynamicClient)
