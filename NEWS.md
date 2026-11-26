@@ -29,6 +29,13 @@
   `requeue_after(seconds)`; errors are logged and retried. `mgr$run()`
   drives every controller from one loop, optionally under leader election
   (`leader_election = "<lease>"`), and `mgr$step()` runs a single pass.
+* Helpers for reconcile functions: `kube_patch_status()` (merge patch to
+  the `/status` subresource), `set_owner()` (controller owner reference,
+  so owned objects are garbage-collected and reconcile their owner),
+  `add_finalizer()` / `remove_finalizer()` / `has_finalizer()` /
+  `is_deleting()` (patches carry the resourceVersion, so a stale read gets
+  a 409 instead of a lost update), and `kube_event()` (events shown by
+  `kubectl describe`).
 
 ## Security
 

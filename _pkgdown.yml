@@ -79,6 +79,10 @@ reference:
   contents:
   - Manager
   - requeue
+  - kube_patch_status
+  - set_owner
+  - finalizers
+  - kube_event
 
 - title: Exec and port-forward
   desc: >
