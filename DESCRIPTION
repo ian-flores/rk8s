@@ -18,6 +18,7 @@ Depends:
     R (>= 4.1)
 Imports:
     R6,
+    curl,
     httr2 (>= 1.1.0),
     jsonlite,
     yaml,

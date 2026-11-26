@@ -14,6 +14,10 @@
 #'   Returns when `stop_seconds` of wall-clock time elapse (whether or not
 #'   events arrive) or `$stop()` is called from a handler. Safe to re-invoke;
 #'   the informer resumes from the last observed resourceVersion.
+#' * `$start()`, then `$poll(max_wait)` in your own loop, then `$close()` -
+#'   the same work without blocking, so one process can drive several
+#'   informers (and other work) from a single loop. `poll()` handles events
+#'   that have arrived, firing handlers, and returns.
 #' * On 410 Gone (the watch fell too far behind), the informer re-lists and
 #'   reconciles the cache against the fresh list: objects that disappeared
 #'   fire `on_delete`, new ones `on_add`, and changed ones (different
@@ -37,6 +41,11 @@
 #'   on_delete = function(obj) message("gone: ", obj$metadata$name)
 #' )
 #' inf$run(stop_seconds = 30)
+#'
+#' # Or drive it yourself, e.g. alongside other informers:
+#' inf$start()
+#' repeat inf$poll(1)
+#'
 #' pods <- inf$lister()
 #' pods$get("nginx")
 #' pods$list()
@@ -87,54 +96,71 @@ Informer <- R6::R6Class(
       invisible(self)
     },
 
+    #' @description List (unless the cache is already in sync) and open
+    #'   the watch, without blocking. Follow with `$poll()`.
+    start = function() {
+      private$stopping <- FALSE
+      if (!private$synced || is.null(self$resource_version)) private$relist()
+      if (is.null(private$watch) || !private$watch$is_open()) {
+        private$open_watch()
+      }
+      invisible(self)
+    },
+
+    #' @description Handle the events that have arrived, firing handlers.
+    #'   Starts the informer if needed. After a 410 Gone it re-lists,
+    #'   reconciles the cache and re-opens the watch.
+    #' @param max_wait Seconds to wait when nothing is pending (default 0).
+    #' @return The number of watch events handled, invisibly.
+    poll = function(max_wait = 0) {
+      if (is.null(private$watch) || !private$watch$is_open()) self$start()
+      events <- private$watch$poll(max_wait)
+      for (e in events) {
+        private$handle_event(e$type, e$object)
+        if (!is.null(e$resource_version)) {
+          self$resource_version <- e$resource_version
+        }
+      }
+      if (identical(private$watch$end_reason, "gone")) {
+        # Our resourceVersion is too old; anything could have happened
+        # while we were away. Re-list, reconcile, and watch again.
+        self$resource_version <- NULL
+        private$relist()
+        private$open_watch()
+      }
+      invisible(length(events))
+    },
+
+    #' @description Close the watch opened by `$start()` / `$poll()`. The
+    #'   cache is kept; a later `$start()` resumes from the last
+    #'   resourceVersion.
+    close = function() {
+      if (!is.null(private$watch)) private$watch$close()
+      invisible(self)
+    },
+
     #' @description Run the informer: list (or resume), notify handlers, then
     #'   watch until `stop_seconds` elapse or `$stop()` is called.
     #' @param stop_seconds Optional wall-clock limit. `NULL` runs until
     #'   `$stop()` is called from an event handler.
     run = function(stop_seconds = NULL) {
-      private$stopping <- FALSE
       deadline <- if (is.null(stop_seconds)) Inf
                   else as.numeric(Sys.time()) + as.numeric(stop_seconds)
-      if (!private$synced || is.null(self$resource_version)) private$relist()
-
+      self$start()
+      on.exit(self$close(), add = TRUE)
       repeat {
         if (private$stopping) break
         remaining <- deadline - as.numeric(Sys.time())
         if (remaining <= 0) break
-        w <- Watch$new()
-        private$watch <- w
-        w$stream(
-          client = self$client,
-          resource_path = self$resource_path,
-          query_params = c(private$query_params,
-                           list(allowWatchBookmarks = "true")),
-          timeout_seconds = if (is.finite(remaining)) remaining else NULL,
-          resource_version = self$resource_version,
-          return_on_gone = TRUE,
-          callback = function(type, obj) {
-            private$handle_event(type, obj)
-            if (!is.null(w$resource_version)) {
-              self$resource_version <- w$resource_version
-            }
-            !private$stopping && as.numeric(Sys.time()) < deadline
-          }
-        )
-        if (identical(w$end_reason, "gone")) {
-          # Our resourceVersion is too old; anything could have happened
-          # while we were away. Re-list and reconcile.
-          self$resource_version <- NULL
-          private$relist()
-          next
-        }
-        break
+        self$poll(min(0.2, remaining))
       }
       invisible(self)
     },
 
-    #' @description Stop the running watch. Call from an event handler.
+    #' @description Make a running `$run()` return. Call from an event
+    #'   handler.
     stop = function() {
       private$stopping <- TRUE
-      if (!is.null(private$watch)) private$watch$stop()
       invisible(self)
     },
 
@@ -245,6 +271,16 @@ Informer <- R6::R6Class(
         private$fire("on_delete", old)
       }
       private$synced <- TRUE
+    },
+
+    open_watch = function() {
+      w <- Watch$new()
+      w$open(self$client, self$resource_path,
+             query_params = c(private$query_params,
+                              list(allowWatchBookmarks = "true")),
+             resource_version = self$resource_version,
+             return_on_gone = TRUE)
+      private$watch <- w
     },
 
     handle_event = function(type, raw) {
