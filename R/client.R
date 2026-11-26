@@ -33,7 +33,7 @@ ApiClient <- R6::R6Class(
     },
 
     #' @description Perform an HTTP call against the API server.
-    #' @param resource_path Path portion of the URL (e.g. "/api/v1/namespaces/{namespace}/pods").
+    #' @param resource_path Path portion of the URL (e.g. `"/api/v1/namespaces/{namespace}/pods"`).
     #' @param method HTTP method (GET, POST, PUT, PATCH, DELETE).
     #' @param path_params Named list of path params substituted into
     #'   `resource_path`.
@@ -48,7 +48,7 @@ ApiClient <- R6::R6Class(
     #'   or `application/json-patch+json` for PATCH variants).
     #' @param accept Accept header (default application/json).
     #' @param stream If TRUE, return the raw [httr2::response] without reading
-    #'   the body — used by [Watch] and log-streaming.
+    #'   the body - used by [Watch] and log-streaming.
     call_api = function(resource_path, method = "GET",
                         path_params = list(), query_params = list(),
                         header_params = list(), body = NULL,
@@ -63,13 +63,44 @@ ApiClient <- R6::R6Class(
       if (isTRUE(stream)) {
         return(req)
       }
-      resp <- httr2::req_perform(req)
+      idempotent <- toupper(method) %in% c("GET", "HEAD")
+      perform <- function(req) {
+        cfg <- self$configuration
+        if (!is.null(cfg$timeout)) req <- httr2::req_timeout(req, cfg$timeout)
+        retries <- as.integer(cfg$max_retries %||% 0L)
+        if (retries > 0) {
+          # 429 means the server did not process the request, so any method
+          # may be retried; 5xx and connection failures only for reads.
+          req <- httr2::req_retry(
+            req,
+            max_tries = retries + 1L,
+            retry_on_failure = idempotent,
+            is_transient = function(resp) {
+              st <- httr2::resp_status(resp)
+              st == 429 || (idempotent && st %in% c(500, 502, 503, 504))
+            },
+            backoff = function(i) min(30, 0.25 * 2^i) * stats::runif(1, 0.5, 1)
+          )
+        }
+        httr2::req_perform(req)
+      }
+      resp <- perform(req)
+      if (httr2::resp_status(resp) == 401 && !is.null(self$configuration$exec)) {
+        # Cached exec credentials may have been revoked or rotated early:
+        # run the plugin again and retry once, as client-go does.
+        self$configuration$refresh_credentials()
+        req <- private$build_request(
+          resource_path, method, path_params, query_params,
+          header_params, body, content_type, accept
+        )
+        resp <- perform(req)
+      }
       if (httr2::resp_status(resp) >= 400) api_stop(resp)
       private$deserialize(resp, response_type)
     },
 
     #' @description Substitute `{name}` placeholders in a path template.
-    #' @param path_template E.g. "/api/v1/namespaces/{namespace}/pods/{name}".
+    #' @param path_template E.g. `"/api/v1/namespaces/{namespace}/pods/{name}"`.
     #' @param path_params Named list of replacements.
     select_path = function(path_template, path_params = list()) {
       for (nm in names(path_params)) {
@@ -89,7 +120,19 @@ ApiClient <- R6::R6Class(
       cfg <- self$configuration
       if (is.null(cfg$host)) stop("Configuration$host is not set")
 
-      url <- paste0(sub("/$", "", cfg$host), self$select_path(resource_path, path_params))
+      host <- sub("/$", "", cfg$host)
+      connect_to <- NULL
+      if (!is.null(cfg$tls_server_name) && nzchar(cfg$tls_server_name)) {
+        # Address the server by its TLS name (for SNI and certificate
+        # verification) while connecting to the real host:port.
+        u <- httr2::url_parse(host)
+        port <- u$port %||% if (identical(u$scheme, "http")) 80L else 443L
+        connect_to <- sprintf("%s:%s:%s:%s", cfg$tls_server_name, port,
+                              u$hostname, port)
+        u$hostname <- cfg$tls_server_name
+        host <- sub("/$", "", httr2::url_build(u))
+      }
+      url <- paste0(host, self$select_path(resource_path, path_params))
       req <- httr2::request(url)
       req <- httr2::req_method(req, toupper(method))
       req <- httr2::req_user_agent(req, cfg$user_agent)
@@ -108,6 +151,11 @@ ApiClient <- R6::R6Class(
       } else if (!is.null(cfg$username)) {
         req <- httr2::req_auth_basic(req, cfg$username, cfg$password %||% "")
       }
+      # The spec says the log endpoints produce text/plain, but the API server
+      # answers a bare `Accept: text/plain` with 406 (it negotiates only
+      # JSON/YAML/protobuf) while still returning text for `*/*`. Offer the
+      # wildcard as a fallback, as kubectl does.
+      if (identical(accept, "text/plain")) accept <- "text/plain, */*"
       if (!is.null(accept)) headers[["Accept"]] <- accept
 
       # TLS configuration.
@@ -117,12 +165,20 @@ ApiClient <- R6::R6Class(
         opts$ssl_verifyhost <- 0L
       }
       if (!is.null(cfg$ssl_ca_cert)) opts$cainfo <- cfg$ssl_ca_cert
-      if (!is.null(cfg$cert_file))   opts$sslcert <- cfg$cert_file
-      if (!is.null(cfg$key_file))    opts$sslkey  <- cfg$key_file
+      cc <- cfg$client_cert()
+      if (!is.null(cc$cert_file))    opts$sslcert <- cc$cert_file
+      if (!is.null(cc$key_file))     opts$sslkey  <- cc$key_file
       if (!is.null(cfg$proxy))       opts$proxy   <- cfg$proxy
+      if (!is.null(connect_to))      opts$connect_to <- connect_to
       if (length(opts) > 0) req <- do.call(httr2::req_options, c(list(req), opts))
 
-      # Body serialization.
+      # Body serialization. The OpenAPI spec lists `*/*` as the accepted type
+      # for most writes; the API server rejects that literal Content-Type
+      # (415), so send JSON instead, as the Python client does.
+      if (is.null(content_type) || !nzchar(content_type) ||
+          grepl("*", content_type, fixed = TRUE)) {
+        content_type <- "application/json"
+      }
       if (!is.null(body)) {
         if (is.character(body) || is.raw(body)) {
           req <- httr2::req_body_raw(req, body, type = content_type)
@@ -145,6 +201,14 @@ ApiClient <- R6::R6Class(
       if (identical(response_type, "text")) return(httr2::resp_body_string(resp))
       body <- tryCatch(httr2::resp_body_string(resp), error = function(e) "")
       if (!nzchar(body)) return(NULL)
+      # Untyped operations (pod logs, proxy, ...) may return text; only parse
+      # JSON responses.
+      if (is.null(response_type)) {
+        ct <- httr2::resp_content_type(resp)
+        if (!is.na(ct) && nzchar(ct) && !grepl("json", ct, fixed = TRUE)) {
+          return(body)
+        }
+      }
       parsed <- jsonlite::fromJSON(body, simplifyVector = FALSE)
       if (is.null(response_type)) return(parsed)
 

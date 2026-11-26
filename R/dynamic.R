@@ -1,6 +1,6 @@
 #' Dynamic (untyped) Kubernetes client
 #'
-#' Discovers the API surface at runtime (GVR → REST path) via `/api` and
+#' Discovers the API surface at runtime (GVR -> REST path) via `/api` and
 #' `/apis/*` discovery endpoints and exposes CRUD for any resource, including
 #' CustomResourceDefinitions. Mirrors `kubernetes.dynamic.DynamicClient` in the
 #' Python client and `dynamic.Interface` in client-go.
@@ -97,12 +97,31 @@ DynamicResource <- R6::R6Class(
       self$info <- info
     },
 
+    # Fetches every page (`limit`/`continue`, `page_size` items at a time)
+    # and returns one combined list. Pass `limit` yourself to get a single
+    # page back, including `metadata$continue`.
     list = function(namespace = NULL, label_selector = NULL,
-                     field_selector = NULL, ...) {
+                     field_selector = NULL, ..., page_size = 500L) {
       path <- private$collection_path(namespace)
       q <- drop_nulls(list(labelSelector = label_selector,
                             fieldSelector = field_selector, ...))
-      self$client$call_api(path, "GET", query_params = q)
+      if (!is.null(q$limit) || is.null(page_size)) {
+        return(self$client$call_api(path, "GET", query_params = q))
+      }
+      items <- list()
+      cont <- NULL
+      repeat {
+        q$limit <- as.integer(page_size)
+        q[["continue"]] <- cont
+        page <- self$client$call_api(path, "GET", query_params = drop_nulls(q))
+        items <- c(items, page$items %||% list())
+        cont <- page$metadata[["continue"]]
+        if (is.null(cont) || !nzchar(cont)) break
+      }
+      page$items <- items
+      page$metadata[["continue"]] <- NULL
+      page$metadata$remainingItemCount <- NULL
+      page
     },
 
     get = function(name, namespace = NULL) {

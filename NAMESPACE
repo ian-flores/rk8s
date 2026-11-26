@@ -36,6 +36,7 @@ export(pod_port_forward)
 export(pod_port_forward_open)
 export(PodPortForwardSession)
 S3method(print, PortForwardBridge)
+S3method(print, rk8s_leader)
 
 # High-level verb API
 export(kube)

@@ -22,24 +22,24 @@ rk8s is an R client for the Kubernetes API. It has two layers:
   Python client and Go client-go. There when you need it.
 
 A `Watch` helper, `Informer`/`Lister` for client-go-style controllers,
-`DynamicClient` for CustomResources, and `run_as_leader()` for leader
-election sit alongside both layers.
+`DynamicClient` for CustomResources, `pod_exec()` / `pod_port_forward()`,
+and `run_as_leader()` for leader election sit alongside both layers.
 
 ## Installing
 
 ```r
-# remotes::install_github("ian-flores/rk8s")
-install.packages("rk8s_0.2.0.tar.gz", repos = NULL)
+# install.packages("remotes")
+remotes::install_github("ian-flores/rk8s")
 ```
 
 ## Authenticating
 
 ```{r}
 library(rk8s)
-k <- kube()                                   # ~/.kube/config
+k <- kube()                                   # $KUBECONFIG or ~/.kube/config
 # k <- kube(context = "my-dev")
 # k <- kube(config_file = "~/configs/prod.yaml")
-# k <- kube(namespace = "my-app")             # change default namespace
+# k <- kube(namespace = "my-app")             # override the context namespace
 ```
 
 Inside a pod running as a ServiceAccount:
@@ -48,10 +48,18 @@ Inside a pod running as a ServiceAccount:
 k <- kube(client = ApiClient$new(load_incluster_config()))
 ```
 
-`load_kube_config()` understands everything `kubectl` does: bearer
-tokens, token files, basic auth, inline base64 client certs, on-disk
-PEM files, and `exec` credential plugins (EKS's `aws-iam-authenticator`,
-GKE's `gke-gcloud-auth-plugin`, any OIDC helper).
+`load_kube_config()` reads kubeconfigs the way `kubectl` does: a
+`KUBECONFIG` list of several files (merged, first definition wins), the
+context's default namespace, bearer tokens and token files, basic auth,
+client certificates (inline or as files relative to the kubeconfig that
+names them), `exec` credential plugins (EKS's `aws-iam-authenticator`,
+GKE's `gke-gcloud-auth-plugin`, AKS's `kubelogin`, any OIDC helper), the
+`oidc` auth-provider with token refresh, `proxy-url`, `tls-server-name`
+and `insecure-skip-tls-verify`.
+
+Requests that hit API throttling (429) are retried for any method;
+server errors (500-504) and dropped connections are retried for reads
+only. Set `Configuration$max_retries` (default 3) to change this.
 
 ## The verb API
 
@@ -62,6 +70,9 @@ Resource references can be:
 * `"kind/name"`: `"deployment/nginx"`
 * explicit `"apiVersion:Kind"`: `"apps/v1:Deployment"`
 * a `c(apiVersion, Kind)` vector: `c("apps/v1", "Deployment")`
+
+The examples below assume a pod called `nginx-abc` and, after the
+apply section, a Deployment called `nginx`.
 
 ### Get / list
 
@@ -74,6 +85,7 @@ kube_get(k, "apps/v1:Deployment", "nginx")               # explicit GVK
 ```
 
 `kube_get()` returns an `rk8s_object` (single) or `rk8s_list` (collection).
+`kube_list()` pages through large collections for you.
 A built-in `as.data.frame()` method gives you a tabular view:
 
 ```{r}
@@ -126,24 +138,27 @@ Field manager defaults to `"rk8s"`; override with `field_manager =`.
 ### Delete, scale, logs, watch
 
 ```{r}
-kube_delete(k, "pod", "nginx-abc")
-kube_delete(k, "deployment/nginx")
-kube_delete(k, "deployment/nginx", grace_period = 0)
-
 kube_scale(k, "deployment", "nginx", replicas = 5)
 kube_scale(k, "statefulset/postgres", replicas = 3)
 
 cat(kube_logs(k, "nginx-abc", tail = 50))
 kube_logs(k, "nginx-abc", container = "sidecar", follow = TRUE)
 
-kube_watch(k, "pods",
+w <- kube_watch(k, "pods",
   on_event = function(type, obj) {
     message(type, " ", obj$metadata$name)
     TRUE  # keep watching; return FALSE to stop
   },
   timeout_seconds = 30
 )
+w$end_reason   # "stop", "timeout" or "gone" (resourceVersion too old)
+
+kube_delete(k, "pod", "nginx-abc")
+kube_delete(k, "deployment/nginx", grace_period = 0)
 ```
+
+`timeout_seconds` is a wall-clock limit: the watch reconnects after
+server-side timeouts but returns once the time is up.
 
 ### Anything custom
 
@@ -168,7 +183,10 @@ for (f in foos$items) {
 
 When you want to react to changes without re-listing the API server
 every tick, use `Informer`. One watch feeds an in-memory cache plus
-your event handlers; `Lister` gives you O(1) lookups.
+your event handlers; `Lister` gives you O(1) lookups. The initial list is
+paged, and if the watch falls too far behind (410 Gone) the informer
+lists again and reconciles its cache, firing `on_delete` for anything
+removed in the meantime.
 
 ```{r}
 inf <- Informer$new(
@@ -188,13 +206,54 @@ inf$add_event_handler(
 inf$run(stop_seconds = 120)
 
 pods <- inf$lister()
-pods$get("nginx")    # cache lookup, no API call
+pods$get("nginx-abc", namespace = "default")   # cache lookup, no API call
 pods$list()
+```
+
+## Exec and port-forward
+
+Run a command in a pod and collect its output:
+
+```{r}
+r <- pod_exec(k$client, "default", "nginx-abc", c("ls", "-la", "/"))
+cat(r$stdout)
+r$exit_code
+
+# With stdin
+pod_exec(k$client, "default", "nginx-abc", "cat", stdin_data = "hi\n")$stdout
+```
+
+For an interactive session use `pod_exec_open()`, which returns a
+`PodExecSession` with `write_stdin()`, `on_stdout()` and friends.
+Incoming output is delivered while `wait()` or `pump()` runs.
+
+Forward a pod port to a local one, like `kubectl port-forward`:
+
+```{r}
+fwd <- pod_port_forward(k$client, "default", "nginx-abc", remote_port = 80)
+httr2::request(paste0("http://127.0.0.1:", fwd$port)) |> httr2::req_perform()
+fwd$close()
+```
+
+Both need the `nanonext` package. They verify the API server's
+certificate against the kubeconfig CA (or the system CA bundle) and
+check its hostname, and authenticate with a bearer token. A kubeconfig
+whose user has only a client certificate, as kind, minikube and kubeadm
+create by default, gets an error explaining this; use a token instead:
+
+```{r}
+# kubectl create serviceaccount rk8s-dev
+# kubectl create clusterrolebinding rk8s-dev --clusterrole=edit \
+#   --serviceaccount=default:rk8s-dev
+cfg <- load_kube_config()
+cfg$api_key <- list(authorization = paste(
+  "Bearer", system("kubectl create token rk8s-dev", intern = TRUE)))
+k <- kube(client = ApiClient$new(cfg))
 ```
 
 ## Leader election
 
-For controllers that need exactly-one-active across replicas:
+For controllers that need exactly one active replica:
 
 ```{r}
 run_as_leader(
@@ -202,13 +261,25 @@ run_as_leader(
   lease_name = "my-controller",
   lease_namespace = "kube-system",
   identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
-  on_started_leading = function() { message("leading"); controller_loop() },
+  on_started_leading = function(leader) {
+    message("leading")
+    repeat {
+      leader$check()      # signals once leadership is lost
+      reconcile_once()
+      Sys.sleep(5)
+    }
+  },
   on_stopped_leading = function() message("stopped leading")
 )
 ```
 
-A `callr`-driven background renewer keeps the lease fresh; on failure
-or `Ctrl-C`, `on_stopped_leading` fires.
+A background process (via `callr`) renews the lease. `leader$check()`
+signals an `rk8s_leadership_lost` condition as soon as the lease is
+taken or renewals stop succeeding; `run_as_leader()` then stops the
+callback, releases the lease and calls `on_stopped_leading`. Call it
+often, at least once per `renew_deadline_seconds`, so two replicas never
+act as leader at the same time. `leader$is_leader()` is the
+non-signalling version.
 
 ## Errors
 

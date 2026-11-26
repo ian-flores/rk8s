@@ -11,14 +11,14 @@ Description: An R client for the Kubernetes API. Provides a high-level
     pod exec/port-forward over WebSocket) plus typed API and model
     classes code-generated from the Kubernetes OpenAPI specification.
 License: Apache License (>= 2)
-URL: https://github.com/ian-flores/rk8s
+URL: https://ian-flores.github.io/rk8s/, https://github.com/ian-flores/rk8s
 BugReports: https://github.com/ian-flores/rk8s/issues
 Encoding: UTF-8
 Depends:
     R (>= 4.1)
 Imports:
     R6,
-    httr2 (>= 1.0.0),
+    httr2 (>= 1.1.0),
     jsonlite,
     yaml,
     openssl,
@@ -27,13 +27,14 @@ Imports:
     utils
 Suggests:
     testthat (>= 3.0.0),
+    webfakes,
     withr,
     callr,
+    processx,
     knitr,
     rmarkdown,
-    websocket,
-    later
+    nanonext (>= 1.10.3)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)

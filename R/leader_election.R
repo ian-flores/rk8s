@@ -1,19 +1,30 @@
 #' Run as the leader under a Kubernetes Lease
 #'
 #' Acquire-and-renew leader election against a `coordination.k8s.io/v1` Lease
-#' object. Exactly one caller across a cluster holds the lease at a time;
-#' leadership is released automatically when the caller crashes or stops
-#' renewing (within `lease_duration_seconds`).
+#' object. At most one caller across a cluster holds the lease at a time;
+#' leadership passes to another caller when the holder stops renewing (within
+#' `lease_duration_seconds`).
 #'
 #' Mirrors `kubernetes.leaderelection.LeaderElection` (Python) and
 #' `client-go/tools/leaderelection`.
 #'
-#' The typical caller pattern is a long-running controller: call
-#' `run_as_leader()` on the main thread; the function blocks while this
-#' caller is the leader and the `on_started_leading` callback is invoked
-#' exactly once. When leadership is lost (lease is stolen, the API server
-#' returns errors past the renew deadline, or `$stop()` is called),
-#' `on_stopped_leading` fires and the function returns.
+#' `run_as_leader()` blocks until the lease is acquired, then starts a
+#' background renewer (a `callr` child process) and calls
+#' `on_started_leading(leader)`. Because R cannot interrupt running code
+#' from another thread, **your callback must check in periodically** by
+#' calling `leader$check()`. It returns invisibly while this caller is still
+#' the leader and signals a condition of class `rk8s_leadership_lost` once
+#' leadership is gone (the lease was taken over, or no renewal has succeeded
+#' within `renew_deadline_seconds`). `run_as_leader()` catches that
+#' condition. `leader$is_leader()` returns the same information as a logical.
+#'
+#' When the callback returns, errors, or loses leadership, the renewer is
+#' stopped, the lease is released (so a successor can take over immediately,
+#' unless `release_on_exit = FALSE`), and `on_stopped_leading()` is called.
+#' Errors other than lost leadership are re-raised after this cleanup.
+#'
+#' A callback that takes no arguments is still supported, but it then has no
+#' way to learn that leadership was lost while it runs.
 #'
 #' @param client An [ApiClient].
 #' @param lease_name Name of the Lease object (created if missing).
@@ -21,8 +32,8 @@
 #' @param identity Unique identifier for this caller (hostname + PID is a
 #'   common choice). Two callers with the same identity are considered the
 #'   same holder and will never contest each other.
-#' @param on_started_leading Function called once, with no arguments, when
-#'   this caller acquires the lease.
+#' @param on_started_leading Function called once when this caller acquires
+#'   the lease, with a leader handle (see Details) as its only argument.
 #' @param on_stopped_leading Function called once, with no arguments, when
 #'   this caller loses the lease (always paired with `on_started_leading`).
 #' @param on_new_leader Optional `function(identity)` called whenever the
@@ -32,10 +43,16 @@
 #'   this interval of no renewal.
 #' @param renew_deadline_seconds How long to keep trying to renew before
 #'   giving up and calling `on_stopped_leading` (default 10s).
-#' @param retry_period_seconds Base backoff between acquire attempts
-#'   (default 2s).
+#' @param retry_period_seconds Interval between acquire attempts and between
+#'   renewals (default 2s).
+#' @param release_on_exit Release the lease when leadership ends, so a
+#'   successor does not have to wait for it to expire (default `TRUE`).
 #'
-#' @return Invisibly, `TRUE` if this caller ever held leadership.
+#' Requires `lease_duration_seconds > renew_deadline_seconds >
+#' retry_period_seconds`, as in client-go.
+#'
+#' @return Invisibly, `TRUE` once this caller has held and given up
+#'   leadership.
 #' @examples
 #' \dontrun{
 #' client <- new_client_from_config()
@@ -44,7 +61,13 @@
 #'   lease_name = "my-controller",
 #'   lease_namespace = "kube-system",
 #'   identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
-#'   on_started_leading = function() { message("leading"); controller_loop() },
+#'   on_started_leading = function(leader) {
+#'     repeat {
+#'       leader$check()          # returns, or unwinds once leadership is lost
+#'       reconcile_once()
+#'       Sys.sleep(1)
+#'     }
+#'   },
 #'   on_stopped_leading = function() message("stopped leading")
 #' )
 #' }
@@ -55,9 +78,18 @@ run_as_leader <- function(client, lease_name, lease_namespace, identity,
                            on_new_leader = NULL,
                            lease_duration_seconds = 15,
                            renew_deadline_seconds = 10,
-                           retry_period_seconds = 2) {
+                           retry_period_seconds = 2,
+                           release_on_exit = TRUE) {
   stopifnot(is.function(on_started_leading))
-  held <- FALSE
+  if (!(lease_duration_seconds > renew_deadline_seconds &&
+        renew_deadline_seconds > retry_period_seconds)) {
+    stop("run_as_leader() requires lease_duration_seconds > ",
+         "renew_deadline_seconds > retry_period_seconds", call. = FALSE)
+  }
+  if (!requireNamespace("callr", quietly = TRUE)) {
+    stop("run_as_leader() requires the `callr` package for the background ",
+         "lease renewer.", call. = FALSE)
+  }
   observed_leader <- NA_character_
 
   lease_path <- sprintf("/apis/coordination.k8s.io/v1/namespaces/%s/leases",
@@ -65,58 +97,180 @@ run_as_leader <- function(client, lease_name, lease_namespace, identity,
   item_path <- paste0(lease_path, "/", lease_name)
 
   notify_leader <- function(id) {
-    if (!identical(observed_leader, id) && !is.null(on_new_leader)) {
+    if (!is.na(id) && !identical(observed_leader, id) && !is.null(on_new_leader)) {
       on_new_leader(id)
     }
-    observed_leader <<- id
+    if (!is.na(id)) observed_leader <<- id
   }
 
-  # Main acquire loop: try until we become leader or caller stops us.
+  # Acquire: block until we hold the lease.
   repeat {
     result <- try_acquire(client, lease_path, item_path, lease_name,
                            lease_namespace, identity, lease_duration_seconds)
     notify_leader(result$holder)
-    if (identical(result$holder, identity)) {
-      held <- TRUE
-      break
-    }
+    if (identical(result$holder, identity)) break
     Sys.sleep(jitter_sleep(retry_period_seconds))
   }
 
-  # Leading: run the callback, while a background-ish renew loop ticks. Since
-  # R isn't natively threaded, we alternate: call the user callback in a
-  # non-blocking way via a renew-after-every-slice pattern. The simplest
-  # faithful implementation is to run the callback in a child R process via
-  # `callr`, but to avoid a hard dependency we use the blocking-callback
-  # pattern documented in `run_as_leader`: the user is expected to invoke
-  # `renew()` periodically, OR the caller can check `is_leader()`.
-  #
-  # Here we take the common approach: start a renewer in a child process
-  # via callr if available; otherwise run the callback synchronously with
-  # a best-effort pre-renew.
-  renewer <- start_renewer(client, item_path, lease_name, lease_namespace,
-                            identity, lease_duration_seconds,
-                            renew_deadline_seconds, retry_period_seconds)
-  leading <- TRUE
+  status_file <- tempfile("rk8s-lease-")
+  write_renew_stamp(status_file)
+  renewer <- callr::r_bg(
+    func = function(...) {
+      utils::getFromNamespace("leader_renew_loop", "rk8s")(...)
+    },
+    args = list(cfg_list = config_to_list(client$configuration),
+                item_path = item_path, identity = identity,
+                renew_deadline = renew_deadline_seconds,
+                retry_period = retry_period_seconds,
+                status_file = status_file),
+    supervise = TRUE
+  )
+  leader <- new_leader_handle(identity, renewer, status_file,
+                              renew_deadline_seconds)
+
   on.exit({
-    leading <- FALSE
-    stop_renewer(renewer)
+    leader$.deactivate()
+    tryCatch(renewer$kill(), error = function(e) NULL)
+    if (isTRUE(release_on_exit)) {
+      tryCatch(release_lease(client, item_path, identity),
+               error = function(e) warning("failed to release lease: ",
+                                           conditionMessage(e), call. = FALSE))
+    }
+    unlink(status_file)
     tryCatch(on_stopped_leading(), error = function(e) {
-      warning("on_stopped_leading error: ", conditionMessage(e))
+      warning("on_stopped_leading error: ", conditionMessage(e), call. = FALSE)
     })
   }, add = TRUE)
 
-  tryCatch(on_started_leading(), error = function(e) {
-    warning("on_started_leading error: ", conditionMessage(e))
-  })
-  invisible(held)
+  tryCatch(
+    if (length(formals(on_started_leading)) > 0) on_started_leading(leader)
+    else on_started_leading(),
+    rk8s_leadership_lost = function(e) NULL
+  )
+  invisible(TRUE)
+}
+
+# ---- leader handle -----------------------------------------------------------
+
+new_leader_handle <- function(identity, renewer, status_file, renew_deadline) {
+  state <- new.env(parent = emptyenv())
+  state$leading <- TRUE
+  state$reason <- NULL
+  lose <- function(reason) {
+    state$leading <- FALSE
+    state$reason <- state$reason %||% reason
+    FALSE
+  }
+  h <- list(
+    identity = identity,
+    is_leader = function() {
+      if (!state$leading) return(FALSE)
+      if (!renewer$is_alive()) {
+        r <- tryCatch(renewer$get_result()$reason,
+                      error = function(e) paste("renewer failed:", conditionMessage(e)))
+        return(lose(r %||% "renewer exited"))
+      }
+      last <- read_renew_stamp(status_file)
+      if (!is.na(last) && as.numeric(Sys.time()) - last > renew_deadline) {
+        return(lose("deadline"))
+      }
+      TRUE
+    },
+    reason = function() state$reason,
+    .deactivate = function() lose("stopped")
+  )
+  h$check <- function() {
+    if (!h$is_leader()) {
+      cond <- structure(
+        class = c("rk8s_leadership_lost", "error", "condition"),
+        list(message = paste0("leadership lost (", state$reason, ")"),
+             call = NULL, reason = state$reason)
+      )
+      stop(cond)
+    }
+    invisible(TRUE)
+  }
+  structure(h, class = "rk8s_leader")
+}
+
+#' @export
+print.rk8s_leader <- function(x, ...) {
+  cat("<rk8s_leader>", x$identity,
+      if (x$is_leader()) "(leading)" else paste0("(not leading: ", x$reason(), ")"),
+      "\n")
+  invisible(x)
+}
+
+write_renew_stamp <- function(path) {
+  tmp <- paste0(path, ".tmp")
+  writeLines(format(as.numeric(Sys.time()), digits = 15), tmp)
+  file.rename(tmp, path)
+}
+
+read_renew_stamp <- function(path) {
+  suppressWarnings(tryCatch(as.numeric(readLines(path, n = 1, warn = FALSE)),
+                            error = function(e) NA_real_))
+}
+
+# Runs in the callr child process: renew every `retry_period` seconds until
+# the lease is taken over ("stolen") or no renewal has succeeded within
+# `renew_deadline` seconds ("deadline").
+leader_renew_loop <- function(cfg_list, item_path, identity, renew_deadline,
+                              retry_period, status_file) {
+  cfg <- config_from_list(cfg_list)
+  cfg$timeout <- cfg$timeout %||% renew_deadline
+  client <- ApiClient$new(cfg)
+  last_ok <- as.numeric(Sys.time())
+  repeat {
+    Sys.sleep(retry_period)
+    res <- tryCatch(renew_once(client, item_path, identity),
+                    error = function(e) "error")
+    now <- as.numeric(Sys.time())
+    if (identical(res, "stolen")) return(list(reason = "stolen"))
+    if (identical(res, "ok")) {
+      last_ok <- now
+      write_renew_stamp(status_file)
+    } else if (now - last_ok > renew_deadline) {
+      return(list(reason = "deadline"))
+    }
+  }
+}
+
+renew_once <- function(client, item_path, identity) {
+  lease <- client$call_api(item_path, "GET")
+  if (!identical(lease$spec$holderIdentity, identity)) return("stolen")
+  lease$spec$renewTime <- micro_time()
+  client$call_api(item_path, "PUT", body = for_update(lease))
+  "ok"
+}
+
+release_lease <- function(client, item_path, identity) {
+  lease <- client$call_api(item_path, "GET")
+  if (!identical(lease$spec$holderIdentity, identity)) return(invisible(FALSE))
+  lease$spec$holderIdentity <- NULL
+  lease$spec$leaseDurationSeconds <- 1L
+  lease$spec$renewTime <- micro_time()
+  client$call_api(item_path, "PUT", body = for_update(lease))
+  invisible(TRUE)
+}
+
+micro_time <- function() {
+  strftime(Sys.time(), "%Y-%m-%dT%H:%M:%S.000000Z", tz = "UTC")
+}
+
+# Prepare a fetched object for PUT. managedFields contain empty JSON objects
+# (`{}`) that jsonlite turns into `[]` on the way back out, which the API
+# server rejects; leaving them out keeps the server's existing ones.
+for_update <- function(obj) {
+  obj$metadata$managedFields <- NULL
+  obj
 }
 
 # ---- internal -------------------------------------------------------------
 
 try_acquire <- function(client, lease_path, item_path, name, namespace,
                          identity, lease_duration_seconds) {
-  now <- strftime(Sys.time(), "%Y-%m-%dT%H:%M:%S.000000Z", tz = "UTC")
+  now <- micro_time()
   lease <- tryCatch(
     client$call_api(item_path, "GET"),
     rk8s_api_error = function(e) if (identical(e$exception$status, 404L)) NULL else stop(e)
@@ -150,14 +304,15 @@ try_acquire <- function(client, lease_path, item_path, name, namespace,
     return(list(holder = NA_character_, lease = NULL))
   }
 
-  # Lease exists. If it's ours, renew. If it's stale, steal. Otherwise wait.
+  # Lease exists. If it's ours, renew. If it's free or stale, take it.
   holder <- lease$spec$holderIdentity
-  renewed <- lease$spec$renewTime
-  expired <- is_expired(renewed, lease$spec$leaseDurationSeconds)
+  free <- is.null(holder) || !nzchar(holder)
+  expired <- free || is_expired(lease$spec$renewTime, lease$spec$leaseDurationSeconds)
 
   if (identical(holder, identity) || isTRUE(expired)) {
     new_spec <- lease$spec
     new_spec$holderIdentity <- identity
+    new_spec$leaseDurationSeconds <- as.integer(lease_duration_seconds)
     new_spec$renewTime <- now
     if (!identical(holder, identity)) {
       new_spec$acquireTime <- now
@@ -165,7 +320,7 @@ try_acquire <- function(client, lease_path, item_path, name, namespace,
     }
     lease$spec <- new_spec
     updated <- tryCatch(
-      client$call_api(item_path, "PUT", body = lease),
+      client$call_api(item_path, "PUT", body = for_update(lease)),
       rk8s_api_error = function(e) {
         # 409 conflict: resourceVersion mismatch; another caller won the race.
         if (identical(e$exception$status, 409L)) return(NULL)
@@ -187,63 +342,3 @@ is_expired <- function(renew_time, duration_seconds) {
 }
 
 jitter_sleep <- function(base) base * (0.8 + stats::runif(1) * 0.4)
-
-start_renewer <- function(client, item_path, name, namespace, identity,
-                           lease_duration_seconds, renew_deadline_seconds,
-                           retry_period_seconds) {
-  # Best-effort: if `callr` is installed, run the renewer in a child R
-  # process. Otherwise skip; the user's callback is responsible for calling
-  # `try_acquire()` itself, or they can vendor their own renewer.
-  if (!requireNamespace("callr", quietly = TRUE)) {
-    warning("`callr` is not installed; the leader-election renewer will not ",
-            "run in the background. Leadership will be held only for the ",
-            "initial lease_duration_seconds unless you manually renew.",
-            call. = FALSE)
-    return(NULL)
-  }
-  callr::r_bg(
-    func = function(host, token, ca_cert, item_path, name, namespace, identity,
-                    ldur, rdl, rp) {
-      # Child process: construct a minimal client mirroring the parent's
-      # transport (host/token/ca), and tick-renew.
-      cfg <- rk8s::Configuration$new(
-        host = host,
-        api_key = if (!is.null(token)) list(authorization = paste("Bearer", token)) else list(),
-        ssl_ca_cert = ca_cert,
-        verify_ssl = !is.null(ca_cert)
-      )
-      c2 <- rk8s::ApiClient$new(cfg)
-      deadline <- Sys.time() + rdl
-      repeat {
-        Sys.sleep(rp)
-        ok <- tryCatch({
-          now <- strftime(Sys.time(), "%Y-%m-%dT%H:%M:%S.000000Z", tz = "UTC")
-          lease <- c2$call_api(item_path, "GET")
-          if (!identical(lease$spec$holderIdentity, identity)) {
-            return(list(reason = "stolen"))
-          }
-          lease$spec$renewTime <- now
-          c2$call_api(item_path, "PUT", body = lease)
-          deadline <- Sys.time() + rdl
-          TRUE
-        }, error = function(e) FALSE)
-        if (!ok && Sys.time() > deadline) return(list(reason = "deadline"))
-      }
-    },
-    args = list(
-      host = client$configuration$host,
-      token = client$configuration$bearer_token(),
-      ca_cert = client$configuration$ssl_ca_cert,
-      item_path = item_path, name = name, namespace = namespace,
-      identity = identity,
-      ldur = lease_duration_seconds, rdl = renew_deadline_seconds,
-      rp = retry_period_seconds
-    ),
-    supervise = TRUE
-  )
-}
-
-stop_renewer <- function(renewer) {
-  if (is.null(renewer)) return(invisible())
-  tryCatch(renewer$kill(), error = function(e) NULL)
-}

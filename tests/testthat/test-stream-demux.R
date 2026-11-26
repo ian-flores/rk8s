@@ -1,5 +1,4 @@
 test_that("PodExecSession routes channel-prefixed frames to the right callback", {
-  skip_if_not_installed("websocket")
 
   # Construct without going through `initialize` so we don't open a real WS.
   s <- structure(
@@ -10,7 +9,7 @@ test_that("PodExecSession routes channel-prefixed frames to the right callback",
     class = c("PodExecSession", "R6")
   )
   pe <- PodExecSession
-  # We can't easily bypass R6's initializer without `websocket` in the path
+  # We can't easily bypass R6's initializer without a server to dial
   # actually trying to connect; instead, exercise handle_frame() directly via
   # a minimal stand-in.
   out <- list(); err <- list(); exit <- NA_integer_

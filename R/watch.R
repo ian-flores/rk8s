@@ -30,6 +30,11 @@ Watch <- R6::R6Class(
     resource_version = NULL,
     #' @field stop_requested Set to TRUE by `$stop()` to break the loop.
     stop_requested = FALSE,
+    #' @field end_reason Why the last `stream()` call returned: `"stop"`
+    #'   (callback returned `FALSE` or `$stop()` was called), `"timeout"`
+    #'   (`timeout_seconds` elapsed), or `"gone"` (410 Gone with
+    #'   `return_on_gone = TRUE`).
+    end_reason = NULL,
 
     #' @description Stream events to a callback.
     #' @param client An [ApiClient].
@@ -39,18 +44,34 @@ Watch <- R6::R6Class(
     #'   `watch=true` is added automatically.
     #' @param callback Function `function(type, object)` invoked for each event.
     #'   Return `FALSE` to stop the stream.
-    #' @param timeout_seconds Passed as a query param; also used to bound
-    #'   individual HTTP calls.
+    #' @param timeout_seconds Total wall-clock budget for the whole call. The
+    #'   stream reconnects after normal server hang-ups while time remains and
+    #'   returns once it is spent, even if no events arrive. `NULL` (default)
+    #'   watches until the callback returns `FALSE` or `$stop()` is called.
     #' @param resource_version Starting resourceVersion (defaults to last seen).
+    #' @param return_on_gone If `TRUE`, return with `end_reason = "gone"` on
+    #'   410 Gone so the caller can re-list (this is what [Informer] does). If
+    #'   `FALSE` (default), restart the watch without a resourceVersion, which
+    #'   replays the current state as `ADDED` events but cannot report objects
+    #'   deleted while the watch was disconnected.
     stream = function(client, resource_path, query_params = list(), callback,
-                      timeout_seconds = NULL, resource_version = NULL) {
+                      timeout_seconds = NULL, resource_version = NULL,
+                      return_on_gone = FALSE) {
       self$stop_requested <- FALSE
+      self$end_reason <- NULL
       rv <- resource_version %||% self$resource_version
+      deadline <- if (is.null(timeout_seconds)) Inf
+                  else as.numeric(Sys.time()) + as.numeric(timeout_seconds)
       repeat {
-        if (self$stop_requested) break
+        if (self$stop_requested) { self$end_reason <- "stop"; break }
+        remaining <- deadline - as.numeric(Sys.time())
+        if (remaining <= 0) { self$end_reason <- "timeout"; break }
+
         q <- c(query_params, list(watch = "true"))
         if (!is.null(rv)) q$resourceVersion <- rv
-        if (!is.null(timeout_seconds)) q$timeoutSeconds <- as.integer(timeout_seconds)
+        if (is.finite(remaining)) {
+          q$timeoutSeconds <- max(1L, as.integer(ceiling(remaining)))
+        }
 
         req <- client$call_api(
           resource_path = resource_path,
@@ -59,17 +80,28 @@ Watch <- R6::R6Class(
           accept = "application/json",
           stream = TRUE
         )
+        if (is.finite(remaining)) {
+          # Backstop in case the server ignores timeoutSeconds.
+          req <- httr2::req_timeout(req, remaining + 5)
+        }
 
-        status <- private$consume(req, callback)
-        if (identical(status, "stop")) break
+        status <- tryCatch(
+          private$consume(req, callback, deadline),
+          error = function(e) {
+            if (as.numeric(Sys.time()) >= deadline) "eof" else stop(e)
+          }
+        )
+        if (identical(status, "stop")) { self$end_reason <- "stop"; break }
+        if (identical(status, "timeout")) { self$end_reason <- "timeout"; break }
         if (identical(status, "gone")) {
-          # 410 Gone: resource version too old, must relist.
+          if (isTRUE(return_on_gone)) { self$end_reason <- "gone"; break }
+          # 410 Gone: resource version too old; restart from "now".
           self$resource_version <- NULL
           rv <- NULL
           next
         }
         rv <- self$resource_version
-        # Server closed the stream normally; loop and reconnect.
+        # Server closed the stream normally; reconnect while time remains.
       }
       invisible(self)
     },
@@ -82,13 +114,14 @@ Watch <- R6::R6Class(
   ),
 
   private = list(
-    consume = function(req, callback) {
-      # Decide between httr2's pull-based (`req_perform_connection`, 1.1+)
-      # and callback-based (`req_perform_stream`, 1.0+) APIs at runtime so
-      # we work on whichever ships with the user's `httr2`. The local-buffer
-      # parsing logic is the same either way.
+    consume = function(req, callback, deadline = Inf) {
+      # Reads the watch body with a *non-blocking* connection. A blocking
+      # `readBin(conn, n)` on a curl connection waits until `n` bytes arrive
+      # or the server hangs up, so events would be delivered in 64 KB batches
+      # (or only when the watch times out). Non-blocking reads return what
+      # has arrived; between empty reads we sleep briefly, which also lets
+      # us honour `$stop()` and the deadline on an idle stream.
       buf <- ""
-      status_code <- NA_integer_
       stop_reason <- NULL
 
       handle_chunk <- function(chunk) {
@@ -99,7 +132,7 @@ Watch <- R6::R6Class(
         if (length(chunk) == 0) return(TRUE)
         buf <<- paste0(buf, rawToChar(chunk))
         # `strsplit("a\n", "\n")` returns `c("a")`, dropping the trailing
-        # empty — so we can't tell from `length(pieces)` alone whether the
+        # empty - so we can't tell from `length(pieces)` alone whether the
         # last piece is complete. Decide based on whether buf ends with a
         # newline. (Without this, a chunk that delivers exactly one event
         # ending in '\n' would be held indefinitely as "still in progress".)
@@ -123,12 +156,12 @@ Watch <- R6::R6Class(
               self$resource_version <- obj$metadata$resourceVersion
             }
             if (identical(evt$type, "ERROR")) {
-              message(sprintf("watch ERROR: %s",
-                              obj$message %||% "unknown"))
-              if (identical(obj$code, 410L) || identical(obj$reason, "Gone")) {
+              if (isTRUE(as.integer(obj$code %||% NA) == 410L) ||
+                  identical(obj$reason, "Gone") || identical(obj$reason, "Expired")) {
                 stop_reason <<- "gone"
                 return(FALSE)
               }
+              message(sprintf("watch ERROR: %s", obj$message %||% "unknown"))
               next
             }
             keep <- tryCatch(callback(evt$type, obj), error = function(e) {
@@ -145,41 +178,24 @@ Watch <- R6::R6Class(
         TRUE
       }
 
-      if (exists("req_perform_connection", envir = asNamespace("httr2"),
-                  inherits = FALSE)) {
-        # httr2 >= 1.1: pull-based. Resolve the symbols dynamically so that
-        # R CMD check on httr2 1.0 doesn't warn about missing exports.
-        rpc <- get("req_perform_connection", envir = asNamespace("httr2"))
-        rsr <- get("resp_stream_raw",        envir = asNamespace("httr2"))
-        resp <- rpc(req)
-        on.exit(try(close(resp), silent = TRUE), add = TRUE)
-        status_code <- httr2::resp_status(resp)
-        if (status_code == 410) return("gone")
-        if (status_code >= 400) api_stop(resp)
-        repeat {
-          chunk <- rsr(resp, kb = 64)
-          if (length(chunk) == 0) {
-            if (!is.null(stop_reason)) return(stop_reason)
-            return("eof")
-          }
-          ok <- handle_chunk(chunk)
-          if (!ok) return(stop_reason %||% "stop")
+      resp <- httr2::req_perform_connection(req, blocking = FALSE)
+      on.exit(try(close(resp), silent = TRUE), add = TRUE)
+      status_code <- httr2::resp_status(resp)
+      if (status_code == 410) return("gone")
+      if (status_code >= 400) api_stop(resp)
+      wait <- 0.01
+      repeat {
+        chunk <- httr2::resp_stream_raw(resp, kb = 64)
+        if (length(chunk) > 0) {
+          wait <- 0.01
+          if (!handle_chunk(chunk)) return(stop_reason %||% "stop")
+          next
         }
-      } else {
-        # httr2 1.0: callback-based
-        on_chunk <- function(chunk) {
-          if (is.na(status_code)) {
-            # First call also provides metadata via attributes? No — status is
-            # only readable post-perform. We rely on req_error() returning
-            # FALSE so a 410 will arrive as a normal stream and parse-error;
-            # for that, surface 4xx as an early end-of-stream below.
-          }
-          handle_chunk(chunk)
-        }
-        resp <- httr2::req_perform_stream(req, on_chunk, buffer_kb = 64)
-        if (httr2::resp_status(resp) == 410) return("gone")
-        if (httr2::resp_status(resp) >= 400) api_stop(resp)
-        return(stop_reason %||% "eof")
+        if (httr2::resp_stream_is_complete(resp)) return(stop_reason %||% "eof")
+        if (self$stop_requested) return("stop")
+        if (as.numeric(Sys.time()) >= deadline) return("timeout")
+        Sys.sleep(wait)
+        wait <- min(wait * 2, 0.2)
       }
     }
   )

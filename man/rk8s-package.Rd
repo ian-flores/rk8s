@@ -11,7 +11,7 @@ layout mirrors the Python client:
 }
 \details{
 \itemize{
-\item A hand-written runtime in \verb{R/} — \link{Configuration}, \link{ApiClient},
+\item A hand-written runtime in \verb{R/} - \link{Configuration}, \link{ApiClient},
 \code{\link[=load_kube_config]{load_kube_config()}}, \code{\link[=load_incluster_config]{load_incluster_config()}}, \link{Watch}, \link{DynamicClient},
 \code{\link[=create_from_yaml]{create_from_yaml()}}.
 \item Typed API and model classes under \verb{R/gen/}, code-generated from the

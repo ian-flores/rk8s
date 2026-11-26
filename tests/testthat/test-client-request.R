@@ -51,3 +51,44 @@ test_that("ApiException carries status, reason, and parsed metav1.Status body", 
   expect_match(err$format(), "404")
   expect_match(err$format(), "not found")
 })
+
+test_that("a wildcard content type from the spec is sent as application/json", {
+  # Most generated write operations pass content_type = "*/*" (the spec's
+  # `consumes`); the API server answers that with 415.
+  ac <- ApiClient$new(Configuration$new(host = "https://x"))
+  body_type <- function(ct) {
+    ac$call_api("/apis/apps/v1/namespaces/default/deployments", "POST",
+                body = list(kind = "Deployment"), content_type = ct,
+                stream = TRUE)$body$content_type
+  }
+  expect_equal(body_type("*/*"), "application/json")
+  expect_equal(body_type("application/json-patch+json"),
+               "application/json-patch+json")
+  expect_equal(body_type("application/apply-patch+yaml"),
+               "application/apply-patch+yaml")
+})
+
+test_that("text/plain accepts also offer */* (the API server 406s a bare text/plain)", {
+  ac <- ApiClient$new(Configuration$new(host = "https://x"))
+  accept <- function(a) ac$call_api("/api/v1/namespaces/d/pods/p/log",
+                                    accept = a, stream = TRUE)$headers$Accept
+  expect_equal(accept("text/plain"), "text/plain, */*")
+  expect_equal(accept("application/json"), "application/json")
+})
+
+test_that("untyped responses are parsed only when they are JSON", {
+  skip_if_not_installed("webfakes")
+  app <- webfakes::new_app()
+  app$get("/log", function(req, res) {
+    res$set_type("text/plain")$send("line 1\n{not json}\n")
+  })
+  app$get("/obj", function(req, res) res$send_json(list(a = 1), auto_unbox = TRUE))
+  app$get("/obj-charset", function(req, res) {
+    res$set_header("Content-Type", "application/json; charset=utf-8")$send('{"b":2}')
+  })
+  web <- webfakes::local_app_process(app)
+  ac <- ApiClient$new(Configuration$new(host = sub("/$", "", web$url())))
+  expect_equal(ac$call_api("/log"), "line 1\n{not json}\n")
+  expect_equal(ac$call_api("/obj"), list(a = 1L))
+  expect_equal(ac$call_api("/obj-charset"), list(b = 2L))
+})

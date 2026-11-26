@@ -29,6 +29,8 @@ error channels. \code{errors[[as.character(port)]]} is \code{NA} until set.}
 \item \href{#method-PodPortForwardSession-on_data}{\code{PodPortForwardSession$on_data()}}
 \item \href{#method-PodPortForwardSession-write}{\code{PodPortForwardSession$write()}}
 \item \href{#method-PodPortForwardSession-close}{\code{PodPortForwardSession$close()}}
+\item \href{#method-PodPortForwardSession-is_closed}{\code{PodPortForwardSession$is_closed()}}
+\item \href{#method-PodPortForwardSession-pump}{\code{PodPortForwardSession$pump()}}
 \item \href{#method-PodPortForwardSession-wait}{\code{PodPortForwardSession$wait()}}
 \item \href{#method-PodPortForwardSession-clone}{\code{PodPortForwardSession$clone()}}
 }
@@ -101,10 +103,42 @@ Close the WebSocket.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-PodPortForwardSession-is_closed"></a>}}
+\if{latex}{\out{\hypertarget{method-PodPortForwardSession-is_closed}{}}}
+\subsection{Method \code{is_closed()}}{
+\code{TRUE} once the WebSocket has closed (either side).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PodPortForwardSession$is_closed()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-PodPortForwardSession-pump"></a>}}
+\if{latex}{\out{\hypertarget{method-PodPortForwardSession-pump}{}}}
+\subsection{Method \code{pump()}}{
+Dispatch frames that arrive within \code{timeout} seconds to
+the \code{on_data()} callbacks.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PodPortForwardSession$pump(timeout = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{Seconds to wait for a frame (default 0, i.e. ~1 ms).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} while the session is open, invisibly.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PodPortForwardSession-wait"></a>}}
 \if{latex}{\out{\hypertarget{method-PodPortForwardSession-wait}{}}}
 \subsection{Method \code{wait()}}{
-Block while pumping the websocket event loop.
+Block until the WebSocket closes or \code{timeout} elapses,
+dispatching frames in the meantime.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PodPortForwardSession$wait(timeout = 60)}\if{html}{\out{</div>}}
 }

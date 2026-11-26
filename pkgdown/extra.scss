@@ -1,0 +1,180 @@
+// rk8s site: a nautical chart. Buff chart paper, navy ink, the magenta
+// Admiralty charts use for navigational marks, a double-rule neatline with a
+// graduated border, and faint depth contours behind the title.
+
+$ink: #1c2a39;
+$paper: #f4eedc;
+$paper-deep: #ebe2c8;
+$sea: #dfe8e4;
+$magenta: #a3326b;
+$rule: #c9bb94;
+
+// ---- the chart sheet -------------------------------------------------------
+
+body {
+  background-color: $paper;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(255, 250, 235, 0.7), transparent 60%);
+  color: $ink;
+}
+
+// Graduated border (like a chart's latitude scale) under the navbar.
+.navbar {
+  background-color: $paper !important;
+  border-bottom: 1px solid $ink;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -12px;
+    height: 6px;
+    background: repeating-linear-gradient(90deg, $ink 0 40px, $paper 40px 80px);
+    border-top: 1px solid $ink;
+    border-bottom: 1px solid $ink;
+  }
+  .navbar-brand {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-link { font-variant: small-caps; letter-spacing: 0.06em; font-size: 1.05rem; }
+  .version { color: $magenta !important; font-family: "IBM Plex Mono", monospace; }
+}
+
+main { padding-top: 1.5rem; }
+
+// Neatline: double rule around the content column.
+.row > main,
+.template-reference-index main,
+.template-article main {
+  outline: 1px solid $ink;
+  outline-offset: 10px;
+  border: 1px solid $rule;
+  padding: 1.25rem 1.75rem 2rem;
+  background: rgba(251, 247, 236, 0.55);
+  margin-top: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+// ---- lettering -----------------------------------------------------------
+
+h1, h2, h3, h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 700;
+  color: $ink;
+}
+h1 { letter-spacing: 0.02em; }
+h2 {
+  border-bottom: 1px solid $ink;
+  padding-bottom: 0.2rem;
+  margin-top: 2.2rem;
+  // small magenta sounding mark before section titles
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 0.55em; height: 0.55em;
+    margin-right: 0.45em;
+    border: 1.5px solid $magenta;
+    border-radius: 50%;
+    vertical-align: 0.08em;
+  }
+}
+h3 { font-style: italic; }
+
+a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: $magenta; }
+
+// ---- code: soundings in mono on a pale sea tint ---------------------------
+
+// Framed like a chart legend box: a thin ink rule with a second rule inset.
+pre, .sourceCode pre {
+  background: $sea;
+  border: 1px solid $ink;
+  box-shadow: inset 0 0 0 3px $sea, inset 0 0 0 4px #9fb5ad;
+  border-radius: 0;
+  font-size: 0.86rem;
+}
+code { font-family: "IBM Plex Mono", monospace; }
+:not(pre) > code {
+  background: $paper-deep;
+  padding: 0.05em 0.3em;
+  border-radius: 2px;
+}
+
+// ---- tables as chart legends ----------------------------------------------
+
+table {
+  border-top: 2px solid $ink;
+  border-bottom: 2px solid $ink;
+  th {
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $ink !important;
+  }
+}
+
+// ---- home page: title cartouche over depth contours -----------------------
+
+.template-home main > .section:first-child,
+.template-home .page-header {
+  position: relative;
+}
+.template-home main {
+  background-color: rgba(251, 247, 236, 0.55);
+  background-image: url("../../contours.svg");
+  background-repeat: no-repeat;
+  background-position: right -60px top -40px;
+  background-size: 560px auto;
+}
+.template-home h1 {
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+// ---- sidebar, reference index, footer --------------------------------------
+
+aside .roles, aside h2 {
+  font-variant: small-caps;
+  &::before { display: none; }
+}
+aside h2 { border-bottom-color: $rule; font-size: 1.15rem; }
+
+.template-reference-index {
+  h2 { font-size: 1.6rem; }
+  dl dt { font-family: "IBM Plex Mono", monospace; font-size: 0.9rem; }
+}
+
+footer {
+  border-top: 1px solid $ink;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  color: lighten($ink, 25%);
+}
+
+.btn-copy-ex { background: $paper; border-color: $rule; }
+
+// ---- phones: keep the chart frame inside the viewport ----------------------
+
+@media (max-width: 767.98px) {
+  .row > main,
+  .template-reference-index main,
+  .template-article main {
+    outline-offset: 4px;
+    padding: 0.9rem 0.9rem 1.5rem;
+    margin-left: 4px;
+    margin-right: 4px;
+    max-width: calc(100% - 8px);
+    min-width: 0;
+  }
+  .template-home main { background-size: 340px auto; background-position: right -80px top -20px; }
+  .template-home h1 { font-size: 1.7rem; letter-spacing: 0.06em; }
+  h1 { font-size: 1.9rem; }
+  .page-header img.logo, .page-header .logo { width: 72px; height: auto; }
+  pre { font-size: 0.78rem; }
+  main, main p, main li { min-width: 0; overflow-wrap: anywhere; }
+}

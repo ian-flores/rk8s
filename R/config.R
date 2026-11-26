@@ -4,11 +4,25 @@
 #' Reads the kubeconfig YAML, selects a context, and returns a populated
 #' [Configuration].
 #'
-#' @param config_file Path to a kubeconfig. Defaults to `$KUBECONFIG` (the
-#'   first entry if colon-separated) or `~/.kube/config`.
+#' Like `kubectl`, a `$KUBECONFIG` holding several paths (separated by `:`,
+#' or `;` on Windows) is merged: for clusters, users and contexts the first
+#' file that defines a name wins, `current-context` comes from the first file
+#' that sets it, and relative paths resolve against the file they appear in.
+#' Missing files in the list are ignored.
+#'
+#' Supported authentication: bearer `token` / `tokenFile`, client
+#' certificates (file or inline data), basic auth, `exec` credential plugins
+#' (including `provideClusterInfo`), and the `oidc` `auth-provider`
+#' (the id-token is refreshed with the refresh-token when it expires). The
+#' cluster's `proxy-url`, `tls-server-name` and `insecure-skip-tls-verify`
+#' and the context's `namespace` are honoured.
+#'
+#' @param config_file Path to a kubeconfig. Defaults to `$KUBECONFIG` (merged
+#'   as described above) or `~/.kube/config`.
 #' @param context Context name. Defaults to the kubeconfig's `current-context`.
-#' @param persist_config Unused (kept for API parity); the Python client
-#'   writes refreshed tokens back here. Not implemented.
+#' @param persist_config If `TRUE`, write refreshed OIDC tokens back to the
+#'   kubeconfig file that defined the user (like the Python client). The
+#'   default `FALSE` never modifies kubeconfig files.
 #'
 #' @return A [Configuration].
 #' @examples
@@ -21,9 +35,9 @@
 #' @export
 load_kube_config <- function(config_file = NULL, context = NULL,
                              persist_config = FALSE) {
-  cfg_path <- resolve_kubeconfig_path(config_file)
-  kc <- yaml::read_yaml(cfg_path)
-  load_kube_config_from_dict(kc, context = context, base_dir = dirname(cfg_path))
+  kc <- read_kubeconfig(resolve_kubeconfig_paths(config_file))
+  load_kube_config_from_dict(kc, context = context,
+                             persist_config = persist_config)
 }
 
 #' List contexts in a kubeconfig
@@ -33,10 +47,9 @@ load_kube_config <- function(config_file = NULL, context = NULL,
 #'   `current_context` (name of the current context, or `NULL`).
 #' @export
 list_kube_config_contexts <- function(config_file = NULL) {
-  cfg_path <- resolve_kubeconfig_path(config_file)
-  kc <- yaml::read_yaml(cfg_path)
+  kc <- read_kubeconfig(resolve_kubeconfig_paths(config_file))
   list(
-    contexts = kc$contexts %||% list(),
+    contexts = lapply(kc$contexts %||% list(), strip_origin),
     current_context = kc$`current-context`
   )
 }
@@ -81,7 +94,7 @@ load_incluster_config <- function() {
   if (!file.exists(token_file) || !file.exists(ca_file)) {
     stop("In-cluster service account token or CA missing at ", sa_dir)
   }
-  Configuration$new(
+  cfg <- Configuration$new(
     host = sprintf("https://%s", if (grepl(":", host, fixed = TRUE))
                      sprintf("[%s]:%s", host, port) else sprintf("%s:%s", host, port)),
     token_file = token_file,
@@ -89,21 +102,68 @@ load_incluster_config <- function() {
     verify_ssl = TRUE,
     context_name = "in-cluster"
   )
+  ns_file <- file.path(sa_dir, "namespace")
+  if (file.exists(ns_file)) {
+    cfg$namespace <- trimws(readLines(ns_file, n = 1, warn = FALSE))
+  }
+  cfg
 }
 
 # ---- internal ----------------------------------------------------------------
 
-resolve_kubeconfig_path <- function(config_file) {
+resolve_kubeconfig_paths <- function(config_file) {
   if (!is.null(config_file)) return(normalizePath(config_file, mustWork = TRUE))
   env <- Sys.getenv("KUBECONFIG", unset = "")
   if (nzchar(env)) {
-    first <- strsplit(env, .Platform$path.sep, fixed = TRUE)[[1]][1]
-    return(normalizePath(first, mustWork = TRUE))
+    paths <- strsplit(env, .Platform$path.sep, fixed = TRUE)[[1]]
+    paths <- path.expand(paths[nzchar(paths)])
+    paths <- unique(paths[file.exists(paths)])
+    if (!length(paths)) {
+      stop("None of the files in KUBECONFIG exist: ", env, call. = FALSE)
+    }
+    return(normalizePath(paths))
   }
   normalizePath("~/.kube/config", mustWork = TRUE)
 }
 
-load_kube_config_from_dict <- function(kc, context = NULL, base_dir = getwd()) {
+# Read and merge one or more kubeconfig files (client-go semantics: first
+# definition of a name wins). Every cluster/user/context entry is tagged with
+# the file it came from (`.origin`) so relative paths can be resolved and
+# refreshed credentials written back to the right file.
+read_kubeconfig <- function(paths) {
+  merged <- list(clusters = list(), users = list(), contexts = list(),
+                 `current-context` = NULL)
+  for (p in paths) {
+    kc <- yaml::read_yaml(p) %||% list()
+    for (sect in c("clusters", "users", "contexts")) {
+      have <- vapply(merged[[sect]], function(x) x$name %||% "", character(1))
+      for (item in kc[[sect]] %||% list()) {
+        if (is.null(item$name) || item$name %in% have) next
+        item$.origin <- p
+        merged[[sect]][[length(merged[[sect]]) + 1]] <- item
+        have <- c(have, item$name)
+      }
+    }
+    cur <- kc$`current-context`
+    if (is.null(merged$`current-context`) && !is.null(cur) && nzchar(cur)) {
+      merged$`current-context` <- cur
+    }
+  }
+  merged
+}
+
+strip_origin <- function(x) { x$.origin <- NULL; x }
+
+# The cluster extension client-go hands to exec plugins as `cluster.config`.
+exec_extension_config <- function(extensions) {
+  for (e in extensions %||% list()) {
+    if (identical(e$name, "client.authentication.k8s.io/exec")) return(e$extension)
+  }
+  NULL
+}
+
+load_kube_config_from_dict <- function(kc, context = NULL, base_dir = getwd(),
+                                       persist_config = FALSE) {
   if (is.null(kc$contexts) || length(kc$contexts) == 0) {
     stop("kubeconfig has no contexts")
   }
@@ -114,45 +174,90 @@ load_kube_config_from_dict <- function(kc, context = NULL, base_dir = getwd()) {
   ctx <- find_named(kc$contexts, ctx_name, "context")
   if (is.null(ctx)) stop(sprintf("Context '%s' not found in kubeconfig", ctx_name))
 
-  cluster <- find_named(kc$clusters, ctx$context$cluster, "cluster")
+  cluster <- find_named(kc$clusters, ctx$context[["cluster"]], "cluster")
   if (is.null(cluster)) {
-    stop(sprintf("Cluster '%s' not found in kubeconfig", ctx$context$cluster))
+    stop(sprintf("Cluster '%s' not found in kubeconfig", ctx$context[["cluster"]]))
   }
-  user <- if (!is.null(ctx$context$user))
-    find_named(kc$users, ctx$context$user, "user") else NULL
+  user <- if (!is.null(ctx$context[["user"]]))
+    find_named(kc$users, ctx$context[["user"]], "user") else NULL
 
   cl <- cluster$cluster
   usr <- if (!is.null(user)) user$user else list()
+  cluster_dir <- if (!is.null(cluster$.origin)) dirname(cluster$.origin) else base_dir
+  user_dir <- if (!is.null(user$.origin)) dirname(user$.origin) else base_dir
 
   cfg <- Configuration$new(
-    host = cl$server,
-    verify_ssl = !isTRUE(cl$`insecure-skip-tls-verify`),
+    host = cl[["server"]],
+    verify_ssl = !isTRUE(cl[["insecure-skip-tls-verify"]]),
     context_name = ctx_name
   )
+  ns <- ctx$context[["namespace"]]
+  if (!is.null(ns) && nzchar(ns)) cfg$namespace <- ns
+  if (!is.null(cl[["proxy-url"]]) && nzchar(cl[["proxy-url"]])) {
+    cfg$proxy <- cl[["proxy-url"]]
+  }
+  if (!is.null(cl[["tls-server-name"]]) && nzchar(cl[["tls-server-name"]])) {
+    cfg$tls_server_name <- cl[["tls-server-name"]]
+  }
 
-  # NOTE: use `[[` for exact key matching; `$` does partial matching on lists
-  # and would match "certificate-authority" against "certificate-authority-data".
+  # NOTE: use `[[` for every kubeconfig key: `$` does partial matching on
+  # lists, so `usr$token` would silently read `tokenFile`, and
+  # "certificate-authority" would match "certificate-authority-data".
   cfg$ssl_ca_cert <- materialize_pem(cl[["certificate-authority"]],
                                       cl[["certificate-authority-data"]],
-                                      base_dir, suffix = "ca.crt")
+                                      cluster_dir, suffix = "ca.crt")
   cfg$cert_file <- materialize_pem(usr[["client-certificate"]],
                                     usr[["client-certificate-data"]],
-                                    base_dir, suffix = "client.crt")
+                                    user_dir, suffix = "client.crt")
   cfg$key_file <- materialize_pem(usr[["client-key"]],
                                    usr[["client-key-data"]],
-                                   base_dir, suffix = "client.key")
+                                   user_dir, suffix = "client.key")
 
-  if (!is.null(usr$token) && nzchar(usr$token)) {
-    cfg$api_key <- list(authorization = paste("Bearer", usr$token))
-  } else if (!is.null(usr$tokenFile)) {
-    cfg$token_file <- path_rel(usr$tokenFile, base_dir)
+  if (!is.null(usr[["token"]]) && nzchar(usr[["token"]])) {
+    cfg$api_key <- list(authorization = paste("Bearer", usr[["token"]]))
+  } else if (!is.null(usr[["tokenFile"]])) {
+    cfg$token_file <- path_rel(usr[["tokenFile"]], user_dir)
   }
-  if (!is.null(usr$username)) {
-    cfg$username <- usr$username
-    cfg$password <- usr$password
+  if (!is.null(usr[["username"]])) {
+    cfg$username <- usr[["username"]]
+    cfg$password <- usr[["password"]]
   }
-  if (!is.null(usr$exec)) {
-    cfg$exec <- usr$exec
+  if (!is.null(usr[["exec"]])) {
+    ex <- usr[["exec"]]
+    # Like client-go: a bare name is looked up on PATH, an absolute path is
+    # used as-is, and a relative path with a separator is relative to the
+    # kubeconfig file.
+    cmd <- ex$command %||% ""
+    if (grepl("/", cmd, fixed = TRUE) && !startsWith(cmd, "/")) {
+      ex$command <- path_rel(cmd, user_dir)
+    }
+    cfg$exec <- ex
+    cfg$exec_cluster <- drop_nulls(list(
+      server = cl[["server"]],
+      `tls-server-name` = cl[["tls-server-name"]],
+      `insecure-skip-tls-verify` = cl[["insecure-skip-tls-verify"]],
+      `certificate-authority-data` = cl[["certificate-authority-data"]] %||%
+        if (!is.null(cfg$ssl_ca_cert))
+          base64enc::base64encode(readBin(cfg$ssl_ca_cert, "raw",
+                                          file.info(cfg$ssl_ca_cert)$size)),
+      `proxy-url` = cl[["proxy-url"]],
+      config = exec_extension_config(cl[["extensions"]])
+    ))
+  }
+  if (!is.null(usr[["auth-provider"]])) {
+    ap <- usr[["auth-provider"]]
+    if (!identical(ap$name, "oidc")) {
+      stop(sprintf(paste0(
+        "kubeconfig user '%s' uses the '%s' auth-provider, which Kubernetes ",
+        "removed in v1.26. Switch to its exec credential plugin (e.g. ",
+        "gke-gcloud-auth-plugin for GKE, kubelogin for AKS)."),
+        user$name, ap$name), call. = FALSE)
+    }
+    cfg$auth_provider <- list(
+      name = "oidc", config = ap$config %||% list(), user_name = user$name,
+      kubeconfig = if (isTRUE(persist_config)) user$.origin else NULL,
+      base_dir = user_dir
+    )
   }
   cfg
 }

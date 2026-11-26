@@ -16,7 +16,7 @@ Mirrors \code{kubernetes.client.Configuration} from the Python client and the
 \code{rest.Config} struct from client-go.
 }
 \examples{
-# In-memory config — typical tests or ad-hoc use against a known endpoint.
+# In-memory config - typical tests or ad-hoc use against a known endpoint.
 cfg <- Configuration$new(
   host = "https://10.0.0.1:6443",
   api_key = list(authorization = "Bearer <token>"),
@@ -51,9 +51,30 @@ cfg$bearer_token()
 \item{\code{exec}}{Optional \code{list(command, args, env, apiVersion)} exec plugin.}
 
 \item{\code{token_file}}{Optional path to a file holding a bearer token (reread
-on each request to handle rotation — matches in-cluster behaviour).}
+on each request to handle rotation - matches in-cluster behaviour).}
 
 \item{\code{context_name}}{Name of the kubeconfig context used, for reference.}
+
+\item{\code{timeout}}{Optional per-request timeout in seconds for ordinary
+(non-streaming) calls. Watches and log streams are not affected.}
+
+\item{\code{max_retries}}{How many times ordinary requests are retried on
+HTTP 429 (any method, honouring \code{Retry-After}) and, for GET/HEAD, on
+500/502/503/504 or connection failures, with jittered exponential
+backoff. \code{0} disables retries.}
+
+\item{\code{namespace}}{Default namespace from the kubeconfig context (or the
+in-cluster service account), or \code{NULL}.}
+
+\item{\code{tls_server_name}}{Server name to use for TLS SNI and certificate
+verification instead of the host in \code{host} (kubeconfig
+\code{tls-server-name}).}
+
+\item{\code{auth_provider}}{OIDC \code{auth-provider} settings from the kubeconfig
+(\code{list(name = "oidc", config = ...)}), or \code{NULL}.}
+
+\item{\code{exec_cluster}}{Cluster details handed to an exec plugin that sets
+\code{provideClusterInfo: true} (filled in by \code{\link[=load_kube_config]{load_kube_config()}}).}
 }
 \if{html}{\out{</div>}}
 }
@@ -62,6 +83,8 @@ on each request to handle rotation — matches in-cluster behaviour).}
 \itemize{
 \item \href{#method-Configuration-new}{\code{Configuration$new()}}
 \item \href{#method-Configuration-bearer_token}{\code{Configuration$bearer_token()}}
+\item \href{#method-Configuration-client_cert}{\code{Configuration$client_cert()}}
+\item \href{#method-Configuration-refresh_credentials}{\code{Configuration$refresh_credentials()}}
 \item \href{#method-Configuration-clone}{\code{Configuration$clone()}}
 }
 }
@@ -84,7 +107,8 @@ Construct a Configuration. All arguments are optional.
   user_agent = "rk8s/0.2.0",
   exec = NULL,
   token_file = NULL,
-  context_name = NULL
+  context_name = NULL,
+  timeout = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -93,7 +117,7 @@ Construct a Configuration. All arguments are optional.
 \describe{
 \item{\code{host, api_key, username, password, ssl_ca_cert, cert_file, key_file}}{See fields of the same name.}
 
-\item{\code{verify_ssl, proxy, user_agent, exec, token_file, context_name}}{Likewise.}
+\item{\code{verify_ssl, proxy, user_agent, exec, token_file, context_name, timeout}}{Likewise.}
 }
 \if{html}{\out{</div>}}
 }
@@ -106,6 +130,32 @@ Return the current bearer token, refreshing via the exec
 plugin or token file if configured.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Configuration$bearer_token()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Configuration-client_cert"></a>}}
+\if{latex}{\out{\hypertarget{method-Configuration-client_cert}{}}}
+\subsection{Method \code{client_cert()}}{
+Client certificate and key files to present, if any.
+An exec plugin that returns a certificate takes precedence over
+\code{cert_file}/\code{key_file}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Configuration$client_cert()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+\code{list(cert_file, key_file)}; elements may be \code{NULL}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Configuration-refresh_credentials"></a>}}
+\if{latex}{\out{\hypertarget{method-Configuration-refresh_credentials}{}}}
+\subsection{Method \code{refresh_credentials()}}{
+Drop cached exec-plugin credentials so the next request
+runs the plugin again (called automatically on HTTP 401).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Configuration$refresh_credentials()}\if{html}{\out{</div>}}
 }
 
 }

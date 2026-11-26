@@ -10,8 +10,9 @@ Pod exec session
 }
 \details{
 Returned by \code{\link[=pod_exec_open]{pod_exec_open()}}. Carries an open WebSocket; demuxes the
-v4.channel.k8s.io subprotocol; routes server→client frames to user
-callbacks; sends client→server frames via \code{write_stdin()}/\code{resize()}.
+v4.channel.k8s.io subprotocol; routes server-to-client frames to user
+callbacks; sends client-to-server frames via \code{write_stdin()}/\code{resize()}.
+Incoming frames are dispatched while \code{wait()} or \code{pump()} runs.
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -36,6 +37,7 @@ or \code{NA_integer_} if the session ended without one.}
 \item \href{#method-PodExecSession-resize}{\code{PodExecSession$resize()}}
 \item \href{#method-PodExecSession-close_stdin}{\code{PodExecSession$close_stdin()}}
 \item \href{#method-PodExecSession-close}{\code{PodExecSession$close()}}
+\item \href{#method-PodExecSession-pump}{\code{PodExecSession$pump()}}
 \item \href{#method-PodExecSession-wait}{\code{PodExecSession$wait()}}
 \item \href{#method-PodExecSession-clone}{\code{PodExecSession$clone()}}
 }
@@ -81,7 +83,7 @@ Register a stdout callback; receives raw chunks.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{fn}}{\verb{function(raw)} — the byte payload (no channel prefix).}
+\item{\code{fn}}{\verb{function(raw)}: the byte payload (no channel prefix).}
 }
 \if{html}{\out{</div>}}
 }
@@ -178,8 +180,11 @@ Resize the remote TTY. Only meaningful when \code{tty=TRUE}.
 \if{html}{\out{<a id="method-PodExecSession-close_stdin"></a>}}
 \if{latex}{\out{\hypertarget{method-PodExecSession-close_stdin}{}}}
 \subsection{Method \code{close_stdin()}}{
-Half-close the connection by sending a zero-length
-stdin frame, signalling EOF to the remote.
+Signal EOF on the remote stdin. Needs the
+\code{v5.channel.k8s.io} subprotocol (Kubernetes 1.29+), which is offered
+first; servers that only speak v4 have no way to close stdin and
+ignore the message, so a command reading stdin to EOF keeps running
+until the session is closed.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PodExecSession$close_stdin()}\if{html}{\out{</div>}}
 }
@@ -196,11 +201,33 @@ Close the WebSocket.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-PodExecSession-pump"></a>}}
+\if{latex}{\out{\hypertarget{method-PodExecSession-pump}{}}}
+\subsection{Method \code{pump()}}{
+Dispatch frames that arrive within \code{timeout} seconds to
+the registered callbacks. Returns as soon as the first frame (and any
+already queued behind it) has been handled, or after \code{timeout}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{PodExecSession$pump(timeout = 0)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{Seconds to wait for a frame (default 0, i.e. ~1 ms).}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} while the session is open, invisibly.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-PodExecSession-wait"></a>}}
 \if{latex}{\out{\hypertarget{method-PodExecSession-wait}{}}}
 \subsection{Method \code{wait()}}{
-Block until the session closes or \code{timeout} elapses.
-Pumps the websocket event loop in the meantime.
+Block until the session closes or \code{timeout} elapses,
+dispatching frames in the meantime.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PodExecSession$wait(timeout = 60)}\if{html}{\out{</div>}}
 }

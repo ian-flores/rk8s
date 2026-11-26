@@ -23,6 +23,10 @@ does \strong{not} stand up a local TCP listener; instead it exposes a programmat
 \code{write(port, bytes)} / \code{on_data(port, fn)} API. That's the direct mapping
 of the websocket protocol and matches the Python client's \code{PortForward}.
 }
+\details{
+Requires the \code{nanonext} package. TLS verification and authentication work
+as described for \code{\link[=pod_exec_open]{pod_exec_open()}}.
+}
 \examples{
 \dontrun{
 k <- kube()

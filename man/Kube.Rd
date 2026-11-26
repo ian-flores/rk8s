@@ -8,7 +8,7 @@
 kube(
   config_file = NULL,
   context = NULL,
-  namespace = "default",
+  namespace = NULL,
   client = NULL,
   field_manager = "rk8s"
 )
@@ -18,7 +18,9 @@ kube(
 
 \item{context}{Passed to \code{\link[=load_kube_config]{load_kube_config()}}.}
 
-\item{namespace}{Default namespace for verbs that take one.}
+\item{namespace}{Default namespace for verbs that take one. \code{NULL}
+(default) uses the kubeconfig context's namespace, falling back to
+\code{"default"}.}
 
 \item{client}{Optional pre-built \link{ApiClient}. When given, \code{config_file}
 and \code{context} are ignored.}
@@ -30,7 +32,7 @@ and \code{context} are ignored.}
 A \code{Kube} object.
 }
 \description{
-Returns a \code{Kube} object — a thin wrapper over \link{ApiClient} and
+Returns a \code{Kube} object - a thin wrapper over \link{ApiClient} and
 \link{DynamicClient} that lets you write idiomatic R against the cluster
 without touching the typed \verb{V1*} model classes:
 }
@@ -47,13 +49,13 @@ kube_watch(k, "pods", on_event = function(type, obj)
 }
 
 This is the high-level surface most users want. The typed classes
-(\code{V1Pod}, \code{CoreV1Api}, …) and the \link{DynamicClient} still work and are
-there when you need them — \code{Kube} is built on top of both.
+(\code{V1Pod}, \code{CoreV1Api}, ...) and the \link{DynamicClient} still work and are
+there when you need them - \code{Kube} is built on top of both.
 
 Resource references can be:
 \itemize{
 \item a kind alias: \code{"pod"}, \code{"pods"}, \code{"po"}, \code{"deployment"}, \code{"deploy"},
-\code{"svc"}, …
+\code{"svc"}, ...
 \item \code{"kind/name"}: \code{"deployment/nginx"}
 \item an explicit \code{apiVersion+kind}: \code{"apps/v1:Deployment"}
 \item a \code{c(api_version, kind)} vector: \code{c("apps/v1", "Deployment")}

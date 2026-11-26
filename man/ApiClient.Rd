@@ -84,7 +84,7 @@ Perform an HTTP call against the API server.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{resource_path}}{Path portion of the URL (e.g. "/api/v1/namespaces/{namespace}/pods").}
+\item{\code{resource_path}}{Path portion of the URL (e.g. \code{"/api/v1/namespaces/{namespace}/pods"}).}
 
 \item{\code{method}}{HTTP method (GET, POST, PUT, PATCH, DELETE).}
 
@@ -108,7 +108,7 @@ or \code{application/json-patch+json} for PATCH variants).}
 \item{\code{accept}}{Accept header (default application/json).}
 
 \item{\code{stream}}{If TRUE, return the raw \link[httr2:response]{httr2::response} without reading
-the body — used by \link{Watch} and log-streaming.}
+the body - used by \link{Watch} and log-streaming.}
 }
 \if{html}{\out{</div>}}
 }
@@ -125,7 +125,7 @@ Substitute \code{{name}} placeholders in a path template.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{path_template}}{E.g. "/api/v1/namespaces/{namespace}/pods/{name}".}
+\item{\code{path_template}}{E.g. \code{"/api/v1/namespaces/{namespace}/pods/{name}"}.}
 
 \item{\code{path_params}}{Named list of replacements.}
 }

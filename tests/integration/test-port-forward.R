@@ -1,5 +1,5 @@
 test_that("pod_port_forward bridges a local TCP port to an nginx pod", {
-  skip_if_not_installed("websocket")
+  skip_if_not_installed("nanonext")
   skip_if_not_installed("later")
   skip_if_not_installed("callr")
 

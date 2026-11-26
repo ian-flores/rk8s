@@ -4,7 +4,7 @@
 #' single object. Otherwise lists the collection.
 #'
 #' @param k A [Kube] session.
-#' @param ref Resource ref — kind alias (`"pods"`), `"kind/name"`, or
+#' @param ref Resource ref - kind alias (`"pods"`), `"kind/name"`, or
 #'   explicit `"apiVersion:Kind"` / `c(apiVersion, Kind)`.
 #' @param name Optional resource name (overrides any name in `ref`).
 #' @param namespace Namespace (defaults to `k$namespace`).

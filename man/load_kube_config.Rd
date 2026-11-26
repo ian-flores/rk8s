@@ -7,13 +7,14 @@
 load_kube_config(config_file = NULL, context = NULL, persist_config = FALSE)
 }
 \arguments{
-\item{config_file}{Path to a kubeconfig. Defaults to \verb{$KUBECONFIG} (the
-first entry if colon-separated) or \verb{~/.kube/config}.}
+\item{config_file}{Path to a kubeconfig. Defaults to \verb{$KUBECONFIG} (merged
+as described above) or \verb{~/.kube/config}.}
 
 \item{context}{Context name. Defaults to the kubeconfig's \code{current-context}.}
 
-\item{persist_config}{Unused (kept for API parity); the Python client
-writes refreshed tokens back here. Not implemented.}
+\item{persist_config}{If \code{TRUE}, write refreshed OIDC tokens back to the
+kubeconfig file that defined the user (like the Python client). The
+default \code{FALSE} never modifies kubeconfig files.}
 }
 \value{
 A \link{Configuration}.
@@ -22,6 +23,20 @@ A \link{Configuration}.
 Mirrors \code{kubernetes.config.load_kube_config()} from the Python client.
 Reads the kubeconfig YAML, selects a context, and returns a populated
 \link{Configuration}.
+}
+\details{
+Like \code{kubectl}, a \verb{$KUBECONFIG} holding several paths (separated by \code{:},
+or \verb{;} on Windows) is merged: for clusters, users and contexts the first
+file that defines a name wins, \code{current-context} comes from the first file
+that sets it, and relative paths resolve against the file they appear in.
+Missing files in the list are ignored.
+
+Supported authentication: bearer \code{token} / \code{tokenFile}, client
+certificates (file or inline data), basic auth, \code{exec} credential plugins
+(including \code{provideClusterInfo}), and the \code{oidc} \code{auth-provider}
+(the id-token is refreshed with the refresh-token when it expires). The
+cluster's \code{proxy-url}, \code{tls-server-name} and \code{insecure-skip-tls-verify}
+and the context's \code{namespace} are honoured.
 }
 \examples{
 \dontrun{
