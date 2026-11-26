@@ -63,7 +63,8 @@ leadership passes to another caller when the holder stops renewing (within
 <span>  lease_duration_seconds <span class="op">=</span> <span class="fl">15</span>,</span>
 <span>  renew_deadline_seconds <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  retry_period_seconds <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  release_on_exit <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  release_on_exit <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  on_wait <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -122,7 +123,14 @@ renewals (default 2s).</p></dd>
 
 <dt id="arg-release-on-exit">release_on_exit<a class="anchor" aria-label="anchor" href="#arg-release-on-exit"></a></dt>
 <dd><p>Release the lease when leadership ends, so a
-successor does not have to wait for it to expire (default <code>TRUE</code>).</p>
+successor does not have to wait for it to expire (default <code>TRUE</code>).</p></dd>
+
+
+<dt id="arg-on-wait">on_wait<a class="anchor" aria-label="anchor" href="#arg-on-wait"></a></dt>
+<dd><p>Optional <code>function(seconds)</code> called instead of
+<code><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep()</a></code> between attempts while waiting for the lease. Use it to
+keep doing other work (such as answering health checks) on a standby
+replica; it may signal a condition to stop waiting.</p>
 <p>Requires <code>lease_duration_seconds &gt; renew_deadline_seconds &gt; retry_period_seconds</code>, as in client-go.</p></dd>
 
 </dl></div>

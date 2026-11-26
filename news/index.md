@@ -54,6 +54,16 @@
   of a lost update), and
   [`kube_event()`](https://ian-flores.github.io/rk8s/reference/kube_event.md)
   (events shown by `kubectl describe`).
+- `Manager$run(health_port =)` (or `$serve_health(port)`) answers
+  Kubernetes probes from the loop: `/healthz` is 200 while the loop
+  turns, `/readyz` is 200 once running or standing by for the lease.
+  While waiting for the lease, a standby manager keeps answering probes
+  and now honours `stop_seconds` and
+  [`stop()`](https://rdrr.io/r/base/stop.html).
+  [`run_as_leader()`](https://ian-flores.github.io/rk8s/reference/run_as_leader.md)
+  gains `on_wait`, called instead of
+  [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) between
+  acquisition attempts.
 
 ### Security
 

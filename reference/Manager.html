@@ -84,6 +84,7 @@ and API group match the primary resource.</p>
 <li><p><a href="#method-Manager-controller"><code>Manager$controller()</code></a></p></li>
 <li><p><a href="#method-Manager-controllers"><code>Manager$controllers()</code></a></p></li>
 <li><p><a href="#method-Manager-start"><code>Manager$start()</code></a></p></li>
+<li><p><a href="#method-Manager-serve_health"><code>Manager$serve_health()</code></a></p></li>
 <li><p><a href="#method-Manager-step"><code>Manager$step()</code></a></p></li>
 <li><p><a href="#method-Manager-run"><code>Manager$run()</code></a></p></li>
 <li><p><a href="#method-Manager-stop"><code>Manager$stop()</code></a></p></li>
@@ -189,17 +190,38 @@ even without changes.</p></dd>
 </div>
 
 
+</div><p></p><hr><a id="method-Manager-serve_health"></a><div class="section">
+<h3 id="method-serve-health-">Method <code>serve_health()</code><a class="anchor" aria-label="anchor" href="#method-serve-health-"></a></h3>
+<p>Answer Kubernetes probes on <code>port</code>: <code>GET /healthz</code>
+returns 200 whenever the loop is turning, and <code>GET /readyz</code> returns
+200 once the manager is running or standing by for the leader lease
+(503 before). Requests are answered between reconciles, so a
+reconcile that hangs makes the liveness probe fail. <code>run()</code> calls
+this for you when given <code>health_port</code>.</p><div class="section">
+<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Manager</span><span class="op">$</span><span class="fu">serve_health</span><span class="op">(</span><span class="va">port</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>port</code></dt>
+<dd><p>TCP port to listen on (all interfaces).</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
 </div><p></p><hr><a id="method-Manager-step"></a><div class="section">
 <h3 id="method-step-">Method <code><a href="https://rdrr.io/r/stats/step.html" class="external-link">step()</a></code><a class="anchor" aria-label="anchor" href="#method-step-"></a></h3>
 <p>One pass of the loop: handle watch events, then run the
 reconciles that are ready. Waits up to <code>max_wait</code> seconds if there is
 nothing to do.</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Manager</span><span class="op">$</span><span class="fu">step</span><span class="op">(</span>max_wait <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>max_wait</code></dt>
 <dd><p>Seconds to wait for work.</p></dd>
 
@@ -214,18 +236,19 @@ nothing to do.</p><div class="section">
 </div><p></p><hr><a id="method-Manager-run"></a><div class="section">
 <h3 id="method-run-">Method <code>run()</code><a class="anchor" aria-label="anchor" href="#method-run-"></a></h3>
 <p>Run until <code>stop_seconds</code> pass or <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code> is called.</p><div class="section">
-<h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
+<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Manager</span><span class="op">$</span><span class="fu">run</span><span class="op">(</span></span>
 <span>  stop_seconds <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  leader_election <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  lease_namespace <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  identity <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  health_port <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>stop_seconds</code></dt>
 <dd><p>Optional time limit; <code>NULL</code> runs until <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code>.</p></dd>
 
@@ -245,6 +268,11 @@ than one replica runs.</p></dd>
 <dd><p>This replica's identity (default: host name and PID).</p></dd>
 
 
+<dt><code>health_port</code></dt>
+<dd><p>If set, answer <code>/healthz</code> and <code>/readyz</code> on this port
+(see <code>serve_health()</code>), including while waiting for the lease.</p></dd>
+
+
 <dt><code>...</code></dt>
 <dd><p>Passed to <code><a href="run_as_leader.html">run_as_leader()</a></code> (lease timings).</p></dd>
 
@@ -255,7 +283,7 @@ than one replica runs.</p></dd>
 </div><p></p><hr><a id="method-Manager-stop"></a><div class="section">
 <h3 id="method-stop-">Method <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code><a class="anchor" aria-label="anchor" href="#method-stop-"></a></h3>
 <p>Make <code>run()</code> return after the current reconcile.</p><div class="section">
-<h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
+<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Manager</span><span class="op">$</span><span class="kw">stop</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -263,7 +291,7 @@ than one replica runs.</p></dd>
 </div><p></p><hr><a id="method-Manager-close"></a><div class="section">
 <h3 id="method-close-">Method <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code><a class="anchor" aria-label="anchor" href="#method-close-"></a></h3>
 <p>Close every watch.</p><div class="section">
-<h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
+<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Manager</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -271,12 +299,12 @@ than one replica runs.</p></dd>
 </div><p></p><hr><a id="method-Manager-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
+<h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Manager</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

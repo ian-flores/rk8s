@@ -19,7 +19,8 @@ run_as_leader(
   lease_duration_seconds = 15,
   renew_deadline_seconds = 10,
   retry_period_seconds = 2,
-  release_on_exit = TRUE
+  release_on_exit = TRUE,
+  on_wait = NULL
 )
 ```
 
@@ -77,6 +78,14 @@ run_as_leader(
 
   Release the lease when leadership ends, so a successor does not have
   to wait for it to expire (default `TRUE`).
+
+- on_wait:
+
+  Optional `function(seconds)` called instead of
+  [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) between
+  attempts while waiting for the lease. Use it to keep doing other work
+  (such as answering health checks) on a standby replica; it may signal
+  a condition to stop waiting.
 
   Requires
   `lease_duration_seconds > renew_deadline_seconds > retry_period_seconds`,

@@ -56,6 +56,8 @@ and API group match the primary resource.
 
 - [`Manager$start()`](#method-Manager-start)
 
+- [`Manager$serve_health()`](#method-Manager-serve_health)
+
 - [`Manager$step()`](#method-Manager-step)
 
 - [`Manager$run()`](#method-Manager-run)
@@ -175,6 +177,27 @@ you; call it yourself to drive
 
 ------------------------------------------------------------------------
 
+### Method `serve_health()`
+
+Answer Kubernetes probes on `port`: `GET /healthz` returns 200 whenever
+the loop is turning, and `GET /readyz` returns 200 once the manager is
+running or standing by for the leader lease (503 before). Requests are
+answered between reconciles, so a reconcile that hangs makes the
+liveness probe fail. `run()` calls this for you when given
+`health_port`.
+
+#### Usage
+
+    Manager$serve_health(port)
+
+#### Arguments
+
+- `port`:
+
+  TCP port to listen on (all interfaces).
+
+------------------------------------------------------------------------
+
 ### Method [`step()`](https://rdrr.io/r/stats/step.html)
 
 One pass of the loop: handle watch events, then run the reconciles that
@@ -208,6 +231,7 @@ Run until `stop_seconds` pass or
       leader_election = NULL,
       lease_namespace = NULL,
       identity = NULL,
+      health_port = NULL,
       ...
     )
 
@@ -231,6 +255,11 @@ Run until `stop_seconds` pass or
 - `identity`:
 
   This replica's identity (default: host name and PID).
+
+- `health_port`:
+
+  If set, answer `/healthz` and `/readyz` on this port (see
+  `serve_health()`), including while waiting for the lease.
 
 - `...`:
 
