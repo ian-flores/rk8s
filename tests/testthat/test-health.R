@@ -32,9 +32,12 @@ test_that("the health server answers /healthz, /readyz and 404", {
 
   ready <- TRUE
   expect_equal(probe(port, "/readyz", function() h$poll(ready))[["/readyz"]]$status, 200L)
-  # Nothing pending: poll returns at once.
+  # Nothing pending: poll must not wait (in particular not on the 2s accept
+  # timeout). The bound is loose because CI runners, Windows especially,
+  # are slow to schedule.
   t0 <- Sys.time(); h$poll(TRUE)
-  expect_lt(as.numeric(difftime(Sys.time(), t0, units = "secs")), 0.2)
+  idle <- as.numeric(difftime(Sys.time(), t0, units = "secs"))
+  expect_lt(idle, 1, label = sprintf("idle poll took %.3fs", idle))
 })
 
 test_that("a manager is ready once started, and probes are answered from step()", {
