@@ -1,0 +1,9 @@
+pandoc: 3.8.3
+pkgdown: 2.2.1
+pkgdown_sha: ~
+articles:
+  getting-started: getting-started.html
+last_built: 2026-11-26T15:48Z
+urls:
+  reference: https://ian-flores.github.io/rk8s/reference
+  article: https://ian-flores.github.io/rk8s/articles
