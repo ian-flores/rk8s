@@ -11,19 +11,12 @@ vignette: >
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
 ```
 
-rk8s is an R client for the Kubernetes API. It has two layers:
-
-* **A high-level verb API** — `kube_get()`, `kube_apply()`, `kube_logs()`,
-  `kube_watch()`, … This is what most users want. You never have to type
-  `V1Deployment$new(...)` to do everyday work.
-* **A low-level typed/generated API** — `CoreV1Api`, `AppsV1Api`,
-  `V1Pod`, `V1Deployment`, … 944 operations and 635 model classes
-  generated from the Kubernetes OpenAPI spec, mirroring the official
-  Python client and Go client-go. There when you need it.
-
-A `Watch` helper, `Informer`/`Lister` for client-go-style controllers,
-`DynamicClient` for CustomResources, `pod_exec()` / `pod_port_forward()`,
-and `run_as_leader()` for leader election sit alongside both layers.
+This guide walks through the parts of rk8s you'll use most: connecting,
+the verbs, watches and informers, exec and port-forward, leader
+election, and the generated API underneath. None of the code runs when
+the vignette is built, since it needs a cluster. The examples assume a
+pod called `nginx-abc` and, once you get to the apply section, a
+Deployment called `nginx`.
 
 ## Installing
 
@@ -32,7 +25,7 @@ and `run_as_leader()` for leader election sit alongside both layers.
 remotes::install_github("ian-flores/rk8s")
 ```
 
-## Authenticating
+## Connecting
 
 ```{r}
 library(rk8s)
@@ -42,39 +35,39 @@ k <- kube()                                   # $KUBECONFIG or ~/.kube/config
 # k <- kube(namespace = "my-app")             # override the context namespace
 ```
 
-Inside a pod running as a ServiceAccount:
+From a pod running as a ServiceAccount:
 
 ```{r}
 k <- kube(client = ApiClient$new(load_incluster_config()))
 ```
 
-`load_kube_config()` reads kubeconfigs the way `kubectl` does: a
-`KUBECONFIG` list of several files (merged, first definition wins), the
-context's default namespace, bearer tokens and token files, basic auth,
-client certificates (inline or as files relative to the kubeconfig that
-names them), `exec` credential plugins (EKS's `aws-iam-authenticator`,
-GKE's `gke-gcloud-auth-plugin`, AKS's `kubelogin`, any OIDC helper), the
-`oidc` auth-provider with token refresh, `proxy-url`, `tls-server-name`
-and `insecure-skip-tls-verify`.
+`kube()` calls `load_kube_config()`, which handles the kubeconfig
+features you're likely to meet. `KUBECONFIG` can list several files;
+they're merged and the first definition of a name wins. Each context's
+default namespace is used. Users can authenticate with a token or token
+file, basic auth, or a client certificate (inline, or a file path
+relative to the kubeconfig it appears in). Exec plugins work too: EKS's
+`aws-iam-authenticator`, GKE's `gke-gcloud-auth-plugin`, AKS's
+`kubelogin` and any OIDC helper. So does the older `oidc` auth-provider,
+including refreshing its token. Clusters can set `proxy-url`,
+`tls-server-name` and `insecure-skip-tls-verify`.
 
-Requests that hit API throttling (429) are retried for any method;
-server errors (500-504) and dropped connections are retried for reads
-only. Set `Configuration$max_retries` (default 3) to change this.
+If the API server throttles you (429), the request is retried whatever
+its method. Server errors (500 to 504) and dropped connections are
+retried only for reads, since retrying a write could apply it twice.
+`Configuration$max_retries` sets the limit; the default is 3.
 
-## The verb API
+## The verbs
 
-Resource references can be:
+You can refer to a resource type in several ways:
 
-* a kind alias: `"pod"`, `"pods"`, `"po"`, `"deploy"`, `"svc"`, `"ing"`,
-  `"crd"`, …
-* `"kind/name"`: `"deployment/nginx"`
-* explicit `"apiVersion:Kind"`: `"apps/v1:Deployment"`
-* a `c(apiVersion, Kind)` vector: `c("apps/v1", "Deployment")`
+* by kind or alias: `"pod"`, `"pods"`, `"po"`, `"deploy"`, `"svc"`,
+  `"ing"`, `"crd"` and so on
+* with a name attached: `"deployment/nginx"`
+* by API version and kind: `"apps/v1:Deployment"`
+* as a vector: `c("apps/v1", "Deployment")`
 
-The examples below assume a pod called `nginx-abc` and, after the
-apply section, a Deployment called `nginx`.
-
-### Get / list
+### Getting and listing
 
 ```{r}
 kube_get(k, "pods", namespace = "default")              # list
@@ -84,9 +77,10 @@ kube_get(k, "pods", label_selector = "app=nginx")
 kube_get(k, "apps/v1:Deployment", "nginx")               # explicit GVK
 ```
 
-`kube_get()` returns an `rk8s_object` (single) or `rk8s_list` (collection).
-`kube_list()` pages through large collections for you.
-A built-in `as.data.frame()` method gives you a tabular view:
+You get back an `rk8s_object` for a single resource and an `rk8s_list`
+for a collection. `kube_list()` always returns a list, and pages through
+large collections for you. To look at a list as a table, use
+`as.data.frame()`:
 
 ```{r}
 pods <- kube_get(k, "pods")
@@ -97,11 +91,11 @@ head(as.data.frame(pods))
 #> 3 kube-system          coredns-abc-xyz  Pod      4h  Running
 ```
 
-### Apply (server-side apply)
+### Applying
 
-`kube_apply()` accepts a path, a YAML/JSON string, an R `list`, or a
-generated model. Multi-document YAML works — each document is routed
-to the correct endpoint via discovery:
+`kube_apply()` does a server-side apply. Give it a file, a YAML or JSON
+string, an R list, or one of the generated model objects. A YAML string
+can hold several documents, and each goes to the right endpoint:
 
 ```{r}
 # From a file
@@ -133,9 +127,10 @@ spec:
 kube_apply(k, "deployment.yaml", force = TRUE)
 ```
 
-Field manager defaults to `"rk8s"`; override with `field_manager =`.
+Changes are recorded under the field manager `"rk8s"` unless you pass
+`field_manager`.
 
-### Delete, scale, logs, watch
+### Scaling, logs, watching and deleting
 
 ```{r}
 kube_scale(k, "deployment", "nginx", replicas = 5)
@@ -157,14 +152,15 @@ kube_delete(k, "pod", "nginx-abc")
 kube_delete(k, "deployment/nginx", grace_period = 0)
 ```
 
-`timeout_seconds` is a wall-clock limit: the watch reconnects after
-server-side timeouts but returns once the time is up.
+`timeout_seconds` is measured on the clock. The API server ends watches
+on its own schedule; rk8s reconnects when that happens and returns once
+your time is up.
 
-### Anything custom
+### Custom resources
 
-`kube_apply()` works for CRs out of the box (any `apiVersion+kind`),
-and `kube_get()` resolves them via the dynamic client. So a typical
-controller is:
+Custom resources need no setup. rk8s finds them through API discovery,
+so the verbs take any `apiVersion` and `kind` the cluster knows about.
+A small reconcile loop over a made-up `Foo` resource looks like this:
 
 ```{r}
 foos <- kube_list(k, "example.com/v1:Foo", namespace = "default")
@@ -179,14 +175,13 @@ for (f in foos$items) {
 }
 ```
 
-## Watching with a local cache: Informer + Lister
+## Informers
 
-When you want to react to changes without re-listing the API server
-every tick, use `Informer`. One watch feeds an in-memory cache plus
-your event handlers; `Lister` gives you O(1) lookups. The initial list is
-paged, and if the watch falls too far behind (410 Gone) the informer
-lists again and reconciles its cache, firing `on_delete` for anything
-removed in the meantime.
+Listing everything on every pass gets expensive. An informer lists once,
+then keeps a local copy current from a watch and calls your handlers as
+things change. If the watch falls too far behind, the API server answers
+410 Gone; the informer then lists again, works out what changed while it
+was away, and fires `on_delete` for anything that disappeared.
 
 ```{r}
 inf <- Informer$new(
@@ -212,7 +207,7 @@ pods$list()
 
 ## Exec and port-forward
 
-Run a command in a pod and collect its output:
+`pod_exec()` runs a command and gives you its output and exit code:
 
 ```{r}
 r <- pod_exec(k$client, "default", "nginx-abc", c("ls", "-la", "/"))
@@ -223,11 +218,11 @@ r$exit_code
 pod_exec(k$client, "default", "nginx-abc", "cat", stdin_data = "hi\n")$stdout
 ```
 
-For an interactive session use `pod_exec_open()`, which returns a
-`PodExecSession` with `write_stdin()`, `on_stdout()` and friends.
-Incoming output is delivered while `wait()` or `pump()` runs.
+For something interactive, `pod_exec_open()` returns a `PodExecSession`
+you can write to with `write_stdin()` and read from with `on_stdout()`.
+Output only arrives while `wait()` or `pump()` is running.
 
-Forward a pod port to a local one, like `kubectl port-forward`:
+`pod_port_forward()` works like `kubectl port-forward`:
 
 ```{r}
 fwd <- pod_port_forward(k$client, "default", "nginx-abc", remote_port = 80)
@@ -235,11 +230,11 @@ httr2::request(paste0("http://127.0.0.1:", fwd$port)) |> httr2::req_perform()
 fwd$close()
 ```
 
-Both need the `nanonext` package. They verify the API server's
-certificate against the kubeconfig CA (or the system CA bundle) and
-check its hostname, and authenticate with a bearer token. A kubeconfig
-whose user has only a client certificate, as kind, minikube and kubeadm
-create by default, gets an error explaining this; use a token instead:
+Both need the `nanonext` package. They check the API server's
+certificate against the CA in your kubeconfig (or the system's, if the
+kubeconfig has none), and they log in with a token. Kind, minikube and
+kubeadm give their default user a client certificate and no token, so
+with those you'll get an error until you use a token instead:
 
 ```{r}
 # kubectl create serviceaccount rk8s-dev
@@ -253,7 +248,8 @@ k <- kube(client = ApiClient$new(cfg))
 
 ## Leader election
 
-For controllers that need exactly one active replica:
+When you run more than one replica of a controller, you want only one of
+them doing the work:
 
 ```{r}
 run_as_leader(
@@ -273,19 +269,20 @@ run_as_leader(
 )
 ```
 
-A background process (via `callr`) renews the lease. `leader$check()`
-signals an `rk8s_leadership_lost` condition as soon as the lease is
-taken or renewals stop succeeding; `run_as_leader()` then stops the
-callback, releases the lease and calls `on_stopped_leading`. Call it
-often, at least once per `renew_deadline_seconds`, so two replicas never
-act as leader at the same time. `leader$is_leader()` is the
-non-signalling version.
+While your callback runs, a background process (started with `callr`)
+keeps renewing the lease. If another replica takes the lease, or renewals
+keep failing, the next `leader$check()` signals an
+`rk8s_leadership_lost` condition. `run_as_leader()` catches it, releases
+the lease and calls `on_stopped_leading`. Call `leader$check()` at least
+once per `renew_deadline_seconds`; that's what keeps two replicas from
+acting as leader at the same time. If you'd rather test than be
+interrupted, `leader$is_leader()` returns `TRUE` or `FALSE`.
 
 ## Errors
 
-API failures surface as `rk8s_api_error` conditions whose `$exception`
-is an `ApiException` with the HTTP status, reason, headers, and parsed
-`metav1.Status`.
+When the API server returns an error, rk8s signals an `rk8s_api_error`
+condition. Its `exception` field is an `ApiException` holding the HTTP
+status, reason, headers and the parsed `Status` object.
 
 ```{r}
 pod <- tryCatch(
@@ -296,10 +293,12 @@ pod <- tryCatch(
 )
 ```
 
-## Dropping to the typed/generated layer
+## The generated API
 
-Any time `kube_*` doesn't expose what you need, drop down. The verb
-client carries the underlying `ApiClient` and `DynamicClient`:
+The verbs cover common work. For everything else there are the
+generated classes, one per API group and version, with methods named
+after the official Python client's. They all take the session's
+`ApiClient`:
 
 ```{r}
 # Typed:
@@ -321,7 +320,10 @@ AppsV1Api$new(k$client)$create_namespaced_deployment(
   namespace = "default", body = dep)
 ```
 
-## Regenerating from a newer Kubernetes spec
+## Regenerating for a newer Kubernetes
+
+The generated code comes from the OpenAPI spec in `tools/gen/spec/`. To
+move to another release, download its spec and run the generator:
 
 ```bash
 curl -L -o tools/gen/spec/swagger.json \
@@ -330,6 +332,5 @@ Rscript tools/gen/generate.R tools/gen/spec/swagger.json R
 R CMD build .
 ```
 
-The generator (`tools/gen/`) reads OpenAPI v2 JSON and emits R6 model
-classes plus per-tag API classes — about 700 R files. NAMESPACE entries
-between sentinel lines are managed automatically.
+It writes about 700 R files of R6 classes and updates the generated
+part of NAMESPACE (the lines between the sentinel comments).
