@@ -19,6 +19,13 @@ export(WorkQueue)
 export(Manager)
 export(requeue)
 export(requeue_after)
+export(kube_patch_status)
+export(set_owner)
+export(has_finalizer)
+export(is_deleting)
+export(add_finalizer)
+export(remove_finalizer)
+export(kube_event)
 
 # Dynamic client
 export(DynamicClient)
