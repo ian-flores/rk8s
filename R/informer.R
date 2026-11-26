@@ -11,9 +11,14 @@
 #'
 #' Lifecycle:
 #' * `$run(stop_seconds = NULL)` — block, streaming events into the cache.
-#'   Returns when `stop_seconds` elapses, the stream callback returns FALSE,
-#'   or `$stop()` is called. Safe to re-invoke; the informer resumes from
-#'   the last observed resourceVersion (or re-lists on 410 Gone).
+#'   Returns when `stop_seconds` of wall-clock time elapse (whether or not
+#'   events arrive) or `$stop()` is called from a handler. Safe to re-invoke;
+#'   the informer resumes from the last observed resourceVersion.
+#' * On 410 Gone (the watch fell too far behind), the informer re-lists and
+#'   reconciles the cache against the fresh list: objects that disappeared
+#'   fire `on_delete`, new ones `on_add`, and changed ones (different
+#'   `resourceVersion`) `on_update`.
+#' * Lists are fetched in pages of `page_size` items (`limit`/`continue`).
 #' * `$has_synced()` — `TRUE` once the initial list has been absorbed.
 #' * `$lister()` — return a [Lister] view over the current cache snapshot.
 #'
@@ -56,9 +61,12 @@ Informer <- R6::R6Class(
     #'   "/api/v1/namespaces/default/pods" or "/api/v1/pods" for all-namespaces.
     #' @param query_params Extra query parameters (e.g. `list(labelSelector = ...)`).
     #' @param object_from_list Optional `from_list` constructor.
+    #' @param page_size Items per list page (`limit`); `NULL` disables paging.
     initialize = function(client, resource_path, query_params = list(),
-                          object_from_list = NULL) {
+                          object_from_list = NULL, page_size = 500L) {
       self$client <- client
+      private$page_size <- page_size
+      private$versions <- new.env(parent = emptyenv())
       self$resource_path <- resource_path
       self$object_from_list <- object_from_list
       private$query_params <- query_params
@@ -79,33 +87,53 @@ Informer <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Run the informer: perform an initial list, notify `on_add`
-    #'   for every item, then start a watch.
-    #' @param stop_seconds Optional wall-clock limit. `NULL` runs forever
-    #'   (until `$stop()` or the server hangs up).
+    #' @description Run the informer: list (or resume), notify handlers, then
+    #'   watch until `stop_seconds` elapse or `$stop()` is called.
+    #' @param stop_seconds Optional wall-clock limit. `NULL` runs until
+    #'   `$stop()` is called from an event handler.
     run = function(stop_seconds = NULL) {
-      private$list_and_populate()
-      private$synced <- TRUE
+      private$stopping <- FALSE
+      deadline <- if (is.null(stop_seconds)) Inf
+                  else as.numeric(Sys.time()) + as.numeric(stop_seconds)
+      if (!private$synced || is.null(self$resource_version)) private$relist()
 
-      deadline <- if (is.null(stop_seconds)) Inf else Sys.time() + stop_seconds
-      private$watch <- Watch$new()
-      private$watch$resource_version <- self$resource_version
-      private$watch$stream(
-        client = self$client,
-        resource_path = self$resource_path,
-        query_params = private$query_params,
-        timeout_seconds = if (is.finite(deadline))
-          max(1, as.integer(deadline - Sys.time())) else NULL,
-        callback = function(type, obj) {
-          private$handle_event(type, obj)
-          if (Sys.time() >= deadline) FALSE else TRUE
+      repeat {
+        if (private$stopping) break
+        remaining <- deadline - as.numeric(Sys.time())
+        if (remaining <= 0) break
+        w <- Watch$new()
+        private$watch <- w
+        w$stream(
+          client = self$client,
+          resource_path = self$resource_path,
+          query_params = c(private$query_params,
+                           list(allowWatchBookmarks = "true")),
+          timeout_seconds = if (is.finite(remaining)) remaining else NULL,
+          resource_version = self$resource_version,
+          return_on_gone = TRUE,
+          callback = function(type, obj) {
+            private$handle_event(type, obj)
+            if (!is.null(w$resource_version)) {
+              self$resource_version <- w$resource_version
+            }
+            !private$stopping && as.numeric(Sys.time()) < deadline
+          }
+        )
+        if (identical(w$end_reason, "gone")) {
+          # Our resourceVersion is too old; anything could have happened
+          # while we were away. Re-list and reconcile.
+          self$resource_version <- NULL
+          private$relist()
+          next
         }
-      )
+        break
+      }
       invisible(self)
     },
 
-    #' @description Stop the running watch.
+    #' @description Stop the running watch. Call from an event handler.
     stop = function() {
+      private$stopping <- TRUE
       if (!is.null(private$watch)) private$watch$stop()
       invisible(self)
     },
@@ -139,50 +167,103 @@ Informer <- R6::R6Class(
       if (is.null(self$object_from_list)) raw else self$object_from_list(raw)
     },
 
-    list_and_populate = function() {
-      q <- c(private$query_params, list())
-      page <- self$client$call_api(
-        resource_path = self$resource_path,
-        method = "GET",
-        query_params = q
-      )
-      self$resource_version <- page$metadata$resourceVersion
-      items <- page$items %||% list()
+    page_size = NULL,
+    versions = NULL,   # env: key -> resourceVersion of the cached object
+    stopping = FALSE,
+
+    rv_of = function(raw) raw$metadata$resourceVersion %||% NA_character_,
+
+    put = function(key, raw) {
+      obj <- private$wrap(raw)
+      assign(key, obj, envir = private$store)
+      assign(key, private$rv_of(raw), envir = private$versions)
+      obj
+    },
+
+    drop = function(key) {
+      if (exists(key, envir = private$store, inherits = FALSE)) {
+        rm(list = key, envir = private$store)
+      }
+      if (exists(key, envir = private$versions, inherits = FALSE)) {
+        rm(list = key, envir = private$versions)
+      }
+    },
+
+    fire = function(what, ...) {
+      args <- list(...)
+      for (h in private$handlers) if (!is.null(h[[what]])) do.call(h[[what]], args)
+    },
+
+    list_all = function() {
+      items <- list()
+      cont <- NULL
+      repeat {
+        q <- private$query_params
+        if (!is.null(private$page_size)) q$limit <- as.integer(private$page_size)
+        if (!is.null(cont)) q[["continue"]] <- cont
+        page <- self$client$call_api(
+          resource_path = self$resource_path,
+          method = "GET",
+          query_params = q
+        )
+        items <- c(items, page$items %||% list())
+        cont <- page$metadata[["continue"]]
+        if (is.null(cont) || !nzchar(cont)) {
+          self$resource_version <- page$metadata$resourceVersion
+          break
+        }
+      }
+      items
+    },
+
+    # List everything and reconcile the cache against it. On the first call
+    # this just populates; afterwards it emits add/update/delete for the diff.
+    relist = function() {
+      items <- private$list_all()
+      seen <- character()
       for (raw in items) {
         key <- private$key_for(raw)
         if (is.na(key)) next
-        obj <- private$wrap(raw)
-        assign(key, obj, envir = private$store)
-        for (h in private$handlers) if (!is.null(h$on_add)) h$on_add(obj)
+        seen <- c(seen, key)
+        if (exists(key, envir = private$store, inherits = FALSE)) {
+          old <- get(key, envir = private$store, inherits = FALSE)
+          old_rv <- get(key, envir = private$versions, inherits = FALSE)
+          if (!identical(old_rv, private$rv_of(raw))) {
+            # Store first: `fire()` passes `...` lazily, so a side effect in
+            # its arguments would be skipped when no handler is registered.
+            new_obj <- private$put(key, raw)
+            private$fire("on_update", old, new_obj)
+          }
+        } else {
+          new_obj <- private$put(key, raw)
+          private$fire("on_add", new_obj)
+        }
       }
+      for (key in setdiff(ls(private$store, all.names = TRUE), seen)) {
+        old <- get(key, envir = private$store, inherits = FALSE)
+        private$drop(key)
+        private$fire("on_delete", old)
+      }
+      private$synced <- TRUE
     },
 
     handle_event = function(type, raw) {
       key <- private$key_for(raw)
       if (is.na(key)) return()
-      new_obj <- private$wrap(raw)
+      known <- exists(key, envir = private$store, inherits = FALSE)
+      old <- if (known) get(key, envir = private$store, inherits = FALSE) else NULL
       if (identical(type, "DELETED")) {
-        old <- if (exists(key, envir = private$store, inherits = FALSE))
-          get(key, envir = private$store, inherits = FALSE) else NULL
-        if (exists(key, envir = private$store, inherits = FALSE)) {
-          rm(list = key, envir = private$store)
-        }
-        for (h in private$handlers) if (!is.null(h$on_delete)) h$on_delete(old %||% new_obj)
-      } else if (identical(type, "ADDED") ||
-                   (identical(type, "MODIFIED") &&
-                    !exists(key, envir = private$store, inherits = FALSE))) {
-        assign(key, new_obj, envir = private$store)
-        for (h in private$handlers) if (!is.null(h$on_add)) h$on_add(new_obj)
-      } else if (identical(type, "MODIFIED")) {
-        old <- get(key, envir = private$store, inherits = FALSE)
-        assign(key, new_obj, envir = private$store)
-        for (h in private$handlers) if (!is.null(h$on_update)) h$on_update(old, new_obj)
+        private$drop(key)
+        private$fire("on_delete", old %||% private$wrap(raw))
+      } else if (identical(type, "ADDED") || identical(type, "MODIFIED")) {
+        new_obj <- private$put(key, raw)
+        if (known) private$fire("on_update", old, new_obj)
+        else private$fire("on_add", new_obj)
       }
       # BOOKMARK events only carry resourceVersion; nothing else to do.
     }
   )
 )
-
 #' Read-only indexed view over an Informer's cache
 #'
 #' A `Lister` is a cheap read-only wrapper over the cache an [Informer]

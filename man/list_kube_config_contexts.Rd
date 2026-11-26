@@ -7,8 +7,8 @@
 list_kube_config_contexts(config_file = NULL)
 }
 \arguments{
-\item{config_file}{Path to a kubeconfig. Defaults to \verb{$KUBECONFIG} (the
-first entry if colon-separated) or \verb{~/.kube/config}.}
+\item{config_file}{Path to a kubeconfig. Defaults to \verb{$KUBECONFIG} (merged
+as described above) or \verb{~/.kube/config}.}
 }
 \value{
 A list with elements \code{contexts} (list of context entries) and

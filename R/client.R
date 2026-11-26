@@ -63,7 +63,38 @@ ApiClient <- R6::R6Class(
       if (isTRUE(stream)) {
         return(req)
       }
-      resp <- httr2::req_perform(req)
+      idempotent <- toupper(method) %in% c("GET", "HEAD")
+      perform <- function(req) {
+        cfg <- self$configuration
+        if (!is.null(cfg$timeout)) req <- httr2::req_timeout(req, cfg$timeout)
+        retries <- as.integer(cfg$max_retries %||% 0L)
+        if (retries > 0) {
+          # 429 means the server did not process the request, so any method
+          # may be retried; 5xx and connection failures only for reads.
+          req <- httr2::req_retry(
+            req,
+            max_tries = retries + 1L,
+            retry_on_failure = idempotent,
+            is_transient = function(resp) {
+              st <- httr2::resp_status(resp)
+              st == 429 || (idempotent && st %in% c(500, 502, 503, 504))
+            },
+            backoff = function(i) min(30, 0.25 * 2^i) * stats::runif(1, 0.5, 1)
+          )
+        }
+        httr2::req_perform(req)
+      }
+      resp <- perform(req)
+      if (httr2::resp_status(resp) == 401 && !is.null(self$configuration$exec)) {
+        # Cached exec credentials may have been revoked or rotated early:
+        # run the plugin again and retry once, as client-go does.
+        self$configuration$refresh_credentials()
+        req <- private$build_request(
+          resource_path, method, path_params, query_params,
+          header_params, body, content_type, accept
+        )
+        resp <- perform(req)
+      }
       if (httr2::resp_status(resp) >= 400) api_stop(resp)
       private$deserialize(resp, response_type)
     },
@@ -89,7 +120,19 @@ ApiClient <- R6::R6Class(
       cfg <- self$configuration
       if (is.null(cfg$host)) stop("Configuration$host is not set")
 
-      url <- paste0(sub("/$", "", cfg$host), self$select_path(resource_path, path_params))
+      host <- sub("/$", "", cfg$host)
+      connect_to <- NULL
+      if (!is.null(cfg$tls_server_name) && nzchar(cfg$tls_server_name)) {
+        # Address the server by its TLS name (for SNI and certificate
+        # verification) while connecting to the real host:port.
+        u <- httr2::url_parse(host)
+        port <- u$port %||% if (identical(u$scheme, "http")) 80L else 443L
+        connect_to <- sprintf("%s:%s:%s:%s", cfg$tls_server_name, port,
+                              u$hostname, port)
+        u$hostname <- cfg$tls_server_name
+        host <- sub("/$", "", httr2::url_build(u))
+      }
+      url <- paste0(host, self$select_path(resource_path, path_params))
       req <- httr2::request(url)
       req <- httr2::req_method(req, toupper(method))
       req <- httr2::req_user_agent(req, cfg$user_agent)
@@ -117,9 +160,11 @@ ApiClient <- R6::R6Class(
         opts$ssl_verifyhost <- 0L
       }
       if (!is.null(cfg$ssl_ca_cert)) opts$cainfo <- cfg$ssl_ca_cert
-      if (!is.null(cfg$cert_file))   opts$sslcert <- cfg$cert_file
-      if (!is.null(cfg$key_file))    opts$sslkey  <- cfg$key_file
+      cc <- cfg$client_cert()
+      if (!is.null(cc$cert_file))    opts$sslcert <- cc$cert_file
+      if (!is.null(cc$key_file))     opts$sslkey  <- cc$key_file
       if (!is.null(cfg$proxy))       opts$proxy   <- cfg$proxy
+      if (!is.null(connect_to))      opts$connect_to <- connect_to
       if (length(opts) > 0) req <- do.call(httr2::req_options, c(list(req), opts))
 
       # Body serialization.

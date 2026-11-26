@@ -21,9 +21,14 @@ and many \link{Lister} views, without each consumer re-listing the API server.
 Lifecycle:
 \itemize{
 \item \verb{$run(stop_seconds = NULL)} — block, streaming events into the cache.
-Returns when \code{stop_seconds} elapses, the stream callback returns FALSE,
-or \verb{$stop()} is called. Safe to re-invoke; the informer resumes from
-the last observed resourceVersion (or re-lists on 410 Gone).
+Returns when \code{stop_seconds} of wall-clock time elapse (whether or not
+events arrive) or \verb{$stop()} is called from a handler. Safe to re-invoke;
+the informer resumes from the last observed resourceVersion.
+\item On 410 Gone (the watch fell too far behind), the informer re-lists and
+reconciles the cache against the fresh list: objects that disappeared
+fire \code{on_delete}, new ones \code{on_add}, and changed ones (different
+\code{resourceVersion}) \code{on_update}.
+\item Lists are fetched in pages of \code{page_size} items (\code{limit}/\code{continue}).
 \item \verb{$has_synced()} — \code{TRUE} once the initial list has been absorbed.
 \item \verb{$lister()} — return a \link{Lister} view over the current cache snapshot.
 }
@@ -85,7 +90,8 @@ Construct.
   client,
   resource_path,
   query_params = list(),
-  object_from_list = NULL
+  object_from_list = NULL,
+  page_size = 500L
 )}\if{html}{\out{</div>}}
 }
 
@@ -100,6 +106,8 @@ Construct.
 \item{\code{query_params}}{Extra query parameters (e.g. \code{list(labelSelector = ...)}).}
 
 \item{\code{object_from_list}}{Optional \code{from_list} constructor.}
+
+\item{\code{page_size}}{Items per list page (\code{limit}); \code{NULL} disables paging.}
 }
 \if{html}{\out{</div>}}
 }
@@ -129,8 +137,8 @@ Register event handlers.
 \if{html}{\out{<a id="method-Informer-run"></a>}}
 \if{latex}{\out{\hypertarget{method-Informer-run}{}}}
 \subsection{Method \code{run()}}{
-Run the informer: perform an initial list, notify \code{on_add}
-for every item, then start a watch.
+Run the informer: list (or resume), notify handlers, then
+watch until \code{stop_seconds} elapse or \verb{$stop()} is called.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Informer$run(stop_seconds = NULL)}\if{html}{\out{</div>}}
 }
@@ -138,8 +146,8 @@ for every item, then start a watch.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{stop_seconds}}{Optional wall-clock limit. \code{NULL} runs forever
-(until \verb{$stop()} or the server hangs up).}
+\item{\code{stop_seconds}}{Optional wall-clock limit. \code{NULL} runs until
+\verb{$stop()} is called from an event handler.}
 }
 \if{html}{\out{</div>}}
 }
@@ -148,7 +156,7 @@ for every item, then start a watch.
 \if{html}{\out{<a id="method-Informer-stop"></a>}}
 \if{latex}{\out{\hypertarget{method-Informer-stop}{}}}
 \subsection{Method \code{stop()}}{
-Stop the running watch.
+Stop the running watch. Call from an event handler.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Informer$stop()}\if{html}{\out{</div>}}
 }

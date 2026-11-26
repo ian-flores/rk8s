@@ -38,6 +38,11 @@ w$stream(
 \item{\code{resource_version}}{Last observed resourceVersion. Used to resume.}
 
 \item{\code{stop_requested}}{Set to TRUE by \verb{$stop()} to break the loop.}
+
+\item{\code{end_reason}}{Why the last \code{stream()} call returned: \code{"stop"}
+(callback returned \code{FALSE} or \verb{$stop()} was called), \code{"timeout"}
+(\code{timeout_seconds} elapsed), or \code{"gone"} (410 Gone with
+\code{return_on_gone = TRUE}).}
 }
 \if{html}{\out{</div>}}
 }
@@ -61,7 +66,8 @@ Stream events to a callback.
   query_params = list(),
   callback,
   timeout_seconds = NULL,
-  resource_version = NULL
+  resource_version = NULL,
+  return_on_gone = FALSE
 )}\if{html}{\out{</div>}}
 }
 
@@ -79,10 +85,18 @@ parameters already substituted (e.g. "/api/v1/namespaces/default/pods").}
 \item{\code{callback}}{Function \verb{function(type, object)} invoked for each event.
 Return \code{FALSE} to stop the stream.}
 
-\item{\code{timeout_seconds}}{Passed as a query param; also used to bound
-individual HTTP calls.}
+\item{\code{timeout_seconds}}{Total wall-clock budget for the whole call. The
+stream reconnects after normal server hang-ups while time remains and
+returns once it is spent, even if no events arrive. \code{NULL} (default)
+watches until the callback returns \code{FALSE} or \verb{$stop()} is called.}
 
 \item{\code{resource_version}}{Starting resourceVersion (defaults to last seen).}
+
+\item{\code{return_on_gone}}{If \code{TRUE}, return with \code{end_reason = "gone"} on
+410 Gone so the caller can re-list (this is what \link{Informer} does). If
+\code{FALSE} (default), restart the watch without a resourceVersion, which
+replays the current state as \code{ADDED} events but cannot report objects
+deleted while the watch was disconnected.}
 }
 \if{html}{\out{</div>}}
 }

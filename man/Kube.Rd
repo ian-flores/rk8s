@@ -8,7 +8,7 @@
 kube(
   config_file = NULL,
   context = NULL,
-  namespace = "default",
+  namespace = NULL,
   client = NULL,
   field_manager = "rk8s"
 )
@@ -18,7 +18,9 @@ kube(
 
 \item{context}{Passed to \code{\link[=load_kube_config]{load_kube_config()}}.}
 
-\item{namespace}{Default namespace for verbs that take one.}
+\item{namespace}{Default namespace for verbs that take one. \code{NULL}
+(default) uses the kubeconfig context's namespace, falling back to
+\code{"default"}.}
 
 \item{client}{Optional pre-built \link{ApiClient}. When given, \code{config_file}
 and \code{context} are ignored.}

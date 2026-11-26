@@ -28,7 +28,9 @@
 #'
 #' @param config_file Passed to [load_kube_config()].
 #' @param context Passed to [load_kube_config()].
-#' @param namespace Default namespace for verbs that take one.
+#' @param namespace Default namespace for verbs that take one. `NULL`
+#'   (default) uses the kubeconfig context's namespace, falling back to
+#'   `"default"`.
 #' @param client Optional pre-built [ApiClient]. When given, `config_file`
 #'   and `context` are ignored.
 #' @param field_manager Field manager used by [kube_apply()] (defaults to
@@ -36,11 +38,12 @@
 #' @return A `Kube` object.
 #' @rdname Kube
 #' @export
-kube <- function(config_file = NULL, context = NULL, namespace = "default",
+kube <- function(config_file = NULL, context = NULL, namespace = NULL,
                   client = NULL, field_manager = "rk8s") {
   if (is.null(client)) {
     client <- ApiClient$new(load_kube_config(config_file, context))
   }
+  namespace <- namespace %||% client$configuration$namespace %||% "default"
   Kube$new(client, namespace = namespace, field_manager = field_manager)
 }
 

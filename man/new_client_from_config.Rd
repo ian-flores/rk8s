@@ -7,8 +7,8 @@
 new_client_from_config(config_file = NULL, context = NULL)
 }
 \arguments{
-\item{config_file}{Path to a kubeconfig. Defaults to \verb{$KUBECONFIG} (the
-first entry if colon-separated) or \verb{~/.kube/config}.}
+\item{config_file}{Path to a kubeconfig. Defaults to \verb{$KUBECONFIG} (merged
+as described above) or \verb{~/.kube/config}.}
 
 \item{context}{Context name. Defaults to the kubeconfig's \code{current-context}.}
 }

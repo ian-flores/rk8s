@@ -18,7 +18,7 @@ Depends:
     R (>= 4.1)
 Imports:
     R6,
-    httr2 (>= 1.0.0),
+    httr2 (>= 1.1.0),
     jsonlite,
     yaml,
     openssl,
@@ -27,6 +27,7 @@ Imports:
     utils
 Suggests:
     testthat (>= 3.0.0),
+    webfakes,
     withr,
     callr,
     knitr,
@@ -35,5 +36,5 @@ Suggests:
     later
 VignetteBuilder: knitr
 Config/testthat/edition: 3
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
