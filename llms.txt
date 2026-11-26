@@ -1,54 +1,59 @@
-# rk8s — Kubernetes client for R
+# rk8s
 
 [![R-CMD-check](https://github.com/ian-flores/rk8s/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ian-flores/rk8s/actions/workflows/R-CMD-check.yaml)
 
-`rk8s` gives R first-class access to the Kubernetes API. Two layers:
-
-1.  **A high-level verb API** —
-    [`kube_get()`](https://ian-flores.github.io/rk8s/reference/kube_get.md),
-    [`kube_apply()`](https://ian-flores.github.io/rk8s/reference/kube_apply.md),
-    [`kube_logs()`](https://ian-flores.github.io/rk8s/reference/kube_logs.md),
-    [`kube_watch()`](https://ian-flores.github.io/rk8s/reference/kube_watch.md),
-    [`kube_scale()`](https://ian-flores.github.io/rk8s/reference/kube_scale.md),
-    [`kube_delete()`](https://ian-flores.github.io/rk8s/reference/kube_delete.md).
-    The surface most users want — never write `V1Deployment$new(...)` to
-    do ordinary work.
-2.  **A typed / generated API** — `CoreV1Api`, `AppsV1Api`, `V1Pod`,
-    `V1Deployment`, … 944 operations and 635 model classes generated
-    from the Kubernetes OpenAPI spec, mirroring the official Python
-    client and Go client-go. Use it when you want full fidelity.
-
-Watch helpers, an Informer + Lister cache, a DynamicClient for
-CustomResources, pod exec and port-forward, and a
-coordination.k8s.io/Lease-backed leader election round it out.
-
-## Install
-
-``` r
-
-# install.packages("remotes")
-remotes::install_github("ian-flores/rk8s")
-```
-
-Depends on `R6`, `httr2` (\>= 1.1.0), `jsonlite`, `yaml`, `openssl` and
-`base64enc`. Optional: `nanonext` (exec / port-forward) and `callr`
-(leader election,
-[`pod_port_forward()`](https://ian-flores.github.io/rk8s/reference/pod_port_forward.md)).
-
-## Quickstart
+A Kubernetes client for R.
 
 ``` r
 
 library(rk8s)
-k <- kube()                             # ~/.kube/config; or kube(context=…)
+k <- kube()
+kube_get(k, "pods")
+```
 
-# Apply manifests (server-side apply, force optional)
-kube_apply(k, "deployment.yaml")
-kube_apply(k, list(
-  apiVersion = "v1", kind = "ConfigMap",
-  metadata = list(name = "demo"),
-  data = list(hello = "world")
-))
+rk8s reads your kubeconfig the way kubectl does, so if
+`kubectl get pods` works, so does the code above.
+
+Most of the time you’ll use a handful of verbs:
+[`kube_get()`](https://ian-flores.github.io/rk8s/reference/kube_get.md),
+[`kube_apply()`](https://ian-flores.github.io/rk8s/reference/kube_apply.md),
+[`kube_logs()`](https://ian-flores.github.io/rk8s/reference/kube_logs.md),
+[`kube_scale()`](https://ian-flores.github.io/rk8s/reference/kube_scale.md),
+[`kube_watch()`](https://ian-flores.github.io/rk8s/reference/kube_watch.md)
+and
+[`kube_delete()`](https://ian-flores.github.io/rk8s/reference/kube_delete.md).
+They take manifests as YAML or plain R lists. Behind them is a client
+generated from the Kubernetes OpenAPI spec (`CoreV1Api`, `V1Pod` and so
+on, 944 operations in all) for anything the verbs don’t cover.
+
+There’s also what you need to run a controller in R: watches, an
+informer cache, and leader election on a Lease.
+
+## Installation
+
+rk8s isn’t on CRAN yet. Install it from GitHub:
+
+``` r
+
+remotes::install_github("ian-flores/rk8s")
+```
+
+For
+[`pod_exec()`](https://ian-flores.github.io/rk8s/reference/pod_exec.md)
+and
+[`pod_port_forward()`](https://ian-flores.github.io/rk8s/reference/pod_port_forward.md)
+you also need `nanonext`, and for leader election `callr`.
+
+## Usage
+
+[`kube()`](https://ian-flores.github.io/rk8s/reference/Kube.md) uses
+`$KUBECONFIG` (or `~/.kube/config`) and the current context. Its
+`context`, `config_file` and `namespace` arguments change that.
+
+``` r
+
+k <- kube()
+
 kube_apply(k, "
   apiVersion: apps/v1
   kind: Deployment
@@ -62,57 +67,44 @@ kube_apply(k, "
         containers: [{name: nginx, image: nginx:1.25}]
 ")
 
-# List, get, table-ize
-kube_get(k, "pods", namespace = "default")
 kube_get(k, "deployment/nginx")
-as.data.frame(kube_get(k, "pods"))      # one row per object
+as.data.frame(kube_get(k, "pods"))
 
-# Logs, scale, watch, delete
-cat(kube_logs(k, "nginx-abc", tail = 50))
 kube_scale(k, "deployment", "nginx", replicas = 5)
-kube_watch(k, "pods", timeout_seconds = 30, on_event = function(type, obj) {
-  message(type, " ", obj$metadata$name)
-  TRUE                                  # FALSE stops the watch
-})
+cat(kube_logs(k, "nginx-abc", tail = 50))
 kube_delete(k, "deployment/nginx")
 ```
 
-Resource refs accept any of: `"pods"`, `"pod"`, `"po"`,
-`"deployment/nginx"`, `"apps/v1:Deployment"`,
-`c("apps/v1", "Deployment")`.
-
-CustomResources work out of the box —
 [`kube_apply()`](https://ian-flores.github.io/rk8s/reference/kube_apply.md)
-and
-[`kube_get()`](https://ian-flores.github.io/rk8s/reference/kube_get.md)
-discover the REST path for any `apiVersion+kind`.
-
-## Authentication
-
-[`load_kube_config()`](https://ian-flores.github.io/rk8s/reference/load_kube_config.md)
-reads kubeconfig files the way `kubectl` does:
-
-- `KUBECONFIG` with several files, merged (first definition wins)
-- the context’s default namespace (used by
-  [`kube()`](https://ian-flores.github.io/rk8s/reference/Kube.md))
-- bearer tokens (`token` / `tokenFile`) and basic auth
-- client certificates, inline (`*-data`) or as files relative to the
-  kubeconfig that names them
-- `exec` credential plugins (EKS, GKE, AKS/kubelogin, …), cached until
-  they expire and re-run on 401
-- the `oidc` auth-provider, including refresh-token renewal
-- `proxy-url`, `tls-server-name` and `insecure-skip-tls-verify`
-
-Inside a pod:
+does a server-side apply, and also takes a file path or an R list:
 
 ``` r
 
-k <- kube(client = ApiClient$new(load_incluster_config()))
+kube_apply(k, "deployment.yaml")
+kube_apply(k, list(
+  apiVersion = "v1", kind = "ConfigMap",
+  metadata = list(name = "demo"),
+  data = list(hello = "world")
+))
 ```
 
-## Informers + Listers (controllers)
+You can name a resource as `"pods"`, `"pod"`, `"po"`,
+`"deployment/nginx"`, `"apps/v1:Deployment"` or
+`c("apps/v1", "Deployment")`. Custom resources work the same way; rk8s
+looks up where they live through API discovery.
 
-Build a controller without re-listing every tick:
+### Watching
+
+``` r
+
+kube_watch(k, "pods", timeout_seconds = 30, on_event = function(type, obj) {
+  message(type, " ", obj$metadata$name)
+  TRUE   # return FALSE to stop
+})
+```
+
+For a controller you usually want an informer instead. It lists once,
+keeps a local copy up to date from a watch, and calls your handlers:
 
 ``` r
 
@@ -122,30 +114,54 @@ inf <- Informer$new(k$client,
 
 inf$add_event_handler(
   on_add    = function(obj) message("add: ", obj$metadata$name),
-  on_update = function(old, new) message("upd: ", new$metadata$name),
-  on_delete = function(obj) message("del: ", obj$metadata$name))
+  on_update = function(old, new) message("update: ", new$metadata$name),
+  on_delete = function(obj) message("delete: ", obj$metadata$name))
 
-inf$run(stop_seconds = 120)            # list, then watch; relists on 410
-inf$lister()$get("nginx", namespace = "default")   # cache lookup
+inf$run(stop_seconds = 120)
+inf$lister()$get("nginx", namespace = "default")
 ```
 
-## Exec and port-forward
+### Leader election
+
+If you run several copies of a controller, only one should act at a
+time:
+
+``` r
+
+run_as_leader(k$client,
+  lease_name = "my-controller",
+  lease_namespace = "kube-system",
+  identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
+  on_started_leading = function(leader) {
+    repeat {
+      leader$check()
+      reconcile_once()
+      Sys.sleep(5)
+    }
+  },
+  on_stopped_leading = function() message("stopped"))
+```
+
+A background process keeps renewing the lease. `leader$check()` throws
+as soon as the lease is lost, which ends your loop before another
+replica takes over, so call it often.
+
+### Exec and port-forward
 
 ``` r
 
 r <- pod_exec(k$client, "default", "nginx-abc", c("ls", "/"))
-cat(r$stdout); r$exit_code
+cat(r$stdout)
+r$exit_code
 
 fwd <- pod_port_forward(k$client, "default", "nginx-abc", remote_port = 80)
 httr2::req_perform(httr2::request(paste0("http://127.0.0.1:", fwd$port)))
 fwd$close()
 ```
 
-These use WebSockets (via `nanonext`). The API server’s certificate is
-verified against the kubeconfig CA and its hostname checked. They
-authenticate with a bearer token: kubeconfigs that only have a client
-certificate (kind, minikube and kubeadm admin users) need a token, e.g.
-from a ServiceAccount:
+These run over a WebSocket, which has to authenticate with a token. The
+default users that kind, minikube and kubeadm create only have a client
+certificate, so with those you’ll need a ServiceAccount token:
 
 ``` r
 
@@ -158,31 +174,10 @@ cfg$api_key <- list(authorization = paste(
 k <- kube(client = ApiClient$new(cfg))
 ```
 
-## Leader election
+### The generated API
 
-``` r
-
-run_as_leader(k$client,
-  lease_name = "my-controller",
-  lease_namespace = "kube-system",
-  identity = paste0(Sys.info()[["nodename"]], "-", Sys.getpid()),
-  on_started_leading = function(leader) {
-    repeat {
-      leader$check()          # stops here once leadership is lost
-      reconcile_once()
-      Sys.sleep(5)
-    }
-  },
-  on_stopped_leading = function() message("stopped"))
-```
-
-A background process renews the lease. Call `leader$check()` regularly:
-it signals as soon as the lease is lost or renewals stop succeeding, so
-two replicas never act as leader at the same time.
-
-## When you need the full API surface
-
-Drop down to typed classes any time:
+When the verbs don’t have what you need, use the generated classes
+directly. Their method names match the official Python client.
 
 ``` r
 
@@ -204,35 +199,40 @@ AppsV1Api$new(k$client)$create_namespaced_deployment(
   namespace = "default", body = dep)
 ```
 
-## Architecture
+## Authentication
 
-| Concern | Hand-written (`R/*.R`) | Generated (`R/gen_*.R`) |
-|----|----|----|
-| Verb API | `kube`, `kube_get/apply/delete/scale/logs/watch` | — |
-| Transport / auth | `ApiClient`, `Configuration` | — |
-| Config loading | `load_kube_config`, `_incluster`, exec plugin | — |
-| Errors | `ApiException` | — |
-| Watch | `Watch` | — |
-| Exec / port-forward | `pod_exec`, `pod_port_forward` | — |
-| Cache | `Informer`, `Lister` | — |
-| Dynamic / discovery | `DynamicClient`, `DynamicResource` | — |
-| Leader election | `run_as_leader` | — |
-| YAML apply / quantity | `create_from_yaml`, `parse_quantity` | — |
-| Typed API classes | — | `CoreV1Api`, `AppsV1Api`, … (62) |
-| Model classes | — | `V1Pod`, `V1Deployment`, … (635) |
+rk8s supports what’s commonly found in kubeconfig files: tokens and
+token files, client certificates, basic auth, exec plugins (EKS, GKE,
+kubelogin and others), the `oidc` auth-provider, `proxy-url`,
+`tls-server-name`, `insecure-skip-tls-verify`, and a `KUBECONFIG` that
+lists several files. Inside a pod, use the ServiceAccount instead:
 
-The generator in `tools/gen/` reads the Kubernetes OpenAPI v2
-swagger.json (pinned in `tools/gen/spec/`) and emits the typed classes —
-same architectural split as the Python client. To update to a newer
-cluster version, swap the spec and re-run:
+``` r
+
+k <- kube(client = ApiClient$new(load_incluster_config()))
+```
+
+## Development
+
+The classes in `R/gen_*.R` are generated from the OpenAPI spec pinned in
+`tools/gen/spec/`. To target a newer Kubernetes release, replace the
+spec and regenerate:
 
 ``` bash
 Rscript tools/gen/generate.R tools/gen/spec/swagger.json R
 ```
 
+The unit tests run against fake API servers. The integration tests in
+`tests/integration/` need a cluster you don’t mind writing to (kind
+works):
+
+``` bash
+RK8S_E2E=1 Rscript tests/integration/run.R
+```
+
 ## License
 
-Apache 2.0.
+Apache 2.0
 
 # Package index
 

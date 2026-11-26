@@ -72,27 +72,12 @@
 
     
     
-<p>rk8s is an R client for the Kubernetes API. It has two layers:</p>
-<ul>
-<li>
-<strong>A high-level verb API</strong> — <code><a href="../reference/kube_get.html">kube_get()</a></code>,
-<code><a href="../reference/kube_apply.html">kube_apply()</a></code>, <code><a href="../reference/kube_logs.html">kube_logs()</a></code>,
-<code><a href="../reference/kube_watch.html">kube_watch()</a></code>, … This is what most users want. You never
-have to type <code>V1Deployment$new(...)</code> to do everyday
-work.</li>
-<li>
-<strong>A low-level typed/generated API</strong> —
-<code>CoreV1Api</code>, <code>AppsV1Api</code>, <code>V1Pod</code>,
-<code>V1Deployment</code>, … 944 operations and 635 model classes
-generated from the Kubernetes OpenAPI spec, mirroring the official
-Python client and Go client-go. There when you need it.</li>
-</ul>
-<p>A <code>Watch</code> helper,
-<code>Informer</code>/<code>Lister</code> for client-go-style
-controllers, <code>DynamicClient</code> for CustomResources,
-<code><a href="../reference/pod_exec.html">pod_exec()</a></code> / <code><a href="../reference/pod_port_forward.html">pod_port_forward()</a></code>, and
-<code><a href="../reference/run_as_leader.html">run_as_leader()</a></code> for leader election sit alongside both
-layers.</p>
+<p>This guide walks through the parts of rk8s you’ll use most:
+connecting, the verbs, watches and informers, exec and port-forward,
+leader election, and the generated API underneath. None of the code runs
+when the vignette is built, since it needs a cluster. The examples
+assume a pod called <code>nginx-abc</code> and, once you get to the
+apply section, a Deployment called <code>nginx</code>.</p>
 <div class="section level2">
 <h2 id="installing">Installing<a class="anchor" aria-label="anchor" href="#installing"></a>
 </h2>
@@ -101,7 +86,7 @@ layers.</p>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ian-flores/rk8s"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="authenticating">Authenticating<a class="anchor" aria-label="anchor" href="#authenticating"></a>
+<h2 id="connecting">Connecting<a class="anchor" aria-label="anchor" href="#connecting"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ian-flores.github.io/rk8s/">rk8s</a></span><span class="op">)</span></span>
@@ -109,47 +94,45 @@ layers.</p>
 <span><span class="co"># k &lt;- kube(context = "my-dev")</span></span>
 <span><span class="co"># k &lt;- kube(config_file = "~/configs/prod.yaml")</span></span>
 <span><span class="co"># k &lt;- kube(namespace = "my-app")             # override the context namespace</span></span></code></pre></div>
-<p>Inside a pod running as a ServiceAccount:</p>
+<p>From a pod running as a ServiceAccount:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Kube.html">kube</a></span><span class="op">(</span>client <span class="op">=</span> <span class="va"><a href="../reference/ApiClient.html">ApiClient</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu"><a href="../reference/load_incluster_config.html">load_incluster_config</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><code><a href="../reference/load_kube_config.html">load_kube_config()</a></code> reads kubeconfigs the way
-<code>kubectl</code> does: a <code>KUBECONFIG</code> list of several
-files (merged, first definition wins), the context’s default namespace,
-bearer tokens and token files, basic auth, client certificates (inline
-or as files relative to the kubeconfig that names them),
-<code>exec</code> credential plugins (EKS’s
+<p><code><a href="../reference/Kube.html">kube()</a></code> calls <code><a href="../reference/load_kube_config.html">load_kube_config()</a></code>, which
+handles the kubeconfig features you’re likely to meet.
+<code>KUBECONFIG</code> can list several files; they’re merged and the
+first definition of a name wins. Each context’s default namespace is
+used. Users can authenticate with a token or token file, basic auth, or
+a client certificate (inline, or a file path relative to the kubeconfig
+it appears in). Exec plugins work too: EKS’s
 <code>aws-iam-authenticator</code>, GKE’s
-<code>gke-gcloud-auth-plugin</code>, AKS’s <code>kubelogin</code>, any
-OIDC helper), the <code>oidc</code> auth-provider with token refresh,
-<code>proxy-url</code>, <code>tls-server-name</code> and
+<code>gke-gcloud-auth-plugin</code>, AKS’s <code>kubelogin</code> and
+any OIDC helper. So does the older <code>oidc</code> auth-provider,
+including refreshing its token. Clusters can set <code>proxy-url</code>,
+<code>tls-server-name</code> and
 <code>insecure-skip-tls-verify</code>.</p>
-<p>Requests that hit API throttling (429) are retried for any method;
-server errors (500-504) and dropped connections are retried for reads
-only. Set <code>Configuration$max_retries</code> (default 3) to change
-this.</p>
+<p>If the API server throttles you (429), the request is retried
+whatever its method. Server errors (500 to 504) and dropped connections
+are retried only for reads, since retrying a write could apply it twice.
+<code>Configuration$max_retries</code> sets the limit; the default is
+3.</p>
 </div>
 <div class="section level2">
-<h2 id="the-verb-api">The verb API<a class="anchor" aria-label="anchor" href="#the-verb-api"></a>
+<h2 id="the-verbs">The verbs<a class="anchor" aria-label="anchor" href="#the-verbs"></a>
 </h2>
-<p>Resource references can be:</p>
+<p>You can refer to a resource type in several ways:</p>
 <ul>
-<li>a kind alias: <code>"pod"</code>, <code>"pods"</code>,
+<li>by kind or alias: <code>"pod"</code>, <code>"pods"</code>,
 <code>"po"</code>, <code>"deploy"</code>, <code>"svc"</code>,
-<code>"ing"</code>, <code>"crd"</code>, …</li>
-<li>
-<code>"kind/name"</code>: <code>"deployment/nginx"</code>
+<code>"ing"</code>, <code>"crd"</code> and so on</li>
+<li>with a name attached: <code>"deployment/nginx"</code>
 </li>
-<li>explicit <code>"apiVersion:Kind"</code>:
-<code>"apps/v1:Deployment"</code>
+<li>by API version and kind: <code>"apps/v1:Deployment"</code>
 </li>
-<li>a <code>c(apiVersion, Kind)</code> vector:
-<code>c("apps/v1", "Deployment")</code>
+<li>as a vector: <code>c("apps/v1", "Deployment")</code>
 </li>
 </ul>
-<p>The examples below assume a pod called <code>nginx-abc</code> and,
-after the apply section, a Deployment called <code>nginx</code>.</p>
 <div class="section level3">
-<h3 id="get-list">Get / list<a class="anchor" aria-label="anchor" href="#get-list"></a>
+<h3 id="getting-and-listing">Getting and listing<a class="anchor" aria-label="anchor" href="#getting-and-listing"></a>
 </h3>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span>, namespace <span class="op">=</span> <span class="st">"default"</span><span class="op">)</span>              <span class="co"># list</span></span>
@@ -157,10 +140,10 @@ after the apply section, a Deployment called <code>nginx</code>.</p>
 <span><span class="fu"><a href="../reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment/nginx"</span><span class="op">)</span>                          <span class="co"># alt syntax</span></span>
 <span><span class="fu"><a href="../reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span>, label_selector <span class="op">=</span> <span class="st">"app=nginx"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"apps/v1:Deployment"</span>, <span class="st">"nginx"</span><span class="op">)</span>               <span class="co"># explicit GVK</span></span></code></pre></div>
-<p><code><a href="../reference/kube_get.html">kube_get()</a></code> returns an <code>rk8s_object</code> (single)
-or <code>rk8s_list</code> (collection). <code><a href="../reference/kube_list.html">kube_list()</a></code> pages
-through large collections for you. A built-in
-<code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame()</a></code> method gives you a tabular view:</p>
+<p>You get back an <code>rk8s_object</code> for a single resource and an
+<code>rk8s_list</code> for a collection. <code><a href="../reference/kube_list.html">kube_list()</a></code> always
+returns a list, and pages through large collections for you. To look at
+a list as a table, use <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame()</a></code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pods</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">pods</span><span class="op">)</span><span class="op">)</span></span>
@@ -170,11 +153,12 @@ through large collections for you. A built-in
 <span><span class="co">#&gt; 3 kube-system          coredns-abc-xyz  Pod      4h  Running</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="apply-server-side-apply">Apply (server-side apply)<a class="anchor" aria-label="anchor" href="#apply-server-side-apply"></a>
+<h3 id="applying">Applying<a class="anchor" aria-label="anchor" href="#applying"></a>
 </h3>
-<p><code><a href="../reference/kube_apply.html">kube_apply()</a></code> accepts a path, a YAML/JSON string, an R
-<code>list</code>, or a generated model. Multi-document YAML works —
-each document is routed to the correct endpoint via discovery:</p>
+<p><code><a href="../reference/kube_apply.html">kube_apply()</a></code> does a server-side apply. Give it a file, a
+YAML or JSON string, an R list, or one of the generated model objects. A
+YAML string can hold several documents, and each goes to the right
+endpoint:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># From a file</span></span>
 <span><span class="fu"><a href="../reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment.yaml"</span><span class="op">)</span></span>
@@ -203,11 +187,11 @@ each document is routed to the correct endpoint via discovery:</p>
 <span></span>
 <span><span class="co"># Force-take ownership of conflicting fields (server-side apply force):</span></span>
 <span><span class="fu"><a href="../reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment.yaml"</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>Field manager defaults to <code>"rk8s"</code>; override with
-<code>field_manager =</code>.</p>
+<p>Changes are recorded under the field manager <code>"rk8s"</code>
+unless you pass <code>field_manager</code>.</p>
 </div>
 <div class="section level3">
-<h3 id="delete-scale-logs-watch">Delete, scale, logs, watch<a class="anchor" aria-label="anchor" href="#delete-scale-logs-watch"></a>
+<h3 id="scaling-logs-watching-and-deleting">Scaling, logs, watching and deleting<a class="anchor" aria-label="anchor" href="#scaling-logs-watching-and-deleting"></a>
 </h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/kube_scale.html">kube_scale</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment"</span>, <span class="st">"nginx"</span>, replicas <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
@@ -227,16 +211,17 @@ each document is routed to the correct endpoint via discovery:</p>
 <span></span>
 <span><span class="fu"><a href="../reference/kube_delete.html">kube_delete</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pod"</span>, <span class="st">"nginx-abc"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/kube_delete.html">kube_delete</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment/nginx"</span>, grace_period <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><code>timeout_seconds</code> is a wall-clock limit: the watch
-reconnects after server-side timeouts but returns once the time is
-up.</p>
+<p><code>timeout_seconds</code> is measured on the clock. The API server
+ends watches on its own schedule; rk8s reconnects when that happens and
+returns once your time is up.</p>
 </div>
 <div class="section level3">
-<h3 id="anything-custom">Anything custom<a class="anchor" aria-label="anchor" href="#anything-custom"></a>
+<h3 id="custom-resources">Custom resources<a class="anchor" aria-label="anchor" href="#custom-resources"></a>
 </h3>
-<p><code><a href="../reference/kube_apply.html">kube_apply()</a></code> works for CRs out of the box (any
-<code>apiVersion+kind</code>), and <code><a href="../reference/kube_get.html">kube_get()</a></code> resolves them
-via the dynamic client. So a typical controller is:</p>
+<p>Custom resources need no setup. rk8s finds them through API
+discovery, so the verbs take any <code>apiVersion</code> and
+<code>kind</code> the cluster knows about. A small reconcile loop over a
+made-up <code>Foo</code> resource looks like this:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">foos</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/kube_list.html">kube_list</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"example.com/v1:Foo"</span>, namespace <span class="op">=</span> <span class="st">"default"</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">f</span> <span class="kw">in</span> <span class="va">foos</span><span class="op">$</span><span class="va">items</span><span class="op">)</span> <span class="op">{</span></span>
@@ -251,14 +236,14 @@ via the dynamic client. So a typical controller is:</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="watching-with-a-local-cache-informer-lister">Watching with a local cache: Informer + Lister<a class="anchor" aria-label="anchor" href="#watching-with-a-local-cache-informer-lister"></a>
+<h2 id="informers">Informers<a class="anchor" aria-label="anchor" href="#informers"></a>
 </h2>
-<p>When you want to react to changes without re-listing the API server
-every tick, use <code>Informer</code>. One watch feeds an in-memory
-cache plus your event handlers; <code>Lister</code> gives you O(1)
-lookups. The initial list is paged, and if the watch falls too far
-behind (410 Gone) the informer lists again and reconciles its cache,
-firing <code>on_delete</code> for anything removed in the meantime.</p>
+<p>Listing everything on every pass gets expensive. An informer lists
+once, then keeps a local copy current from a watch and calls your
+handlers as things change. If the watch falls too far behind, the API
+server answers 410 Gone; the informer then lists again, works out what
+changed while it was away, and fires <code>on_delete</code> for anything
+that disappeared.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inf</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/Informer.html">Informer</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
 <span>  <span class="va">k</span><span class="op">$</span><span class="va">client</span>,</span>
@@ -283,7 +268,8 @@ firing <code>on_delete</code> for anything removed in the meantime.</p>
 <div class="section level2">
 <h2 id="exec-and-port-forward">Exec and port-forward<a class="anchor" aria-label="anchor" href="#exec-and-port-forward"></a>
 </h2>
-<p>Run a command in a pod and collect its output:</p>
+<p><code><a href="../reference/pod_exec.html">pod_exec()</a></code> runs a command and gives you its output and
+exit code:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pod_exec.html">pod_exec</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>, <span class="st">"default"</span>, <span class="st">"nginx-abc"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ls"</span>, <span class="st">"-la"</span>, <span class="st">"/"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">r</span><span class="op">$</span><span class="va">stdout</span><span class="op">)</span></span>
@@ -291,22 +277,23 @@ firing <code>on_delete</code> for anything removed in the meantime.</p>
 <span></span>
 <span><span class="co"># With stdin</span></span>
 <span><span class="fu"><a href="../reference/pod_exec.html">pod_exec</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>, <span class="st">"default"</span>, <span class="st">"nginx-abc"</span>, <span class="st">"cat"</span>, stdin_data <span class="op">=</span> <span class="st">"hi\n"</span><span class="op">)</span><span class="op">$</span><span class="va">stdout</span></span></code></pre></div>
-<p>For an interactive session use <code><a href="../reference/pod_exec_open.html">pod_exec_open()</a></code>, which
-returns a <code>PodExecSession</code> with <code>write_stdin()</code>,
-<code>on_stdout()</code> and friends. Incoming output is delivered while
-<code>wait()</code> or <code>pump()</code> runs.</p>
-<p>Forward a pod port to a local one, like
+<p>For something interactive, <code><a href="../reference/pod_exec_open.html">pod_exec_open()</a></code> returns a
+<code>PodExecSession</code> you can write to with
+<code>write_stdin()</code> and read from with <code>on_stdout()</code>.
+Output only arrives while <code>wait()</code> or <code>pump()</code> is
+running.</p>
+<p><code><a href="../reference/pod_port_forward.html">pod_port_forward()</a></code> works like
 <code>kubectl port-forward</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pod_port_forward.html">pod_port_forward</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>, <span class="st">"default"</span>, <span class="st">"nginx-abc"</span>, remote_port <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></span>
 <span><span class="fu">httr2</span><span class="fu">::</span><span class="fu"><a href="https://httr2.r-lib.org/reference/request.html" class="external-link">request</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"http://127.0.0.1:"</span>, <span class="va">fwd</span><span class="op">$</span><span class="va">port</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">httr2</span><span class="fu">::</span><span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">fwd</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Both need the <code>nanonext</code> package. They verify the API
-server’s certificate against the kubeconfig CA (or the system CA bundle)
-and check its hostname, and authenticate with a bearer token. A
-kubeconfig whose user has only a client certificate, as kind, minikube
-and kubeadm create by default, gets an error explaining this; use a
-token instead:</p>
+<p>Both need the <code>nanonext</code> package. They check the API
+server’s certificate against the CA in your kubeconfig (or the system’s,
+if the kubeconfig has none), and they log in with a token. Kind,
+minikube and kubeadm give their default user a client certificate and no
+token, so with those you’ll get an error until you use a token
+instead:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># kubectl create serviceaccount rk8s-dev</span></span>
 <span><span class="co"># kubectl create clusterrolebinding rk8s-dev --clusterrole=edit \</span></span>
@@ -319,7 +306,8 @@ token instead:</p>
 <div class="section level2">
 <h2 id="leader-election">Leader election<a class="anchor" aria-label="anchor" href="#leader-election"></a>
 </h2>
-<p>For controllers that need exactly one active replica:</p>
+<p>When you run more than one replica of a controller, you want only one
+of them doing the work:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/run_as_leader.html">run_as_leader</a></span><span class="op">(</span></span>
 <span>  <span class="va">k</span><span class="op">$</span><span class="va">client</span>,</span>
@@ -336,21 +324,25 @@ token instead:</p>
 <span>  <span class="op">}</span>,</span>
 <span>  on_stopped_leading <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"stopped leading"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>A background process (via <code>callr</code>) renews the lease.
+<p>While your callback runs, a background process (started with
+<code>callr</code>) keeps renewing the lease. If another replica takes
+the lease, or renewals keep failing, the next
 <code>leader$check()</code> signals an <code>rk8s_leadership_lost</code>
-condition as soon as the lease is taken or renewals stop succeeding;
-<code><a href="../reference/run_as_leader.html">run_as_leader()</a></code> then stops the callback, releases the lease
-and calls <code>on_stopped_leading</code>. Call it often, at least once
-per <code>renew_deadline_seconds</code>, so two replicas never act as
-leader at the same time. <code>leader$is_leader()</code> is the
-non-signalling version.</p>
+condition. <code><a href="../reference/run_as_leader.html">run_as_leader()</a></code> catches it, releases the lease
+and calls <code>on_stopped_leading</code>. Call
+<code>leader$check()</code> at least once per
+<code>renew_deadline_seconds</code>; that’s what keeps two replicas from
+acting as leader at the same time. If you’d rather test than be
+interrupted, <code>leader$is_leader()</code> returns <code>TRUE</code>
+or <code>FALSE</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="errors">Errors<a class="anchor" aria-label="anchor" href="#errors"></a>
 </h2>
-<p>API failures surface as <code>rk8s_api_error</code> conditions whose
-<code>$exception</code> is an <code>ApiException</code> with the HTTP
-status, reason, headers, and parsed <code>metav1.Status</code>.</p>
+<p>When the API server returns an error, rk8s signals an
+<code>rk8s_api_error</code> condition. Its <code>exception</code> field
+is an <code>ApiException</code> holding the HTTP status, reason, headers
+and the parsed <code>Status</code> object.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pod</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html" class="external-link">tryCatch</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pod"</span>, <span class="st">"nope"</span><span class="op">)</span>,</span>
@@ -360,11 +352,12 @@ status, reason, headers, and parsed <code>metav1.Status</code>.</p>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="dropping-to-the-typedgenerated-layer">Dropping to the typed/generated layer<a class="anchor" aria-label="anchor" href="#dropping-to-the-typedgenerated-layer"></a>
+<h2 id="the-generated-api">The generated API<a class="anchor" aria-label="anchor" href="#the-generated-api"></a>
 </h2>
-<p>Any time <code>kube_*</code> doesn’t expose what you need, drop down.
-The verb client carries the underlying <code>ApiClient</code> and
-<code>DynamicClient</code>:</p>
+<p>The verbs cover common work. For everything else there are the
+generated classes, one per API group and version, with methods named
+after the official Python client’s. They all take the session’s
+<code>ApiClient</code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Typed:</span></span>
 <span><span class="va">core</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/CoreV1Api.html">CoreV1Api</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span><span class="op">)</span></span>
@@ -385,15 +378,17 @@ The verb client carries the underlying <code>ApiClient</code> and
 <span>  namespace <span class="op">=</span> <span class="st">"default"</span>, body <span class="op">=</span> <span class="va">dep</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="regenerating-from-a-newer-kubernetes-spec">Regenerating from a newer Kubernetes spec<a class="anchor" aria-label="anchor" href="#regenerating-from-a-newer-kubernetes-spec"></a>
+<h2 id="regenerating-for-a-newer-kubernetes">Regenerating for a newer Kubernetes<a class="anchor" aria-label="anchor" href="#regenerating-for-a-newer-kubernetes"></a>
 </h2>
+<p>The generated code comes from the OpenAPI spec in
+<code>tools/gen/spec/</code>. To move to another release, download its
+spec and run the generator:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-L</span> <span class="at">-o</span> tools/gen/spec/swagger.json <span class="dt">\</span></span>
 <span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  https://raw.githubusercontent.com/kubernetes/kubernetes/release-1.31/api/openapi-spec/swagger.json</span>
 <span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="ex">Rscript</span> tools/gen/generate.R tools/gen/spec/swagger.json R</span>
 <span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a><span class="ex">R</span> CMD build .</span></code></pre></div>
-<p>The generator (<code>tools/gen/</code>) reads OpenAPI v2 JSON and
-emits R6 model classes plus per-tag API classes — about 700 R files.
-NAMESPACE entries between sentinel lines are managed automatically.</p>
+<p>It writes about 700 R files of R6 classes and updates the generated
+part of NAMESPACE (the lines between the sentinel comments).</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

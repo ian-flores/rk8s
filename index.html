@@ -65,40 +65,33 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.svg" class="logo" alt=""><h1 id="rk8s--kubernetes-client-for-r">rk8s — Kubernetes client for R<a class="anchor" aria-label="anchor" href="#rk8s--kubernetes-client-for-r"></a>
+<img src="logo.svg" class="logo" alt=""><h1 id="rk8s">rk8s<a class="anchor" aria-label="anchor" href="#rk8s"></a>
 </h1>
 </div>
 <p><a href="https://github.com/ian-flores/rk8s/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ian-flores/rk8s/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></p>
-<p><code>rk8s</code> gives R first-class access to the Kubernetes API. Two layers:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>A high-level verb API</strong> — <code><a href="reference/kube_get.html">kube_get()</a></code>, <code><a href="reference/kube_apply.html">kube_apply()</a></code>, <code><a href="reference/kube_logs.html">kube_logs()</a></code>, <code><a href="reference/kube_watch.html">kube_watch()</a></code>, <code><a href="reference/kube_scale.html">kube_scale()</a></code>, <code><a href="reference/kube_delete.html">kube_delete()</a></code>. The surface most users want — never write <code>V1Deployment$new(...)</code> to do ordinary work.</li>
-<li>
-<strong>A typed / generated API</strong> — <code>CoreV1Api</code>, <code>AppsV1Api</code>, <code>V1Pod</code>, <code>V1Deployment</code>, … 944 operations and 635 model classes generated from the Kubernetes OpenAPI spec, mirroring the official Python client and Go client-go. Use it when you want full fidelity.</li>
-</ol>
-<p>Watch helpers, an Informer + Lister cache, a DynamicClient for CustomResources, pod exec and port-forward, and a coordination.k8s.io/Lease-backed leader election round it out.</p>
-<div class="section level2">
-<h2 id="install">Install<a class="anchor" aria-label="anchor" href="#install"></a>
-</h2>
+<p>A Kubernetes client for R.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ian-flores/rk8s"</span><span class="op">)</span></span></code></pre></div>
-<p>Depends on <code>R6</code>, <code>httr2</code> (&gt;= 1.1.0), <code>jsonlite</code>, <code>yaml</code>, <code>openssl</code> and <code>base64enc</code>. Optional: <code>nanonext</code> (exec / port-forward) and <code>callr</code> (leader election, <code><a href="reference/pod_port_forward.html">pod_port_forward()</a></code>).</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ian-flores.github.io/rk8s/">rk8s</a></span><span class="op">)</span></span>
+<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Kube.html">kube</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span><span class="op">)</span></span></code></pre></div>
+<p>rk8s reads your kubeconfig the way kubectl does, so if <code>kubectl get pods</code> works, so does the code above.</p>
+<p>Most of the time you’ll use a handful of verbs: <code><a href="reference/kube_get.html">kube_get()</a></code>, <code><a href="reference/kube_apply.html">kube_apply()</a></code>, <code><a href="reference/kube_logs.html">kube_logs()</a></code>, <code><a href="reference/kube_scale.html">kube_scale()</a></code>, <code><a href="reference/kube_watch.html">kube_watch()</a></code> and <code><a href="reference/kube_delete.html">kube_delete()</a></code>. They take manifests as YAML or plain R lists. Behind them is a client generated from the Kubernetes OpenAPI spec (<code>CoreV1Api</code>, <code>V1Pod</code> and so on, 944 operations in all) for anything the verbs don’t cover.</p>
+<p>There’s also what you need to run a controller in R: watches, an informer cache, and leader election on a Lease.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>rk8s isn’t on CRAN yet. Install it from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ian-flores/rk8s"</span><span class="op">)</span></span></code></pre></div>
+<p>For <code><a href="reference/pod_exec.html">pod_exec()</a></code> and <code><a href="reference/pod_port_forward.html">pod_port_forward()</a></code> you also need <code>nanonext</code>, and for leader election <code>callr</code>.</p>
 </div>
 <div class="section level2">
-<h2 id="quickstart">Quickstart<a class="anchor" aria-label="anchor" href="#quickstart"></a>
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ian-flores.github.io/rk8s/">rk8s</a></span><span class="op">)</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Kube.html">kube</a></span><span class="op">(</span><span class="op">)</span>                             <span class="co"># ~/.kube/config; or kube(context=…)</span></span>
+<p><code><a href="reference/Kube.html">kube()</a></code> uses <code>$KUBECONFIG</code> (or <code>~/.kube/config</code>) and the current context. Its <code>context</code>, <code>config_file</code> and <code>namespace</code> arguments change that.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Kube.html">kube</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Apply manifests (server-side apply, force optional)</span></span>
-<span><span class="fu"><a href="reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment.yaml"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>  apiVersion <span class="op">=</span> <span class="st">"v1"</span>, kind <span class="op">=</span> <span class="st">"ConfigMap"</span>,</span>
-<span>  metadata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"demo"</span><span class="op">)</span>,</span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hello <span class="op">=</span> <span class="st">"world"</span><span class="op">)</span></span>
-<span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"</span></span>
 <span><span class="st">  apiVersion: apps/v1</span></span>
 <span><span class="st">  kind: Deployment</span></span>
@@ -112,72 +105,75 @@
 <span><span class="st">        containers: [{name: nginx, image: nginx:1.25}]</span></span>
 <span><span class="st">"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># List, get, table-ize</span></span>
-<span><span class="fu"><a href="reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span>, namespace <span class="op">=</span> <span class="st">"default"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment/nginx"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span><span class="op">)</span><span class="op">)</span>      <span class="co"># one row per object</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="reference/kube_get.html">kube_get</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Logs, scale, watch, delete</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="reference/kube_logs.html">kube_logs</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"nginx-abc"</span>, tail <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/kube_scale.html">kube_scale</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment"</span>, <span class="st">"nginx"</span>, replicas <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/kube_watch.html">kube_watch</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span>, timeout_seconds <span class="op">=</span> <span class="fl">30</span>, on_event <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">type</span>, <span class="va">obj</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">type</span>, <span class="st">" "</span>, <span class="va">obj</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
-<span>  <span class="cn">TRUE</span>                                  <span class="co"># FALSE stops the watch</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="reference/kube_logs.html">kube_logs</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"nginx-abc"</span>, tail <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/kube_delete.html">kube_delete</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment/nginx"</span><span class="op">)</span></span></code></pre></div>
-<p>Resource refs accept any of: <code>"pods"</code>, <code>"pod"</code>, <code>"po"</code>, <code>"deployment/nginx"</code>, <code>"apps/v1:Deployment"</code>, <code>c("apps/v1", "Deployment")</code>.</p>
-<p>CustomResources work out of the box — <code><a href="reference/kube_apply.html">kube_apply()</a></code> and <code><a href="reference/kube_get.html">kube_get()</a></code> discover the REST path for any <code>apiVersion+kind</code>.</p>
-</div>
-<div class="section level2">
-<h2 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a>
-</h2>
-<p><code><a href="reference/load_kube_config.html">load_kube_config()</a></code> reads kubeconfig files the way <code>kubectl</code> does:</p>
-<ul>
-<li>
-<code>KUBECONFIG</code> with several files, merged (first definition wins)</li>
-<li>the context’s default namespace (used by <code><a href="reference/Kube.html">kube()</a></code>)</li>
-<li>bearer tokens (<code>token</code> / <code>tokenFile</code>) and basic auth</li>
-<li>client certificates, inline (<code>*-data</code>) or as files relative to the kubeconfig that names them</li>
-<li>
-<code>exec</code> credential plugins (EKS, GKE, AKS/kubelogin, …), cached until they expire and re-run on 401</li>
-<li>the <code>oidc</code> auth-provider, including refresh-token renewal</li>
-<li>
-<code>proxy-url</code>, <code>tls-server-name</code> and <code>insecure-skip-tls-verify</code>
-</li>
-</ul>
-<p>Inside a pod:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Kube.html">kube</a></span><span class="op">(</span>client <span class="op">=</span> <span class="va"><a href="reference/ApiClient.html">ApiClient</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu"><a href="reference/load_incluster_config.html">load_incluster_config</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="informers--listers-controllers">Informers + Listers (controllers)<a class="anchor" aria-label="anchor" href="#informers--listers-controllers"></a>
-</h2>
-<p>Build a controller without re-listing every tick:</p>
+<p><code><a href="reference/kube_apply.html">kube_apply()</a></code> does a server-side apply, and also takes a file path or an R list:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"deployment.yaml"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/kube_apply.html">kube_apply</a></span><span class="op">(</span><span class="va">k</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>  apiVersion <span class="op">=</span> <span class="st">"v1"</span>, kind <span class="op">=</span> <span class="st">"ConfigMap"</span>,</span>
+<span>  metadata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"demo"</span><span class="op">)</span>,</span>
+<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hello <span class="op">=</span> <span class="st">"world"</span><span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>You can name a resource as <code>"pods"</code>, <code>"pod"</code>, <code>"po"</code>, <code>"deployment/nginx"</code>, <code>"apps/v1:Deployment"</code> or <code>c("apps/v1", "Deployment")</code>. Custom resources work the same way; rk8s looks up where they live through API discovery.</p>
+<div class="section level3">
+<h3 id="watching">Watching<a class="anchor" aria-label="anchor" href="#watching"></a>
+</h3>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/kube_watch.html">kube_watch</a></span><span class="op">(</span><span class="va">k</span>, <span class="st">"pods"</span>, timeout_seconds <span class="op">=</span> <span class="fl">30</span>, on_event <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">type</span>, <span class="va">obj</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">type</span>, <span class="st">" "</span>, <span class="va">obj</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span>
+<span>  <span class="cn">TRUE</span>   <span class="co"># return FALSE to stop</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<p>For a controller you usually want an informer instead. It lists once, keeps a local copy up to date from a watch, and calls your handlers:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inf</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/Informer.html">Informer</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>,</span>
 <span>  resource_path <span class="op">=</span> <span class="st">"/api/v1/namespaces/default/pods"</span>,</span>
 <span>  object_from_list <span class="op">=</span> <span class="va">V1Pod</span><span class="op">$</span><span class="va">from_list</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">inf</span><span class="op">$</span><span class="fu">add_event_handler</span><span class="op">(</span></span>
 <span>  on_add    <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"add: "</span>, <span class="va">obj</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>,</span>
-<span>  on_update <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">old</span>, <span class="va">new</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"upd: "</span>, <span class="va">new</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>,</span>
-<span>  on_delete <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"del: "</span>, <span class="va">obj</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">)</span></span>
+<span>  on_update <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">old</span>, <span class="va">new</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"update: "</span>, <span class="va">new</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>,</span>
+<span>  on_delete <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"delete: "</span>, <span class="va">obj</span><span class="op">$</span><span class="va">metadata</span><span class="op">$</span><span class="va">name</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">inf</span><span class="op">$</span><span class="fu">run</span><span class="op">(</span>stop_seconds <span class="op">=</span> <span class="fl">120</span><span class="op">)</span>            <span class="co"># list, then watch; relists on 410</span></span>
-<span><span class="va">inf</span><span class="op">$</span><span class="fu">lister</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"nginx"</span>, namespace <span class="op">=</span> <span class="st">"default"</span><span class="op">)</span>   <span class="co"># cache lookup</span></span></code></pre></div>
+<span><span class="va">inf</span><span class="op">$</span><span class="fu">run</span><span class="op">(</span>stop_seconds <span class="op">=</span> <span class="fl">120</span><span class="op">)</span></span>
+<span><span class="va">inf</span><span class="op">$</span><span class="fu">lister</span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"nginx"</span>, namespace <span class="op">=</span> <span class="st">"default"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="exec-and-port-forward">Exec and port-forward<a class="anchor" aria-label="anchor" href="#exec-and-port-forward"></a>
-</h2>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="leader-election">Leader election<a class="anchor" aria-label="anchor" href="#leader-election"></a>
+</h3>
+<p>If you run several copies of a controller, only one should act at a time:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/run_as_leader.html">run_as_leader</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>,</span>
+<span>  lease_name <span class="op">=</span> <span class="st">"my-controller"</span>,</span>
+<span>  lease_namespace <span class="op">=</span> <span class="st">"kube-system"</span>,</span>
+<span>  identity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.info.html" class="external-link">Sys.info</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"nodename"</span><span class="op">]</span><span class="op">]</span>, <span class="st">"-"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.getpid.html" class="external-link">Sys.getpid</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  on_started_leading <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">leader</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw">repeat</span> <span class="op">{</span></span>
+<span>      <span class="va">leader</span><span class="op">$</span><span class="fu">check</span><span class="op">(</span><span class="op">)</span></span>
+<span>      <span class="fu">reconcile_once</span><span class="op">(</span><span class="op">)</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span>,</span>
+<span>  on_stopped_leading <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"stopped"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>A background process keeps renewing the lease. <code>leader$check()</code> throws as soon as the lease is lost, which ends your loop before another replica takes over, so call it often.</p>
+</div>
+<div class="section level3">
+<h3 id="exec-and-port-forward">Exec and port-forward<a class="anchor" aria-label="anchor" href="#exec-and-port-forward"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pod_exec.html">pod_exec</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>, <span class="st">"default"</span>, <span class="st">"nginx-abc"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ls"</span>, <span class="st">"/"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">r</span><span class="op">$</span><span class="va">stdout</span><span class="op">)</span>; <span class="va">r</span><span class="op">$</span><span class="va">exit_code</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">r</span><span class="op">$</span><span class="va">stdout</span><span class="op">)</span></span>
+<span><span class="va">r</span><span class="op">$</span><span class="va">exit_code</span></span>
 <span></span>
 <span><span class="va">fwd</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pod_port_forward.html">pod_port_forward</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>, <span class="st">"default"</span>, <span class="st">"nginx-abc"</span>, remote_port <span class="op">=</span> <span class="fl">80</span><span class="op">)</span></span>
 <span><span class="fu">httr2</span><span class="fu">::</span><span class="fu"><a href="https://httr2.r-lib.org/reference/req_perform.html" class="external-link">req_perform</a></span><span class="op">(</span><span class="fu">httr2</span><span class="fu">::</span><span class="fu"><a href="https://httr2.r-lib.org/reference/request.html" class="external-link">request</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"http://127.0.0.1:"</span>, <span class="va">fwd</span><span class="op">$</span><span class="va">port</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">fwd</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>These use WebSockets (via <code>nanonext</code>). The API server’s certificate is verified against the kubeconfig CA and its hostname checked. They authenticate with a bearer token: kubeconfigs that only have a client certificate (kind, minikube and kubeadm admin users) need a token, e.g. from a ServiceAccount:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<p>These run over a WebSocket, which has to authenticate with a token. The default users that kind, minikube and kubeadm create only have a client certificate, so with those you’ll need a ServiceAccount token:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># kubectl create serviceaccount rk8s-dev</span></span>
 <span><span class="co"># kubectl create clusterrolebinding rk8s-dev --clusterrole=edit \</span></span>
 <span><span class="co">#   --serviceaccount=default:rk8s-dev</span></span>
@@ -186,29 +182,11 @@
 <span>  <span class="st">"Bearer"</span>, <span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"kubectl create token rk8s-dev"</span>, intern <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Kube.html">kube</a></span><span class="op">(</span>client <span class="op">=</span> <span class="va"><a href="reference/ApiClient.html">ApiClient</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">cfg</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="leader-election">Leader election<a class="anchor" aria-label="anchor" href="#leader-election"></a>
-</h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/run_as_leader.html">run_as_leader</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span>,</span>
-<span>  lease_name <span class="op">=</span> <span class="st">"my-controller"</span>,</span>
-<span>  lease_namespace <span class="op">=</span> <span class="st">"kube-system"</span>,</span>
-<span>  identity <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.info.html" class="external-link">Sys.info</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="st">"nodename"</span><span class="op">]</span><span class="op">]</span>, <span class="st">"-"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.getpid.html" class="external-link">Sys.getpid</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  on_started_leading <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">leader</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw">repeat</span> <span class="op">{</span></span>
-<span>      <span class="va">leader</span><span class="op">$</span><span class="fu">check</span><span class="op">(</span><span class="op">)</span>          <span class="co"># stops here once leadership is lost</span></span>
-<span>      <span class="fu">reconcile_once</span><span class="op">(</span><span class="op">)</span></span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/Sys.sleep.html" class="external-link">Sys.sleep</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
-<span>    <span class="op">}</span></span>
-<span>  <span class="op">}</span>,</span>
-<span>  on_stopped_leading <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"stopped"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>A background process renews the lease. Call <code>leader$check()</code> regularly: it signals as soon as the lease is lost or renewals stop succeeding, so two replicas never act as leader at the same time.</p>
-</div>
-<div class="section level2">
-<h2 id="when-you-need-the-full-api-surface">When you need the full API surface<a class="anchor" aria-label="anchor" href="#when-you-need-the-full-api-surface"></a>
-</h2>
-<p>Drop down to typed classes any time:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="the-generated-api">The generated API<a class="anchor" aria-label="anchor" href="#the-generated-api"></a>
+</h3>
+<p>When the verbs don’t have what you need, use the generated classes directly. Their method names match the official Python client.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">core</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/CoreV1Api.html">CoreV1Api</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span><span class="op">)</span></span>
 <span><span class="va">pods</span> <span class="op">&lt;-</span> <span class="va">V1PodList</span><span class="op">$</span><span class="fu">from_list</span><span class="op">(</span><span class="va">core</span><span class="op">$</span><span class="fu">list_pod_for_all_namespaces</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -226,105 +204,26 @@
 <span><span class="va"><a href="reference/AppsV1Api.html">AppsV1Api</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">client</span><span class="op">)</span><span class="op">$</span><span class="fu">create_namespaced_deployment</span><span class="op">(</span></span>
 <span>  namespace <span class="op">=</span> <span class="st">"default"</span>, body <span class="op">=</span> <span class="va">dep</span><span class="op">)</span></span></code></pre></div>
 </div>
+</div>
 <div class="section level2">
-<h2 id="architecture">Architecture<a class="anchor" aria-label="anchor" href="#architecture"></a>
+<h2 id="authentication">Authentication<a class="anchor" aria-label="anchor" href="#authentication"></a>
 </h2>
-<table class="table">
-<colgroup>
-<col width="22%">
-<col width="44%">
-<col width="33%">
-</colgroup>
-<thead><tr>
-<th>Concern</th>
-<th>Hand-written (<code>R/*.R</code>)</th>
-<th>Generated (<code>R/gen_*.R</code>)</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>Verb API</td>
-<td>
-<code>kube</code>, <code>kube_get/apply/delete/scale/logs/watch</code>
-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Transport / auth</td>
-<td>
-<code>ApiClient</code>, <code>Configuration</code>
-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Config loading</td>
-<td>
-<code>load_kube_config</code>, <code>_incluster</code>, exec plugin</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Errors</td>
-<td><code>ApiException</code></td>
-<td>—</td>
-</tr>
-<tr>
-<td>Watch</td>
-<td><code>Watch</code></td>
-<td>—</td>
-</tr>
-<tr>
-<td>Exec / port-forward</td>
-<td>
-<code>pod_exec</code>, <code>pod_port_forward</code>
-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Cache</td>
-<td>
-<code>Informer</code>, <code>Lister</code>
-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Dynamic / discovery</td>
-<td>
-<code>DynamicClient</code>, <code>DynamicResource</code>
-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Leader election</td>
-<td><code>run_as_leader</code></td>
-<td>—</td>
-</tr>
-<tr>
-<td>YAML apply / quantity</td>
-<td>
-<code>create_from_yaml</code>, <code>parse_quantity</code>
-</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Typed API classes</td>
-<td>—</td>
-<td>
-<code>CoreV1Api</code>, <code>AppsV1Api</code>, … (62)</td>
-</tr>
-<tr>
-<td>Model classes</td>
-<td>—</td>
-<td>
-<code>V1Pod</code>, <code>V1Deployment</code>, … (635)</td>
-</tr>
-</tbody>
-</table>
-<p>The generator in <code>tools/gen/</code> reads the Kubernetes OpenAPI v2 swagger.json (pinned in <code>tools/gen/spec/</code>) and emits the typed classes — same architectural split as the Python client. To update to a newer cluster version, swap the spec and re-run:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">Rscript</span> tools/gen/generate.R tools/gen/spec/swagger.json R</span></code></pre></div>
+<p>rk8s supports what’s commonly found in kubeconfig files: tokens and token files, client certificates, basic auth, exec plugins (EKS, GKE, kubelogin and others), the <code>oidc</code> auth-provider, <code>proxy-url</code>, <code>tls-server-name</code>, <code>insecure-skip-tls-verify</code>, and a <code>KUBECONFIG</code> that lists several files. Inside a pod, use the ServiceAccount instead:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/Kube.html">kube</a></span><span class="op">(</span>client <span class="op">=</span> <span class="va"><a href="reference/ApiClient.html">ApiClient</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="fu"><a href="reference/load_incluster_config.html">load_incluster_config</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="development">Development<a class="anchor" aria-label="anchor" href="#development"></a>
+</h2>
+<p>The classes in <code>R/gen_*.R</code> are generated from the OpenAPI spec pinned in <code>tools/gen/spec/</code>. To target a newer Kubernetes release, replace the spec and regenerate:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">Rscript</span> tools/gen/generate.R tools/gen/spec/swagger.json R</span></code></pre></div>
+<p>The unit tests run against fake API servers. The integration tests in <code>tests/integration/</code> need a cluster you don’t mind writing to (kind works):</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="va">RK8S_E2E</span><span class="op">=</span>1 <span class="ex">Rscript</span> tests/integration/run.R</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
 </h2>
-<p>Apache 2.0.</p>
+<p>Apache 2.0</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
