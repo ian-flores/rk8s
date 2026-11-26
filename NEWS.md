@@ -20,6 +20,19 @@
 
 ## Correctness fixes
 
+* Typed create/replace calls (`AppsV1Api$create_namespaced_deployment()`
+  and the other generated write operations) failed with 415 Unsupported
+  Media Type: they sent the spec's `Content-Type: */*` literally. Wildcards
+  are now sent as `application/json`.
+* `kube_logs()` and `CoreV1Api$read_namespaced_pod_log()` failed with 406
+  Not Acceptable (a bare `Accept: text/plain` is refused by the API
+  server); `*/*` is now offered as a fallback. Untyped generated operations
+  (logs, proxy, ...) return text bodies as strings instead of failing to
+  parse them as JSON.
+* `pod_exec(stdin_data =)` hung until its timeout: the empty stdin frame
+  it sent is not an EOF in the `v4.channel.k8s.io` protocol. Exec now
+  offers `v5.channel.k8s.io` (Kubernetes 1.29+) and `close_stdin()` sends
+  its stream-close message.
 * `Watch` now delivers events as they arrive. It previously read the stream
   with a blocking 64 KB `readBin()`, so small events were held until 64 KB
   accumulated or the server closed the watch. Requires httr2 >= 1.1.0.

@@ -1,4 +1,5 @@
-# Pod exec/attach over WebSocket - implements the v4.channel.k8s.io subprotocol.
+# Pod exec/attach over WebSocket - implements the v5.channel.k8s.io and
+# v4.channel.k8s.io subprotocols (v5 adds channel 255 for closing a stream).
 #
 # Each WS binary frame from the server is prefixed with a 1-byte channel id:
 #   0 = stdin   (client -> server)
@@ -164,10 +165,13 @@ PodExecSession <- R6::R6Class(
       invisible(self)
     },
 
-    #' @description Half-close the connection by sending a zero-length
-    #'   stdin frame, signalling EOF to the remote.
+    #' @description Signal EOF on the remote stdin. Needs the
+    #'   `v5.channel.k8s.io` subprotocol (Kubernetes 1.29+), which is offered
+    #'   first; servers that only speak v4 have no way to close stdin and
+    #'   ignore the message, so a command reading stdin to EOF keeps running
+    #'   until the session is closed.
     close_stdin = function() {
-      private$send(0L, raw(0))
+      private$send(255L, as.raw(0L))   # v5 CLOSE for stream 0 (stdin)
       invisible(self)
     },
 
@@ -239,7 +243,7 @@ PodExecSession <- R6::R6Class(
       )
       ws_connect(private$client$configuration,
                  sprintf("/api/v1/namespaces/%s/pods/%s/exec", namespace, name),
-                 query)
+                 query, protocol = "v5.channel.k8s.io, v4.channel.k8s.io")
     },
 
     # Mark closed (once), close the transport, fire the close callback.

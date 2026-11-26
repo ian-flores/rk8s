@@ -180,8 +180,11 @@ Resize the remote TTY. Only meaningful when \code{tty=TRUE}.
 \if{html}{\out{<a id="method-PodExecSession-close_stdin"></a>}}
 \if{latex}{\out{\hypertarget{method-PodExecSession-close_stdin}{}}}
 \subsection{Method \code{close_stdin()}}{
-Half-close the connection by sending a zero-length
-stdin frame, signalling EOF to the remote.
+Signal EOF on the remote stdin. Needs the
+\code{v5.channel.k8s.io} subprotocol (Kubernetes 1.29+), which is offered
+first; servers that only speak v4 have no way to close stdin and
+ignore the message, so a command reading stdin to EOF keeps running
+until the session is closed.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{PodExecSession$close_stdin()}\if{html}{\out{</div>}}
 }

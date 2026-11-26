@@ -33,7 +33,7 @@ ApiClient <- R6::R6Class(
     },
 
     #' @description Perform an HTTP call against the API server.
-    #' @param resource_path Path portion of the URL (e.g. "/api/v1/namespaces/{namespace}/pods").
+    #' @param resource_path Path portion of the URL (e.g. `"/api/v1/namespaces/{namespace}/pods"`).
     #' @param method HTTP method (GET, POST, PUT, PATCH, DELETE).
     #' @param path_params Named list of path params substituted into
     #'   `resource_path`.
@@ -48,7 +48,7 @@ ApiClient <- R6::R6Class(
     #'   or `application/json-patch+json` for PATCH variants).
     #' @param accept Accept header (default application/json).
     #' @param stream If TRUE, return the raw [httr2::response] without reading
-    #'   the body — used by [Watch] and log-streaming.
+    #'   the body - used by [Watch] and log-streaming.
     call_api = function(resource_path, method = "GET",
                         path_params = list(), query_params = list(),
                         header_params = list(), body = NULL,
@@ -100,7 +100,7 @@ ApiClient <- R6::R6Class(
     },
 
     #' @description Substitute `{name}` placeholders in a path template.
-    #' @param path_template E.g. "/api/v1/namespaces/{namespace}/pods/{name}".
+    #' @param path_template E.g. `"/api/v1/namespaces/{namespace}/pods/{name}"`.
     #' @param path_params Named list of replacements.
     select_path = function(path_template, path_params = list()) {
       for (nm in names(path_params)) {
@@ -151,6 +151,11 @@ ApiClient <- R6::R6Class(
       } else if (!is.null(cfg$username)) {
         req <- httr2::req_auth_basic(req, cfg$username, cfg$password %||% "")
       }
+      # The spec says the log endpoints produce text/plain, but the API server
+      # answers a bare `Accept: text/plain` with 406 (it negotiates only
+      # JSON/YAML/protobuf) while still returning text for `*/*`. Offer the
+      # wildcard as a fallback, as kubectl does.
+      if (identical(accept, "text/plain")) accept <- "text/plain, */*"
       if (!is.null(accept)) headers[["Accept"]] <- accept
 
       # TLS configuration.
@@ -167,7 +172,13 @@ ApiClient <- R6::R6Class(
       if (!is.null(connect_to))      opts$connect_to <- connect_to
       if (length(opts) > 0) req <- do.call(httr2::req_options, c(list(req), opts))
 
-      # Body serialization.
+      # Body serialization. The OpenAPI spec lists `*/*` as the accepted type
+      # for most writes; the API server rejects that literal Content-Type
+      # (415), so send JSON instead, as the Python client does.
+      if (is.null(content_type) || !nzchar(content_type) ||
+          grepl("*", content_type, fixed = TRUE)) {
+        content_type <- "application/json"
+      }
       if (!is.null(body)) {
         if (is.character(body) || is.raw(body)) {
           req <- httr2::req_body_raw(req, body, type = content_type)
@@ -190,6 +201,14 @@ ApiClient <- R6::R6Class(
       if (identical(response_type, "text")) return(httr2::resp_body_string(resp))
       body <- tryCatch(httr2::resp_body_string(resp), error = function(e) "")
       if (!nzchar(body)) return(NULL)
+      # Untyped operations (pod logs, proxy, ...) may return text; only parse
+      # JSON responses.
+      if (is.null(response_type)) {
+        ct <- httr2::resp_content_type(resp)
+        if (!is.na(ct) && nzchar(ct) && !grepl("json", ct, fixed = TRUE)) {
+          return(body)
+        }
+      }
       parsed <- jsonlite::fromJSON(body, simplifyVector = FALSE)
       if (is.null(response_type)) return(parsed)
 

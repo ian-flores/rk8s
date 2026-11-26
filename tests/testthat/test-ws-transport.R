@@ -116,8 +116,27 @@ test_that("pod_exec runs over verified TLS: stdout, stderr, stdin, exit code", {
   r3 <- pod_exec(cl, "ns", "pod", "false", timeout = 10)
   expect_equal(r3$exit_code, 1L)
 
-  expect_true(all(grepl("auth=Bearer good-token proto=v4.channel.k8s.io$",
-                        grep("^REQUEST", f$log(), value = TRUE))))
+  expect_true(all(grepl(
+    "auth=Bearer good-token proto=v5.channel.k8s.io, v4.channel.k8s.io$",
+    grep("^REQUEST", f$log(), value = TRUE))))
+})
+
+test_that("stdin EOF needs v5; against a v4-only server the session is bounded", {
+  # v5 (preferred) closes stdin, so `cat` finishes.
+  f <- local_fake_kubelet()
+  r <- pod_exec(fake_client(f), "ns", "pod", "cat", stdin_data = "x", timeout = 10)
+  expect_false(r$timed_out)
+  expect_equal(r$stdout, "ran: cat\nx")
+
+  # A v4-only server ignores the close message, so `cat` never sees EOF;
+  # the timeout still ends the session and the output so far is returned.
+  withr::local_envvar(FAKE_PROTOCOLS = "v4.channel.k8s.io")
+  f4 <- local_fake_kubelet()
+  r4 <- pod_exec(fake_client(f4), "ns", "pod", "cat", stdin_data = "y", timeout = 2)
+  expect_true(r4$timed_out)
+  expect_equal(r4$stdout, "ran: cat\ny")
+  # without stdin, v4 sessions end normally
+  expect_equal(pod_exec(fake_client(f4), "ns", "pod", "ls", timeout = 10)$exit_code, 0L)
 })
 
 test_that("exec ends promptly however the server closes the connection", {

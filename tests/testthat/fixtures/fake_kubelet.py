@@ -11,7 +11,10 @@ from urllib.parse import urlsplit, parse_qs
 
 CERT, KEY, PORTFILE, LOGFILE = sys.argv[1:5]
 TOKEN = "Bearer good-token"
-PROTO = "v4.channel.k8s.io"
+V4 = "v4.channel.k8s.io"
+V5 = "v5.channel.k8s.io"
+# FAKE_PROTOCOLS: what this server supports, in preference order.
+SUPPORTED = os.environ.get("FAKE_PROTOCOLS", V5 + "," + V4).split(",")
 lock = threading.Lock()
 
 def log(line):
@@ -74,16 +77,24 @@ class Conn:
             pass
         self.sock.close()
 
-def exec_session(c, q):
+def exec_session(c, q, proto):
     cmd = q.get("command", [])
     c.send_frame(b"\x01" + ("ran: %s\n" % " ".join(cmd)).encode())
     c.send_frame(b"\x02" + b"a warning\n")
     if q.get("stdin", ["false"])[0] == "true":
+        # Like the API server: only v5 can close stdin (channel 255 with the
+        # stream id); v4 has no EOF signal, and unknown channels are ignored.
         while True:
             op, data = c.recv_frame()
-            if op == 8 or (op == 2 and data[:1] == b"\x00" and len(data) == 1):
+            if op == 8:
                 break
-            if op == 2 and data[:1] == b"\x00":
+            if op != 2 or not data:
+                continue
+            if data[:1] == b"\xff":
+                if proto == V5 and data[1:2] == b"\x00":
+                    break
+                continue
+            if data[:1] == b"\x00" and len(data) > 1:
                 c.send_frame(b"\x01" + data[1:])
     if cmd[:1] == ["false"]:
         st = {"kind": "Status", "status": "Failure", "reason": "NonZeroExitCode",
@@ -121,18 +132,19 @@ def handle(raw):
             sock.sendall(b"HTTP/1.1 401 Unauthorized\r\nContent-Length: 0\r\n\r\n")
             return sock.close()
         offered = [p.strip() for p in h.get("sec-websocket-protocol", "").split(",")]
-        if PROTO not in offered:
+        chosen = next((p for p in SUPPORTED if p in offered), None)
+        if chosen is None:
             sock.sendall(b"HTTP/1.1 400 Bad Request\r\nContent-Length: 0\r\n\r\n")
             return sock.close()
         acc = base64.b64encode(hashlib.sha1((h["sec-websocket-key"] +
               "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").encode()).digest()).decode()
         sock.sendall(("HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n"
                       "Connection: Upgrade\r\nSec-WebSocket-Accept: %s\r\n"
-                      "Sec-WebSocket-Protocol: %s\r\n\r\n" % (acc, PROTO)).encode())
+                      "Sec-WebSocket-Protocol: %s\r\n\r\n" % (acc, chosen)).encode())
         u = urlsplit(path)
         q = parse_qs(u.query)
         if u.path.endswith("/exec"):
-            exec_session(c, q)
+            exec_session(c, q, chosen)
         elif u.path.endswith("/portforward"):
             portforward_session(c, q)
         else:
