@@ -36,6 +36,12 @@
   `is_deleting()` (patches carry the resourceVersion, so a stale read gets
   a 409 instead of a lost update), and `kube_event()` (events shown by
   `kubectl describe`).
+* `Manager$run(health_port =)` (or `$serve_health(port)`) answers
+  Kubernetes probes from the loop: `/healthz` is 200 while the loop turns,
+  `/readyz` is 200 once running or standing by for the lease. While waiting
+  for the lease, a standby manager keeps answering probes and now honours
+  `stop_seconds` and `stop()`. `run_as_leader()` gains `on_wait`, called
+  instead of `Sys.sleep()` between acquisition attempts.
 
 ## Security
 
