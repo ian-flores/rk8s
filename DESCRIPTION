@@ -30,10 +30,10 @@ Suggests:
     webfakes,
     withr,
     callr,
+    processx,
     knitr,
     rmarkdown,
-    websocket,
-    later
+    nanonext (>= 1.10.3)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 RoxygenNote: 7.3.3

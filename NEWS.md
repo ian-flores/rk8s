@@ -1,5 +1,23 @@
 # rk8s (development version)
 
+## Security
+
+* `pod_exec()`, `pod_exec_open()`, `pod_port_forward()` and
+  `pod_port_forward_open()` now verify the API server's TLS certificate.
+  They previously used the `websocket` package, which accepts any
+  certificate for any hostname, so the bearer token could be sent to an
+  impersonating server. They now use `nanonext` (>= 1.10.3, in Suggests
+  instead of `websocket` and `later`), verify against the kubeconfig CA (or
+  the system CA bundle) and check the hostname. `insecure-skip-tls-verify`
+  is still honoured when set.
+* Limitations of the new transport, each reported with a clear error rather
+  than an insecure connection: client-certificate-only users need a token
+  for exec / port-forward, and `tls-server-name` is not supported for them.
+* Sessions gain `pump(timeout)` to dispatch incoming frames without blocking
+  for long; `PodPortForwardSession` gains `is_closed()`. Frames are
+  dispatched only while `wait()` or `pump()` runs (as before, when the
+  `later` event loop had to be run).
+
 ## Correctness fixes
 
 * `Watch` now delivers events as they arrive. It previously read the stream

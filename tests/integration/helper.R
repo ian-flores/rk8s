@@ -1,10 +1,9 @@
 # Integration-test helpers.
 
 # Bridge a cert-authed kube() to a bearer-token ApiClient by minting a
-# TokenRequest for a cluster-admin ServiceAccount. Needed because the R
-# `websocket` package's TLS configuration doesn't yet expose
-# clientCertificate/clientKey, so exec/port-forward must be authenticated
-# by token. The cert-authed client is fully capable of creating the SA,
+# TokenRequest for a cluster-admin ServiceAccount. Needed because the
+# WebSocket client (nanonext) cannot present a TLS client certificate, so
+# exec/port-forward must be authenticated by token. The cert-authed client is fully capable of creating the SA,
 # the binding, and minting the token — we just exchange one credential
 # for another.
 #

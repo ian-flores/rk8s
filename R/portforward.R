@@ -1,4 +1,4 @@
-# Port-forward over WebSocket — implements the v4.channel.k8s.io subprotocol
+# Port-forward over WebSocket - implements the v4.channel.k8s.io subprotocol
 # for /api/v1/namespaces/{ns}/pods/{name}/portforward.
 #
 # Channel layout: ports are paired. For the i-th requested port (0-indexed):
@@ -20,6 +20,9 @@
 #' does **not** stand up a local TCP listener; instead it exposes a programmatic
 #' `write(port, bytes)` / `on_data(port, fn)` API. That's the direct mapping
 #' of the websocket protocol and matches the Python client's `PortForward`.
+#'
+#' Requires the `nanonext` package. TLS verification and authentication work
+#' as described for [pod_exec_open()].
 #'
 #' @param client An [ApiClient].
 #' @param namespace,name Pod coordinates.
@@ -66,19 +69,18 @@ pod_port_forward_open <- function(client, namespace, name, ports) {
 #' @export
 pod_port_forward <- function(client, namespace, name, remote_port,
                               local_port = 0) {
-  if (!requireNamespace("websocket", quietly = TRUE)) {
-    stop("pod_port_forward() requires the `websocket` package.", call. = FALSE)
+  if (!requireNamespace("nanonext", quietly = TRUE)) {
+    stop("pod_port_forward() requires the `nanonext` package.", call. = FALSE)
   }
   if (!requireNamespace("callr", quietly = TRUE)) {
     stop("pod_port_forward() requires the `callr` package.", call. = FALSE)
   }
-  if (!requireNamespace("later", quietly = TRUE)) {
-    stop("pod_port_forward() requires the `later` package.", call. = FALSE)
-  }
+  # Fail here, with the real reason, rather than in the child.
+  invisible(ws_plan(client$configuration, "/"))
 
   # Reserve a free port in this process before handing off, so we can return
   # it to the caller synchronously. We close it right before the child binds
-  # — small window of TOCTOU which is acceptable for ephemeral dev use.
+  # - small window of TOCTOU which is acceptable for ephemeral dev use.
   port <- if (identical(local_port, 0L) || identical(local_port, 0))
     pick_free_port() else as.integer(local_port)
 
@@ -86,12 +88,13 @@ pod_port_forward <- function(client, namespace, name, remote_port,
   # explicitly forward materialised PEM paths and the bearer token, since
   # exec-plugin tokens are derived in this process and not portable.
   cfg <- client$configuration
+  cc <- cfg$client_cert()
   child_cfg <- list(
     host = cfg$host,
     token = cfg$bearer_token(),
     ssl_ca_cert = cfg$ssl_ca_cert,
-    cert_file = cfg$cert_file,
-    key_file = cfg$key_file,
+    cert_file = cc$cert_file,
+    key_file = cc$key_file,
     verify_ssl = cfg$verify_ssl
   )
 
@@ -165,7 +168,7 @@ pick_free_port <- function(retries = 50) {
   stop("Could not allocate a local port for port-forward", call. = FALSE)
 }
 
-# Connect-test a local port — TRUE once the child's listener is up.
+# Connect-test a local port - TRUE once the child's listener is up.
 port_is_open <- function(port) {
   conn <- tryCatch(
     suppressWarnings(socketConnection(host = "127.0.0.1", port = port,
@@ -195,18 +198,8 @@ port_is_open <- function(port) {
   session <- rk8s::pod_port_forward_open(client, namespace, name,
                                            ports = remote_port)
 
-  # WebSocket connects asynchronously. Wait until it's OPEN (readyState=1)
-  # before binding the local listener so we don't accept TCP clients only
-  # to drop their bytes on a half-open WS.
-  ws <- session$.__enclos_env__$private$ws
-  deadline <- Sys.time() + 10
-  while (!is.null(ws) && ws$readyState() == 0L && Sys.time() < deadline) {
-    later::run_now(0.05)
-  }
-  if (!is.null(ws) && ws$readyState() != 1L) {
-    stop("WebSocket failed to reach OPEN state (readyState=",
-         ws$readyState(), ")", call. = FALSE)
-  }
+  # pod_port_forward_open() returns only once the WebSocket is open (or
+  # errors), so the listener never accepts clients for a half-open session.
   server <- serverSocket(local_port)
   on.exit({
     try(close.connection(server), silent = TRUE)
@@ -216,10 +209,11 @@ port_is_open <- function(port) {
   # Single-connection-at-a-time bridge. K8s portforward channels are 1:1
   # with requested ports, not 1:1 with TCP connections, so multiplexing
   # parallel client connections over a single websocket isn't supported by
-  # the protocol. For dev workflows that's fine — match kubectl's default.
+  # the protocol. For dev workflows that's fine; match kubectl's default.
   repeat {
     # Pump the websocket while we wait for clients.
-    later::run_now(0.05)
+    session$pump(0.05)
+    if (session$is_closed()) stop("port-forward WebSocket closed", call. = FALSE)
     ready <- tryCatch(socketSelect(list(server), timeout = 0.25),
                        error = function(e) NULL)
     if (is.null(ready) || !isOpen(server)) break
@@ -262,14 +256,15 @@ bridge_one <- function(session, remote_port, local) {
   # reliably tell a fast-but-silent client from a closed peer through the
   # R/socketSelect interaction either (a successful write seems to leave
   # the local socket pseudo-readable on macOS, with readBin then returning
-  # 0 — indistinguishable from a real EOF). So we run on dual idle timers:
+  # 0 - indistinguishable from a real EOF). So we run on dual idle timers:
   # once both sides have been quiet for `idle_grace`, we close.
   idle_grace <- 1.5
   last_local_byte <- Sys.time()
   last_pod_byte   <- Sys.time()
 
   while (TRUE) {
-    later::run_now(0.02)
+    session$pump(0.02)
+    if (session$is_closed()) return()
 
     if (length(inbox$buf) > 0) {
       for (chunk in inbox$buf) {
@@ -322,10 +317,6 @@ PodPortForwardSession <- R6::R6Class(
     #' @param client An [ApiClient].
     #' @param namespace,name,ports See [pod_port_forward_open()].
     initialize = function(client, namespace, name, ports) {
-      if (!requireNamespace("websocket", quietly = TRUE)) {
-        stop("pod_port_forward_open() requires the `websocket` package. ",
-             "Install with: install.packages(\"websocket\")", call. = FALSE)
-      }
       self$ports <- ports
       self$errors <- setNames(as.list(rep(NA_character_, length(ports))),
                                 as.character(ports))
@@ -363,19 +354,40 @@ PodPortForwardSession <- R6::R6Class(
     #' @description Close the WebSocket.
     close = function() {
       if (!isTRUE(private$closed)) {
-        try(private$ws$close(), silent = TRUE)
         private$closed <- TRUE
+        try(private$ws$close(), silent = TRUE)
       }
       invisible(self)
     },
 
-    #' @description Block while pumping the websocket event loop.
+    #' @description `TRUE` once the WebSocket has closed (either side).
+    is_closed = function() isTRUE(private$closed),
+
+    #' @description Dispatch frames that arrive within `timeout` seconds to
+    #'   the `on_data()` callbacks.
+    #' @param timeout Seconds to wait for a frame (default 0, i.e. ~1 ms).
+    #' @return `TRUE` while the session is open, invisibly.
+    pump = function(timeout = 0) {
+      if (isTRUE(private$closed)) return(invisible(FALSE))
+      frame <- private$ws$recv(timeout)
+      while (!is.null(frame)) {
+        private$handle_frame(frame)
+        frame <- private$ws$recv(0)
+      }
+      if (private$ws$is_closed()) private$closed <- TRUE
+      invisible(!isTRUE(private$closed))
+    },
+
+    #' @description Block until the WebSocket closes or `timeout` elapses,
+    #'   dispatching frames in the meantime.
     #' @param timeout Seconds.
     #' @return `TRUE` if the session ended naturally; `FALSE` on timeout.
     wait = function(timeout = 60) {
       deadline <- Sys.time() + timeout
-      while (!isTRUE(private$closed) && Sys.time() < deadline) {
-        later::run_now(0.1)
+      while (!isTRUE(private$closed)) {
+        left <- as.numeric(difftime(deadline, Sys.time(), units = "secs"))
+        if (left <= 0) break
+        self$pump(min(0.1, left))
       }
       isTRUE(private$closed)
     }
@@ -390,34 +402,10 @@ PodPortForwardSession <- R6::R6Class(
     closed = FALSE,
 
     open = function(namespace, name, ports) {
-      cfg <- private$client$configuration
-      base <- sub("^https://", "wss://",
-                   sub("^http://", "ws://", sub("/$", "", cfg$host)))
-      path <- sprintf("/api/v1/namespaces/%s/pods/%s/portforward", namespace, name)
-      qparts <- sprintf("ports=%d", ports)
-      url <- paste0(base, path, "?", paste(qparts, collapse = "&"))
-
-      headers <- list()
-      tok <- cfg$bearer_token()
-      if (!is.null(tok) && nzchar(tok)) {
-        headers[["Authorization"]] <- paste("Bearer", tok)
-      }
-      ws_args <- ws_tls_args(cfg)
-
-      ws <- do.call(websocket::WebSocket$new, c(
-        list(url = url,
-             protocols = "v4.channel.k8s.io",
-             headers = headers,
-             accessLogChannels = "none"),
-        ws_args
-      ))
-      ws$onMessage(function(event) private$handle_frame(event$data))
-      ws$onClose(function(event) { private$closed <- TRUE })
-      ws$onError(function(event) {
-        warning("port-forward websocket error: ", event$message, call. = FALSE)
-        private$closed <- TRUE
-      })
-      ws
+      ws_connect(private$client$configuration,
+                 sprintf("/api/v1/namespaces/%s/pods/%s/portforward",
+                         namespace, name),
+                 sprintf("ports=%d", ports))
     },
 
     handle_frame = function(data) {
@@ -426,7 +414,7 @@ PodPortForwardSession <- R6::R6Class(
       payload <- if (length(data) > 1) data[-1] else raw(0)
 
       # The kubelet's first frame on every channel is the 2-byte LE port
-      # number — used by the client to validate. Swallow it.
+      # number - used by the client to validate. Swallow it.
       ch_idx <- ch + 1L
       if (ch_idx > length(private$first_seen)) return()
       if (!isTRUE(private$first_seen[ch_idx])) {

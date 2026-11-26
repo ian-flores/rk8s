@@ -23,7 +23,7 @@ pod_exec_open(
 
 \item{name}{Pod name.}
 
-\item{command}{Character vector — the command and its arguments.}
+\item{command}{Character vector: the command and its arguments.}
 
 \item{container}{Optional container name (required if the pod has more
 than one container).}
@@ -43,10 +43,13 @@ the \code{v4.channel.k8s.io} subprotocol and returns a \link{PodExecSession} you
 write to / read from.
 }
 \details{
-Requires the \code{websocket} package (a Suggests dependency). If it isn't
-installed, \code{pod_exec_open()} errors with the install hint. Authentication
-is forwarded via a bearer-token \code{Authorization} header — exec/attach over
-websocket with client-certificate auth is not currently supported.
+Requires the \code{nanonext} package (a Suggests dependency). The API server's
+certificate is verified against the kubeconfig CA (or the system CA bundle)
+and its hostname is checked, unless the kubeconfig sets
+\code{insecure-skip-tls-verify}. Authentication is a bearer token sent in the
+\code{Authorization} header (token, token file, exec plugin or OIDC users);
+users with only a client certificate get an error explaining the
+alternatives, because the WebSocket client cannot present one.
 }
 \examples{
 \dontrun{

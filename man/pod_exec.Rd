@@ -21,7 +21,7 @@ pod_exec(
 
 \item{name}{Pod name.}
 
-\item{command}{Character vector — the command and its arguments.}
+\item{command}{Character vector: the command and its arguments.}
 
 \item{container}{Optional container name (required if the pod has more
 than one container).}

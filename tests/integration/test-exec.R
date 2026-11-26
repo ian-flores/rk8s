@@ -1,5 +1,5 @@
 test_that("pod_exec runs a command and captures stdout/stderr/exit", {
-  skip_if_not_installed("websocket")
+  skip_if_not_installed("nanonext")
   skip_if_not_installed("later")
 
   k <- kube(namespace = "default")
