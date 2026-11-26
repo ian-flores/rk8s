@@ -24,6 +24,7 @@ Do not hand-edit files under \verb{R/gen/}; regenerate via
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://ian-flores.github.io/rk8s/}
   \item \url{https://github.com/ian-flores/rk8s}
   \item Report bugs at \url{https://github.com/ian-flores/rk8s/issues}
 }

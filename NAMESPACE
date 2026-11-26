@@ -58,6 +58,7 @@ export(parse_quantity)
 
 # Re-exports
 importFrom(R6, R6Class)
+importFrom(curl, new_handle)
 importFrom(utils, URLencode)
 importFrom(stats, runif)
 

@@ -10,7 +10,8 @@
 #   add / modify / delete (optionally `silent`, i.e. not recorded in the watch
 #   history -- simulates changes missed while disconnected), compact (forces
 #   410 Gone), steal_lease, and a `quiet_watch` flag to make the server ignore
-#   timeoutSeconds (to test the client-side backstop).
+#   timeoutSeconds (to test the client-side backstop), and `hold_resumed` to
+#   send no bytes on a resumed watch until there is an event.
 
 fake_api_app <- function() {
   app <- webfakes::new_app()
@@ -23,6 +24,7 @@ fake_api_app <- function() {
   st$lease <- NULL
   st$lease_puts <- 0L
   st$ignore_timeout <- FALSE
+  st$hold_resumed <- FALSE
   st$requests <- character()
   app$locals$st <- st
 
@@ -81,7 +83,8 @@ fake_api_app <- function() {
             st$lease$metadata$resourceVersion <- as.character(st$rv)
           }
         },
-        ignore_timeout = { st$ignore_timeout <- TRUE }
+        ignore_timeout = { st$ignore_timeout <- TRUE },
+        hold_resumed = { st$hold_resumed <- TRUE }
       )
     }
     st$schedule <- keep
@@ -143,7 +146,11 @@ fake_api_app <- function() {
       if (!is.null(rv) && nzchar(rv) && as.integer(rv) < st$compacted) {
         return(gone())
       }
-      res$send_chunk("\n")   # flush headers like the real apiserver does
+      # A resumed watch with nothing new sends no bytes at all on the real
+      # API server until the first event (a bookmark can take a minute);
+      # `hold_resumed` mimics that. Otherwise flush the headers right away.
+      resumed <- !is.null(rv) && nzchar(rv)
+      if (!(resumed && isTRUE(st$hold_resumed))) res$send_chunk("\n")
       if (is.null(rv) || !nzchar(rv)) {
         for (o in st$objects) send_evt("ADDED", o)
         L$cur <- st$rv
