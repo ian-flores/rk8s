@@ -66,6 +66,17 @@ reconcile function makes the cluster match each object.
 - [`requeue()`](https://ian-flores.github.io/rk8s/reference/requeue.md)
   [`requeue_after()`](https://ian-flores.github.io/rk8s/reference/requeue.md)
   : Reconcile results
+- [`kube_patch_status()`](https://ian-flores.github.io/rk8s/reference/kube_patch_status.md)
+  : Update an object's status
+- [`set_owner()`](https://ian-flores.github.io/rk8s/reference/set_owner.md)
+  : Make one object the controller owner of another
+- [`has_finalizer()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  [`is_deleting()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  [`add_finalizer()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  [`remove_finalizer()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  : Finalizers
+- [`kube_event()`](https://ian-flores.github.io/rk8s/reference/kube_event.md)
+  : Record an event about an object
 
 ## Exec and port-forward
 

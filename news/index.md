@@ -37,6 +37,23 @@
   and retried. `mgr$run()` drives every controller from one loop,
   optionally under leader election (`leader_election = "<lease>"`), and
   `mgr$step()` runs a single pass.
+- Helpers for reconcile functions:
+  [`kube_patch_status()`](https://ian-flores.github.io/rk8s/reference/kube_patch_status.md)
+  (merge patch to the `/status` subresource),
+  [`set_owner()`](https://ian-flores.github.io/rk8s/reference/set_owner.md)
+  (controller owner reference, so owned objects are garbage-collected
+  and reconcile their owner),
+  [`add_finalizer()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  /
+  [`remove_finalizer()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  /
+  [`has_finalizer()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  /
+  [`is_deleting()`](https://ian-flores.github.io/rk8s/reference/finalizers.md)
+  (patches carry the resourceVersion, so a stale read gets a 409 instead
+  of a lost update), and
+  [`kube_event()`](https://ian-flores.github.io/rk8s/reference/kube_event.md)
+  (events shown by `kubectl describe`).
 
 ### Security
 

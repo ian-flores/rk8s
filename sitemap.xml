@@ -718,12 +718,15 @@
 <url><loc>https://ian-flores.github.io/rk8s/reference/WellKnownApi.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/WorkQueue.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/create_from_yaml.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/finalizers.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/index.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_apply.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_delete.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/kube_event.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_get.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_list.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_logs.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/kube_patch_status.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_scale.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_watch.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/list_kube_config_contexts.html</loc></url>
@@ -738,5 +741,6 @@
 <url><loc>https://ian-flores.github.io/rk8s/reference/requeue.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/rk8s-package.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/run_as_leader.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/set_owner.html</loc></url>
 </urlset>
 
