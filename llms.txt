@@ -292,6 +292,17 @@ Building blocks for controllers.
 - [`run_as_leader()`](https://ian-flores.github.io/rk8s/reference/run_as_leader.md)
   : Run as the leader under a Kubernetes Lease
 
+## Controllers and operators
+
+Run reconcile loops in R: informers feed a work queue, and your
+reconcile function makes the cluster match each object.
+
+- [`Manager`](https://ian-flores.github.io/rk8s/reference/Manager.md) :
+  Run controllers: informers, a work queue and a reconcile function
+- [`requeue()`](https://ian-flores.github.io/rk8s/reference/requeue.md)
+  [`requeue_after()`](https://ian-flores.github.io/rk8s/reference/requeue.md)
+  : Reconcile results
+
 ## Exec and port-forward
 
 WebSocket sessions to pods. Need the `nanonext` package and a bearer

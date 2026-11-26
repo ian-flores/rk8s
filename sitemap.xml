@@ -72,6 +72,7 @@
 <url><loc>https://ian-flores.github.io/rk8s/reference/Kube.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/Lister.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/LogsApi.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/Manager.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/NetworkingApi.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/NetworkingV1Api.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/NetworkingV1beta1Api.html</loc></url>
@@ -734,6 +735,7 @@
 <url><loc>https://ian-flores.github.io/rk8s/reference/pod_exec_open.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/pod_port_forward.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/pod_port_forward_open.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/requeue.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/rk8s-package.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/run_as_leader.html</loc></url>
 </urlset>

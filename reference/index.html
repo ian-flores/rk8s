@@ -203,6 +203,29 @@
         </dt>
         <dd>Run as the leader under a Kubernetes Lease</dd>
       </dl></div><div class="section level2">
+      <h2 id="controllers-and-operators">Controllers and operators<a class="anchor" aria-label="anchor" href="#controllers-and-operators"></a></h2>
+
+      <div class="section-desc"><p>Run reconcile loops in R: informers feed a work queue, and your reconcile function makes the cluster match each object.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="Manager.html">Manager</a></code>
+
+        </dt>
+        <dd>Run controllers: informers, a work queue and a reconcile function</dd>
+
+        <dt>
+
+          <code><a href="requeue.html">requeue()</a></code> <code><a href="requeue.html">requeue_after()</a></code>
+
+        </dt>
+        <dd>Reconcile results</dd>
+      </dl></div><div class="section level2">
       <h2 id="exec-and-port-forward">Exec and port-forward<a class="anchor" aria-label="anchor" href="#exec-and-port-forward"></a></h2>
 
       <div class="section-desc"><p>WebSocket sessions to pods. Need the <code>nanonext</code> package and a bearer token; the API server’s certificate is always verified unless the kubeconfig says <code>insecure-skip-tls-verify</code>.</p></div>

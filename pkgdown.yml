@@ -3,7 +3,7 @@ pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2026-11-26T19:19Z
+last_built: 2026-11-26T19:59Z
 urls:
   reference: https://ian-flores.github.io/rk8s/reference
   article: https://ian-flores.github.io/rk8s/articles
