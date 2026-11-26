@@ -7,7 +7,7 @@
 #' `rest.Config` struct from client-go.
 #'
 #' @examples
-#' # In-memory config — typical tests or ad-hoc use against a known endpoint.
+#' # In-memory config - typical tests or ad-hoc use against a known endpoint.
 #' cfg <- Configuration$new(
 #'   host = "https://10.0.0.1:6443",
 #'   api_key = list(authorization = "Bearer <token>"),
@@ -42,7 +42,7 @@ Configuration <- R6::R6Class(
     #' @field exec Optional `list(command, args, env, apiVersion)` exec plugin.
     exec = NULL,
     #' @field token_file Optional path to a file holding a bearer token (reread
-    #'   on each request to handle rotation — matches in-cluster behaviour).
+    #'   on each request to handle rotation - matches in-cluster behaviour).
     token_file = NULL,
     #' @field context_name Name of the kubeconfig context used, for reference.
     context_name = NULL,

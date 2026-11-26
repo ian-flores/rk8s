@@ -132,7 +132,7 @@ Watch <- R6::R6Class(
         if (length(chunk) == 0) return(TRUE)
         buf <<- paste0(buf, rawToChar(chunk))
         # `strsplit("a\n", "\n")` returns `c("a")`, dropping the trailing
-        # empty — so we can't tell from `length(pieces)` alone whether the
+        # empty - so we can't tell from `length(pieces)` alone whether the
         # last piece is complete. Decide based on whether buf ends with a
         # newline. (Without this, a chunk that delivers exactly one event
         # ending in '\n' would be held indefinitely as "still in progress".)

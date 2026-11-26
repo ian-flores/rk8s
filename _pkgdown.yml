@@ -1,0 +1,114 @@
+url: https://ian-flores.github.io/rk8s/
+
+template:
+  bootstrap: 5
+  light-switch: false
+  bslib:
+    bg: "#f4eedc"
+    fg: "#1c2a39"
+    primary: "#1f4466"
+    secondary: "#a3326b"
+    border-color: "#c9bb94"
+    base_font: {google: "Source Serif 4"}
+    heading_font: {google: "Cormorant Garamond"}
+    code_font: {google: "IBM Plex Mono"}
+    font-size-base: "1.02rem"
+    link-color: "#1f4466"
+    code-color: "#7d2552"
+    navbar-bg: "#f4eedc"
+
+home:
+  title: "rk8s: a Kubernetes client for R"
+  description: >
+    Typed and high-level access to the Kubernetes API from R: verbs,
+    watches, informers, exec, port-forward and leader election.
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+  components:
+    intro:
+      text: Get started
+      href: articles/getting-started.html
+    articles:
+      text: Guides
+      menu:
+      - text: Getting started
+        href: articles/getting-started.html
+
+reference:
+- title: Sessions and verbs
+  desc: >
+    Start with `kube()`. The verbs cover everyday work without touching the
+    generated classes.
+  contents:
+  - kube
+  - Kube
+  - kube_get
+  - kube_list
+  - kube_apply
+  - kube_delete
+  - kube_scale
+  - kube_logs
+  - kube_watch
+
+- title: Connecting and authenticating
+  contents:
+  - load_kube_config
+  - load_incluster_config
+  - list_kube_config_contexts
+  - new_client_from_config
+  - Configuration
+  - ApiClient
+  - ApiException
+
+- title: Watches and caches
+  desc: Building blocks for controllers.
+  contents:
+  - Watch
+  - Informer
+  - Lister
+  - run_as_leader
+
+- title: Exec and port-forward
+  desc: >
+    WebSocket sessions to pods. Need the `nanonext` package and a bearer
+    token; the API server's certificate is always verified unless the
+    kubeconfig says `insecure-skip-tls-verify`.
+  contents:
+  - pod_exec
+  - pod_exec_open
+  - PodExecSession
+  - pod_port_forward
+  - pod_port_forward_open
+  - PodPortForwardSession
+
+- title: Custom resources and discovery
+  contents:
+  - DynamicClient
+  - create_from_yaml
+  - parse_quantity
+  - rk8s-package
+
+- title: Typed API classes
+  desc: >
+    One R6 class per API group and version, generated from the Kubernetes
+    OpenAPI spec. Methods mirror the operation names of the official
+    Python client.
+  contents:
+  - matches("Api$")
+
+- title: Models
+  desc: >
+    R6 model classes for every Kubernetes object, generated from the
+    OpenAPI spec. Each has `$new()`, `$to_list()` and `$from_list()`.
+  contents:
+  - matches("^V[0-9]")
+  - -matches("Api$")
+  - matches("^(Admissionregistration|Apiextensions|Apiregistration|Authentication|Core|Discovery|Events|Flowcontrol|Rbac|Storage)V1[A-Z]")
+  - -matches("Api$")
+  - Info
+  - IntOrString
+  - Quantity
+  - RawExtension

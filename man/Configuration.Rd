@@ -16,7 +16,7 @@ Mirrors \code{kubernetes.client.Configuration} from the Python client and the
 \code{rest.Config} struct from client-go.
 }
 \examples{
-# In-memory config — typical tests or ad-hoc use against a known endpoint.
+# In-memory config - typical tests or ad-hoc use against a known endpoint.
 cfg <- Configuration$new(
   host = "https://10.0.0.1:6443",
   api_key = list(authorization = "Bearer <token>"),
@@ -51,7 +51,7 @@ cfg$bearer_token()
 \item{\code{exec}}{Optional \code{list(command, args, env, apiVersion)} exec plugin.}
 
 \item{\code{token_file}}{Optional path to a file holding a bearer token (reread
-on each request to handle rotation — matches in-cluster behaviour).}
+on each request to handle rotation - matches in-cluster behaviour).}
 
 \item{\code{context_name}}{Name of the kubeconfig context used, for reference.}
 

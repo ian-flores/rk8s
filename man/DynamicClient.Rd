@@ -9,7 +9,7 @@ Dynamic (untyped) Kubernetes client
 Dynamic (untyped) Kubernetes client
 }
 \details{
-Discovers the API surface at runtime (GVR → REST path) via \verb{/api} and
+Discovers the API surface at runtime (GVR -> REST path) via \verb{/api} and
 \verb{/apis/*} discovery endpoints and exposes CRUD for any resource, including
 CustomResourceDefinitions. Mirrors \code{kubernetes.dynamic.DynamicClient} in the
 Python client and \code{dynamic.Interface} in client-go.

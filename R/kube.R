@@ -1,6 +1,6 @@
 #' Open a Kubernetes session
 #'
-#' Returns a `Kube` object — a thin wrapper over [ApiClient] and
+#' Returns a `Kube` object - a thin wrapper over [ApiClient] and
 #' [DynamicClient] that lets you write idiomatic R against the cluster
 #' without touching the typed `V1*` model classes:
 #'
@@ -16,12 +16,12 @@
 #' }
 #'
 #' This is the high-level surface most users want. The typed classes
-#' (`V1Pod`, `CoreV1Api`, …) and the [DynamicClient] still work and are
-#' there when you need them — `Kube` is built on top of both.
+#' (`V1Pod`, `CoreV1Api`, ...) and the [DynamicClient] still work and are
+#' there when you need them - `Kube` is built on top of both.
 #'
 #' Resource references can be:
 #' * a kind alias: `"pod"`, `"pods"`, `"po"`, `"deployment"`, `"deploy"`,
-#'   `"svc"`, …
+#'   `"svc"`, ...
 #' * `"kind/name"`: `"deployment/nginx"`
 #' * an explicit `apiVersion+kind`: `"apps/v1:Deployment"`
 #' * a `c(api_version, kind)` vector: `c("apps/v1", "Deployment")`
@@ -47,7 +47,7 @@ kube <- function(config_file = NULL, context = NULL, namespace = NULL,
   Kube$new(client, namespace = namespace, field_manager = field_manager)
 }
 
-#' Kube — high-level Kubernetes session
+#' Kube - high-level Kubernetes session
 #'
 #' Constructed via [kube()]. Carries an [ApiClient], a [DynamicClient],
 #' a default namespace, and a kind-to-resource alias table.
@@ -121,9 +121,9 @@ Kube <- R6::R6Class(
 )
 
 # Parse a resource ref string. Returns a list with:
-#   * alias                — short name like "pods" (if user gave just a kind)
-#   * api_version_kind     — list(apiVersion, kind) (if user gave an explicit GVK)
-#   * name                 — element after `/`, if present
+#   * alias                - short name like "pods" (if user gave just a kind)
+#   * api_version_kind     - list(apiVersion, kind) (if user gave an explicit GVK)
+#   * name                 - element after `/`, if present
 parse_ref <- function(ref) {
   if (is.null(ref)) stop("ref is NULL", call. = FALSE)
   if (is.list(ref) && !is.null(ref$apiVersion) && !is.null(ref$kind)) {

@@ -16,7 +16,7 @@ kube_list(
 \arguments{
 \item{k}{A \link{Kube} session.}
 
-\item{ref}{Resource ref — kind alias (\code{"pods"}), \code{"kind/name"}, or
+\item{ref}{Resource ref - kind alias (\code{"pods"}), \code{"kind/name"}, or
 explicit \code{"apiVersion:Kind"} / \code{c(apiVersion, Kind)}.}
 
 \item{namespace}{Namespace (defaults to \code{k$namespace}).}

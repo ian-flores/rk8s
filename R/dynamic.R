@@ -1,6 +1,6 @@
 #' Dynamic (untyped) Kubernetes client
 #'
-#' Discovers the API surface at runtime (GVR → REST path) via `/api` and
+#' Discovers the API surface at runtime (GVR -> REST path) via `/api` and
 #' `/apis/*` discovery endpoints and exposes CRUD for any resource, including
 #' CustomResourceDefinitions. Mirrors `kubernetes.dynamic.DynamicClient` in the
 #' Python client and `dynamic.Interface` in client-go.

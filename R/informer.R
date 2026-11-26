@@ -1,4 +1,4 @@
-#' Shared Informer — local cache of a resource, kept in sync via watch
+#' Shared Informer - local cache of a resource, kept in sync via watch
 #'
 #' An `Informer` performs an initial list of a resource, then watches for
 #' subsequent changes and maintains a local cache keyed by
@@ -10,7 +10,7 @@
 #' and many [Lister] views, without each consumer re-listing the API server.
 #'
 #' Lifecycle:
-#' * `$run(stop_seconds = NULL)` — block, streaming events into the cache.
+#' * `$run(stop_seconds = NULL)` - block, streaming events into the cache.
 #'   Returns when `stop_seconds` of wall-clock time elapse (whether or not
 #'   events arrive) or `$stop()` is called from a handler. Safe to re-invoke;
 #'   the informer resumes from the last observed resourceVersion.
@@ -19,8 +19,8 @@
 #'   fire `on_delete`, new ones `on_add`, and changed ones (different
 #'   `resourceVersion`) `on_update`.
 #' * Lists are fetched in pages of `page_size` items (`limit`/`continue`).
-#' * `$has_synced()` — `TRUE` once the initial list has been absorbed.
-#' * `$lister()` — return a [Lister] view over the current cache snapshot.
+#' * `$has_synced()` - `TRUE` once the initial list has been absorbed.
+#' * `$lister()` - return a [Lister] view over the current cache snapshot.
 #'
 #' @examples
 #' \dontrun{

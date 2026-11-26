@@ -14,3 +14,6 @@
 ^LICENSE\.md$
 ^docs$
 ^tests/integration$
+^_pkgdown\.yml$
+^pkgdown$
+^\.impeccable$

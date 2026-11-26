@@ -2,11 +2,11 @@
 % Please edit documentation in R/informer.R
 \name{Informer}
 \alias{Informer}
-\title{Shared Informer — local cache of a resource, kept in sync via watch}
+\title{Shared Informer - local cache of a resource, kept in sync via watch}
 \description{
-Shared Informer — local cache of a resource, kept in sync via watch
+Shared Informer - local cache of a resource, kept in sync via watch
 
-Shared Informer — local cache of a resource, kept in sync via watch
+Shared Informer - local cache of a resource, kept in sync via watch
 }
 \details{
 An \code{Informer} performs an initial list of a resource, then watches for
@@ -20,7 +20,7 @@ and many \link{Lister} views, without each consumer re-listing the API server.
 
 Lifecycle:
 \itemize{
-\item \verb{$run(stop_seconds = NULL)} — block, streaming events into the cache.
+\item \verb{$run(stop_seconds = NULL)} - block, streaming events into the cache.
 Returns when \code{stop_seconds} of wall-clock time elapse (whether or not
 events arrive) or \verb{$stop()} is called from a handler. Safe to re-invoke;
 the informer resumes from the last observed resourceVersion.
@@ -29,8 +29,8 @@ reconciles the cache against the fresh list: objects that disappeared
 fire \code{on_delete}, new ones \code{on_add}, and changed ones (different
 \code{resourceVersion}) \code{on_update}.
 \item Lists are fetched in pages of \code{page_size} items (\code{limit}/\code{continue}).
-\item \verb{$has_synced()} — \code{TRUE} once the initial list has been absorbed.
-\item \verb{$lister()} — return a \link{Lister} view over the current cache snapshot.
+\item \verb{$has_synced()} - \code{TRUE} once the initial list has been absorbed.
+\item \verb{$lister()} - return a \link{Lister} view over the current cache snapshot.
 }
 }
 \examples{

@@ -9,7 +9,7 @@ kube_scale(k, ref, name = NULL, replicas, namespace = k$namespace)
 \arguments{
 \item{k}{A \link{Kube} session.}
 
-\item{ref}{Resource ref — kind alias (\code{"pods"}), \code{"kind/name"}, or
+\item{ref}{Resource ref - kind alias (\code{"pods"}), \code{"kind/name"}, or
 explicit \code{"apiVersion:Kind"} / \code{c(apiVersion, Kind)}.}
 
 \item{name}{Optional resource name (overrides any name in \code{ref}).}

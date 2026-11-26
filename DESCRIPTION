@@ -11,7 +11,7 @@ Description: An R client for the Kubernetes API. Provides a high-level
     pod exec/port-forward over WebSocket) plus typed API and model
     classes code-generated from the Kubernetes OpenAPI specification.
 License: Apache License (>= 2)
-URL: https://github.com/ian-flores/rk8s
+URL: https://ian-flores.github.io/rk8s/, https://github.com/ian-flores/rk8s
 BugReports: https://github.com/ian-flores/rk8s/issues
 Encoding: UTF-8
 Depends:

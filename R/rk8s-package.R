@@ -3,7 +3,7 @@
 #' rk8s ports the Kubernetes Python client and Go client-go to R. The package
 #' layout mirrors the Python client:
 #'
-#' * A hand-written runtime in `R/` — [Configuration], [ApiClient],
+#' * A hand-written runtime in `R/` - [Configuration], [ApiClient],
 #'   [load_kube_config()], [load_incluster_config()], [Watch], [DynamicClient],
 #'   [create_from_yaml()].
 #' * Typed API and model classes under `R/gen/`, code-generated from the
