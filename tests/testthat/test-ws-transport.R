@@ -83,7 +83,8 @@ local_fake_kubelet <- function(cn = "127.0.0.1", .env = parent.frame()) {
           file.path(d, "key.pem"), portfile, logfile),
     stdout = "|", stderr = "|")
   withr::defer(proc$kill(), envir = .env)
-  deadline <- Sys.time() + 10
+  # Generous: a cold Python start on a CI Windows runner has taken >10s.
+  deadline <- Sys.time() + 30
   while (!file.exists(portfile)) {
     if (!proc$is_alive()) stop("fake kubelet died: ", proc$read_all_error())
     if (Sys.time() > deadline) stop("fake kubelet did not start")

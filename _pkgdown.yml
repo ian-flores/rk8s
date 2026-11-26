@@ -69,6 +69,7 @@ reference:
   - Watch
   - Informer
   - Lister
+  - WorkQueue
   - run_as_leader
 
 - title: Exec and port-forward
