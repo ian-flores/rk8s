@@ -715,6 +715,7 @@
 <url><loc>https://ian-flores.github.io/rk8s/reference/VersionApi.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/Watch.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/WellKnownApi.html</loc></url>
+<url><loc>https://ian-flores.github.io/rk8s/reference/WorkQueue.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/create_from_yaml.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/index.html</loc></url>
 <url><loc>https://ian-flores.github.io/rk8s/reference/kube_apply.html</loc></url>

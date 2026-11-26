@@ -287,6 +287,8 @@ Building blocks for controllers.
   : Shared Informer - local cache of a resource, kept in sync via watch
 - [`Lister`](https://ian-flores.github.io/rk8s/reference/Lister.md) :
   Read-only indexed view over an Informer's cache
+- [`WorkQueue`](https://ian-flores.github.io/rk8s/reference/WorkQueue.md)
+  : Work queue for controllers
 - [`run_as_leader()`](https://ian-flores.github.io/rk8s/reference/run_as_leader.md)
   : Run as the leader under a Kubernetes Lease
 

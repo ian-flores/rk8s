@@ -45,6 +45,7 @@
 <li>
 <code>Informer</code> gains <code><a href="https://rdrr.io/r/stats/start.html" class="external-link">start()</a></code>, <code>poll(max_wait)</code> and <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code>, so one R process can drive several informers from a single loop. <code>poll()</code> relists and reconciles after 410 Gone. <code>run()</code> is now built on them.</li>
 <li>Watches now run on curl’s multi interface instead of a curl connection. Opening a connection waited for the first byte of the body, and the API server sends none on a resumed watch until there is an event, so an informer on a quiet resource could block for about a minute (until the next bookmark) each time its watch reconnected.</li>
+<li>New <code>WorkQueue</code>: a queue of object keys with client-go’s semantics. Keys are de-duplicated, never handed out twice at once (a key re-added while in progress is queued again on <code>done()</code>), can be delayed with <code>add_after()</code>, and retried with per-key exponential backoff via <code>add_rate_limited()</code> / <code>forget()</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="security-development-version">Security<a class="anchor" aria-label="anchor" href="#security-development-version"></a></h3>

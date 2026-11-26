@@ -22,6 +22,11 @@
   body, and the API server sends none on a resumed watch until there is
   an event, so an informer on a quiet resource could block for about a
   minute (until the next bookmark) each time its watch reconnected.
+- New `WorkQueue`: a queue of object keys with client-go’s semantics.
+  Keys are de-duplicated, never handed out twice at once (a key re-added
+  while in progress is queued again on `done()`), can be delayed with
+  `add_after()`, and retried with per-key exponential backoff via
+  `add_rate_limited()` / `forget()`.
 
 ### Security
 
