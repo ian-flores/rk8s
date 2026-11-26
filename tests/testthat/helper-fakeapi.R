@@ -1,7 +1,9 @@
 # A tiny in-memory fake of the Kubernetes API server, served by webfakes in a
 # background process. It supports just enough to exercise the runtime:
 #
-# * pods in namespace "default": list (with limit/continue paging) and watch
+# * discovery for core/v1 (`/api/v1`, listing pods)
+# * pods in namespace "default" (optionally with a controller ownerReference
+#   to another pod, via `owner =`): list (with limit/continue paging) and watch
 #   (streamed, honours timeoutSeconds, replays ADDED when no resourceVersion,
 #   sends ERROR 410 once the history has been compacted past the client's rv)
 # * coordination.k8s.io/v1 Leases: GET / POST / PUT with resourceVersion
@@ -41,13 +43,17 @@ fake_api_app <- function() {
   body_of <- function(req) {
     jsonlite::fromJSON(rawToChar(req$.body %||% req$body), simplifyVector = FALSE)
   }
-  pod <- function(name, rv, gen = 1L) {
-    list(apiVersion = "v1", kind = "Pod",
-         metadata = list(name = name, namespace = "default",
-                         resourceVersion = as.character(rv),
-                         generation = gen))
+  pod <- function(name, rv, gen = 1L, owner = NULL) {
+    meta <- list(name = name, namespace = "default",
+                 resourceVersion = as.character(rv), generation = gen)
+    if (!is.null(owner)) {
+      meta$ownerReferences <- list(list(apiVersion = "v1", kind = "Pod",
+                                        name = owner, uid = paste0("uid-", owner),
+                                        controller = TRUE))
+    }
+    list(apiVersion = "v1", kind = "Pod", metadata = meta)
   }
-  mutate <- function(st, action, name, silent) {
+  mutate <- function(st, action, name, silent, owner = NULL) {
     st$rv <- st$rv + 1L
     if (action == "delete") {
       obj <- st$objects[[name]]
@@ -58,7 +64,10 @@ fake_api_app <- function() {
     } else {
       prev <- st$objects[[name]]
       gen <- if (is.null(prev)) 1L else prev$metadata$generation + 1L
-      obj <- pod(name, st$rv, gen)
+      if (is.null(owner) && !is.null(prev$metadata$ownerReferences)) {
+        owner <- prev$metadata$ownerReferences[[1]]$name
+      }
+      obj <- pod(name, st$rv, gen, owner)
       st$objects[[name]] <- obj
       type <- if (action == "add") "ADDED" else "MODIFIED"
     }
@@ -71,7 +80,7 @@ fake_api_app <- function() {
     for (a in st$schedule) {
       if (a$at > now()) { keep[[length(keep) + 1]] <- a; next }
       switch(a$action,
-        add = , modify = , delete = mutate(st, a$action, a$name, a$silent),
+        add = , modify = , delete = mutate(st, a$action, a$name, a$silent, a$owner),
         compact = { st$compacted <- st$rv },
         steal_lease = {
           if (!is.null(st$lease)) {
@@ -107,6 +116,14 @@ fake_api_app <- function() {
     json(res, list(rv = st$rv, names = I(as.character(names(st$objects))),
                    lease = st$lease, lease_puts = st$lease_puts,
                    requests = I(st$requests)))
+  })
+
+  # ---- discovery ---------------------------------------------------------------
+  app$get("/api/v1", function(req, res) {
+    json(res, list(kind = "APIResourceList", groupVersion = "v1",
+                   resources = list(
+                     list(name = "pods", namespaced = TRUE, kind = "Pod",
+                          verbs = I(c("get", "list", "watch"))))))
   })
 
   # ---- pods ------------------------------------------------------------------

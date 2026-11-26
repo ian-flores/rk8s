@@ -72,6 +72,14 @@ reference:
   - WorkQueue
   - run_as_leader
 
+- title: Controllers and operators
+  desc: >
+    Run reconcile loops in R: informers feed a work queue, and your
+    reconcile function makes the cluster match each object.
+  contents:
+  - Manager
+  - requeue
+
 - title: Exec and port-forward
   desc: >
     WebSocket sessions to pods. Need the `nanonext` package and a bearer

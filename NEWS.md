@@ -21,6 +21,14 @@
   in progress is queued again on `done()`), can be delayed with
   `add_after()`, and retried with per-key exponential backoff via
   `add_rate_limited()` / `forget()`.
+* New `Manager` for running controllers in R. `mgr$controller(ref,
+  reconcile, owns = ...)` watches a primary resource and the resources it
+  creates, queues the key of every changed object (owned objects queue
+  their controller owner), and calls `reconcile(req, k)` for each key.
+  Reconcile returns `NULL` when done, `requeue()` to retry with backoff, or
+  `requeue_after(seconds)`; errors are logged and retried. `mgr$run()`
+  drives every controller from one loop, optionally under leader election
+  (`leader_election = "<lease>"`), and `mgr$step()` runs a single pass.
 
 ## Security
 
