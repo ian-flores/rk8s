@@ -77,6 +77,8 @@ reconcile function makes the cluster match each object.
   : Finalizers
 - [`kube_event()`](https://ian-flores.github.io/rk8s/reference/kube_event.md)
   : Record an event about an object
+- [`use_operator()`](https://ian-flores.github.io/rk8s/reference/use_operator.md)
+  : Create the files for an operator written in R
 
 ## Exec and port-forward
 

@@ -64,6 +64,15 @@
   gains `on_wait`, called instead of
   [`Sys.sleep()`](https://rdrr.io/r/base/Sys.sleep.html) between
   acquisition attempts.
+- New
+  [`use_operator()`](https://ian-flores.github.io/rk8s/reference/use_operator.md)
+  writes a starting point for an operator in R: an `operator.R` that
+  runs a `Manager` (in-cluster or locally), a Dockerfile on
+  `rocker/r-ver` with `tini` as PID 1 (so SIGTERM stops R promptly and
+  leader failover takes about one lease period instead of waiting out
+  the termination grace period), and a CRD, RBAC and Deployment with
+  probes. An opt-in integration test builds the scaffolded image, runs
+  two replicas in kind, and checks reconciling and failover.
 
 ### Security
 
