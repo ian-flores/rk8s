@@ -83,6 +83,7 @@ reference:
   - set_owner
   - finalizers
   - kube_event
+  - use_operator
 
 - title: Exec and port-forward
   desc: >

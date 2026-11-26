@@ -26,6 +26,7 @@ export(is_deleting)
 export(add_finalizer)
 export(remove_finalizer)
 export(kube_event)
+export(use_operator)
 
 # Dynamic client
 export(DynamicClient)
