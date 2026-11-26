@@ -87,10 +87,11 @@ a:hover { color: $magenta; }
 
 // ---- code: soundings in mono on a pale sea tint ---------------------------
 
+// Framed like a chart legend box: a thin ink rule with a second rule inset.
 pre, .sourceCode pre {
   background: $sea;
-  border: 1px solid #b9cbc4;
-  border-left: 3px solid #1f4466;
+  border: 1px solid $ink;
+  box-shadow: inset 0 0 0 3px $sea, inset 0 0 0 4px #9fb5ad;
   border-radius: 0;
   font-size: 0.86rem;
 }
