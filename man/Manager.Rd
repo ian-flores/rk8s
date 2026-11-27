@@ -28,7 +28,18 @@ something outside the cluster).
 }
 
 An error is logged with \code{\link[=message]{message()}} and retried with backoff; it does not
-stop the manager. Reconciles run one at a time, so keep them short.
+stop the manager.
+
+By default reconciles run one at a time in the manager's process, so a
+slow one delays the rest. With \code{workers = n}, up to \code{n} run at once in
+background R processes. Each worker has its own \link{Kube} session, built
+from the manager's connection settings. The reconcile function is sent
+to the workers together with the functions and values it refers to from
+the global environment (helpers defined in your script), but workers do
+not share variables with the manager: assigning with \verb{<<-} inside a
+reconcile changes the worker's copy only. Load any packages a reconcile
+needs inside it or call them with \code{pkg::fn()}. Workers need rk8s
+installed.
 
 Changes to owned resources (\code{owns}) reconcile their owner: the object
 named by an \code{ownerReferences} entry with \code{controller: true} whose kind
@@ -109,7 +120,8 @@ Add a controller.
   resync_seconds = NULL,
   name = NULL,
   base_delay = 0.25,
-  max_delay = 300
+  max_delay = 300,
+  workers = 1L
 )}\if{html}{\out{</div>}}
 }
 
@@ -136,6 +148,11 @@ even without changes.}
 
 \item{\code{base_delay, max_delay}}{Retry backoff bounds, seconds (see
 \link{WorkQueue}).}
+
+\item{\code{workers}}{How many reconciles may run at once. With more than
+one, reconciles run in background R processes (via the \code{mirai}
+package) while the loop keeps handling events; one object is still
+never reconciled twice at the same time. See Details.}
 }
 \if{html}{\out{</div>}}
 }
