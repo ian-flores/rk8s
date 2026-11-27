@@ -180,3 +180,42 @@ test_that("operator helpers work against a real API server", {
   expect_true(wait_for(function() is.null(get_or_null(k, "configmap", "note-n1")),
                        budget = 30))
 })
+
+test_that("workers reconcile in parallel against a real API server", {
+  skip_if_not_installed("mirai")
+  k <- kube(namespace = "default")
+  names <- paste0("rk8s-it-w", 1:3)
+  withr::defer(for (n in c(names, paste0(names, "-copy"))) {
+    try(kube_delete(k, "configmap", n), silent = TRUE)
+  })
+  for (n in names) {
+    kube_apply(k, list(apiVersion = "v1", kind = "ConfigMap",
+                       metadata = list(name = n, labels = list(`rk8s-it` = "workers")),
+                       data = list(v = n)))
+  }
+  mgr <- Manager$new(k)
+  mgr$controller(
+    "configmaps", namespace = "default", label_selector = "rk8s-it=workers",
+    workers = 3,
+    reconcile = function(req, k) {
+      Sys.sleep(1)       # pretend to be slow
+      src <- kube_get(k, "configmap", req$name, namespace = req$namespace)
+      kube_apply(k, list(apiVersion = "v1", kind = "ConfigMap",
+                         metadata = list(name = paste0(req$name, "-copy"),
+                                         namespace = req$namespace),
+                         data = src$data))
+      NULL
+    })
+  t0 <- Sys.time()
+  mgr$start()
+  withr::defer(mgr$close())
+  copies <- function() vapply(names, function(n) {
+    !is.null(tryCatch(kube_get(k, "configmap", paste0(n, "-copy")),
+                      rk8s_api_error = function(e) NULL))
+  }, TRUE)
+  while (!all(copies()) && Sys.time() - t0 < 30) mgr$step(0.1)
+  expect_true(all(copies()))
+  # Sequential would take 3s of sleeping alone; in parallel well under that
+  # (start-up of the worker processes included).
+  expect_lt(as.numeric(difftime(Sys.time(), t0, units = "secs")), 2.9)
+})

@@ -18,7 +18,18 @@
 #'   something outside the cluster).
 #'
 #' An error is logged with [message()] and retried with backoff; it does not
-#' stop the manager. Reconciles run one at a time, so keep them short.
+#' stop the manager.
+#'
+#' By default reconciles run one at a time in the manager's process, so a
+#' slow one delays the rest. With `workers = n`, up to `n` run at once in
+#' background R processes. Each worker has its own [Kube] session, built
+#' from the manager's connection settings. The reconcile function is sent
+#' to the workers together with the functions and values it refers to from
+#' the global environment (helpers defined in your script), but workers do
+#' not share variables with the manager: assigning with `<<-` inside a
+#' reconcile changes the worker's copy only. Packages attached in the
+#' manager's session (with `library()`) are attached in the workers too.
+#' Workers need rk8s installed.
 #'
 #' Changes to owned resources (`owns`) reconcile their owner: the object
 #' named by an `ownerReferences` entry with `controller: true` whose kind
@@ -74,15 +85,21 @@ Manager <- R6::R6Class(
     #' @param name Controller name used in log messages (default: the kind).
     #' @param base_delay,max_delay Retry backoff bounds, seconds (see
     #'   [WorkQueue]).
+    #' @param workers How many reconciles may run at once. With more than
+    #'   one, reconciles run in background R processes (via the `mirai`
+    #'   package) while the loop keeps handling events; one object is still
+    #'   never reconciled twice at the same time. See Details.
     #' @return The controller, invisibly.
     controller = function(ref, reconcile, owns = character(), namespace = NULL,
                           label_selector = NULL, resync_seconds = NULL,
-                          name = NULL, base_delay = 0.25, max_delay = 300) {
+                          name = NULL, base_delay = 0.25, max_delay = 300,
+                          workers = 1L) {
       ctl <- Controller$new(self$kube, ref, reconcile, owns = owns,
                             namespace = namespace,
                             label_selector = label_selector,
                             resync_seconds = resync_seconds, name = name,
-                            base_delay = base_delay, max_delay = max_delay)
+                            base_delay = base_delay, max_delay = max_delay,
+                            workers = workers)
       private$ctls[[length(private$ctls) + 1L]] <- ctl
       invisible(ctl)
     },
@@ -272,9 +289,15 @@ Controller <- R6::R6Class(
     initialize = function(k, ref, reconcile, owns = character(),
                           namespace = NULL, label_selector = NULL,
                           resync_seconds = NULL, name = NULL,
-                          base_delay = 0.25, max_delay = 300) {
+                          base_delay = 0.25, max_delay = 300, workers = 1L) {
       private$k <- k
       private$reconcile <- reconcile
+      private$workers <- max(1L, as.integer(workers))
+      if (private$workers > 1L && !requireNamespace("mirai", quietly = TRUE)) {
+        stop("workers > 1 needs the `mirai` package. Install with: ",
+             "install.packages(\"mirai\")", call. = FALSE)
+      }
+      private$inflight <- list()
       private$wants_kube <- {
         f <- names(formals(reconcile))
         length(f) >= 2 || "..." %in% f
@@ -317,6 +340,7 @@ Controller <- R6::R6Class(
     start = function() {
       private$primary$start()
       for (inf in private$owned) inf$start()
+      if (private$workers > 1L && is.null(private$profile)) private$start_pool()
       invisible(self)
     },
 
@@ -340,6 +364,9 @@ Controller <- R6::R6Class(
     # early.
     process = function(max_items = 50L, check = NULL,
                        should_stop = function() FALSE) {
+      if (private$workers > 1L) {
+        return(private$process_async(check, should_stop))
+      }
       n <- 0L
       while (n < max_items && !should_stop()) {
         key <- self$queue$get()
@@ -359,8 +386,12 @@ Controller <- R6::R6Class(
     close = function() {
       private$primary$close()
       for (inf in private$owned) inf$close()
+      private$stop_pool()
       invisible(self)
-    }
+    },
+
+    # Number of reconciles running in workers right now.
+    busy = function() length(private$inflight)
   ),
 
   private = list(
@@ -372,23 +403,35 @@ Controller <- R6::R6Class(
     resync_seconds = NULL,
     last_resync = 0,
 
-    reconcile_one = function(key) {
+    workers = 1L,
+    startup_timeout = 60L,
+    profile = NULL,     # mirai compute profile while the pool is up
+    inflight = NULL,    # key -> mirai
+
+    request_for = function(key) {
       parts <- strsplit(key, "/", fixed = TRUE)[[1]]
-      req <- if (length(parts) == 2) {
+      if (length(parts) == 2) {
         list(key = key, namespace = parts[1], name = parts[2])
       } else {
         list(key = key, namespace = NULL, name = parts[1])
       }
+    },
+
+    reconcile_one = function(key) {
+      req <- private$request_for(key)
       result <- tryCatch(
         if (private$wants_kube) private$reconcile(req, private$k)
         else private$reconcile(req),
         rk8s_leadership_lost = function(e) stop(e),
-        error = function(e) {
-          message(sprintf("[%s] reconcile %s failed: %s", self$name, key,
-                          conditionMessage(e)))
-          structure(list(), class = "rk8s_reconcile_error")
-        })
+        error = function(e) reconcile_failure(conditionMessage(e)))
+      private$apply_result(key, result)
+    },
+
+    # Decide what happens to `key` after a reconcile returned `result`.
+    apply_result = function(key, result) {
       if (inherits(result, "rk8s_reconcile_error")) {
+        message(sprintf("[%s] reconcile %s failed: %s", self$name, key,
+                        result$message))
         self$queue$add_rate_limited(key)
       } else if (inherits(result, "rk8s_requeue")) {
         if (is.null(result$after)) {
@@ -400,9 +443,155 @@ Controller <- R6::R6Class(
       } else {
         self$queue$forget(key)
       }
+    },
+
+    # Collect finished reconciles, then hand ready keys to idle workers.
+    process_async = function(check, should_stop) {
+      n <- 0L
+      for (key in names(private$inflight)) {
+        m <- private$inflight[[key]]
+        if (mirai::unresolved(m)) next
+        out <- m$data
+        result <- if (mirai::is_error_value(out)) {
+          reconcile_failure(if (mirai::is_mirai_error(out)) conditionMessage(out)
+                            else paste("worker failed:", format(out)))
+        } else out
+        private$inflight[[key]] <- NULL
+        private$apply_result(key, result)
+        self$queue$done(key)
+        n <- n + 1L
+      }
+      while (length(private$inflight) < private$workers && !should_stop()) {
+        key <- self$queue$get()
+        if (is.null(key)) break
+        if (!is.null(check)) {
+          tryCatch(check(), error = function(e) { self$queue$done(key); stop(e) })
+        }
+        private$inflight[[key]] <- mirai::mirai(
+          utils::getFromNamespace("worker_run", "rk8s")(req),
+          .args = list(req = private$request_for(key)),
+          .compute = private$profile)
+        n <- n + 1L
+      }
+      n
+    },
+
+    start_pool = function() {
+      profile <- paste0("rk8s-", self$name, "-",
+                        paste(sample(c(letters, 0:9), 8, TRUE), collapse = ""))
+      mirai::daemons(private$workers, .compute = profile)
+      private$profile <- profile
+      setup <- mirai::everywhere(
+        utils::getFromNamespace("worker_setup", "rk8s")(
+          cfg, namespace, field_manager, fn, wants_kube, pkgs),
+        .args = list(cfg = config_to_list(private$k$client$configuration),
+                     namespace = private$k$namespace,
+                     field_manager = private$k$field_manager,
+                     fn = bundle_function(private$reconcile),
+                     wants_kube = private$wants_kube,
+                     pkgs = .packages()),
+        .compute = profile)
+      # Wait for every worker to be set up, so the first reconciles really
+      # do run in parallel, and so a broken setup (rk8s not installed for
+      # the workers, say) is reported here rather than on every reconcile.
+      deadline <- as.numeric(Sys.time()) + private$startup_timeout
+      results <- as.list(setup)
+      while (any(vapply(results, mirai::unresolved, logical(1)))) {
+        if (as.numeric(Sys.time()) >= deadline) {
+          message(sprintf("[%s] reconcile workers still starting after %ds; continuing",
+                          self$name, private$startup_timeout))
+          return(invisible())
+        }
+        Sys.sleep(0.05)
+      }
+      for (m in results) {
+        if (mirai::is_error_value(m$data)) {
+          msg <- if (mirai::is_mirai_error(m$data)) conditionMessage(m$data)
+                 else format(m$data)
+          private$stop_pool()
+          stop(sprintf("[%s] could not start reconcile workers: %s", self$name, msg),
+               call. = FALSE)
+        }
+      }
+      invisible()
+    },
+
+    stop_pool = function() {
+      if (is.null(private$profile)) return(invisible())
+      for (key in names(private$inflight)) self$queue$done(key)
+      private$inflight <- list()
+      try(mirai::daemons(0, .compute = private$profile), silent = TRUE)
+      private$profile <- NULL
+      invisible()
     }
   )
 )
+
+reconcile_failure <- function(msg) {
+  structure(list(message = msg), class = "rk8s_reconcile_error")
+}
+
+# State of a worker process (set by worker_setup(), used by worker_run()).
+worker_state <- new.env(parent = emptyenv())
+
+# Runs in a worker process: attach the packages the manager's session has
+# attached (a reconcile defined at the top of a script calls kube_get() and
+# friends unqualified), build a session, and keep the function that
+# reconciles one request. Errors are caught there so that they come back as
+# ordinary results (a leadership condition cannot happen in a worker).
+worker_setup <- function(cfg, namespace, field_manager, fn, wants_kube,
+                         pkgs = character()) {
+  for (p in rev(setdiff(pkgs, .packages()))) {
+    suppressPackageStartupMessages(
+      try(library(p, character.only = TRUE), silent = TRUE))
+  }
+  k <- kube(client = ApiClient$new(config_from_list(cfg)),
+            namespace = namespace, field_manager = field_manager)
+  worker_state$run <- function(req) {
+    tryCatch(if (wants_kube) fn(req, k) else fn(req),
+             error = function(e) reconcile_failure(conditionMessage(e)))
+  }
+  invisible(TRUE)
+}
+
+worker_run <- function(req) worker_state$run(req)
+
+# Prepare a function to run in another R process. Functions and values it
+# refers to that live in the global environment are not serialized with it
+# (the global environment is sent by reference), so copy them, recursively
+# for helper functions, into an environment placed in front of the
+# function's own.
+bundle_function <- function(fn) {
+  bundle <- new.env(parent = environment(fn))
+  seen <- character()
+  todo <- list(fn)
+  while (length(todo)) {
+    f <- todo[[1]]
+    todo <- todo[-1]
+    for (name in setdiff(codetools::findGlobals(f), seen)) {
+      seen <- c(seen, name)
+      if (!exists(name, envir = globalenv(), inherits = FALSE)) next
+      if (!identical(find_env(name, environment(fn)), globalenv())) next
+      obj <- get(name, envir = globalenv())
+      if (is.function(obj) && identical(environment(obj), globalenv())) {
+        environment(obj) <- bundle
+        todo[[length(todo) + 1L]] <- obj
+      }
+      assign(name, obj, envir = bundle)
+    }
+  }
+  environment(fn) <- bundle
+  fn
+}
+
+# The environment in which `name` is found, starting from `env`.
+find_env <- function(name, env) {
+  while (!identical(env, emptyenv())) {
+    if (exists(name, envir = env, inherits = FALSE)) return(env)
+    env <- parent.env(env)
+  }
+  NULL
+}
 
 # "namespace/name", or "name" for cluster-scoped objects.
 object_key <- function(obj) {

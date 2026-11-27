@@ -240,9 +240,9 @@ since you read it, and the manager simply retries with fresh data.
 
 ## Things to keep in mind
 
-* Reconciles run one at a time. A reconcile that takes a minute holds
-  up every other object for that minute, so keep them short and push
-  slow waiting into `requeue_after()`.
+* By default reconciles run one at a time, so a slow one holds up the
+  others. Keep them short, push slow waiting into `requeue_after()`, or
+  run several at once with `workers` (next section).
 * Write reconciles to be repeatable. They run after restarts, failovers
   and resyncs, and may see the same state many times.
 * The operator authenticates in the cluster with its ServiceAccount
@@ -250,3 +250,28 @@ since you read it, and the manager simply retries with fresh data.
   `kubectl` uses.
 * One `Manager` can run several controllers; call `mgr$controller()`
   once for each resource type.
+
+## Running reconciles in parallel
+
+If each reconcile spends time waiting, on an API outside the cluster for
+example, let several run at once:
+
+```{r}
+mgr$controller("example.com/v1:Site", owns = "configmaps",
+               reconcile = reconcile, workers = 4)
+```
+
+The reconciles then run in four background R processes (this needs the
+`mirai` package), while the manager keeps handling events and health
+checks. One `Site` is still never reconciled twice at the same time; a
+change that arrives while it is being reconciled leads to one more
+reconcile afterwards.
+
+Each worker is a separate R process with its own session, built from the
+manager's connection settings. Packages you attached with `library()`
+are attached there too, and so are the helper functions and values the
+reconcile uses from your script. What workers don't share is state:
+assigning to a variable with `<<-` inside a reconcile changes the
+worker's copy, not the manager's. Keep anything that must be shared in
+the cluster, where it belongs anyway, for example in the object's status.
+

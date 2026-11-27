@@ -29,6 +29,15 @@
   `requeue_after(seconds)`; errors are logged and retried. `mgr$run()`
   drives every controller from one loop, optionally under leader election
   (`leader_election = "<lease>"`), and `mgr$step()` runs a single pass.
+* `mgr$controller(workers = n)` runs up to `n` reconciles at once in
+  background R processes (via `mirai`, in Suggests) while the loop keeps
+  handling events; one object is still never reconciled twice at the same
+  time, and changes made while it runs trigger one more reconcile. Workers
+  get their own session from the manager's connection settings, the
+  packages attached in the manager's session, and the global helper
+  functions and values the reconcile refers to. `start()` waits (up to a
+  minute) for the workers to be ready and reports a failed worker setup
+  as an error.
 * Helpers for reconcile functions: `kube_patch_status()` (merge patch to
   the `/status` subresource), `set_owner()` (controller owner reference,
   so owned objects are garbage-collected and reconcile their owner),
