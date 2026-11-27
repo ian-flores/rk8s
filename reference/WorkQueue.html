@@ -22,6 +22,7 @@ Work queue for controllers"><meta property="og:image" content="https://ian-flore
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-guides" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Guides</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-guides"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting started</a></li>
+    <li><a class="dropdown-item" href="../articles/operators.html">Writing an operator</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -294,7 +295,7 @@ order), <code>processing</code>, and <code>delayed</code>.</p><div class="sectio
 <span class="r-in"><span><span class="va">q</span><span class="op">$</span><span class="fu">add_rate_limited</span><span class="op">(</span><span class="va">key</span><span class="op">)</span>   <span class="co"># failed: retry after base_delay</span></span></span>
 <span class="r-in"><span><span class="va">q</span><span class="op">$</span><span class="fu">done</span><span class="op">(</span><span class="va">key</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">q</span><span class="op">$</span><span class="fu">next_ready_in</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.004186869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.004210711</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
