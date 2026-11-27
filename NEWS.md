@@ -35,7 +35,9 @@
   time, and changes made while it runs trigger one more reconcile. Workers
   get their own session from the manager's connection settings, the
   packages attached in the manager's session, and the global helper
-  functions and values the reconcile refers to.
+  functions and values the reconcile refers to. `start()` waits (up to a
+  minute) for the workers to be ready and reports a failed worker setup
+  as an error.
 * Helpers for reconcile functions: `kube_patch_status()` (merge patch to
   the `/status` subresource), `set_owner()` (controller owner reference,
   so owned objects are garbage-collected and reconcile their owner),

@@ -9,12 +9,19 @@ skip_without_workers <- function() {
   }), "installed rk8s lacks worker support (install the package first)")
 }
 
-# Reconciles append "key start end" lines here; workers can't touch the
-# test's variables.
-read_log <- function(path) {
-  lines <- if (file.exists(path)) readLines(path, warn = FALSE) else character()
-  # Skip a line a worker is still writing (it has fewer than 3 fields).
-  parts <- Filter(function(p) length(p) == 3, strsplit(trimws(lines), " +"))
+# Each reconcile writes one "key start end" record to its own file in a
+# log directory: workers can't touch the test's variables, and several
+# workers appending to one file interleave their writes.
+log_run <- function(dir, key, start) {
+  writeLines(paste(key, start, as.numeric(Sys.time())),
+             tempfile(tmpdir = dir, fileext = ".log"))
+}
+environment(log_run) <- baseenv()
+
+read_log <- function(dir) {
+  files <- list.files(dir, pattern = "[.]log$", full.names = TRUE)
+  parts <- lapply(files, function(f) strsplit(readLines(f, warn = FALSE)[1], " ")[[1]])
+  parts <- Filter(function(p) length(p) == 3, parts)
   if (!length(parts)) {
     return(data.frame(key = character(), start = numeric(), end = numeric()))
   }
@@ -55,18 +62,17 @@ test_that("bundle_function() carries global helpers into another process", {
 test_that("workers run reconciles in parallel", {
   skip_without_workers()
   f <- local_fake_api(pods = c("a", "b", "c"))
-  log <- withr::local_tempfile()
+  log <- withr::local_tempdir()
   mgr <- Manager$new(kube(client = f$client, namespace = "default"))
   mgr$controller("pods", namespace = "default", workers = 3,
                  reconcile = function(req) {
                    t0 <- as.numeric(Sys.time()); Sys.sleep(1)
-                   cat(req$key, t0, as.numeric(Sys.time()), "\n",
-                       file = log, append = TRUE)
+                   log_run(log, req$key, t0)
                    NULL
                  })
   mgr$start()
   withr::defer(mgr$close())
-  expect_true(run_until(mgr, function() nrow(read_log(log)) >= 3))
+  expect_true(run_until(mgr, function() nrow(read_log(log)) >= 3, budget = 30))
   x <- read_log(log)
   expect_setequal(x$key, c("default/a", "default/b", "default/c"))
   # All three overlapped: the last one started before the first one ended.
@@ -77,13 +83,12 @@ test_that("workers run reconciles in parallel", {
 test_that("one object is never reconciled twice at once, and changes are not lost", {
   skip_without_workers()
   f <- local_fake_api(pods = "a")
-  log <- withr::local_tempfile()
+  log <- withr::local_tempdir()
   mgr <- Manager$new(kube(client = f$client, namespace = "default"))
   mgr$controller("pods", namespace = "default", workers = 3,
                  reconcile = function(req) {
                    t0 <- as.numeric(Sys.time()); Sys.sleep(1)
-                   cat(req$key, t0, as.numeric(Sys.time()), "\n",
-                       file = log, append = TRUE)
+                   log_run(log, req$key, t0)
                    NULL
                  })
   mgr$start()
@@ -145,3 +150,18 @@ test_that("a reconcile defined in the global environment can use global helpers"
   expect_true(run_until(mgr, function() file.exists(log) && length(readLines(log)) >= 1))
   expect_equal(trimws(readLines(log)[1]), "seen-a Kube FALSE")
 })
+
+test_that("start() waits for workers and reports a broken worker setup", {
+  skip_without_workers()
+  f <- local_fake_api(pods = "a")
+  mgr <- Manager$new(kube(client = f$client, namespace = "default"))
+  ctl <- mgr$controller("pods", namespace = "default", workers = 2,
+                        reconcile = function(req) NULL)
+  # Send the workers settings they cannot use: building the session fails
+  # inside each worker ("unused argument"), which start() must report.
+  local_mocked_bindings(config_to_list = function(cfg) list(not_a_setting = TRUE))
+  expect_error(mgr$start(), "could not start reconcile workers.*unused argument")
+  mgr$close()
+  expect_equal(ctl$busy(), 0)
+})
+

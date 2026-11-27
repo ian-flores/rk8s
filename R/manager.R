@@ -404,6 +404,7 @@ Controller <- R6::R6Class(
     last_resync = 0,
 
     workers = 1L,
+    startup_timeout = 60L,
     profile = NULL,     # mirai compute profile while the pool is up
     inflight = NULL,    # key -> mirai
 
@@ -480,7 +481,7 @@ Controller <- R6::R6Class(
                         paste(sample(c(letters, 0:9), 8, TRUE), collapse = ""))
       mirai::daemons(private$workers, .compute = profile)
       private$profile <- profile
-      mirai::everywhere(
+      setup <- mirai::everywhere(
         utils::getFromNamespace("worker_setup", "rk8s")(
           cfg, namespace, field_manager, fn, wants_kube, pkgs),
         .args = list(cfg = config_to_list(private$k$client$configuration),
@@ -490,6 +491,29 @@ Controller <- R6::R6Class(
                      wants_kube = private$wants_kube,
                      pkgs = .packages()),
         .compute = profile)
+      # Wait for every worker to be set up, so the first reconciles really
+      # do run in parallel, and so a broken setup (rk8s not installed for
+      # the workers, say) is reported here rather than on every reconcile.
+      deadline <- as.numeric(Sys.time()) + private$startup_timeout
+      results <- as.list(setup)
+      while (any(vapply(results, mirai::unresolved, logical(1)))) {
+        if (as.numeric(Sys.time()) >= deadline) {
+          message(sprintf("[%s] reconcile workers still starting after %ds; continuing",
+                          self$name, private$startup_timeout))
+          return(invisible())
+        }
+        Sys.sleep(0.05)
+      }
+      for (m in results) {
+        if (mirai::is_error_value(m$data)) {
+          msg <- if (mirai::is_mirai_error(m$data)) conditionMessage(m$data)
+                 else format(m$data)
+          private$stop_pool()
+          stop(sprintf("[%s] could not start reconcile workers: %s", self$name, msg),
+               call. = FALSE)
+        }
+      }
+      invisible()
     },
 
     stop_pool = function() {
