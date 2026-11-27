@@ -37,6 +37,16 @@
   and retried. `mgr$run()` drives every controller from one loop,
   optionally under leader election (`leader_election = "<lease>"`), and
   `mgr$step()` runs a single pass.
+- `mgr$controller(workers = n)` runs up to `n` reconciles at once in
+  background R processes (via `mirai`, in Suggests) while the loop keeps
+  handling events; one object is still never reconciled twice at the
+  same time, and changes made while it runs trigger one more reconcile.
+  Workers get their own session from the manager’s connection settings,
+  the packages attached in the manager’s session, and the global helper
+  functions and values the reconcile refers to.
+  [`start()`](https://rdrr.io/r/stats/start.html) waits (up to a minute)
+  for the workers to be ready and reports a failed worker setup as an
+  error.
 - Helpers for reconcile functions:
   [`kube_patch_status()`](https://ian-flores.github.io/rk8s/reference/kube_patch_status.md)
   (merge patch to the `/status` subresource),

@@ -30,8 +30,19 @@ asks for, and return:
 
 An error is logged with
 [`message()`](https://rdrr.io/r/base/message.html) and retried with
-backoff; it does not stop the manager. Reconciles run one at a time, so
-keep them short.
+backoff; it does not stop the manager.
+
+By default reconciles run one at a time in the manager's process, so a
+slow one delays the rest. With `workers = n`, up to `n` run at once in
+background R processes. Each worker has its own
+[Kube](https://ian-flores.github.io/rk8s/reference/Kube.md) session,
+built from the manager's connection settings. The reconcile function is
+sent to the workers together with the functions and values it refers to
+from the global environment (helpers defined in your script), but
+workers do not share variables with the manager: assigning with `<<-`
+inside a reconcile changes the worker's copy only. Load any packages a
+reconcile needs inside it or call them with `pkg::fn()`. Workers need
+rk8s installed.
 
 Changes to owned resources (`owns`) reconcile their owner: the object
 named by an `ownerReferences` entry with `controller: true` whose kind
@@ -107,7 +118,8 @@ Add a controller.
       resync_seconds = NULL,
       name = NULL,
       base_delay = 0.25,
-      max_delay = 300
+      max_delay = 300,
+      workers = 1L
     )
 
 #### Arguments
@@ -148,6 +160,13 @@ Add a controller.
 
   Retry backoff bounds, seconds (see
   [WorkQueue](https://ian-flores.github.io/rk8s/reference/WorkQueue.md)).
+
+- `workers`:
+
+  How many reconciles may run at once. With more than one, reconciles
+  run in background R processes (via the `mirai` package) while the loop
+  keeps handling events; one object is still never reconciled twice at
+  the same time. See Details.
 
 #### Returns
 
