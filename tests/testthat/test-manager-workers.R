@@ -72,12 +72,15 @@ test_that("workers run reconciles in parallel", {
                  })
   mgr$start()
   withr::defer(mgr$close())
-  expect_true(run_until(mgr, function() nrow(read_log(log)) >= 3, budget = 30))
+  ctl <- mgr$controllers()[[1]]
+  # A worker writes its log before the loop collects its result, so wait
+  # for both.
+  expect_true(run_until(mgr, function() nrow(read_log(log)) >= 3 && ctl$busy() == 0,
+                        budget = 30))
   x <- read_log(log)
   expect_setequal(x$key, c("default/a", "default/b", "default/c"))
   # All three overlapped: the last one started before the first one ended.
   expect_lt(max(x$start), min(x$end))
-  expect_equal(mgr$controllers()[[1]]$busy(), 0)
 })
 
 test_that("one object is never reconciled twice at once, and changes are not lost", {
